@@ -33,10 +33,21 @@ Le site est un ensemble de fichiers statiques. Le serveur cible est un répertoi
 Nginx (par défaut `/var/www/onir-cms-landing`).
 
 ```bash
-sudo ./deploy/deploy.sh
+sudo ./deploy/apply-production.sh
 ```
 
-Le script met à jour le clone serveur, synchronise les fichiers et recharge Nginx.
+Le script :
+
+- met à jour le clone serveur et synchronise le site dans `/var/www/onir-cms-landing` ;
+- installe les vhosts `cms.onirtech.com` (statique) et `cms-backoffice.onirtech.com` (proxy
+  vers l’application sur `127.0.0.1:3100`) ;
+- aligne `APP_URL` dans `/opt/onir-cms/.env.release` ;
+- déploie la version applicative `${APP_VERSION:-0.8.0}` avec `/opt/onir-cms/deploy.sh` ;
+- teste et recharge Nginx.
+
+Variables surchargeables : `APP_VERSION`, `APP_DIR`, `WEB_ROOT`, `APP_ENV`, `APP_DEPLOY`.
+
+Le script plus simple `deploy/deploy.sh` ne synchronise que les fichiers statiques.
 Voir `deploy/nginx-location.conf` pour les règles de routage et les redirections des anciennes
 URL de l’application vers `cms-backoffice.onirtech.com`.
 
