@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Plugins gratuits · ONIR CMS</title>
+    <meta
+      name="description"
+      content="Téléchargez les templates visuels Immersive et Starter pour ONIR CMS. Gratuits, prêts à importer."
+    />
+    <link rel="canonical" href="https://cms.onirtech.com/plugins/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="ONIR CMS" />
+    <meta property="og:title" content="Plugins gratuits · ONIR CMS" />
+    <meta property="og:description" content="Téléchargez les templates visuels Immersive et Starter pour ONIR CMS." />
+    <meta property="og:url" content="https://cms.onirtech.com/plugins/" />
+    <meta property="og:image" content="https://cms.onirtech.com/assets/logo/onir-cms-light.webp" />
+    <link rel="preload" href="/assets/fonts/montserrat-latin-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/montserrat-latin-italic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href="/assets/logo/onir-cms-light.webp" type="image/webp" />
+    <link rel="stylesheet" href="/assets/css/base.css" />
+    <link rel="stylesheet" href="/assets/css/landing.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (t !== "light" && t !== "dark") {
+            t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          }
+          document.documentElement.dataset.theme = t;
+        } catch (e) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="site">
+      <a class="site-skip" href="#contenu">Aller au contenu</a>
+
+      <header class="site-head">
+        <div class="site-wrap site-head-inner">
+          <a href="/" class="brand brand-logo site-brand" aria-label="ONIR CMS — accueil">
+            <img class="logo-light" src="/assets/logo/onir-cms-light.webp" alt="ONIR CMS" width="600" height="177" />
+            <img class="logo-dark" src="/assets/logo/onir-cms-dark.webp" alt="" aria-hidden="true" width="600" height="177" />
+          </a>
+          <nav class="site-nav" aria-label="Navigation principale">
+            <a href="/plugins/">Plugins</a>
+            <a href="https://cms-backoffice.onirtech.com/documentation">Documentation</a>
+            <a href="https://github.com/RINOHeinrich1/onir-cms" target="_blank" rel="noreferrer">GitHub</a>
+          </nav>
+          <div class="site-actions">
+            <button type="button" class="site-theme-toggle" data-theme-toggle aria-label="Activer le thème sombre">
+              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41" />
+              </svg>
+            </button>
+            <a href="https://cms-backoffice.onirtech.com/login" class="site-button site-button-sm">Se connecter</a>
+          </div>
+        </div>
+      </header>
+
+      <main id="contenu" class="site-main">
+        <section class="site-wrap site-page-head">
+          <p class="site-kicker"><span class="site-kicker-dot"></span>Marketplace</p>
+          <h1>Plugins gratuits.</h1>
+          <p class="site-lead">
+            Des templates visuels prêts à importer dans ONIR CMS. Téléchargement libre, sans paiement.
+          </p>
+          <p class="site-free-note">Tous les plugins actuels sont gratuits.</p>
+        </section>
+
+        <section class="site-wrap" aria-label="Plugins disponibles">
+          <div class="plugin-grid">
+            <article class="plugin-card plugin-card-immersive">
+              <div class="plugin-visual plugin-visual-immersive" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="plugin-icon">
+                  <path d="M10 24 32 12l22 12-22 12L10 24Z" />
+                  <path d="M10 24v18l22 12 22-12V24" />
+                  <path d="M32 36v18" />
+                  <path d="m21 18 22 12" />
+                </svg>
+              </div>
+
+              <div class="plugin-body">
+                <div class="plugin-top">
+                  <span class="site-pill site-pill-free">Gratuit</span>
+                  <span class="plugin-version">v4.44.0</span>
+                </div>
+
+                <h2>Immersive</h2>
+                <p>Une scène 3D complète : maison d’entrée, salle, avatar, album et discussion guidée.</p>
+
+                <ul class="plugin-meta" aria-label="Caractéristiques">
+                  <li>Scène 3D</li>
+                  <li>Avatar</li>
+                  <li>Album</li>
+                  <li>3,8 Mo</li>
+                </ul>
+
+                <div class="plugin-actions">
+                  <a class="site-button" href="/assets/plugins/immersive-4.44.0.onirtech-template" download="immersive-4.44.0.onirtech-template">Télécharger</a>
+                  <a class="site-button site-button-ghost" href="https://cms-backoffice.onirtech.com/documentation/templates-visuels">Guide d’import</a>
+                </div>
+
+                <details class="plugin-details">
+                  <summary>Détails techniques</summary>
+                  <p>Template officiel avec assets CC0 inclus. Scène 3D, avatar TalkingHead, album, connaissances, médias et paramètres de lien.</p>
+                  <code>sha256:c0e8a9b6b64e77652f3dd1de3b666b8b2d744132232274a6ff7510a14b1e166e</code>
+                </details>
+              </div>
+            </article>
+
+            <article class="plugin-card plugin-card-starter">
+              <div class="plugin-visual plugin-visual-starter" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="plugin-icon">
+                  <path d="M12 16h40v26H28l-10 8v-8H12V16Z" />
+                  <path d="M21 27h22M21 34h14" />
+                </svg>
+              </div>
+
+              <div class="plugin-body">
+                <div class="plugin-top">
+                  <span class="site-pill site-pill-free">Gratuit</span>
+                  <span class="plugin-version">v1.0.1</span>
+                </div>
+
+                <h2>Starter</h2>
+                <p>Le template de référence : formulaire d’identification, conversation et médias.</p>
+
+                <ul class="plugin-meta" aria-label="Caractéristiques">
+                  <li>Formulaire</li>
+                  <li>Chat</li>
+                  <li>Médias</li>
+                  <li>2,8 Ko</li>
+                </ul>
+
+                <div class="plugin-actions">
+                  <a class="site-button" href="/assets/plugins/starter-1.0.1.onirtech-template" download="starter-1.0.1.onirtech-template">Télécharger</a>
+                  <a class="site-button site-button-ghost" href="https://cms-backoffice.onirtech.com/documentation/templates-visuels">Guide d’import</a>
+                </div>
+
+                <details class="plugin-details">
+                  <summary>Détails techniques</summary>
+                  <p>Le point de départ minimal pour comprendre le contrat hôte et créer votre propre template visuel.</p>
+                  <code>sha256:e164c1b15562822bd30cb64b5d1cdd0b1807dbaacdd8364fa3e935d75e2dfdcb</code>
+                </details>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="site-wrap site-install">
+          <div class="site-section-head">
+            <p class="site-kicker">Installation</p>
+            <h2>Trois étapes.</h2>
+          </div>
+          <ol class="site-steps">
+            <li>
+              <span class="site-number">01</span>
+              <strong>Téléchargez</strong>
+              <p>Récupérez l’archive du plugin.</p>
+            </li>
+            <li>
+              <span class="site-number">02</span>
+              <strong>Importez</strong>
+              <p>Dashboard → Templates visuels → Importer.</p>
+            </li>
+            <li>
+              <span class="site-number">03</span>
+              <strong>Rattachez</strong>
+              <p>Associez le template à un lien de chat.</p>
+            </li>
+          </ol>
+          <p class="site-install-link">
+            Besoin du détail ?
+            <a href="https://cms-backoffice.onirtech.com/documentation/templates-visuels">Lire la documentation des templates</a>.
+          </p>
+        </section>
+      </main>
+
+      <footer class="site-foot">
+        <div class="site-wrap site-foot-inner">
+          <div class="site-foot-brand">
+            <a href="/" class="brand brand-logo site-brand" aria-label="ONIR CMS — accueil">
+              <img class="logo-light" src="/assets/logo/onir-cms-light.webp" alt="ONIR CMS" width="600" height="177" loading="lazy" />
+              <img class="logo-dark" src="/assets/logo/onir-cms-dark.webp" alt="" aria-hidden="true" width="600" height="177" loading="lazy" />
+            </a>
+            <p>Conversations, qualification et suivi. Chez vous.</p>
+          </div>
+          <nav class="site-foot-nav" aria-label="Liens de pied de page">
+            <a href="/plugins/">Plugins</a>
+            <a href="https://cms-backoffice.onirtech.com/documentation">Documentation</a>
+            <a href="https://cms-backoffice.onirtech.com/documentation/installation">Installation</a>
+            <a href="https://github.com/RINOHeinrich1/onir-cms" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://cms-backoffice.onirtech.com/login">Se connecter</a>
+            <a href="/mentions-legales/">Mentions légales</a>
+            <a href="/confidentialite-site/">Confidentialité</a>
+          </nav>
+          <p class="site-foot-meta">Open source · MIT · Auto-hébergé · Édité par ONIRTECH</p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="/assets/js/main.js" defer></script>
+  </body>
+</html>

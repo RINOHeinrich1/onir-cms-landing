@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content" />
+    <title>ONIR CMS — Des conversations qui deviennent des prospects</title>
+    <meta
+      name="description"
+      content="ONIR CMS est un CMS open source pour créer des parcours de chat, qualifier avec l’IA et suivre vos prospects dans un seul cockpit."
+    />
+    <link rel="canonical" href="https://cms.onirtech.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="ONIR CMS" />
+    <meta property="og:title" content="ONIR CMS — Des conversations qui deviennent des prospects" />
+    <meta
+      property="og:description"
+      content="Créez un parcours de chat, laissez l’IA qualifier et retrouvez chaque prospect dans un cockpit unique."
+    />
+    <meta property="og:url" content="https://cms.onirtech.com/" />
+    <meta property="og:image" content="https://cms.onirtech.com/assets/logo/onir-cms-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ONIR CMS — Des conversations qui deviennent des prospects" />
+    <meta
+      name="twitter:description"
+      content="Parcours de chat, qualification IA et suivi des prospects. Open source, auto-hébergé, sans lock-in."
+    />
+    <meta name="twitter:image" content="https://cms.onirtech.com/assets/logo/onir-cms-light.webp" />
+    <link rel="preload" href="/assets/fonts/montserrat-latin-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/montserrat-latin-italic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href="/assets/logo/onir-cms-light.webp" type="image/webp" />
+    <link rel="stylesheet" href="/assets/css/base.css" />
+    <link rel="stylesheet" href="/assets/css/landing.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (t !== "light" && t !== "dark") {
+            t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          }
+          document.documentElement.dataset.theme = t;
+        } catch (e) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="site">
+      <a class="site-skip" href="#contenu">Aller au contenu</a>
+
+      <header class="site-head">
+        <div class="site-wrap site-head-inner">
+          <a href="/" class="brand brand-logo site-brand" aria-label="ONIR CMS — accueil">
+            <img class="logo-light" src="/assets/logo/onir-cms-light.webp" alt="ONIR CMS" width="600" height="177" />
+            <img class="logo-dark" src="/assets/logo/onir-cms-dark.webp" alt="" aria-hidden="true" width="600" height="177" />
+          </a>
+
+          <nav class="site-nav" aria-label="Navigation principale">
+            <a href="/plugins/">Plugins</a>
+            <a href="https://cms-backoffice.onirtech.com/documentation">Documentation</a>
+            <a href="https://github.com/RINOHeinrich1/onir-cms" target="_blank" rel="noreferrer">GitHub</a>
+          </nav>
+
+          <div class="site-actions">
+            <button type="button" class="site-theme-toggle" data-theme-toggle aria-label="Activer le thème sombre">
+              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41" />
+              </svg>
+            </button>
+            <a href="https://cms-backoffice.onirtech.com/login" class="site-button site-button-sm">Se connecter</a>
+          </div>
+        </div>
+      </header>
+
+      <main id="contenu" class="site-main">
+        <section class="site-wrap site-hero">
+          <div class="site-hero-copy">
+            <p class="site-kicker"><span class="site-kicker-dot"></span>Open source · MIT</p>
+            <h1>Des conversations qui deviennent des prospects.</h1>
+            <p class="site-lead">
+              Créez un parcours de chat, laissez l’IA qualifier et retrouvez chaque prospect dans un
+              cockpit unique. Chez vous, sans dépendre d’une plateforme tierce.
+            </p>
+            <div class="site-cta-row">
+              <button type="button" class="site-button" data-demo-open aria-haspopup="dialog">Démarrer la démo</button>
+              <a href="https://cms-backoffice.onirtech.com/documentation" class="site-button site-button-ghost">Documentation</a>
+            </div>
+            <p class="site-note">Démo · Plugins gratuits · Auto-hébergé · Sans lock-in</p>
+          </div>
+
+          <div class="site-hero-visual" aria-hidden="true">
+            <div class="site-chat-card">
+              <div class="site-chat-top">
+                <span class="site-kicker-dot"></span>
+                ONIR CMS
+                <span class="site-chat-status">en ligne</span>
+              </div>
+              <p class="site-bubble site-bubble-user">Je cherche une solution pour qualifier mes demandes.</p>
+              <p class="site-bubble site-bubble-ai">Très bien. Quel volume traitez-vous chaque mois ?</p>
+              <div class="site-chat-field">Répondre…</div>
+            </div>
+            <div class="site-lead-card">
+              <span class="site-lead-eyebrow">Fiche prospect</span>
+              <strong>Besoin · budget · contact</strong>
+              <span class="site-pill">Qualifié</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="site-wrap site-section">
+          <div class="site-section-head">
+            <p class="site-kicker">L’essentiel</p>
+            <h2>Un seul flux, du premier message au suivi.</h2>
+          </div>
+          <div class="site-grid">
+            <article class="site-card">
+              <span class="site-number">01</span>
+              <h3>Parcours de chat</h3>
+              <p>Un lien public, un template visuel et un consentement clair.</p>
+            </article>
+            <article class="site-card">
+              <span class="site-number">02</span>
+              <h3>Qualification IA</h3>
+              <p>L’IA conduit l’échange avec vos connaissances et votre modèle.</p>
+            </article>
+            <article class="site-card">
+              <span class="site-number">03</span>
+              <h3>Suivi centralisé</h3>
+              <p>Prospects, conversations et fiches dans le même cockpit.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="site-band">
+          <div class="site-wrap site-band-inner">
+            <div>
+              <p class="site-kicker site-kicker-light">Marketplace</p>
+              <h2>Deux plugins gratuits pour démarrer.</h2>
+              <p>Immersive et Starter, prêts à importer dans votre dashboard.</p>
+            </div>
+            <a href="/plugins/" class="site-button site-button-light">Voir les plugins</a>
+          </div>
+        </section>
+
+        <dialog class="site-demo-dialog" data-demo-dialog aria-labelledby="demo-dialog-title">
+          <div class="site-demo-panel">
+            <div class="site-demo-head">
+              <div>
+                <p class="site-kicker">Démo</p>
+                <h2 id="demo-dialog-title">Choisissez votre expérience.</h2>
+              </div>
+              <button type="button" class="site-demo-close" data-demo-close aria-label="Fermer le choix de démonstration">×</button>
+            </div>
+
+            <p class="site-demo-intro">
+              Deux façons de découvrir ONIR CMS avec les mêmes informations de base. Choisissez selon
+              les capacités de votre appareil.
+            </p>
+
+            <div class="site-demo-grid">
+              <a href="https://cms-backoffice.onirtech.com/l/6jz9EpfYfGyh-gwRr6JOoaTcqwc1nQgX" class="site-demo-card site-demo-card-simple">
+                <span class="site-demo-tag">Sans 3D</span>
+                <h3>Expérience simplifiée</h3>
+                <p>Le chat ONIR CMS, sans template 3D.</p>
+                <p class="site-demo-detail">Idéale pour les périphériques à puissance graphique légère.</p>
+                <span class="site-demo-cta">Lancer la démo →</span>
+              </a>
+              <a href="https://cms-backoffice.onirtech.com/l/kp_CX9lKNdHhLOLO-h-W9Fj1G3s1xbiL" class="site-demo-card site-demo-card-immersive">
+                <span class="site-demo-tag">3D</span>
+                <h3>Expérience immersive</h3>
+                <p>Une scène 3D avec avatar et discussion guidée.</p>
+                <p class="site-demo-detail">
+                  Idéale pour les périphériques avec un minimum de puissance graphique — pas pour les
+                  vieux appareils.
+                </p>
+                <span class="site-demo-cta">Lancer la démo →</span>
+              </a>
+            </div>
+
+            <p class="site-demo-note">
+              L’expérience immersive charge une scène 3D : privilégiez un appareil récent et une
+              connexion stable. La démo ne remplace pas la documentation.
+            </p>
+          </div>
+        </dialog>
+      </main>
+
+      <footer class="site-foot">
+        <div class="site-wrap site-foot-inner">
+          <div class="site-foot-brand">
+            <a href="/" class="brand brand-logo site-brand" aria-label="ONIR CMS — accueil">
+              <img class="logo-light" src="/assets/logo/onir-cms-light.webp" alt="ONIR CMS" width="600" height="177" loading="lazy" />
+              <img class="logo-dark" src="/assets/logo/onir-cms-dark.webp" alt="" aria-hidden="true" width="600" height="177" loading="lazy" />
+            </a>
+            <p>Conversations, qualification et suivi. Chez vous.</p>
+          </div>
+
+          <nav class="site-foot-nav" aria-label="Liens de pied de page">
+            <a href="/plugins/">Plugins</a>
+            <a href="https://cms-backoffice.onirtech.com/documentation">Documentation</a>
+            <a href="https://cms-backoffice.onirtech.com/documentation/installation">Installation</a>
+            <a href="https://github.com/RINOHeinrich1/onir-cms" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://cms-backoffice.onirtech.com/login">Se connecter</a>
+            <a href="/mentions-legales/">Mentions légales</a>
+            <a href="/confidentialite-site/">Confidentialité</a>
+          </nav>
+
+          <p class="site-foot-meta">Open source · MIT · Auto-hébergé · Édité par ONIRTECH</p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="/assets/js/main.js" defer></script>
+  </body>
+</html>
