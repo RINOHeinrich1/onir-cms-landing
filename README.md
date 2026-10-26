@@ -61,8 +61,7 @@ URL de l’application vers `cms-backoffice.onirtech.com`.
 La landing preprod est déployée automatiquement sur chaque push `main` :
 
 ```bash
-ssh deploy-preprod@preprod-cms.onirtech.com \
-  "/opt/onir-cms-landing-preprod/deploy/preprod.sh"
+sudo -u deploy-preprod /opt/onir-cms-landing-preprod/deploy/preprod.sh
 ```
 
 - Dépôt serveur : `/opt/onir-cms-landing-preprod`
