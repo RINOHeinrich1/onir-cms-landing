@@ -147,7 +147,7 @@ function makeGroundTexture() {
     ctx.font = "800 10px Montserrat, Arial, sans-serif";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText("QUARTIER DES ORGANISATIONS", 600, 48);
+    ctx.fillText("QUARTIER DES ORGANISATIONS", 600, 30);
     ctx.save();
     ctx.translate(1110, 385);
     ctx.rotate(Math.PI / 2);
@@ -245,7 +245,7 @@ function addBox(group, w, h, d, x, y, z, material, castShadow) {
   return mesh;
 }
 
-function addGableRoof(group, w, d, height, y, material) {
+function addGableRoof(group, w, d, height, y, material, z) {
   const shape = new THREE.Shape();
   shape.moveTo(-w / 2, 0);
   shape.lineTo(w / 2, 0);
@@ -254,7 +254,7 @@ function addGableRoof(group, w, d, height, y, material) {
   const geometry = new THREE.ExtrudeGeometry(shape, { depth: d, bevelEnabled: false });
   geometry.translate(0, 0, -d / 2);
   const mesh = new THREE.Mesh(geometry, material);
-  mesh.position.y = y;
+  mesh.position.set(0, y, z || 0);
   mesh.castShadow = true;
   mesh.receiveShadow = true;
   group.add(mesh);
@@ -273,154 +273,400 @@ function addSideWindows(group, width, depth, glassMat, rows, levels) {
   }
 }
 
+const textureCache = {};
+
+function cachedTexture(key, factory) {
+  if (!textureCache[key]) textureCache[key] = factory();
+  return textureCache[key];
+}
+
+function texturedCanvasTexture(key, size, draw, repeatX, repeatY) {
+  return cachedTexture(key, () => {
+    const texture = canvasTexture(size, size, draw);
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set(repeatX || 2, repeatY || 2);
+    return texture;
+  });
+}
+
+function makeWallTexture() {
+  return texturedCanvasTexture("wall-cream", 256, (ctx, w, h) => {
+    ctx.fillStyle = "#e9dfc8";
+    ctx.fillRect(0, 0, w, h);
+    for (let i = 0; i < 900; i += 1) {
+      const x = (i * 53.7) % w;
+      const y = (i * 89.3) % h;
+      ctx.fillStyle = i % 3 === 0 ? "rgba(255,255,255,.12)" : "rgba(123,108,88,.07)";
+      ctx.fillRect(x, y, 1.4, 1.4);
+    }
+  }, 2.2, 2.2);
+}
+
+function makeOfficeTexture() {
+  return texturedCanvasTexture("office-stone", 256, (ctx, w, h) => {
+    ctx.fillStyle = "#d9d7d0";
+    ctx.fillRect(0, 0, w, h);
+    ctx.strokeStyle = "rgba(125,121,111,.22)";
+    ctx.lineWidth = 1;
+    for (let x = 0; x <= w; x += 32) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+    }
+    for (let y = 0; y <= h; y += 64) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+    }
+    for (let i = 0; i < 500; i += 1) {
+      ctx.fillStyle = i % 2 ? "rgba(255,255,255,.12)" : "rgba(100,96,88,.06)";
+      ctx.fillRect((i * 41.7) % w, (i * 67.1) % h, 1.2, 1.2);
+    }
+  }, 2, 2);
+}
+
+function makeStoneTexture() {
+  return texturedCanvasTexture("stone-base", 256, (ctx, w, h) => {
+    ctx.fillStyle = "#9b917f";
+    ctx.fillRect(0, 0, w, h);
+    ctx.strokeStyle = "rgba(73,67,58,.55)";
+    ctx.lineWidth = 2;
+    for (let y = 0; y <= h; y += 32) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      const shift = (y / 32) % 2 ? 32 : 0;
+      for (let x = shift; x <= w; x += 64) {
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + 32); ctx.stroke();
+      }
+    }
+    for (let i = 0; i < 160; i += 1) {
+      ctx.fillStyle = "rgba(255,255,255,.08)";
+      ctx.fillRect((i * 39.7) % w, (i * 71.3) % h, 3, 2);
+    }
+  }, 2.5, 1.5);
+}
+
+function makeRoofTexture() {
+  return texturedCanvasTexture("roof-tile", 256, (ctx, w, h) => {
+    ctx.fillStyle = "#30363a";
+    ctx.fillRect(0, 0, w, h);
+    ctx.strokeStyle = "rgba(10,14,16,.65)";
+    ctx.lineWidth = 2;
+    for (let y = 0; y <= h; y += 18) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      const shift = (y / 18) % 2 ? 12 : 0;
+      for (let x = shift; x <= w; x += 24) {
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + 18); ctx.stroke();
+      }
+    }
+    ctx.strokeStyle = "rgba(125,134,136,.25)";
+    ctx.lineWidth = 1;
+    for (let y = 4; y < h; y += 18) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+    }
+  }, 3, 3);
+}
+
+function makePavingTexture() {
+  return texturedCanvasTexture("paving", 256, (ctx, w, h) => {
+    ctx.fillStyle = "#d8d0bd";
+    ctx.fillRect(0, 0, w, h);
+    ctx.strokeStyle = "rgba(145,134,114,.5)";
+    ctx.lineWidth = 1.2;
+    for (let y = 0; y <= h; y += 32) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      const shift = (y / 32) % 2 ? 24 : 0;
+      for (let x = shift; x <= w; x += 48) {
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + 32); ctx.stroke();
+      }
+    }
+  }, 3, 3);
+}
+
+function makeWallMaterial() {
+  return new THREE.MeshStandardMaterial({ map: makeWallTexture(), roughness: 0.94, flatShading: true });
+}
+
+function makeOfficeMaterial() {
+  return new THREE.MeshStandardMaterial({ map: makeOfficeTexture(), roughness: 0.9, flatShading: true });
+}
+
+function makeStoneMaterial() {
+  return new THREE.MeshStandardMaterial({ map: makeStoneTexture(), roughness: 0.98, flatShading: true });
+}
+
+function makeRoofMaterial() {
+  return new THREE.MeshStandardMaterial({ map: makeRoofTexture(), roughness: 0.8, metalness: 0.04, flatShading: true });
+}
+
+function makePavingMaterial() {
+  return new THREE.MeshStandardMaterial({ map: makePavingTexture(), roughness: 1, flatShading: true });
+}
+
+function makeGlassMaterial() {
+  return new THREE.MeshStandardMaterial({
+    color: "#2f4a50",
+    emissive: "#102326",
+    emissiveIntensity: 0.2,
+    roughness: 0.14,
+    metalness: 0.3
+  });
+}
+
+function makeFrameMaterial() {
+  return new THREE.MeshStandardMaterial({ color: "#202426", roughness: 0.5, metalness: 0.2, flatShading: true });
+}
+
+function makeWoodMaterial() {
+  return new THREE.MeshStandardMaterial({ color: "#8b5a37", roughness: 0.72, metalness: 0.02, flatShading: true });
+}
+
+function makeTrimMaterial() {
+  return new THREE.MeshStandardMaterial({ color: "#b28150", roughness: 0.8, flatShading: true });
+}
+
+function makeConcreteMaterial() {
+  return new THREE.MeshStandardMaterial({ color: "#b9b7ae", roughness: 0.95, flatShading: true });
+}
+
+function makeGreenMaterial() {
+  return new THREE.MeshStandardMaterial({ color: "#6d9b73", roughness: 1, flatShading: true });
+}
+
+function makeLawnMaterial() {
+  return new THREE.MeshStandardMaterial({ color: "#b7cba6", roughness: 1, flatShading: true });
+}
+
+function addFrontWindow(group, x, y, z, w, h, frameMat, glassMat) {
+  addBox(group, w + 0.2, h + 0.2, 0.12, x, y, z, frameMat, false);
+  addBox(group, w, h, 0.14, x, y, z + 0.06, glassMat, false);
+  addBox(group, 0.06, h, 0.16, x, y, z + 0.14, frameMat, false);
+  addBox(group, w, 0.06, 0.16, x, y, z + 0.14, frameMat, false);
+}
+
+function addSideWindow(group, x, y, z, w, h, frameMat, glassMat) {
+  addBox(group, 0.12, h + 0.2, w + 0.2, x, y, z, frameMat, false);
+  addBox(group, 0.14, h, w, x + 0.03, y, z, glassMat, false);
+  addBox(group, 0.16, 0.06, w, x + 0.14, y, z, frameMat, false);
+}
+
+function addDownspout(group, x, y, z, height) {
+  const pipe = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.07, 0.07, height, 6),
+    makeFrameMaterial()
+  );
+  pipe.position.set(x, y, z);
+  pipe.castShadow = true;
+  group.add(pipe);
+}
+
+function addSign(group, text, color, z, y, w, h) {
+  const sign = new THREE.Mesh(
+    new THREE.PlaneGeometry(w || 2.3, h || 0.95),
+    new THREE.MeshBasicMaterial({ map: makeSignTexture(text, color), transparent: true, side: THREE.DoubleSide })
+  );
+  sign.position.set(0, y, z);
+  group.add(sign);
+  return sign;
+}
+
+function addCircuitPlaque(group, accent, z, x, y, w, h) {
+  const texture = canvasTexture(256, 128, (ctx, cw, ch) => {
+    ctx.fillStyle = "#c4c0b6";
+    ctx.fillRect(0, 0, cw, ch);
+    ctx.strokeStyle = "rgba(105,100,90,.55)";
+    ctx.strokeRect(4, 4, cw - 8, ch - 8);
+    ctx.strokeStyle = accent;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(26, 92); ctx.lineTo(26, 52); ctx.lineTo(66, 52); ctx.lineTo(66, 25);
+    ctx.moveTo(66, 52); ctx.lineTo(110, 52); ctx.lineTo(110, 86);
+    ctx.moveTo(110, 52); ctx.lineTo(156, 52); ctx.lineTo(156, 28);
+    ctx.moveTo(156, 52); ctx.lineTo(204, 52); ctx.lineTo(204, 82);
+    ctx.moveTo(66, 25); ctx.lineTo(110, 25); ctx.lineTo(110, 52);
+    ctx.moveTo(156, 28); ctx.lineTo(184, 28); ctx.lineTo(184, 52);
+    ctx.stroke();
+    ctx.fillStyle = accent;
+    for (const [cx, cy] of [[26, 92], [66, 25], [110, 86], [156, 28], [204, 82], [184, 52]]) {
+      ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2); ctx.fill();
+    }
+  });
+  const plaque = new THREE.Mesh(
+    new THREE.PlaneGeometry(w || 2.4, h || 1.2),
+    new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide })
+  );
+  plaque.position.set(x || 0, y || 0, z);
+  group.add(plaque);
+}
+
+function addPlot(group, width, depth, kind) {
+  if (kind === "house") {
+    addBox(group, width + 4.6, 0.08, depth + 4.5, 0, 0.03, 0, makeLawnMaterial(), false);
+    addBox(group, 2.3, 0.1, 3.2, 0, 0.07, depth / 2 + 1.6, makePavingMaterial(), false);
+  } else {
+    addBox(group, width + 3.6, 0.08, depth + 3.6, 0, 0.03, 0, makePavingMaterial(), false);
+    addBox(group, width + 4.2, 0.06, 1.3, 0, 0.05, -depth / 2 - 1.2, makeLawnMaterial(), false);
+    addBox(group, width + 4.2, 0.06, 1.3, 0, 0.05, depth / 2 + 1.2, makeLawnMaterial(), false);
+  }
+}
+
+function addPlanter(group, x, z, scale) {
+  const s = scale || 1;
+  addBox(group, 1.25 * s, 0.55 * s, 1.25 * s, x, 0.3 * s, z, makeConcreteMaterial(), false);
+  const bush = new THREE.Mesh(new THREE.IcosahedronGeometry(0.65 * s, 0), makeGreenMaterial());
+  bush.position.set(x, 0.9 * s, z);
+  bush.castShadow = true;
+  group.add(bush);
+}
+
+
 function createHouse(sponsor) {
   const group = new THREE.Group();
-  const bodyMat = makeBodyMaterial("#fff4dd");
-  const accentMat = makeAccentMaterial(sponsor.accent);
-  const roofMat = makeAccentMaterial(sponsor.accent);
-  const glassMat = makeWindowMaterial();
-  const width = 8.6;
-  const depth = 6;
-  const bodyH = 4.1;
-  const roofH = 2.8;
+  const bodyMat = makeWallMaterial();
+  const stoneMat = makeStoneMaterial();
+  const roofMat = makeRoofMaterial();
+  const glassMat = makeGlassMaterial();
+  const frameMat = makeFrameMaterial();
+  const woodMat = makeWoodMaterial();
+  const trimMat = makeTrimMaterial();
+  const pavingMat = makePavingMaterial();
+  const width = 8.8;
+  const depth = 6.2;
+  const stoneH = 1.0;
+  const wallH = 3.2;
+  const bodyTop = stoneH + wallH;
+  const roofH = 2.4;
 
-  addBox(group, width, bodyH, depth, 0, bodyH / 2, 0, bodyMat);
-  addGableRoof(group, width + 0.9, depth + 0.8, roofH, bodyH, roofMat);
-  addBox(group, 0.85, 1.5, 0.85, 2.5, bodyH + 1.6, -0.9, accentMat);
-  addBox(group, 1.25, 2.1, 0.18, 0, 1.05, depth / 2 + 0.1, accentMat);
-  addBox(group, 1.4, 1.2, 0.16, -2.2, 2.7, depth / 2 + 0.1, glassMat);
-  addBox(group, 1.4, 1.2, 0.16, 2.2, 2.7, depth / 2 + 0.1, glassMat);
-  addBox(group, 1.8, 0.18, 1.3, 0, 3.1, depth / 2 + 0.65, accentMat);
-  addSideWindows(group, width, depth, glassMat, [-1.35, 1.35], [2.5]);
-  addBox(group, 8.8, 0.12, 2.4, 0, 0.06, depth / 2 + 1.35, new THREE.MeshStandardMaterial({ color: "#cfe2c5", roughness: 1 }), false);
+  addPlot(group, width, depth, "house");
+  addBox(group, width, stoneH, depth, 0, stoneH / 2, 0, stoneMat);
+  const body = addBox(group, width, wallH, depth, 0, stoneH + wallH / 2, 0, bodyMat);
+  body.userData.isBody = true;
+  addGableRoof(group, width + 1.2, depth + 1.2, roofH, bodyTop, roofMat);
+  addBox(group, width + 1.4, 0.16, 0.2, 0, bodyTop - 0.02, depth / 2 + 0.55, trimMat, false);
+  addBox(group, width + 1.4, 0.16, 0.2, 0, bodyTop - 0.02, -depth / 2 - 0.55, trimMat, false);
+  addBox(group, 0.12, 0.12, depth + 1.2, 0, bodyTop + roofH, 0, frameMat, false);
+  addBox(group, 0.78, 2.2, 0.78, 2.9, bodyTop + 1.55, -1.2, stoneMat);
+  addBox(group, 0.92, 0.18, 0.92, 2.9, bodyTop + 2.7, -1.2, frameMat, false);
 
-  const bushMat = makeAccentMaterial("#6d9b73");
-  for (const [x, z, r] of [[-4.4, 3.8, 0.7], [4.4, 3.7, 0.65], [3.6, 4.4, 0.48]]) {
-    const bush = new THREE.Mesh(new THREE.IcosahedronGeometry(r, 0), bushMat);
-    bush.position.set(x, r * 0.7, z);
-    bush.castShadow = true;
-    group.add(bush);
+  addFrontWindow(group, -2.9, 2.45, depth / 2 + 0.06, 2.15, 1.35, frameMat, glassMat);
+  addFrontWindow(group, 2.9, 2.45, depth / 2 + 0.06, 2.15, 1.35, frameMat, glassMat);
+  addSideWindow(group, width / 2 + 0.06, 2.45, -1.4, 1.5, 1.15, frameMat, glassMat);
+  addSideWindow(group, width / 2 + 0.06, 2.45, 1.4, 1.5, 1.15, frameMat, glassMat);
+
+  addBox(group, 1.65, 2.45, 0.16, 0, 1.5, depth / 2 + 0.07, frameMat, false);
+  addBox(group, 1.35, 2.25, 0.18, 0, 1.45, depth / 2 + 0.1, woodMat, false);
+  addBox(group, 0.12, 0.12, 0.12, 0.46, 1.45, depth / 2 + 0.2, trimMat, false);
+  addBox(group, 3.6, 0.18, 1.8, 0, 3.05, depth / 2 + 1.15, trimMat, false);
+  addGableRoof(group, 4.2, 2.0, 1.15, 3.16, roofMat, depth / 2 + 0.95);
+  addBox(group, 0.42, 2.55, 0.42, -1.55, 1.45, depth / 2 + 1.45, stoneMat);
+  addBox(group, 0.42, 2.55, 0.42, 1.55, 1.45, depth / 2 + 1.45, stoneMat);
+  addBox(group, 2.0, 0.2, 1.4, 0, 0.18, depth / 2 + 1.55, pavingMat, false);
+  addBox(group, 2.5, 0.2, 1.85, 0, 0.37, depth / 2 + 1.35, pavingMat, false);
+
+  addFrontWindow(group, 0, bodyTop + 0.65, depth / 2 + 0.08, 0.58, 0.78, frameMat, glassMat);
+  addDownspout(group, width / 2 + 0.14, 2.1, depth / 2 + 0.08, 4.2);
+  addDownspout(group, -width / 2 - 0.14, 2.1, depth / 2 + 0.08, 4.2);
+  addSign(group, sponsor.initials, sponsor.accent, depth / 2 + 0.22, 3.35, 1.55, 0.62);
+  addPlanter(group, -width / 2 - 0.2, depth / 2 + 1.7, 0.9);
+  addPlanter(group, width / 2 + 0.2, depth / 2 + 1.7, 0.9);
+
+  group.rotation.y = sponsor.x < 600 ? 0.045 : -0.045;
+  return group;
+}
+
+function createOffice(sponsor, center) {
+  const group = new THREE.Group();
+  const bodyMat = makeOfficeMaterial();
+  const stoneMat = makeStoneMaterial();
+  const roofMat = makeConcreteMaterial();
+  const glassMat = makeGlassMaterial();
+  const frameMat = makeFrameMaterial();
+  const trimMat = makeTrimMaterial();
+  const woodMat = makeWoodMaterial();
+  const width = center ? 18 : sponsor.size === "md" ? 12.2 : 10.8;
+  const depth = center ? 11 : 8.2;
+  const bodyH = center ? 9.6 : sponsor.size === "md" ? 8.6 : 7.9;
+  const half = width / 2;
+  const front = depth / 2;
+
+  addPlot(group, width, depth, center ? "center" : "office");
+  addBox(group, width, 0.6, depth, 0, 0.3, 0, stoneMat);
+  const body = addBox(group, width, bodyH - 0.6, depth, 0, 0.6 + (bodyH - 0.6) / 2, 0, bodyMat);
+  body.userData.isBody = true;
+  addBox(group, width + 0.7, 0.38, depth + 0.7, 0, bodyH + 0.19, 0, roofMat);
+
+  for (const level of [bodyH / 3, (bodyH * 2) / 3]) {
+    addBox(group, width + 0.14, 0.12, depth + 0.14, 0, level, 0, trimMat, false);
   }
 
-  const sign = new THREE.Mesh(
-    new THREE.PlaneGeometry(2.1, 1.05),
-    new THREE.MeshBasicMaterial({ map: makeSignTexture(sponsor.initials, sponsor.accent), transparent: true, side: THREE.DoubleSide })
-  );
-  sign.position.set(0, 4.15, depth / 2 + 0.17);
-  group.add(sign);
+  const rows = [1.45, 1.45 + (bodyH - 2.3) / 2, bodyH - 1.0];
+  for (const y of rows) {
+    addFrontWindow(group, -4.25, y, front + 0.06, 2.0, 1.25, frameMat, glassMat);
+    addFrontWindow(group, -1.95, y, front + 0.06, 2.0, 1.25, frameMat, glassMat);
+    addFrontWindow(group, 2.05, y, front + 0.06, 2.0, 1.25, frameMat, glassMat);
+    addFrontWindow(group, 4.35, y, front + 0.06, 2.0, 1.25, frameMat, glassMat);
+  }
+  if (!center) {
+    addFrontWindow(group, 0, 2.1, front + 0.06, 2.15, 1.8, frameMat, glassMat);
+    addFrontWindow(group, 0, 4.5, front + 0.06, 2.15, 1.8, frameMat, glassMat);
+    addFrontWindow(group, 0, 6.5, front + 0.06, 2.15, 1.45, frameMat, glassMat);
+  } else {
+    addFrontWindow(group, 0, 2.0, front + 0.06, 3.0, 1.7, frameMat, glassMat);
+    addFrontWindow(group, 0, 4.4, front + 0.06, 3.0, 1.7, frameMat, glassMat);
+    addFrontWindow(group, 0, 7.0, front + 0.06, 3.0, 1.45, frameMat, glassMat);
+  }
 
-  group.rotation.y = sponsor.x < 600 ? 0.1 : -0.1;
+  addFrontWindow(group, 0, 1.45, front + 0.07, 2.0, 2.35, frameMat, glassMat);
+  addBox(group, 2.1, 2.4, 0.18, 0, 1.4, front + 0.1, woodMat, false);
+  addBox(group, 2.9, 0.22, 1.7, 0, 3.0, front + 0.9, trimMat, false);
+  addBox(group, 3.4, 0.2, 2.0, 0, 0.15, front + 1.3, makePavingMaterial(), false);
+  addBox(group, 4.0, 0.2, 2.5, 0, 0.34, front + 1.0, makePavingMaterial(), false);
+
+  addCircuitPlaque(group, sponsor.accent, front + 0.14, 4.05, 6.25, 2.35, 1.15);
+  addSign(group, center ? "ONIR" : sponsor.initials, sponsor.accent, front + 0.2, 3.25, center ? 5.4 : 3.0, center ? 1.4 : 1.0);
+
+  addSideWindow(group, half + 0.06, 2.0, -1.6, 1.9, 1.25, frameMat, glassMat);
+  addSideWindow(group, half + 0.06, 2.0, 1.6, 1.9, 1.25, frameMat, glassMat);
+  addSideWindow(group, half + 0.06, 5.0, -1.6, 1.9, 1.25, frameMat, glassMat);
+  addSideWindow(group, half + 0.06, 5.0, 1.6, 1.9, 1.25, frameMat, glassMat);
+
+  const pentW = center ? 7.2 : 5.2;
+  const pentD = center ? 5.0 : 4.2;
+  addBox(group, pentW, 2.1, pentD, 0, bodyH + 1.35, -0.8, bodyMat);
+  addBox(group, pentW + 0.35, 0.24, pentD + 0.35, 0, bodyH + 2.5, -0.8, roofMat);
+  addBox(group, 2.4, 1.0, 0.16, 0, bodyH + 1.55, -0.8 + pentD / 2 + 0.09, frameMat, false);
+  addBox(group, 2.0, 0.14, 1.35, 0, bodyH + 0.45, front - 1.4, glassMat, false);
+  addBox(group, 2.2, 0.18, 1.55, 0, bodyH + 0.36, front - 1.4, frameMat, false);
+
+  const railingMat = makeFrameMaterial();
+  addBox(group, width - 1.2, 0.07, 0.07, 0, bodyH + 1.0, front - 0.35, railingMat, false);
+  addBox(group, 0.07, 0.7, 0.07, -width / 2 + 0.5, bodyH + 0.7, front - 0.35, railingMat, false);
+  addBox(group, 0.07, 0.7, 0.07, width / 2 - 0.5, bodyH + 0.7, front - 0.35, railingMat, false);
+  addBox(group, 0.07, 0.7, 0.07, 0, bodyH + 0.7, front - 0.35, railingMat, false);
+
+  addDownspout(group, half + 0.14, 2.2, front + 0.08, bodyH - 0.6);
+  addDownspout(group, -half - 0.14, 2.2, front + 0.08, bodyH - 0.6);
+  addPlanter(group, -half - 0.1, front + 1.4, 0.85);
+  addPlanter(group, half + 0.1, front + 1.4, 0.85);
+  addPlanter(group, -half + 1.8, -front - 0.7, 0.7);
+
+  if (center) {
+    addBox(group, 4.0, 0.5, 3.4, 0, bodyH + 2.78, -0.8, makeGreenMaterial(), false);
+    const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 5.2, 8), trimMat);
+    pole.position.set(7.5, bodyH + 4.7, -2.2);
+    pole.castShadow = true;
+    group.add(pole);
+    const flag = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 1.2), new THREE.MeshBasicMaterial({ color: sponsor.accent, side: THREE.DoubleSide }));
+    flag.position.set(8.65, bodyH + 6.4, -2.2);
+    group.add(flag);
+  }
+
+  group.rotation.y = center ? 0 : sponsor.x < 600 ? 0.04 : -0.04;
   return group;
 }
 
 function createOrganisation(sponsor) {
-  const group = new THREE.Group();
-  const isPitched = sponsor.building === "house-office" || sponsor.building === "coop";
-  const bodyMat = makeBodyMaterial("#fff5e3");
-  const accentMat = makeAccentMaterial(sponsor.accent);
-  const glassMat = makeWindowMaterial();
-  const width = sponsor.size === "md" ? 10 : 9;
-  const depth = 7;
-  const bodyH = isPitched ? 5.4 : 6.4;
-
-  addBox(group, width, bodyH, depth, 0, bodyH / 2, 0, bodyMat);
-  if (isPitched) {
-    addGableRoof(group, width + 1, depth + 0.8, 2.9, bodyH, accentMat);
-  } else {
-    addBox(group, width + 0.9, 0.55, depth + 0.9, 0, bodyH + 0.28, 0, accentMat);
-    addBox(group, 1.3, 0.75, 1.8, -2.4, bodyH + 0.85, -1.2, accentMat);
-    addBox(group, 1.1, 0.55, 1.6, 2.1, bodyH + 0.75, -1.4, accentMat);
-  }
-
-  const floorY = bodyH * 0.56;
-  addBox(group, width + 0.12, 0.13, depth + 0.12, 0, floorY, 0, accentMat, false);
-
-  for (let row = 0; row < 2; row += 1) {
-    for (let col = 0; col < 3; col += 1) {
-      const wx = -width / 2 + 1.9 + col * ((width - 3.8) / 2);
-      addBox(group, 1.35, 1.25, 0.14, wx, 1.7 + row * 2.25, depth / 2 + 0.09, glassMat, false);
-    }
-  }
-
-  addSideWindows(group, width, depth, glassMat, [-1.8, 0, 1.8], [1.8, 3.7]);
-  addBox(group, 1.55, 2.35, 0.18, 0, 1.2, depth / 2 + 0.1, accentMat);
-  addBox(group, 3.3, 0.18, 1.25, 0, 2.75, depth / 2 + 0.65, accentMat);
-  addBox(group, 1.5, 0.7, 0.5, width / 2 + 0.75, 0.35, depth / 2 + 1.25, makeAccentMaterial("#6d9b73"), false);
-
-  if (sponsor.building === "coop") {
-    const silo = new THREE.Mesh(new THREE.CylinderGeometry(1.25, 1.25, 4.2, 10), bodyMat);
-    silo.position.set(width / 2 + 1.6, 2.1, -1.4);
-    silo.castShadow = true;
-    silo.receiveShadow = true;
-    group.add(silo);
-    const cap = new THREE.Mesh(new THREE.CylinderGeometry(1.3, 1.3, 0.5, 10), accentMat);
-    cap.position.set(width / 2 + 1.6, 4.25, -1.4);
-    cap.castShadow = true;
-    group.add(cap);
-  }
-
-  const sign = new THREE.Mesh(
-    new THREE.PlaneGeometry(3.1, 1.15),
-    new THREE.MeshBasicMaterial({ map: makeSignTexture(sponsor.initials, sponsor.accent), transparent: true, side: THREE.DoubleSide })
-  );
-  sign.position.set(0, bodyH - 1.25, depth / 2 + 0.17);
-  group.add(sign);
-
-  group.rotation.y = sponsor.x < 600 ? 0.08 : -0.08;
-  return group;
+  return createOffice(sponsor, false);
 }
 
 function createTower(sponsor) {
-  const group = new THREE.Group();
-  const bodyMat = makeBodyMaterial("#fff8e8");
-  const accentMat = makeAccentMaterial(sponsor.accent);
-  const glassMat = makeWindowMaterial();
-  const greenMat = makeAccentMaterial("#79a97c");
-  const width = 18;
-  const depth = 11;
-  const bodyH = 6.2;
-
-  addBox(group, width, bodyH, depth, 0, bodyH / 2, 0, bodyMat);
-  addBox(group, width + 0.5, 0.3, depth + 0.5, 0, bodyH + 0.18, 0, accentMat);
-  addBox(group, 10.8, 4.4, 0.18, 0, 3.3, depth / 2 + 0.1, glassMat, false);
-  addBox(group, 4.2, 3.0, 0.16, -5.3, 3.3, depth / 2 + 0.12, glassMat, false);
-  addBox(group, 4.2, 3.0, 0.16, 5.3, 3.3, depth / 2 + 0.12, glassMat, false);
-  addBox(group, 3.2, 2.55, 0.18, 0, 1.55, depth / 2 + 0.1, accentMat);
-  addBox(group, 2.8, 0.5, 2.1, 0, 0.26, depth / 2 + 1.4, makeAccentMaterial("#d7b47a"), false);
-  addBox(group, 2.3, 0.36, 1.6, 0, 0.57, depth / 2 + 1.4, makeAccentMaterial("#d7b47a"), false);
-
-  const upperW = 12.6;
-  const upperD = 8.4;
-  addBox(group, upperW, 3.2, upperD, 0, bodyH + 1.75, -1.2, bodyMat);
-  addBox(group, upperW + 0.4, 0.28, upperD + 0.4, 0, bodyH + 3.48, -1.2, accentMat);
-  addBox(group, 8.8, 1.9, 0.16, 0, bodyH + 1.65, -1.2 + upperD / 2 + 0.1, glassMat, false);
-  addBox(group, 3.2, 1.2, 0.16, -3.6, bodyH + 1.65, -1.2 + upperD / 2 + 0.12, glassMat, false);
-  addBox(group, 3.2, 1.2, 0.16, 3.6, bodyH + 1.65, -1.2 + upperD / 2 + 0.12, glassMat, false);
-  addBox(group, 8.6, 0.35, 4.0, 0, bodyH + 3.8, -2.0, greenMat, false);
-  addBox(group, 3.8, 0.8, 1.1, 2.8, bodyH + 4.2, -3.2, accentMat, false);
-
-  addSideWindows(group, width, depth, glassMat, [-2.8, 0, 2.8], [2.2, 4.8]);
-
-  for (let i = -2; i <= 2; i += 1) {
-    addBox(group, 0.18, 4.4, 0.2, i * 2.4, 3.3, depth / 2 + 0.2, accentMat, false);
-  }
-
-  const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 5.4, 8), accentMat);
-  pole.position.set(7.4, bodyH + 6.2, -2.2);
-  pole.castShadow = true;
-  group.add(pole);
-  const flag = new THREE.Mesh(new THREE.PlaneGeometry(2.5, 1.35), new THREE.MeshBasicMaterial({ color: sponsor.accent, side: THREE.DoubleSide }));
-  flag.position.set(8.65, bodyH + 8.3, -2.2);
-  group.add(flag);
-
-  const sign = new THREE.Mesh(
-    new THREE.PlaneGeometry(6.4, 1.8),
-    new THREE.MeshBasicMaterial({ map: makeSignTexture("ONIR", sponsor.accent), transparent: true, side: THREE.DoubleSide })
-  );
-  sign.position.set(0, bodyH - 0.75, depth / 2 + 0.18);
-  group.add(sign);
-
-  return group;
+  return createOffice(sponsor, true);
 }
 
 function createTree(x, z, scale, type) {
@@ -608,14 +854,12 @@ export function createTown3D({ container, sponsors, onOpen, onHover }) {
     let group;
     if (sponsor.building === "tower") {
       group = createTower(sponsor);
-      highlightMaterials.set(sponsor.id, group.children.find((child) => child.isMesh && child.material && child.material.color && child.geometry.type === "BoxGeometry"));
     } else if (sponsor.building === "house") {
       group = createHouse(sponsor);
-      highlightMaterials.set(sponsor.id, group.children.find((child) => child.isMesh && child.material && child.material.color && child.geometry.type === "BoxGeometry"));
     } else {
       group = createOrganisation(sponsor);
-      highlightMaterials.set(sponsor.id, group.children.find((child) => child.isMesh && child.material && child.material.color && child.geometry.type === "BoxGeometry"));
     }
+    highlightMaterials.set(sponsor.id, group.children.find((child) => child.userData && child.userData.isBody));
     register(group, sponsor);
   }
 

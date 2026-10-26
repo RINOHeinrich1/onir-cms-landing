@@ -166,138 +166,190 @@
     return { w: 98, h: 96 };
   }
 
+  function plotArt(w, kind) {
+    var half = w / 2;
+    var paved = kind === "house" ? "#d8d0bd" : "#d4cdbd";
+    var lawn = kind === "house" ? "#b7cba6" : "#c5d4b8";
+    var art =
+      '<rect x="' + (-half - 27) + '" y="-3" width="' + (w + 54) + '" height="14" rx="3" fill="' + lawn + '"/>' +
+      '<rect x="' + (-half - 19) + '" y="-1" width="' + (w + 38) + '" height="10" rx="2" fill="' + paved + '" stroke="#b4a991" stroke-width=".8"/>';
+    for (var i = -half - 12; i < half + 20; i += 16) {
+      art += '<path d="M' + i + ' 0v7" stroke="#bdb39e" stroke-width=".7" opacity=".75"/>';
+    }
+    art += '<path d="M' + (-half - 18) + ' 5H' + (half + 18) + '" stroke="#c7bda7" stroke-width=".8" opacity=".8"/>';
+    return art;
+  }
+
+  function glassWindow(x, y, w, h, frame) {
+    var f = frame || "#252a2c";
+    return (
+      '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="1.2" fill="' + f + '"/>' +
+      '<rect x="' + (x + 2.5) + '" y="' + (y + 2.5) + '" width="' + (w - 5) + '" height="' + (h - 5) + '" fill="url(#glass-grad)"/>' +
+      '<path d="M' + (x + 2.5) + " " + (y + h - 5) + "L" + (x + w - 4) + " " + (y + 3) + '" stroke="#b7d3d3" stroke-width="1" opacity=".28"/>' +
+      '<path d="M' + (x + w / 3) + " " + (y + 2.5) + "v" + (h - 5) + "M" + (x + (w * 2) / 3) + " " + (y + 2.5) + "v" + (h - 5) + '" stroke="' + f + '" stroke-width="1.6"/>'
+    );
+  }
+
   function houseArt(sponsor, w) {
     var half = w / 2;
-    var body = 56;
-    var roof = 31;
     var accent = sponsor.accent;
-    var roofBase = -body;
-    var roofTop = -body - roof;
+    var bodyH = 52;
+    var roofPeak = -84;
     return (
-      '<ellipse cx="0" cy="9" rx="' + (half + 17) + '" ry="9" fill="var(--map-shadow)" opacity=".42"/>' +
-      '<path d="M-46 5H46" stroke="var(--map-sidewalk)" stroke-width="10" stroke-linecap="round"/>' +
-      '<path d="M-46 5H46" stroke="var(--map-road-line)" stroke-width="1" stroke-dasharray="4 5" opacity=".7"/>' +
-      '<path d="M' + (-half - 18) + ' 2V-8M' + (-half - 18) + ' -4H' + (-half + 2) + 'M' + (half + 18) + ' 2V-8M' + (half + 18) + ' -4H' + (half - 2) + '" stroke="var(--map-tree-dark)" stroke-width="2" stroke-linecap="round" opacity=".55"/>' +
-      '<rect x="' + (-half - 10) + '" y="-4" width="' + (w + 20) + '" height="10" rx="4" fill="var(--map-park-deep)" opacity=".55"/>' +
-      '<rect x="' + (-half) + '" y="' + (-body) + '" width="' + w + '" height="' + body + '" rx="4" fill="var(--map-building)" stroke="var(--map-building-edge)" stroke-width="1.4"/>' +
-      '<rect x="' + (-half + 2) + '" y="' + (-body + 2) + '" width="' + (w - 4) + '" height="' + (body - 4) + '" rx="3" fill="url(#town-wall)" opacity=".38"/>' +
-      '<path d="M' + (-half - 9) + " " + roofBase + "L0 " + roofTop + "L" + (half + 9) + " " + roofBase + 'Z" fill="' + accent + '" stroke="var(--map-building-edge)" stroke-width="1.25" stroke-linejoin="round"/>' +
-      '<path d="M' + (-half - 9) + " " + roofBase + "L0 " + roofTop + "L" + (half + 9) + " " + roofBase + 'Z" fill="url(#town-roof)" opacity=".5"/>' +
-      '<path d="M' + (-half - 12) + " " + roofBase + "H" + (half + 12) + '" stroke="var(--map-building-edge)" stroke-width="2" opacity=".6"/>' +
-      '<rect x="' + (half - 31) + '" y="' + (roofTop + 2) + '" width="11" height="24" rx="2" fill="#a96143" stroke="var(--map-building-edge)" stroke-width="1"/>' +
-      '<rect x="' + (half - 34) + '" y="' + (roofTop + 1) + '" width="17" height="4" rx="1.5" fill="#7f4934"/>' +
-      '<path d="M-16 ' + (roofBase - 6) + "l16-15 16 15Z\" fill=\"" + accent + '" stroke="var(--map-building-edge)" stroke-width="1"/>' +
-      '<rect x="-7" y="' + (roofBase - 11) + '" width="14" height="10" rx="1.5" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1"/>' +
-      '<path d="M' + (-half + 16) + " " + (-body + 14) + 'h22v21h-22z" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.3"/>' +
-      '<path d="M' + (-half + 16) + " " + (-body + 24.5) + 'h22M' + (-half + 27) + " " + (-body + 14) + 'v21" stroke="var(--map-window-frame)" stroke-width="1"/>' +
-      '<rect x="' + (-half + 11) + '" y="' + (-body + 13) + '" width="4" height="23" rx="1" fill="' + accent + '" opacity=".8"/>' +
-      '<rect x="' + (-half + 39) + '" y="' + (-body + 13) + '" width="4" height="23" rx="1" fill="' + accent + '" opacity=".8"/>' +
-      '<path d="M' + (half - 38) + " " + (-body + 14) + 'h22v21h-22z" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.3"/>' +
-      '<path d="M' + (half - 38) + " " + (-body + 24.5) + 'h22M' + (half - 27) + " " + (-body + 14) + 'v21" stroke="var(--map-window-frame)" stroke-width="1"/>' +
-      '<rect x="' + (half - 43) + '" y="' + (-body + 13) + '" width="4" height="23" rx="1" fill="' + accent + '" opacity=".8"/>' +
-      '<rect x="' + (half - 15) + '" y="' + (-body + 13) + '" width="4" height="23" rx="1" fill="' + accent + '" opacity=".8"/>' +
-      '<rect x="-13" y="-29" width="26" height="29" rx="3" fill="' + accent + '" stroke="var(--map-building-edge)" stroke-width="1"/>' +
-      '<circle cx="6" cy="-15" r="1.7" fill="#fff8e8"/>' +
-      '<path d="M-19 -30h38l-5-8h-28z" fill="#a96143" stroke="var(--map-building-edge)" stroke-width="1"/>' +
-      '<path d="M-12 -5v5M12 -5v5M-17 -5v5M17 -5v5" stroke="var(--map-building-edge)" stroke-width="1.5" opacity=".6"/>' +
-      '<rect x="-13" y="-45" width="26" height="12" rx="4" fill="' + accent + '"/>' +
-      '<text x="0" y="-36" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="800">' + esc(sponsor.initials) + "</text>" +
-      '<circle cx="' + (-half - 14) + '" cy="0" r="8" fill="var(--map-tree)"/>' +
-      '<circle cx="' + (-half - 24) + '" cy="-2" r="6" fill="var(--map-tree-dark)"/>' +
-      '<circle cx="' + (half + 15) + '" cy="0" r="8" fill="var(--map-tree)"/>' +
-      '<circle cx="' + (half + 26) + '" cy="-2" r="6" fill="var(--map-tree-dark)"/>' +
-      mapFlowerBed(-half + 20, 1, 0.55) +
-      mapFlowerBed(half - 18, 1, 0.5)
+      '<ellipse cx="0" cy="8" rx="' + (half + 20) + '" ry="8" fill="var(--map-shadow)" opacity=".35"/>' +
+      plotArt(w, "house") +
+      '<rect x="' + (-half - 9) + '" y="-5" width="' + (w + 18) + '" height="7" rx="2" fill="#c4d3b2"/>' +
+      '<rect x="' + (-half) + '" y="' + (-bodyH) + '" width="' + w + '" height="' + bodyH + '" rx="1.5" fill="url(#wall-cream)" stroke="#746b5d" stroke-width="1"/>' +
+      '<rect x="' + (-half) + '" y="-17" width="' + w + '" height="17" fill="url(#stone-base)" stroke="#746b5d" stroke-width=".8"/>' +
+      '<path d="M' + (-half - 9) + " " + (-bodyH) + "L0 " + roofPeak + "L" + (half + 9) + " " + (-bodyH) + 'Z" fill="#30363a" stroke="#202426" stroke-width="1"/>' +
+      '<path d="M' + (-half - 9) + " " + (-bodyH) + "L0 " + roofPeak + "L" + (half + 9) + " " + (-bodyH) + 'Z" fill="url(#roof-tile)" opacity=".55"/>' +
+      '<path d="M' + (-half - 11) + " " + (-bodyH) + "H" + (half + 11) + '" stroke="#b28150" stroke-width="2.2"/>' +
+      '<path d="M' + (-half - 10) + " " + (-bodyH) + "L0 " + (roofPeak + 1) + "L" + (half + 10) + " " + (-bodyH) + '" fill="none" stroke="#9b6f44" stroke-width="1.1" opacity=".8"/>' +
+      '<path d="M0 ' + roofPeak + 'V' + (roofPeak + 6) + '" stroke="#1d2123" stroke-width="2"/>' +
+      '<rect x="' + (half - 24) + '" y="-97" width="12" height="29" rx="1" fill="url(#stone-base)" stroke="#6e6659" stroke-width="1"/>' +
+      '<rect x="' + (half - 28) + '" y="-99" width="20" height="4" rx="1" fill="#2b3033"/>' +
+      '<rect x="' + (-half + 10) + '" y="-44" width="37" height="21" rx="1" fill="#252a2c"/>' +
+      '<rect x="' + (-half + 12) + '" y="-42" width="33" height="17" fill="url(#glass-grad)"/>' +
+      '<path d="M' + (-half + 23) + ' -42v17M' + (-half + 34) + ' -42v17M' + (-half + 12) + ' -32h33" stroke="#202426" stroke-width="1.2"/>' +
+      '<path d="M' + (-half + 12) + ' -41h33" stroke="#f3eee2" stroke-width="3" opacity=".35"/>' +
+      '<rect x="' + (-half + 8) + '" y="-23" width="41" height="2" rx="1" fill="#b7ad98"/>' +
+      '<rect x="' + (half - 51) + '" y="-44" width="37" height="21" rx="1" fill="#252a2c"/>' +
+      '<rect x="' + (half - 49) + '" y="-42" width="33" height="17" fill="url(#glass-grad)"/>' +
+      '<path d="M' + (half - 38) + ' -42v17M' + (half - 27) + ' -42v17M' + (half - 49) + ' -32h33" stroke="#202426" stroke-width="1.2"/>' +
+      '<path d="M' + (half - 49) + ' -41h33" stroke="#f3eee2" stroke-width="3" opacity=".35"/>' +
+      '<rect x="' + (half - 53) + '" y="-23" width="41" height="2" rx="1" fill="#b7ad98"/>' +
+      '<rect x="' + (-half + 18) + '" y="-76" width="12" height="12" fill="#252a2c" stroke="#b28150" stroke-width="1"/>' +
+      '<rect x="' + (-half + 19) + '" y="-75" width="10" height="10" fill="url(#glass-grad)"/>' +
+      '<rect x="-23" y="-46" width="46" height="7" rx="2" fill="#a97745"/>' +
+      '<path d="M-28 -46 0 -60 28 -46Z" fill="#30363a" stroke="#202426" stroke-width="1"/>' +
+      '<path d="M-28 -46 0 -60 28 -46Z" fill="url(#roof-tile)" opacity=".55"/>' +
+      '<rect x="-25" y="-43" width="8" height="43" fill="url(#stone-base)" stroke="#6e6659" stroke-width=".8"/>' +
+      '<rect x="17" y="-43" width="8" height="43" fill="url(#stone-base)" stroke="#6e6659" stroke-width=".8"/>' +
+      '<rect x="-11" y="-37" width="22" height="37" rx="1" fill="#8b5a37" stroke="#5f3d27" stroke-width="1"/>' +
+      '<path d="M-11 -27h22M-11 -17h22M-11 -7h22" stroke="#6c442b" stroke-width=".9"/>' +
+      '<circle cx="7" cy="-18" r="1.6" fill="#d8c7a8"/>' +
+      '<path d="M-26 0h52" stroke="#a99d87" stroke-width="2"/>' +
+      '<path d="M-30 4h60M-34 8h68" stroke="#c4baa6" stroke-width="3"/>' +
+      '<path d="M' + (-half + 1) + ' -52V0M' + (half - 1) + ' -52V0" stroke="#2b3033" stroke-width="1.6" opacity=".9"/>' +
+      '<path d="M' + (-half + 1) + ' 0h5M' + (half - 6) + ' 0h5" stroke="#2b3033" stroke-width="2"/>' +
+      '<rect x="-14" y="-54" width="28" height="8" rx="4" fill="' + accent + '"/>' +
+      '<text x="0" y="-48" text-anchor="middle" fill="#fff" font-size="6.5" font-weight="800">' + esc(sponsor.initials) + "</text>" +
+      '<rect x="' + (-half + 18) + '" y="-13" width="16" height="5" rx="1" fill="#8b5a37" opacity=".7"/>' +
+      mapBush(-half - 12, 0, 0.55) +
+      mapBush(half + 12, 0, 0.5) +
+      mapFlowerBed(-half + 26, 2, 0.45) +
+      mapFlowerBed(half - 28, 2, 0.4)
+    );
+  }
+
+  function officeWindow(x, y, w, h) {
+    return (
+      '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" fill="#252a2c"/>' +
+      '<rect x="' + (x + 2) + '" y="' + (y + 2) + '" width="' + (w - 4) + '" height="' + (h - 4) + '" fill="url(#glass-grad)"/>' +
+      '<path d="M' + (x + 2) + " " + (y + h - 4) + "L" + (x + w - 4) + " " + (y + 2) + '" stroke="#c4dcd9" stroke-width="1" opacity=".25"/>' +
+      '<path d="M' + (x + w / 2) + " " + (y + 2) + "v" + (h - 4) + "M" + (x + 2) + " " + (y + h / 2) + "h" + (w - 4) + '" stroke="#202426" stroke-width="1.2"/>'
     );
   }
 
   function orgArt(sponsor, w, h) {
     var half = w / 2;
-    var body = h - 22;
     var accent = sponsor.accent;
-    var variant = sponsor.building;
-    var roof =
-      variant === "house-office" || variant === "coop"
-        ? '<path d="M' + (-half - 9) + " " + (-body) + "L0 " + (-h - 15) + "L" + (half + 9) + " " + (-body) + 'Z" fill="' + accent + '" stroke="var(--map-building-edge)" stroke-width="1.2" stroke-linejoin="round"/>' +
-          '<path d="M' + (-half - 9) + " " + (-body) + "L0 " + (-h - 15) + "L" + (half + 9) + " " + (-body) + 'Z" fill="url(#town-roof)" opacity=".45"/>'
-        : '<rect x="' + (-half - 7) + '" y="' + (-body - 9) + '" width="' + (w + 14) + '" height="12" rx="3" fill="' + accent + '" stroke="var(--map-building-edge)" stroke-width="1"/>' +
-          '<rect x="' + (-half + 8) + '" y="' + (-body - 16) + '" width="22" height="9" rx="2" fill="var(--map-building-edge)" opacity=".32"/>' +
-          '<rect x="' + (half - 31) + '" y="' + (-body - 14) + '" width="14" height="7" rx="1" fill="var(--map-window)" opacity=".75"/>';
-    var windows = "";
-    var cols = variant === "studio" ? 2 : 3;
-    for (var row = 0; row < 2; row += 1) {
-      for (var col = 0; col < cols; col += 1) {
-        var wx = -half + 16 + col * ((w - 32) / Math.max(cols - 1, 1));
-        var wy = -body + 15 + row * 28;
-        windows +=
-          '<rect x="' + (wx - 10) + '" y="' + wy + '" width="20" height="18" rx="2" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.2"/>' +
-          '<path d="M' + wx + " " + wy + "v18M" + (wx - 10) + " " + (wy + 9) + 'h20" stroke="var(--map-window-frame)" stroke-width=".8" opacity=".85"/>';
-        if (variant === "workshop") {
-          windows += '<rect x="' + (wx - 14) + '" y="' + (wy + 1) + '" width="3" height="16" rx="1" fill="' + accent + '" opacity=".7"/>';
-        }
-      }
+    var bodyH = h - 12;
+    var floor = bodyH / 3;
+    var art =
+      '<ellipse cx="0" cy="8" rx="' + (half + 22) + '" ry="8" fill="var(--map-shadow)" opacity=".38"/>' +
+      plotArt(w, "organization") +
+      '<rect x="' + (-half - 8) + '" y="-6" width="' + (w + 16) + '" height="7" rx="1" fill="#b7cba6"/>' +
+      '<rect x="' + (-half) + '" y="' + (-bodyH) + '" width="' + w + '" height="' + bodyH + '" fill="url(#office-wall)" stroke="#6e6b63" stroke-width="1"/>' +
+      '<rect x="' + (-half) + '" y="' + (-bodyH) + '" width="' + w + '" height="' + bodyH + '" fill="url(#office-panel)" opacity=".55"/>' +
+      '<rect x="' + (-half) + '" y="-12" width="' + w + '" height="12" fill="url(#stone-base)" stroke="#6e6b63" stroke-width=".8"/>';
+    for (var f = 1; f <= 2; f += 1) {
+      art += '<path d="M' + (-half) + " " + (-bodyH + floor * f) + "H" + half + '" stroke="#7e7a70" stroke-width="1.2" opacity=".55"/>';
     }
-    var extra = "";
-    if (variant === "coop") {
-      extra =
-        '<ellipse cx="' + (half + 13) + '" cy="3" rx="14" ry="5" fill="var(--map-shadow)" opacity=".35"/>' +
-        '<rect x="' + (half - 1) + '" y="-54" width="26" height="58" rx="13" fill="var(--map-building)" stroke="var(--map-building-edge)" stroke-width="1.2"/>' +
-        '<ellipse cx="' + (half + 12) + '" cy="-54" rx="13" ry="5" fill="' + accent + '" opacity=".85"/>' +
-        '<path d="M' + (half + 4) + ' -45h16M' + (half + 4) + ' -38h16" stroke="var(--map-building-edge)" stroke-width="1" opacity=".35"/>';
-    } else if (variant === "studio") {
-      extra =
-        '<rect x="' + (-half + 11) + '" y="' + (-body + 12) + '" width="' + (w - 22) + '" height="' + (body - 54) + '" rx="2" fill="var(--map-window)" opacity=".7"/>' +
-        '<path d="M' + (-half + 27) + " " + (-body + 12) + "v" + (body - 54) + "M" + (half - 27) + " " + (-body + 12) + "v" + (body - 54) + '" stroke="var(--map-window-frame)" stroke-width="1.2"/>';
+    for (var row = 0; row < 3; row += 1) {
+      var y = -bodyH + 13 + row * (floor - 1);
+      art += officeWindow(-half + 9, y, 23, Math.min(19, floor - 8));
+      art += officeWindow(-half + 38, y, 23, Math.min(19, floor - 8));
+      art += officeWindow(half - 34, y, 28, Math.min(19, floor - 8));
     }
-    return (
-      '<ellipse cx="0" cy="9" rx="' + (half + 18) + '" ry="9" fill="var(--map-shadow)" opacity=".42"/>' +
-      '<path d="M' + (-half - 22) + " " + (-body - 8) + "V-12H" + (-half - 6) + "M" + (half + 22) + " " + (-body - 8) + "V-12H" + (half + 6) + '" stroke="var(--map-tree-dark)" stroke-width="2" stroke-linecap="round" opacity=".55"/>' +
-      '<rect x="' + (-half) + '" y="' + (-body) + '" width="' + w + '" height="' + body + '" rx="3" fill="var(--map-building)" stroke="var(--map-building-edge)" stroke-width="1.4"/>' +
-      '<rect x="' + (-half + 2) + '" y="' + (-body + 2) + '" width="' + (w - 4) + '" height="' + (body - 4) + '" rx="2" fill="url(#town-wall)" opacity=".35"/>' +
-      roof +
-      windows +
-      extra +
-      '<path d="M' + (-half + 1) + " " + (-body + 55) + "H" + (half - 1) + '" stroke="var(--map-building-edge)" stroke-width="1" opacity=".2"/>' +
-      '<rect x="-15" y="-31" width="30" height="31" rx="3" fill="' + accent + '" stroke="var(--map-building-edge)" stroke-width="1"/>' +
-      '<circle cx="7" cy="-16" r="1.8" fill="#fff8e8"/>' +
-      '<path d="M-21 -32h42l-6-9h-30z" fill="#a96143" stroke="var(--map-building-edge)" stroke-width="1"/>' +
-      '<rect x="' + (-half + 16) + '" y="' + (-body + 5) + '" width="' + (w - 32) + '" height="15" rx="7" fill="' + accent + '"/>' +
-      '<text x="0" y="' + (-body + 16) + '" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800" letter-spacing=".06em">' + esc(sponsor.initials) + "</text>" +
-      '<rect x="' + (-half + 22) + '" y="-22" width="8" height="22" rx="2" fill="' + accent + '" opacity=".45"/>' +
-      '<rect x="' + (half - 30) + '" y="-20" width="8" height="20" rx="2" fill="var(--map-tree)"/>' +
-      '<circle cx="' + (-half - 15) + '" cy="-2" r="8" fill="var(--map-tree)"/>' +
-      '<circle cx="' + (half + 17) + '" cy="-2" r="8" fill="var(--map-tree)"/>' +
-      mapFlowerBed(-half + 19, 2, 0.5)
-    );
+    art +=
+      '<rect x="-14" y="' + (-bodyH + 5) + '" width="28" height="' + (bodyH - 5) + '" fill="#2b4a52" opacity=".82"/>' +
+      '<path d="M0 ' + (-bodyH + 5) + 'v' + (bodyH - 5) + '" stroke="#1f2c30" stroke-width="1.4"/>' +
+      '<rect x="-14" y="' + (-bodyH + 5) + '" width="28" height="' + (bodyH - 5) + '" fill="url(#glass-grad)" opacity=".35"/>' +
+      '<rect x="-20" y="-12" width="40" height="12" rx="2" fill="#252a2c"/>' +
+      '<rect x="-18" y="-10" width="36" height="10" fill="url(#glass-grad)" opacity=".8"/>' +
+      '<path d="M0 -10v10" stroke="#202426" stroke-width="1"/>' +
+      '<rect x="-25" y="-2" width="50" height="3" fill="#c3b9a5"/>' +
+      '<rect x="-29" y="1" width="58" height="3" fill="#d0c6b1"/>' +
+      '<rect x="' + (half - 38) + '" y="' + (-bodyH + 26) + '" width="29" height="20" rx="1" fill="#c4c0b6" stroke="#817c70" stroke-width=".8"/>' +
+      '<path d="M' + (half - 34) + " " + (-bodyH + 40) + "h7m3 0h5m3 0h7M" + (half - 35) + " " + (-bodyH + 34) + "v12M" + (half - 25) + " " + (-bodyH + 31) + "v15M" + (half - 17) + " " + (-bodyH + 33) + "v11" + '" stroke="' + accent + '" stroke-width="1.1" opacity=".75"/>' +
+      '<rect x="' + (-half - 8) + '" y="' + (-bodyH - 8) + '" width="' + (w + 16) + '" height="8" fill="#b9b7ae" stroke="#77736a" stroke-width=".8"/>' +
+      '<path d="M' + (-half - 8) + " " + (-bodyH - 8) + "H" + (half + 8) + '" stroke="#d8d6ce" stroke-width="1.2"/>' +
+      '<rect x="-26" y="' + (-bodyH - 23) + '" width="52" height="18" rx="1" fill="#b8b7b0" stroke="#77736a" stroke-width=".8"/>' +
+      '<rect x="9" y="' + (-bodyH - 26) + '" width="28" height="11" rx="1" fill="#5c6a6d" stroke="#2e3335" stroke-width=".8"/>' +
+      '<rect x="-17" y="' + (-bodyH - 27) + '" width="19" height="7" fill="#8fb3b1" stroke="#4d5b5d" stroke-width=".7"/>' +
+      '<path d="M' + (-half + 7) + " " + (-bodyH - 10) + "h" + (w - 14) + '" stroke="#4a4d4c" stroke-width="1.2" opacity=".7"/>' +
+      '<rect x="' + (-half + 16) + '" y="' + (-bodyH + 12) + '" width="' + (w - 32) + '" height="13" rx="4" fill="' + accent + '"/>' +
+      '<text x="0" y="' + (-bodyH + 21.5) + '" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="800" letter-spacing=".04em">' + esc(sponsor.initials) + "</text>" +
+      '<rect x="' + (-half + 21) + '" y="-7" width="14" height="7" rx="1" fill="#8b5a37" opacity=".8"/>' +
+      '<rect x="' + (half - 34) + '" y="-7" width="14" height="7" rx="1" fill="#8b5a37" opacity=".8"/>' +
+      mapBush(-half - 14, 0, 0.5) +
+      mapBush(half + 14, 0, 0.45) +
+      mapBush(-half + 4, -3, 0.32) +
+      mapFlowerBed(-half + 34, 1, 0.35);
+    return art;
   }
 
   function towerArt(sponsor, w, h) {
     var half = w / 2;
     var accent = sponsor.accent;
-    return (
-      '<ellipse cx="0" cy="10" rx="' + (half + 28) + '" ry="11" fill="var(--map-shadow)" opacity=".45"/>' +
-      '<path d="M-84 6H84" stroke="var(--map-sidewalk)" stroke-width="13" stroke-linecap="round"/>' +
-      '<path d="M-84 6H84" stroke="var(--map-road-line)" stroke-width="1" stroke-dasharray="4 5" opacity=".6"/>' +
-      '<rect x="' + (-half) + '" y="' + (-h + 14) + '" width="' + w + '" height="' + (h - 14) + '" rx="5" fill="var(--map-building)" stroke="var(--map-building-edge)" stroke-width="1.5"/>' +
-      '<rect x="' + (-half + 3) + '" y="' + (-h + 17) + '" width="' + (w - 6) + '" height="' + (h - 20) + '" rx="3" fill="url(#town-wall)" opacity=".32"/>' +
-      '<rect x="' + (-half - 9) + '" y="' + (-h + 2) + '" width="' + (w + 18) + '" height="18" rx="4" fill="' + accent + '" stroke="var(--map-building-edge)" stroke-width="1"/>' +
-      '<rect x="' + (-half + 18) + '" y="' + (-h + 34) + '" width="' + (w - 36) + '" height="52" rx="3" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.4"/>' +
-      '<path d="M' + (-half + 52) + " " + (-h + 34) + "V" + (-h + 86) + "M" + (-half + 84) + " " + (-h + 34) + "V" + (-h + 86) + "M" + (-half + 116) + " " + (-h + 34) + "V" + (-h + 86) + '" stroke="var(--map-window-frame)" stroke-width="1.2" opacity=".8"/>' +
-      '<rect x="' + (-half + 18) + '" y="' + (-h + 98) + '" width="40" height="34" rx="2" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.2"/>' +
-      '<rect x="' + (half - 58) + '" y="' + (-h + 98) + '" width="40" height="34" rx="2" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.2"/>' +
-      '<rect x="-18" y="-39" width="36" height="39" rx="3" fill="' + accent + '" stroke="var(--map-building-edge)" stroke-width="1"/>' +
-      '<circle cx="7" cy="-20" r="1.8" fill="#fff8e8"/>' +
-      '<rect x="-45" y="-74" width="90" height="22" rx="11" fill="' + accent + '"/>' +
-      '<text x="0" y="-58" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="800" letter-spacing=".12em">ONIR</text>' +
-      '<path d="M' + (half - 26) + " " + (-h + 2) + "V" + (-h - 45) + '" stroke="' + accent + '" stroke-width="2.5"/>' +
-      '<path d="M' + (half - 26) + " " + (-h - 45) + 'h32l-8 8 8 8h-32z" fill="' + accent + '"/>' +
-      '<rect x="' + (-half - 4) + '" y="' + (-h + 18) + '" width="' + (w + 8) + '" height="5" rx="2" fill="var(--map-park-deep)" opacity=".9"/>' +
-      '<path d="M-72 6 -78 -3H-68M72 6 78 -3H68" stroke="var(--map-tree-dark)" stroke-width="2" opacity=".5"/>' +
-      '<circle cx="' + (half + 28) + '" cy="-2" r="10" fill="var(--map-tree)"/>' +
-      '<circle cx="' + (-half - 27) + '" cy="-2" r="9" fill="var(--map-tree-dark)"/>' +
-      mapFlowerBed(-half + 24, 2, 0.7) +
-      mapFlowerBed(half - 24, 2, 0.7)
-    );
+    var bodyH = h - 14;
+    var floor = bodyH / 3;
+    var art =
+      '<ellipse cx="0" cy="10" rx="' + (half + 30) + '" ry="10" fill="var(--map-shadow)" opacity=".4"/>' +
+      plotArt(w, "organization") +
+      '<rect x="' + (-half - 10) + '" y="-6" width="' + (w + 20) + '" height="7" rx="2" fill="#b7cba6"/>' +
+      '<rect x="' + (-half) + '" y="' + (-bodyH) + '" width="' + w + '" height="' + bodyH + '" fill="url(#office-wall)" stroke="#6e6b63" stroke-width="1.2"/>' +
+      '<rect x="' + (-half) + '" y="' + (-bodyH) + '" width="' + w + '" height="' + bodyH + '" fill="url(#office-panel)" opacity=".55"/>' +
+      '<rect x="' + (-half) + '" y="-14" width="' + w + '" height="14" fill="url(#stone-base)" stroke="#6e6b63" stroke-width="1"/>';
+    for (var f = 1; f <= 2; f += 1) {
+      art += '<path d="M' + (-half) + " " + (-bodyH + floor * f) + "H" + half + '" stroke="#7e7a70" stroke-width="1.4" opacity=".55"/>';
+    }
+    for (var row = 0; row < 3; row += 1) {
+      var y = -bodyH + 16 + row * (floor - 1);
+      art += officeWindow(-half + 12, y, 28, Math.min(22, floor - 9));
+      art += officeWindow(-half + 48, y, 28, Math.min(22, floor - 9));
+      art += officeWindow(half - 42, y, 30, Math.min(22, floor - 9));
+    }
+    art +=
+      '<rect x="-24" y="' + (-bodyH + 6) + '" width="48" height="' + (bodyH - 6) + '" fill="#2b4a52" opacity=".8"/>' +
+      '<rect x="-24" y="' + (-bodyH + 6) + '" width="48" height="' + (bodyH - 6) + '" fill="url(#glass-grad)" opacity=".33"/>' +
+      '<path d="M0 ' + (-bodyH + 6) + 'v' + (bodyH - 6) + '" stroke="#1f2c30" stroke-width="1.5"/>' +
+      '<rect x="-33" y="-14" width="66" height="14" rx="2" fill="#252a2c"/>' +
+      '<rect x="-30" y="-11" width="60" height="11" fill="url(#glass-grad)" opacity=".8"/>' +
+      '<rect x="-38" y="-2" width="76" height="3" fill="#c3b9a5"/>' +
+      '<rect x="-43" y="1" width="86" height="3" fill="#d0c6b1"/>' +
+      '<rect x="' + (half - 54) + '" y="' + (-bodyH + 30) + '" width="34" height="23" rx="1" fill="#c4c0b6" stroke="#817c70" stroke-width=".8"/>' +
+      '<path d="M' + (half - 49) + " " + (-bodyH + 47) + "h9m4 0h7m4 0h9M" + (half - 50) + " " + (-bodyH + 39) + "v14M" + (half - 36) + " " + (-bodyH + 35) + "v18M" + (half - 26) + " " + (-bodyH + 38) + "v14" + '" stroke="' + accent + '" stroke-width="1.2" opacity=".8"/>' +
+      '<rect x="' + (-half - 10) + '" y="' + (-bodyH - 10) + '" width="' + (w + 20) + '" height="10" fill="#b9b7ae" stroke="#77736a" stroke-width=".9"/>' +
+      '<path d="M' + (-half - 10) + " " + (-bodyH - 10) + "H" + (half + 10) + '" stroke="#d8d6ce" stroke-width="1.4"/>' +
+      '<rect x="-44" y="' + (-bodyH - 30) + '" width="88" height="22" rx="1" fill="#b8b7b0" stroke="#77736a" stroke-width="1"/>' +
+      '<rect x="20" y="' + (-bodyH - 34) + '" width="43" height="13" rx="1" fill="#5c6a6d" stroke="#2e3335" stroke-width=".9"/>' +
+      '<rect x="-27" y="' + (-bodyH - 34) + '" width="28" height="9" fill="#8fb3b1" stroke="#4d5b5d" stroke-width=".8"/>' +
+      '<path d="M' + (-half + 12) + " " + (-bodyH - 12) + "h" + (w - 24) + '" stroke="#4a4d4c" stroke-width="1.4" opacity=".7"/>' +
+      '<path d="M' + (-half + 20) + " " + (-bodyH - 12) + "v-9M" + (half - 20) + " " + (-bodyH - 12) + "v-9" + '" stroke="#5f625f" stroke-width="1"/>' +
+      '<rect x="-48" y="' + (-bodyH + 12) + '" width="96" height="15" rx="5" fill="' + accent + '"/>' +
+      '<text x="0" y="' + (-bodyH + 23) + '" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="800" letter-spacing=".1em">ONIR</text>' +
+      '<rect x="' + (-half + 28) + '" y="-8" width="16" height="8" rx="1" fill="#8b5a37" opacity=".8"/>' +
+      '<rect x="' + (half - 44) + '" y="-8" width="16" height="8" rx="1" fill="#8b5a37" opacity=".8"/>' +
+      '<path d="M' + (half - 4) + ' -112V-141" stroke="#2b3033" stroke-width="2"/>' +
+      '<path d="M' + (half - 4) + ' -141h27l-7 7 7 7h-27z" fill="' + accent + '"/>' +
+      mapBush(-half - 16, 0, 0.58) +
+      mapBush(half + 16, 0, 0.52) +
+      mapBush(-half + 8, -4, 0.38) +
+      mapFlowerBed(-half + 42, 1, 0.5) +
+      mapFlowerBed(half - 42, 1, 0.45);
+    return art;
   }
 
   function buildingMarkup(sponsor) {
@@ -369,6 +421,12 @@
       '<pattern id="town-roof" width="14" height="9" patternUnits="userSpaceOnUse"><path d="M0 9 7 0l7 9" fill="none" stroke="#ffffff" stroke-width="1" opacity=".3"/></pattern>' +
       '<pattern id="town-wall" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M0 12 12 0M-3 3 3-3M9 15 15 9" stroke="var(--map-building-edge)" stroke-width=".55" opacity=".25"/></pattern>' +
       '<pattern id="town-water" width="28" height="14" patternUnits="userSpaceOnUse"><path d="M0 7c7-5 14 5 21 0" fill="none" stroke="var(--map-water-light)" stroke-width="1.4" opacity=".65"/></pattern>' +
+      '<pattern id="wall-cream" width="18" height="18" patternUnits="userSpaceOnUse"><rect width="18" height="18" fill="#e9dfc8"/><circle cx="3" cy="4" r=".8" fill="#fff" opacity=".35"/><circle cx="13" cy="12" r=".6" fill="#7d7160" opacity=".15"/></pattern>' +
+      '<pattern id="stone-base" width="18" height="12" patternUnits="userSpaceOnUse"><rect width="18" height="12" fill="#9b917f"/><path d="M0 6h18M6 0v6M13 6v6" stroke="#7e7565" stroke-width=".8" opacity=".75"/></pattern>' +
+      '<pattern id="office-wall" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="#d9d7d0"/><path d="M0 20 20 0" stroke="#a7a39a" stroke-width=".5" opacity=".35"/></pattern>' +
+      '<pattern id="office-panel" width="23" height="23" patternUnits="userSpaceOnUse"><path d="M0 23 23 0" stroke="#aaa69d" stroke-width=".45" opacity=".35"/></pattern>' +
+      '<pattern id="roof-tile" width="12" height="7" patternUnits="userSpaceOnUse"><path d="M0 7 6 0l6 7" fill="none" stroke="#0e1214" stroke-width=".8" opacity=".55"/><path d="M0 3.5h12" stroke="#5d6265" stroke-width=".45" opacity=".4"/></pattern>' +
+      '<linearGradient id="glass-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7b9aa0"/><stop offset=".48" stop-color="#46656b"/><stop offset="1" stop-color="#263f45"/></linearGradient>' +
       '<clipPath id="town-clip"><rect width="1200" height="760" rx="30"/></clipPath>' +
       "</defs>" +
       '<g clip-path="url(#town-clip)">' +
@@ -415,7 +473,7 @@
       mapBench(500, 315, -8) + mapBench(700, 315, 8) + mapBench(500, 456, 8) + mapBench(700, 456, -8) +
       mapFlowerBed(525, 462, 0.8) + mapFlowerBed(675, 462, 0.8) +
       mapLamp(470, 300, 0.95) + mapLamp(730, 300, 0.95) + mapLamp(470, 462, 0.95) + mapLamp(730, 462, 0.95) +
-      '<text x="600" y="48" class="map-district" text-anchor="middle">Quartier des organisations</text>' +
+      '<text x="600" y="30" class="map-district" text-anchor="middle">Quartier des organisations</text>' +
       '<text x="1110" y="385" class="map-district" text-anchor="middle" transform="rotate(90 1110 385)">Place des partenaires</text>' +
       '<text x="600" y="744" class="map-district" text-anchor="middle">Allée des particuliers</text>' +
       roadName("Rue des Orangers", 420, 392, 0) +
@@ -594,7 +652,7 @@
 
       try {
         if (!town3d) {
-          var module = await import("/assets/js/town-3d.js?v=20261026f");
+          var module = await import("/assets/js/town-3d.js?v=20261026h");
           town3d = module.createTown3D({
             container: view3d,
             sponsors: sponsors,
