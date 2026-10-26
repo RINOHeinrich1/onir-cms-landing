@@ -39,7 +39,7 @@
       size: "md",
       district: "organisations",
       x: 300,
-      y: 220,
+      y: 240,
       demo: true
     },
     {
@@ -59,7 +59,7 @@
       size: "sm",
       district: "organisations",
       x: 470,
-      y: 160,
+      y: 150,
       demo: true
     },
     {
@@ -79,7 +79,7 @@
       size: "sm",
       district: "organisations",
       x: 730,
-      y: 160,
+      y: 150,
       demo: true
     },
     {
@@ -99,7 +99,7 @@
       size: "md",
       district: "organisations",
       x: 900,
-      y: 220,
+      y: 240,
       demo: true
     },
     {
@@ -118,8 +118,8 @@
       building: "workshop",
       size: "sm",
       district: "partenaires",
-      x: 950,
-      y: 430,
+      x: 1010,
+      y: 480,
       demo: true
     },
     {
@@ -138,8 +138,8 @@
       building: "house",
       size: "sm",
       district: "particuliers",
-      x: 250,
-      y: 430,
+      x: 190,
+      y: 500,
       demo: true
     },
     {
@@ -158,8 +158,8 @@
       building: "house",
       size: "sm",
       district: "particuliers",
-      x: 380,
-      y: 590,
+      x: 450,
+      y: 660,
       demo: true
     },
     {
@@ -178,8 +178,8 @@
       building: "house",
       size: "sm",
       district: "particuliers",
-      x: 620,
-      y: 650,
+      x: 700,
+      y: 680,
       demo: true
     },
     {
@@ -198,8 +198,8 @@
       building: "house",
       size: "sm",
       district: "particuliers",
-      x: 820,
-      y: 590,
+      x: 850,
+      y: 630,
       demo: true
     }
   ];

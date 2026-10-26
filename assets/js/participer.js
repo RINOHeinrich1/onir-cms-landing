@@ -43,39 +43,261 @@
     return "background:" + sponsor.accent + "22;color:" + sponsor.accent;
   }
 
-  function mapTree(x, y, scale) {
+  function mapTree(x, y, scale, variant) {
+    var s = scale || 1;
+    var kind = variant || "round";
+    var shadow = '<ellipse cx="0" cy="3" rx="16" ry="5" fill="var(--map-shadow)" opacity=".35"/>';
+    var art = "";
+
+    if (kind === "pine") {
+      art =
+        '<rect x="-2.5" y="-5" width="5" height="18" rx="1.5" fill="var(--map-tree-dark)"/>' +
+        '<path d="M0 -50 16 -26H-16Z" fill="var(--map-tree-dark)"/>' +
+        '<path d="M0 -38 14 -17H-14Z" fill="var(--map-tree)"/>' +
+        '<path d="M0 -27 11 -10H-11Z" fill="var(--map-tree-dark)"/>';
+    } else if (kind === "bush") {
+      art =
+        '<circle cx="-11" cy="-8" r="11" fill="var(--map-tree)"/>' +
+        '<circle cx="7" cy="-10" r="13" fill="var(--map-tree-dark)"/>' +
+        '<circle cx="1" cy="-20" r="10" fill="var(--map-tree)"/>' +
+        '<circle cx="-3" cy="-11" r="5" fill="#ffffff" opacity=".16"/>';
+    } else {
+      art =
+        '<rect x="-2.5" y="-5" width="5" height="17" rx="1.8" fill="var(--map-tree-dark)"/>' +
+        '<circle cx="-9" cy="-13" r="13" fill="var(--map-tree-dark)"/>' +
+        '<circle cx="8" cy="-12" r="12" fill="var(--map-tree)"/>' +
+        '<circle cx="0" cy="-24" r="13" fill="var(--map-tree)"/>' +
+        '<circle cx="-5" cy="-17" r="6" fill="#ffffff" opacity=".16"/>' +
+        '<circle cx="9" cy="-20" r="4" fill="var(--map-tree-dark)" opacity=".5"/>';
+    }
+
+    return '<g transform="translate(' + x + " " + y + ') scale(' + s + ')" aria-hidden="true">' + shadow + art + "</g>";
+  }
+
+  function mapBush(x, y, scale) {
+    return mapTree(x, y, scale || 0.52, "bush");
+  }
+
+  function mapFlowerBed(x, y, scale) {
     var s = scale || 1;
     return (
       '<g transform="translate(' + x + " " + y + ') scale(' + s + ')" aria-hidden="true">' +
-      '<rect x="-2.5" y="0" width="5" height="16" rx="2" fill="var(--map-tree-dark)" opacity=".8"/>' +
-      '<circle cx="-6" cy="-6" r="12" fill="var(--map-tree)"/>' +
-      '<circle cx="6" cy="-4" r="10" fill="var(--map-tree)"/>' +
-      '<circle cx="0" cy="-14" r="11" fill="var(--map-tree)"/>' +
-      '<circle cx="-3" cy="-8" r="6" fill="var(--map-tree-dark)" opacity=".35"/>' +
+      '<ellipse cx="0" cy="0" rx="24" ry="9" fill="var(--map-park-deep)"/>' +
+      '<circle cx="-14" cy="-2" r="3" fill="#e68b56"/><circle cx="-5" cy="2" r="2.5" fill="#f3c35a"/>' +
+      '<circle cx="5" cy="-2" r="3" fill="#d86f55"/><circle cx="14" cy="2" r="2.5" fill="#f0a34c"/>' +
+      '<path d="M-18 3c3-4 5-4 8 0M2 5c3-4 5-4 8 0" fill="none" stroke="var(--map-tree-dark)" stroke-width="1.2" stroke-linecap="round"/>' +
+      "</g>"
+    );
+  }
+
+  function mapLamp(x, y, scale) {
+    var s = scale || 1;
+    return (
+      '<g transform="translate(' + x + " " + y + ') scale(' + s + ')" aria-hidden="true">' +
+      '<ellipse cx="0" cy="2" rx="8" ry="3" fill="var(--map-shadow)" opacity=".35"/>' +
+      '<path d="M0 0V-38" stroke="#63746a" stroke-width="3" stroke-linecap="round"/>' +
+      '<path d="M0-38h12" stroke="#63746a" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<circle cx="13" cy="-38" r="9" fill="#ffc46b" opacity=".16"/>' +
+      '<circle cx="13" cy="-38" r="4" fill="#ffc46b" stroke="#a96c22" stroke-width=".8"/>' +
+      "</g>"
+    );
+  }
+
+  function mapBench(x, y, angle) {
+    return (
+      '<g transform="translate(' + x + " " + y + ') rotate(' + (angle || 0) + ')" aria-hidden="true">' +
+      '<ellipse cx="0" cy="4" rx="21" ry="4" fill="var(--map-shadow)" opacity=".3"/>' +
+      '<rect x="-20" y="-4" width="40" height="5" rx="2" fill="#a97745"/>' +
+      '<rect x="-19" y="-13" width="38" height="4" rx="2" fill="#bd8b55"/>' +
+      '<path d="M-13 1v7M13 1v7M-16-3v6M16-3v6" stroke="#6f5c49" stroke-width="2" stroke-linecap="round"/>' +
+      "</g>"
+    );
+  }
+
+  function crosswalk(x, y, angle) {
+    var bars = "";
+    for (var i = 0; i < 5; i += 1) {
+      bars += '<rect x="' + (-24 + i * 12) + '" y="-14" width="5" height="28" rx="1" fill="#f7f1e2" opacity=".9"/>';
+    }
+    return '<g transform="translate(' + x + " " + y + ') rotate(' + (angle || 0) + ')" aria-hidden="true">' + bars + "</g>";
+  }
+
+  function roadName(text, x, y, angle) {
+    return (
+      '<text x="' + x + '" y="' + y + '" class="map-street" text-anchor="middle" transform="rotate(' + (angle || 0) + " " + x + " " + y + ')">' +
+      esc(text) +
+      "</text>"
+    );
+  }
+
+  function mapCompass(x, y) {
+    return (
+      '<g transform="translate(' + x + " " + y + ')" aria-hidden="true">' +
+      '<circle r="27" fill="var(--map-paper)" stroke="var(--map-road-line)" stroke-width="1.2" opacity=".82"/>' +
+      '<circle r="21" fill="none" stroke="var(--map-road-line)" stroke-width=".7" stroke-dasharray="2 4" opacity=".7"/>' +
+      '<path d="M0 -17 6 1 0 -3 -6 1Z" fill="#f08000"/>' +
+      '<path d="M0 15 4 3 0 5 -4 3Z" fill="var(--map-muted)" opacity=".55"/>' +
+      '<text x="0" y="22" text-anchor="middle" fill="var(--map-muted)" font-size="8" font-weight="800" letter-spacing=".12em">N</text>' +
       "</g>"
     );
   }
 
   function road(d) {
     return (
-      '<path d="' + d + '" fill="none" stroke="var(--map-road-edge)" stroke-width="48" stroke-linecap="round"/>' +
-      '<path d="' + d + '" fill="none" stroke="var(--map-road)" stroke-width="38" stroke-linecap="round"/>' +
-      '<path d="' + d + '" fill="none" stroke="var(--map-road-line)" stroke-width="2" stroke-dasharray="8 11" stroke-linecap="round" opacity=".7"/>'
+      '<path d="' + d + '" fill="none" stroke="var(--map-road-edge)" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<path d="' + d + '" fill="none" stroke="var(--map-sidewalk)" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<path d="' + d + '" fill="none" stroke="var(--map-road)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<path d="' + d + '" fill="none" stroke="var(--map-road-line)" stroke-width="1.8" stroke-dasharray="8 12" stroke-linecap="round" opacity=".75"/>'
     );
   }
 
   function sidePath(d) {
     return (
-      '<path d="' + d + '" fill="none" stroke="var(--map-road-edge)" stroke-width="17" stroke-linecap="round"/>' +
-      '<path d="' + d + '" fill="none" stroke="var(--map-road)" stroke-width="12" stroke-linecap="round"/>'
+      '<path d="' + d + '" fill="none" stroke="var(--map-road-edge)" stroke-width="22" stroke-linecap="round"/>' +
+      '<path d="' + d + '" fill="none" stroke="var(--map-sidewalk)" stroke-width="17" stroke-linecap="round"/>' +
+      '<path d="' + d + '" fill="none" stroke="var(--map-road)" stroke-width="11" stroke-linecap="round"/>'
     );
   }
 
   function buildingDims(sponsor) {
-    if (sponsor.building === "tower") return { w: 190, h: 156 };
-    if (sponsor.building === "house") return { w: 82, h: 82 };
-    if (sponsor.size === "md") return { w: 108, h: 102 };
-    return { w: 94, h: 92 };
+    if (sponsor.building === "tower") return { w: 196, h: 164 };
+    if (sponsor.building === "house") return { w: 96, h: 96 };
+    if (sponsor.size === "md") return { w: 116, h: 108 };
+    return { w: 98, h: 96 };
+  }
+
+  function houseArt(sponsor, w) {
+    var half = w / 2;
+    var body = 56;
+    var roof = 31;
+    var accent = sponsor.accent;
+    var roofBase = -body;
+    var roofTop = -body - roof;
+    return (
+      '<ellipse cx="0" cy="9" rx="' + (half + 17) + '" ry="9" fill="var(--map-shadow)" opacity=".42"/>' +
+      '<path d="M-46 5H46" stroke="var(--map-sidewalk)" stroke-width="10" stroke-linecap="round"/>' +
+      '<path d="M-46 5H46" stroke="var(--map-road-line)" stroke-width="1" stroke-dasharray="4 5" opacity=".7"/>' +
+      '<path d="M' + (-half - 18) + ' 2V-8M' + (-half - 18) + ' -4H' + (-half + 2) + 'M' + (half + 18) + ' 2V-8M' + (half + 18) + ' -4H' + (half - 2) + '" stroke="var(--map-tree-dark)" stroke-width="2" stroke-linecap="round" opacity=".55"/>' +
+      '<rect x="' + (-half - 10) + '" y="-4" width="' + (w + 20) + '" height="10" rx="4" fill="var(--map-park-deep)" opacity=".55"/>' +
+      '<rect x="' + (-half) + '" y="' + (-body) + '" width="' + w + '" height="' + body + '" rx="4" fill="var(--map-building)" stroke="var(--map-building-edge)" stroke-width="1.4"/>' +
+      '<rect x="' + (-half + 2) + '" y="' + (-body + 2) + '" width="' + (w - 4) + '" height="' + (body - 4) + '" rx="3" fill="url(#town-wall)" opacity=".38"/>' +
+      '<path d="M' + (-half - 9) + " " + roofBase + "L0 " + roofTop + "L" + (half + 9) + " " + roofBase + 'Z" fill="' + accent + '" stroke="var(--map-building-edge)" stroke-width="1.25" stroke-linejoin="round"/>' +
+      '<path d="M' + (-half - 9) + " " + roofBase + "L0 " + roofTop + "L" + (half + 9) + " " + roofBase + 'Z" fill="url(#town-roof)" opacity=".5"/>' +
+      '<path d="M' + (-half - 12) + " " + roofBase + "H" + (half + 12) + '" stroke="var(--map-building-edge)" stroke-width="2" opacity=".6"/>' +
+      '<rect x="' + (half - 31) + '" y="' + (roofTop + 2) + '" width="11" height="24" rx="2" fill="#a96143" stroke="var(--map-building-edge)" stroke-width="1"/>' +
+      '<rect x="' + (half - 34) + '" y="' + (roofTop + 1) + '" width="17" height="4" rx="1.5" fill="#7f4934"/>' +
+      '<path d="M-16 ' + (roofBase - 6) + "l16-15 16 15Z\" fill=\"" + accent + '" stroke="var(--map-building-edge)" stroke-width="1"/>' +
+      '<rect x="-7" y="' + (roofBase - 11) + '" width="14" height="10" rx="1.5" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1"/>' +
+      '<path d="M' + (-half + 16) + " " + (-body + 14) + 'h22v21h-22z" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.3"/>' +
+      '<path d="M' + (-half + 16) + " " + (-body + 24.5) + 'h22M' + (-half + 27) + " " + (-body + 14) + 'v21" stroke="var(--map-window-frame)" stroke-width="1"/>' +
+      '<rect x="' + (-half + 11) + '" y="' + (-body + 13) + '" width="4" height="23" rx="1" fill="' + accent + '" opacity=".8"/>' +
+      '<rect x="' + (-half + 39) + '" y="' + (-body + 13) + '" width="4" height="23" rx="1" fill="' + accent + '" opacity=".8"/>' +
+      '<path d="M' + (half - 38) + " " + (-body + 14) + 'h22v21h-22z" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.3"/>' +
+      '<path d="M' + (half - 38) + " " + (-body + 24.5) + 'h22M' + (half - 27) + " " + (-body + 14) + 'v21" stroke="var(--map-window-frame)" stroke-width="1"/>' +
+      '<rect x="' + (half - 43) + '" y="' + (-body + 13) + '" width="4" height="23" rx="1" fill="' + accent + '" opacity=".8"/>' +
+      '<rect x="' + (half - 15) + '" y="' + (-body + 13) + '" width="4" height="23" rx="1" fill="' + accent + '" opacity=".8"/>' +
+      '<rect x="-13" y="-29" width="26" height="29" rx="3" fill="' + accent + '" stroke="var(--map-building-edge)" stroke-width="1"/>' +
+      '<circle cx="6" cy="-15" r="1.7" fill="#fff8e8"/>' +
+      '<path d="M-19 -30h38l-5-8h-28z" fill="#a96143" stroke="var(--map-building-edge)" stroke-width="1"/>' +
+      '<path d="M-12 -5v5M12 -5v5M-17 -5v5M17 -5v5" stroke="var(--map-building-edge)" stroke-width="1.5" opacity=".6"/>' +
+      '<rect x="-13" y="-45" width="26" height="12" rx="4" fill="' + accent + '"/>' +
+      '<text x="0" y="-36" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="800">' + esc(sponsor.initials) + "</text>" +
+      '<circle cx="' + (-half - 14) + '" cy="0" r="8" fill="var(--map-tree)"/>' +
+      '<circle cx="' + (-half - 24) + '" cy="-2" r="6" fill="var(--map-tree-dark)"/>' +
+      '<circle cx="' + (half + 15) + '" cy="0" r="8" fill="var(--map-tree)"/>' +
+      '<circle cx="' + (half + 26) + '" cy="-2" r="6" fill="var(--map-tree-dark)"/>' +
+      mapFlowerBed(-half + 20, 1, 0.55) +
+      mapFlowerBed(half - 18, 1, 0.5)
+    );
+  }
+
+  function orgArt(sponsor, w, h) {
+    var half = w / 2;
+    var body = h - 22;
+    var accent = sponsor.accent;
+    var variant = sponsor.building;
+    var roof =
+      variant === "house-office" || variant === "coop"
+        ? '<path d="M' + (-half - 9) + " " + (-body) + "L0 " + (-h - 15) + "L" + (half + 9) + " " + (-body) + 'Z" fill="' + accent + '" stroke="var(--map-building-edge)" stroke-width="1.2" stroke-linejoin="round"/>' +
+          '<path d="M' + (-half - 9) + " " + (-body) + "L0 " + (-h - 15) + "L" + (half + 9) + " " + (-body) + 'Z" fill="url(#town-roof)" opacity=".45"/>'
+        : '<rect x="' + (-half - 7) + '" y="' + (-body - 9) + '" width="' + (w + 14) + '" height="12" rx="3" fill="' + accent + '" stroke="var(--map-building-edge)" stroke-width="1"/>' +
+          '<rect x="' + (-half + 8) + '" y="' + (-body - 16) + '" width="22" height="9" rx="2" fill="var(--map-building-edge)" opacity=".32"/>' +
+          '<rect x="' + (half - 31) + '" y="' + (-body - 14) + '" width="14" height="7" rx="1" fill="var(--map-window)" opacity=".75"/>';
+    var windows = "";
+    var cols = variant === "studio" ? 2 : 3;
+    for (var row = 0; row < 2; row += 1) {
+      for (var col = 0; col < cols; col += 1) {
+        var wx = -half + 16 + col * ((w - 32) / Math.max(cols - 1, 1));
+        var wy = -body + 15 + row * 28;
+        windows +=
+          '<rect x="' + (wx - 10) + '" y="' + wy + '" width="20" height="18" rx="2" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.2"/>' +
+          '<path d="M' + wx + " " + wy + "v18M" + (wx - 10) + " " + (wy + 9) + 'h20" stroke="var(--map-window-frame)" stroke-width=".8" opacity=".85"/>';
+        if (variant === "workshop") {
+          windows += '<rect x="' + (wx - 14) + '" y="' + (wy + 1) + '" width="3" height="16" rx="1" fill="' + accent + '" opacity=".7"/>';
+        }
+      }
+    }
+    var extra = "";
+    if (variant === "coop") {
+      extra =
+        '<ellipse cx="' + (half + 13) + '" cy="3" rx="14" ry="5" fill="var(--map-shadow)" opacity=".35"/>' +
+        '<rect x="' + (half - 1) + '" y="-54" width="26" height="58" rx="13" fill="var(--map-building)" stroke="var(--map-building-edge)" stroke-width="1.2"/>' +
+        '<ellipse cx="' + (half + 12) + '" cy="-54" rx="13" ry="5" fill="' + accent + '" opacity=".85"/>' +
+        '<path d="M' + (half + 4) + ' -45h16M' + (half + 4) + ' -38h16" stroke="var(--map-building-edge)" stroke-width="1" opacity=".35"/>';
+    } else if (variant === "studio") {
+      extra =
+        '<rect x="' + (-half + 11) + '" y="' + (-body + 12) + '" width="' + (w - 22) + '" height="' + (body - 54) + '" rx="2" fill="var(--map-window)" opacity=".7"/>' +
+        '<path d="M' + (-half + 27) + " " + (-body + 12) + "v" + (body - 54) + "M" + (half - 27) + " " + (-body + 12) + "v" + (body - 54) + '" stroke="var(--map-window-frame)" stroke-width="1.2"/>';
+    }
+    return (
+      '<ellipse cx="0" cy="9" rx="' + (half + 18) + '" ry="9" fill="var(--map-shadow)" opacity=".42"/>' +
+      '<path d="M' + (-half - 22) + " " + (-body - 8) + "V-12H" + (-half - 6) + "M" + (half + 22) + " " + (-body - 8) + "V-12H" + (half + 6) + '" stroke="var(--map-tree-dark)" stroke-width="2" stroke-linecap="round" opacity=".55"/>' +
+      '<rect x="' + (-half) + '" y="' + (-body) + '" width="' + w + '" height="' + body + '" rx="3" fill="var(--map-building)" stroke="var(--map-building-edge)" stroke-width="1.4"/>' +
+      '<rect x="' + (-half + 2) + '" y="' + (-body + 2) + '" width="' + (w - 4) + '" height="' + (body - 4) + '" rx="2" fill="url(#town-wall)" opacity=".35"/>' +
+      roof +
+      windows +
+      extra +
+      '<path d="M' + (-half + 1) + " " + (-body + 55) + "H" + (half - 1) + '" stroke="var(--map-building-edge)" stroke-width="1" opacity=".2"/>' +
+      '<rect x="-15" y="-31" width="30" height="31" rx="3" fill="' + accent + '" stroke="var(--map-building-edge)" stroke-width="1"/>' +
+      '<circle cx="7" cy="-16" r="1.8" fill="#fff8e8"/>' +
+      '<path d="M-21 -32h42l-6-9h-30z" fill="#a96143" stroke="var(--map-building-edge)" stroke-width="1"/>' +
+      '<rect x="' + (-half + 16) + '" y="' + (-body + 5) + '" width="' + (w - 32) + '" height="15" rx="7" fill="' + accent + '"/>' +
+      '<text x="0" y="' + (-body + 16) + '" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800" letter-spacing=".06em">' + esc(sponsor.initials) + "</text>" +
+      '<rect x="' + (-half + 22) + '" y="-22" width="8" height="22" rx="2" fill="' + accent + '" opacity=".45"/>' +
+      '<rect x="' + (half - 30) + '" y="-20" width="8" height="20" rx="2" fill="var(--map-tree)"/>' +
+      '<circle cx="' + (-half - 15) + '" cy="-2" r="8" fill="var(--map-tree)"/>' +
+      '<circle cx="' + (half + 17) + '" cy="-2" r="8" fill="var(--map-tree)"/>' +
+      mapFlowerBed(-half + 19, 2, 0.5)
+    );
+  }
+
+  function towerArt(sponsor, w, h) {
+    var half = w / 2;
+    var accent = sponsor.accent;
+    return (
+      '<ellipse cx="0" cy="10" rx="' + (half + 28) + '" ry="11" fill="var(--map-shadow)" opacity=".45"/>' +
+      '<path d="M-84 6H84" stroke="var(--map-sidewalk)" stroke-width="13" stroke-linecap="round"/>' +
+      '<path d="M-84 6H84" stroke="var(--map-road-line)" stroke-width="1" stroke-dasharray="4 5" opacity=".6"/>' +
+      '<rect x="' + (-half) + '" y="' + (-h + 14) + '" width="' + w + '" height="' + (h - 14) + '" rx="5" fill="var(--map-building)" stroke="var(--map-building-edge)" stroke-width="1.5"/>' +
+      '<rect x="' + (-half + 3) + '" y="' + (-h + 17) + '" width="' + (w - 6) + '" height="' + (h - 20) + '" rx="3" fill="url(#town-wall)" opacity=".32"/>' +
+      '<rect x="' + (-half - 9) + '" y="' + (-h + 2) + '" width="' + (w + 18) + '" height="18" rx="4" fill="' + accent + '" stroke="var(--map-building-edge)" stroke-width="1"/>' +
+      '<rect x="' + (-half + 18) + '" y="' + (-h + 34) + '" width="' + (w - 36) + '" height="52" rx="3" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.4"/>' +
+      '<path d="M' + (-half + 52) + " " + (-h + 34) + "V" + (-h + 86) + "M" + (-half + 84) + " " + (-h + 34) + "V" + (-h + 86) + "M" + (-half + 116) + " " + (-h + 34) + "V" + (-h + 86) + '" stroke="var(--map-window-frame)" stroke-width="1.2" opacity=".8"/>' +
+      '<rect x="' + (-half + 18) + '" y="' + (-h + 98) + '" width="40" height="34" rx="2" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.2"/>' +
+      '<rect x="' + (half - 58) + '" y="' + (-h + 98) + '" width="40" height="34" rx="2" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.2"/>' +
+      '<rect x="-18" y="-39" width="36" height="39" rx="3" fill="' + accent + '" stroke="var(--map-building-edge)" stroke-width="1"/>' +
+      '<circle cx="7" cy="-20" r="1.8" fill="#fff8e8"/>' +
+      '<rect x="-45" y="-74" width="90" height="22" rx="11" fill="' + accent + '"/>' +
+      '<text x="0" y="-58" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="800" letter-spacing=".12em">ONIR</text>' +
+      '<path d="M' + (half - 26) + " " + (-h + 2) + "V" + (-h - 45) + '" stroke="' + accent + '" stroke-width="2.5"/>' +
+      '<path d="M' + (half - 26) + " " + (-h - 45) + 'h32l-8 8 8 8h-32z" fill="' + accent + '"/>' +
+      '<rect x="' + (-half - 4) + '" y="' + (-h + 18) + '" width="' + (w + 8) + '" height="5" rx="2" fill="var(--map-park-deep)" opacity=".9"/>' +
+      '<path d="M-72 6 -78 -3H-68M72 6 78 -3H68" stroke="var(--map-tree-dark)" stroke-width="2" opacity=".5"/>' +
+      '<circle cx="' + (half + 28) + '" cy="-2" r="10" fill="var(--map-tree)"/>' +
+      '<circle cx="' + (-half - 27) + '" cy="-2" r="9" fill="var(--map-tree-dark)"/>' +
+      mapFlowerBed(-half + 24, 2, 0.7) +
+      mapFlowerBed(half - 24, 2, 0.7)
+    );
   }
 
   function buildingMarkup(sponsor) {
@@ -83,55 +305,18 @@
     var w = dims.w;
     var h = dims.h;
     var half = w / 2;
-    var accent = sponsor.accent;
-    var body = "";
+    var art = "";
     var labelY = 24;
 
     if (sponsor.building === "tower") {
-      labelY = 32;
-      body =
-        '<rect x="' + -half + '" y="' + (-h + 14) + '" width="' + w + '" height="' + (h - 14) + '" rx="7" fill="var(--map-building)" stroke="var(--map-building-edge)" stroke-width="1.4"/>' +
-        '<rect x="' + (-half - 7) + '" y="' + (-h + 2) + '" width="' + (w + 14) + '" height="18" rx="5" fill="' + accent + '"/>' +
-        '<rect x="' + (-half + 16) + '" y="' + (-h + 34) + '" width="' + (w - 32) + '" height="40" rx="4" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.4"/>' +
-        '<path d="M' + (-half + 44) + " " + (-h + 34) + "V" + (-h + 74) + "M" + (-half + 76) + " " + (-h + 34) + "V" + (-h + 74) + "M" + (-half + 108) + " " + (-h + 34) + "V" + (-h + 74) + '" stroke="var(--map-window-frame)" stroke-width="1.2" opacity=".85"/>' +
-        '<rect x="' + (-half + 18) + '" y="' + (-h + 88) + '" width="42" height="34" rx="3" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.2"/>' +
-        '<rect x="' + (half - 60) + '" y="' + (-h + 88) + '" width="42" height="34" rx="3" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.2"/>' +
-        '<rect x="-16" y="-38" width="32" height="38" rx="3" fill="' + accent + '"/>' +
-        '<rect x="-34" y="-72" width="68" height="20" rx="10" fill="' + accent + '"/>' +
-        '<text x="0" y="-57" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="800" letter-spacing=".08em">ONIR</text>' +
-        '<path d="M' + (half - 24) + " " + (-h + 2) + "V" + (-h - 42) + '" stroke="' + accent + '" stroke-width="2.5"/>' +
-        '<path d="M' + (half - 24) + " " + (-h - 42) + 'h30l-8 8 8 8h-30z" fill="' + accent + '"/>' +
-        '<circle cx="-26" cy="-50" r="5" fill="var(--map-window)"/>' +
-        '<circle cx="26" cy="-50" r="5" fill="var(--map-window)"/>';
+      labelY = 34;
+      art = towerArt(sponsor, w, h);
     } else if (sponsor.building === "house") {
-      labelY = 22;
-      body =
-        '<rect x="' + -half + '" y="-50" width="' + w + '" height="50" rx="4" fill="var(--map-building)" stroke="var(--map-building-edge)" stroke-width="1.3"/>' +
-        '<path d="M' + (-half - 8) + " -50L0 " + -78 + "L" + (half + 8) + ' -50Z" fill="' + accent + '" stroke="var(--map-building-edge)" stroke-width="1.2" stroke-linejoin="round"/>' +
-        '<rect x="' + (half - 22) + '" y="-74" width="9" height="20" rx="2" fill="var(--map-building-edge)" opacity=".55"/>' +
-        '<rect x="-12" y="-26" width="24" height="26" rx="3" fill="' + accent + '"/>' +
-        '<rect x="' + (-half + 13) + '" y="-37" width="19" height="17" rx="2" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.2"/>' +
-        '<rect x="' + (half - 32) + '" y="-37" width="19" height="17" rx="2" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.2"/>' +
-        '<path d="M' + (-half + 22) + " -37v17M" + (half - 22) + ' -37v17" stroke="var(--map-window-frame)" stroke-width="1"/>' +
-        '<path d="M' + (-half - 7) + " 0h" + (w + 14) + '" stroke="var(--map-tree-dark)" stroke-width="4" stroke-linecap="round"/>' +
-        '<circle cx="' + (-half - 8) + '" cy="-4" r="7" fill="var(--map-tree)"/>' +
-        '<circle cx="' + (half + 8) + '" cy="-4" r="7" fill="var(--map-tree)"/>' +
-        '<rect x="-12" y="-48" width="24" height="12" rx="3" fill="' + accent + '" opacity=".9"/>' +
-        '<text x="0" y="-39" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="800">' + esc(sponsor.initials) + "</text>";
+      labelY = 25;
+      art = houseArt(sponsor, w);
     } else {
-      var roofStyle = sponsor.building === "house-office" ? "pitched" : "flat";
-      body =
-        '<rect x="' + -half + '" y="' + (-h + 15) + '" width="' + w + '" height="' + (h - 15) + '" rx="4" fill="var(--map-building)" stroke="var(--map-building-edge)" stroke-width="1.3"/>' +
-        (roofStyle === "pitched"
-          ? '<path d="M' + (-half - 8) + " " + (-h + 15) + "L0 " + (-h - 8) + "L" + (half + 8) + " " + (-h + 15) + 'Z" fill="' + accent + '" stroke="var(--map-building-edge)" stroke-width="1.2" stroke-linejoin="round"/>'
-          : '<rect x="' + (-half - 5) + '" y="' + (-h + 6) + '" width="' + (w + 10) + '" height="13" rx="3" fill="' + accent + '"/>') +
-        '<rect x="' + (-half + 13) + '" y="' + (-h + 48) + '" width="19" height="18" rx="2" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.2"/>' +
-        '<rect x="' + (-half + 42) + '" y="' + (-h + 48) + '" width="19" height="18" rx="2" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.2"/>' +
-        '<rect x="' + (half - 32) + '" y="' + (-h + 48) + '" width="19" height="18" rx="2" fill="var(--map-window)" stroke="var(--map-window-frame)" stroke-width="1.2"/>' +
-        '<rect x="-13" y="-31" width="26" height="31" rx="3" fill="' + accent + '"/>' +
-        '<rect x="' + (-half + 13) + '" y="' + (-h + 28) + '" width="' + (w - 26) + '" height="14" rx="7" fill="' + accent + '" opacity=".9"/>' +
-        '<text x="0" y="' + (-h + 38) + '" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="800" letter-spacing=".05em">' + esc(sponsor.initials) + "</text>" +
-        '<path d="M' + (-half + 11) + " " + (-h + 76) + "h" + (w - 22) + '" stroke="var(--map-building-edge)" stroke-width="1" opacity=".16"/>';
+      labelY = 25;
+      art = orgArt(sponsor, w, h);
     }
 
     return (
@@ -139,9 +324,9 @@
       esc(sponsor.name + " — " + sponsor.typeLabel + " — " + sponsor.sponsorship.join(", ")) + '" transform="translate(' + sponsor.x + " " + sponsor.y + ')">' +
       "<title>" + esc(sponsor.name) + "</title>" +
       "<desc>" + esc(sponsor.typeLabel + ". " + sponsor.description) + "</desc>" +
-      '<ellipse class="bldg-shadow" cx="0" cy="9" rx="' + (w * 0.58) + '" ry="8" fill="var(--map-shadow)" opacity=".55"/>' +
-      body +
-      '<rect class="focus-ring" x="' + (-half - 11) + '" y="' + (-h - 16) + '" width="' + (w + 22) + '" height="' + (h + 28) + '" rx="9" fill="none" stroke="' + accent + '" stroke-width="2.5" opacity="0"/>' +
+      '<g class="building-art">' + art + "</g>" +
+      '<rect class="hit-area" x="' + (-half - 18) + '" y="' + (-h - 24) + '" width="' + (w + 36) + '" height="' + (h + 44) + '" rx="10" fill="transparent"/>' +
+      '<rect class="focus-ring" x="' + (-half - 14) + '" y="' + (-h - 18) + '" width="' + (w + 28) + '" height="' + (h + 32) + '" rx="9" fill="none" stroke="' + sponsor.accent + '" stroke-width="2.5" opacity="0"/>' +
       '<text class="map-label" x="0" y="' + labelY + '" text-anchor="middle">' + esc(sponsor.name) + "</text>" +
       "</g>"
     );
@@ -151,10 +336,11 @@
     return (
       '<g class="empty-plot" data-empty-plot tabindex="0" role="button" aria-label="Emplacement libre — devenir sponsor" transform="translate(' + x + " " + y + ')">' +
       "<title>Votre place</title>" +
-      '<rect x="-38" y="-26" width="76" height="52" rx="9"/>' +
-      '<path d="M0 -12v24M-12 0h24" stroke="var(--map-ink)" stroke-width="2" stroke-linecap="round" opacity=".55"/>' +
-      '<text x="0" y="15" text-anchor="middle">Votre place</text>' +
-      '<text x="0" y="42" class="map-label map-label-small" text-anchor="middle">Devenir sponsor</text>' +
+      '<ellipse cx="0" cy="4" rx="42" ry="10" fill="var(--map-shadow)" opacity=".2"/>' +
+      '<rect x="-40" y="-29" width="80" height="58" rx="10" fill="url(#town-paper)" stroke="var(--map-muted)" stroke-width="1.4" stroke-dasharray="7 6" opacity=".82"/>' +
+      '<path d="M0 -14v28M-14 0h28" stroke="var(--map-ink)" stroke-width="2" stroke-linecap="round" opacity=".5"/>' +
+      '<text x="0" y="18" text-anchor="middle" class="map-label" font-size="11">Votre place</text>' +
+      '<text x="0" y="46" class="map-label map-label-small" text-anchor="middle">Devenir sponsor</text>' +
       "</g>"
     );
   }
@@ -168,59 +354,100 @@
       return sponsor.id !== "onirtech";
     });
 
+    var parkA = "M46 96C118 40 220 58 250 142c28 78-40 137-118 141C57 286 9 201 46 96Z";
+    var parkB = "M946 54c78-27 155 18 159 91 4 61-44 106-110 104-79-2-116-53-107-113 4-30 27-68 58-82Z";
+    var parkC = "M920 636c80-35 180 3 196 70 12 52-38 93-114 89-89-5-139-63-112-110 8-15 18-35 30-49Z";
+    var pond = "M74 636c28-32 91-43 129-15 42 31 31 87-18 108-52 23-119-1-129-42-5-19 3-36 18-51Z";
+
     map.innerHTML =
       "<title>La Ville ONIR — carte interactive des sponsors</title>" +
       "<desc>Une carte illustrée en 2D. ONIR-CMS occupe le centre. Cliquez sur un bâtiment pour découvrir son sponsor, ou sur un emplacement libre pour proposer votre soutien.</desc>" +
       "<defs>" +
-      '<pattern id="town-dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="var(--map-road-line)" opacity=".28"/></pattern>' +
+      '<pattern id="town-dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="var(--map-road-line)" opacity=".24"/></pattern>' +
+      '<pattern id="town-paper" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M0 18 18 0" stroke="var(--map-road-line)" stroke-width=".6" opacity=".18"/></pattern>' +
+      '<pattern id="town-grass" width="22" height="18" patternUnits="userSpaceOnUse"><path d="M4 17c2-5 4-5 6 0M14 15c1-4 3-4 4 0" fill="none" stroke="var(--map-tree-dark)" stroke-width="1" opacity=".3"/></pattern>' +
+      '<pattern id="town-roof" width="14" height="9" patternUnits="userSpaceOnUse"><path d="M0 9 7 0l7 9" fill="none" stroke="#ffffff" stroke-width="1" opacity=".3"/></pattern>' +
+      '<pattern id="town-wall" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M0 12 12 0M-3 3 3-3M9 15 15 9" stroke="var(--map-building-edge)" stroke-width=".55" opacity=".25"/></pattern>' +
+      '<pattern id="town-water" width="28" height="14" patternUnits="userSpaceOnUse"><path d="M0 7c7-5 14 5 21 0" fill="none" stroke="var(--map-water-light)" stroke-width="1.4" opacity=".65"/></pattern>' +
       '<clipPath id="town-clip"><rect width="1200" height="760" rx="30"/></clipPath>' +
       "</defs>" +
       '<g clip-path="url(#town-clip)">' +
       '<rect width="1200" height="760" fill="var(--map-paper)"/>' +
       '<rect width="1200" height="760" fill="url(#town-dots)"/>' +
-      '<path d="M46 96C118 40 220 58 250 142c28 78-40 137-118 141C57 286 9 201 46 96Z" fill="var(--map-park)"/>' +
-      '<path d="M946 54c78-27 155 18 159 91 4 61-44 106-110 104-79-2-116-53-107-113 4-30 27-68 58-82Z" fill="var(--map-park)"/>' +
-      '<path d="M920 636c80-35 180 3 196 70 12 52-38 93-114 89-89-5-139-63-112-110 8-15 18-35 30-49Z" fill="var(--map-park-deep)"/>' +
-      '<path d="M74 636c28-32 91-43 129-15 42 31 31 87-18 108-52 23-119-1-129-42-5-19 3-36 18-51Z" fill="var(--map-water)"/>' +
+      '<rect width="1200" height="760" fill="url(#town-paper)" opacity=".65"/>' +
+      '<path d="M0 0h1200v760H0z" fill="none" stroke="var(--map-road-line)" stroke-width="2" opacity=".35"/>' +
+      '<path d="' + parkA + '" fill="var(--map-park)"/><path d="' + parkA + '" fill="url(#town-grass)" opacity=".65"/>' +
+      '<path d="' + parkB + '" fill="var(--map-park)"/><path d="' + parkB + '" fill="url(#town-grass)" opacity=".65"/>' +
+      '<path d="' + parkC + '" fill="var(--map-park-deep)"/><path d="' + parkC + '" fill="url(#town-grass)" opacity=".6"/>' +
+      '<path d="' + pond + '" fill="var(--map-water)"/><path d="' + pond + '" fill="url(#town-water)" opacity=".55"/>' +
       '<path d="M94 650c22-17 64-18 87-2" fill="none" stroke="var(--map-water-light)" stroke-width="3" stroke-linecap="round" opacity=".8"/>' +
+      '<path d="M68 618c11-8 24-8 35 0M122 686c18-8 37-6 52 4" fill="none" stroke="var(--map-tree-dark)" stroke-width="1.5" stroke-linecap="round" opacity=".55"/>' +
       road("M40 380H1160") +
       road("M600 26V734") +
-      '<ellipse cx="600" cy="380" rx="320" ry="225" fill="none" stroke="var(--map-road-edge)" stroke-width="48"/>' +
-      '<ellipse cx="600" cy="380" rx="320" ry="225" fill="none" stroke="var(--map-road)" stroke-width="38"/>' +
-      '<ellipse cx="600" cy="380" rx="320" ry="225" fill="none" stroke="var(--map-road-line)" stroke-width="2" stroke-dasharray="8 11" opacity=".7"/>' +
-      sidePath("M350 300L312 238") +
-      sidePath("M520 210L478 168") +
-      sidePath("M680 210L722 168") +
-      sidePath("M850 300L895 234") +
-      sidePath("M984 412L956 432") +
-      sidePath("M842 544L826 574") +
-      sidePath("M620 611V636") +
-      sidePath("M392 548L386 575") +
-      sidePath("M284 442L260 432") +
-      '<circle cx="600" cy="380" r="132" fill="var(--map-plaza)" stroke="var(--map-road-line)" stroke-width="2"/>' +
-      '<circle cx="600" cy="380" r="97" fill="var(--map-plaza-inner)"/>' +
-      '<circle cx="600" cy="500" r="17" fill="var(--map-water)" stroke="var(--map-water-light)" stroke-width="2"/>' +
-      '<circle cx="600" cy="500" r="6" fill="var(--map-water-light)"/>' +
+      '<ellipse cx="600" cy="380" rx="320" ry="225" fill="none" stroke="var(--map-road-edge)" stroke-width="56"/>' +
+      '<ellipse cx="600" cy="380" rx="320" ry="225" fill="none" stroke="var(--map-sidewalk)" stroke-width="46"/>' +
+      '<ellipse cx="600" cy="380" rx="320" ry="225" fill="none" stroke="var(--map-road)" stroke-width="36"/>' +
+      '<ellipse cx="600" cy="380" rx="320" ry="225" fill="none" stroke="var(--map-road-line)" stroke-width="1.8" stroke-dasharray="8 12" opacity=".75"/>' +
+      sidePath("M350 300L310 252") +
+      sidePath("M510 200L482 160") +
+      sidePath("M690 200L718 160") +
+      sidePath("M860 300L894 252") +
+      sidePath("M984 424L1002 466") +
+      sidePath("M846 608L850 620") +
+      sidePath("M680 600L696 662") +
+      sidePath("M470 600L456 642") +
+      sidePath("M284 480L210 496") +
+      sidePath("M258 454C238 480 226 512 226 548") +
+      sidePath("M942 454C962 480 974 512 970 548") +
+      crosswalk(600, 270, 0) +
+      crosswalk(600, 500, 0) +
+      crosswalk(480, 380, 90) +
+      crosswalk(720, 380, 90) +
+      '<circle cx="600" cy="380" r="134" fill="var(--map-plaza)" stroke="var(--map-road-line)" stroke-width="2"/>' +
+      '<circle cx="600" cy="380" r="134" fill="url(#town-paper)" opacity=".35"/>' +
+      '<circle cx="600" cy="380" r="99" fill="var(--map-plaza-inner)"/>' +
+      '<circle cx="600" cy="500" r="34" fill="var(--map-plaza)" stroke="var(--map-road-line)" stroke-width="2"/>' +
+      '<circle cx="600" cy="500" r="26" fill="var(--map-water)"/>' +
+      '<circle cx="600" cy="500" r="26" fill="url(#town-water)" opacity=".7"/>' +
+      '<circle cx="600" cy="500" r="7" fill="var(--map-water-light)" stroke="var(--map-window-frame)" stroke-width="1.4"/>' +
+      '<path d="M600 482c-10 8-10 18 0 25M600 482c10 8 10 18 0 25" fill="none" stroke="var(--map-water-light)" stroke-width="2" stroke-linecap="round" opacity=".9"/>' +
       '<path d="M531 325c14-12 32-12 45 0M624 325c14-12 32-12 45 0" fill="none" stroke="var(--map-tree-dark)" stroke-width="2" stroke-linecap="round" opacity=".55"/>' +
-      '<text x="600" y="62" class="map-district" text-anchor="middle">Quartier des organisations</text>' +
+      mapBench(500, 315, -8) + mapBench(700, 315, 8) + mapBench(500, 456, 8) + mapBench(700, 456, -8) +
+      mapFlowerBed(525, 462, 0.8) + mapFlowerBed(675, 462, 0.8) +
+      mapLamp(470, 300, 0.95) + mapLamp(730, 300, 0.95) + mapLamp(470, 462, 0.95) + mapLamp(730, 462, 0.95) +
+      '<text x="600" y="48" class="map-district" text-anchor="middle">Quartier des organisations</text>' +
       '<text x="1110" y="385" class="map-district" text-anchor="middle" transform="rotate(90 1110 385)">Place des partenaires</text>' +
       '<text x="600" y="744" class="map-district" text-anchor="middle">Allée des particuliers</text>' +
-      mapTree(110, 118, 1.05) +
-      mapTree(168, 88, 0.9) +
-      mapTree(205, 186, 0.8) +
-      mapTree(1000, 112, 0.9) +
-      mapTree(1062, 158, 1.05) +
-      mapTree(1100, 470, 0.85) +
-      mapTree(1040, 666, 1) +
-      mapTree(955, 646, 0.8) +
-      mapTree(160, 674, 0.9) +
-      mapTree(218, 704, 0.72) +
-      mapTree(66, 402, 0.78) +
-      mapTree(1128, 628, 0.8) +
+      roadName("Rue des Orangers", 420, 392, 0) +
+      roadName("Passage des Idées", 614, 150, 90) +
+      roadName("Boucle des Bâtisseurs", 820, 590, 26) +
+      mapCompass(1102, 84) +
+      mapTree(110, 118, 1.05, "round") +
+      mapTree(168, 88, 0.9, "pine") +
+      mapTree(205, 186, 0.8, "bush") +
+      mapTree(128, 206, 0.64, "round") +
+      mapTree(1000, 112, 0.9, "pine") +
+      mapTree(1062, 158, 1.05, "round") +
+      mapTree(978, 188, 0.64, "bush") +
+      mapTree(1100, 470, 0.85, "round") +
+      mapTree(1038, 666, 1, "pine") +
+      mapTree(955, 646, 0.8, "round") +
+      mapTree(1084, 700, 0.58, "bush") +
+      mapTree(160, 674, 0.9, "round") +
+      mapTree(218, 704, 0.72, "pine") +
+      mapTree(66, 402, 0.78, "round") +
+      mapTree(1128, 628, 0.8, "round") +
+      mapTree(540, 82, 0.55, "bush") +
+      mapTree(660, 82, 0.55, "bush") +
+      mapBench(112, 172, 28) +
+      mapBench(1012, 92, -22) +
+      mapBush(88, 464, 0.6) +
+      mapBush(1098, 352, 0.55) +
+      mapBush(1048, 596, 0.6) +
       (center ? buildingMarkup(center) : "") +
       others.map(buildingMarkup).join("") +
-      emptyPlotMarkup(420, 304) +
-      emptyPlotMarkup(780, 462) +
+      emptyPlotMarkup(420, 300) +
+      emptyPlotMarkup(780, 468) +
       "</g>";
   }
 
@@ -278,7 +505,9 @@
 
   function hideHover() {
     var hover = document.querySelector("[data-map-hover]");
-    if (hover) hover.classList.remove("is-visible");
+    if (!hover) return;
+    hover.classList.remove("is-visible");
+    hover.innerHTML = "";
   }
 
   function initMap() {
@@ -345,20 +574,82 @@
 
     var toggle = document.querySelector("[data-view-toggle]");
     var viewStatus = document.querySelector("[data-view-status]");
+    var view3d = stage.querySelector("[data-town-3d]");
+    var town3d = null;
+    var loading3d = false;
+
+    function setViewLabel(text) {
+      var label = toggle ? toggle.querySelector("[data-view-label]") : null;
+      if (label) label.textContent = text;
+    }
+
+    async function enter3D() {
+      if (loading3d || !view3d) return;
+      loading3d = true;
+      toggle.disabled = true;
+      toggle.setAttribute("aria-busy", "true");
+      setViewLabel("Chargement 3D…");
+      hideHover();
+      view3d.hidden = false;
+
+      try {
+        if (!town3d) {
+          var module = await import("/assets/js/town-3d.js?v=20261026f");
+          town3d = module.createTown3D({
+            container: view3d,
+            sponsors: sponsors,
+            onOpen: function (id) {
+              openSponsor(byId[id]);
+            },
+            onHover: function (id) {
+              if (id) showHover(byId[id]);
+              else hideHover();
+            }
+          });
+        }
+        stage.classList.add("is-3d");
+        toggle.setAttribute("aria-pressed", "true");
+        setViewLabel("Vue 2D");
+        if (viewStatus) viewStatus.textContent = "Vue 3D activée. Faites glisser pour tourner, cliquez sur un bâtiment pour ouvrir son sponsor.";
+        town3d.start();
+      } catch (error) {
+        view3d.hidden = true;
+        stage.classList.remove("is-3d");
+        toggle.setAttribute("aria-pressed", "false");
+        setViewLabel("Vue 3D");
+        if (viewStatus) viewStatus.textContent = "La vue 3D n’est pas disponible sur ce navigateur. La carte 2D reste active.";
+        console.warn("Vue 3D indisponible", error);
+      } finally {
+        loading3d = false;
+        toggle.disabled = false;
+        toggle.removeAttribute("aria-busy");
+      }
+    }
+
+    function exit3D() {
+      if (town3d) town3d.stop();
+      hideHover();
+      stage.classList.remove("is-3d");
+      view3d.hidden = true;
+      toggle.setAttribute("aria-pressed", "false");
+      setViewLabel("Vue 3D");
+      if (viewStatus) viewStatus.textContent = "Vue 2D activée.";
+      centerMap();
+    }
+
     if (toggle) {
       toggle.addEventListener("click", function () {
-        var is3d = stage.classList.toggle("is-3d");
-        toggle.setAttribute("aria-pressed", String(is3d));
-        var label = toggle.querySelector("[data-view-label]");
-        if (label) label.textContent = is3d ? "Vue 2D" : "Vue 3D";
-        if (viewStatus) {
-          viewStatus.textContent = is3d
-            ? "Vue 3D isométrique activée. Cliquez à nouveau pour revenir à la carte 2D."
-            : "Vue 2D activée.";
-        }
-        centerMap();
+        if (stage.classList.contains("is-3d")) exit3D();
+        else enter3D();
       });
     }
+
+    window.addEventListener("onir:tabchange", function (event) {
+      hideHover();
+      if (!town3d) return;
+      if (event.detail.name === "sponsor" && stage.classList.contains("is-3d")) town3d.start();
+      else town3d.stop();
+    });
   }
 
   function initSheets() {
@@ -721,6 +1012,7 @@
           window.dispatchEvent(new Event("resize"));
         }, 30);
       }
+      window.dispatchEvent(new CustomEvent("onir:tabchange", { detail: { name: name } }));
     }
 
     tabs.forEach(function (tab, index) {

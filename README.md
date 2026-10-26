@@ -10,7 +10,7 @@ L’application (dashboard, liens publics, API, documentation) vit dans le dép�
 
 - `index.html` — page d’accueil et choix des démonstrations.
 - `plugins/` — marketplace et téléchargement des templates.
-- `participer/` — page unique avec onglets Sponsor (ville interactive + chatbot) et Développeur.
+- `participer/` — page unique avec onglets Sponsor (ville 2D/3D + chatbot) et Développeur.
 - `mentions-legales/` — mentions légales.
 - `confidentialite-site/` — politique de confidentialité du site et des démonstrations.
 - `assets/css/` — styles autonomes (aucun framework).
@@ -19,7 +19,9 @@ L’application (dashboard, liens publics, API, documentation) vit dans le dép�
 - `assets/logo/` — logos clair/sombre.
 - `assets/plugins/` — archives `.onirtech-template` et manifests de release.
 - `assets/data/sponsors.js` — données de la ville et des sponsors (démonstration).
-- `assets/js/participer.js` — carte 2D/3D, annuaire et chatbot de sponsoring.
+- `assets/js/participer.js` — carte 2D, onglets et chatbot de sponsoring.
+- `assets/js/town-3d.js` — scène Three.js low-poly chargée à la demande.
+- `assets/vendor/` — Three.js et OrbitControls (MIT, fichiers de licence inclus).
 
 ## Développement local
 

@@ -19,7 +19,15 @@
     <link rel="icon" href="/assets/logo/onir-cms-light.webp" type="image/webp" />
     <link rel="stylesheet" href="/assets/css/base.css" />
     <link rel="stylesheet" href="/assets/css/landing.css?v=20261026c" />
-    <link rel="stylesheet" href="/assets/css/participer.css?v=20261026c" />
+    <link rel="stylesheet" href="/assets/css/participer.css?v=20261026f" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "/assets/vendor/three/three.module.min.js",
+          "three/addons/": "/assets/vendor/three-addons/"
+        }
+      }
+    </script>
     <script>
       (function () {
         try {
@@ -105,6 +113,9 @@
               <div class="town-viewport">
                 <div class="map-perspective">
                   <svg id="town-map" class="town-map" data-town-map viewBox="0 0 1200 760" role="group" aria-label="Carte interactive de la Ville ONIR"></svg>
+                  <div class="town-3d" data-town-3d hidden>
+                    <span class="town-3d-loading">Construction de la ville 3D…</span>
+                  </div>
                 </div>
                 <div class="map-hover" data-map-hover aria-hidden="true"></div>
               </div>
@@ -211,7 +222,7 @@
     </div>
 
     <script src="/assets/js/main.js?v=20261026c" defer></script>
-    <script src="/assets/data/sponsors.js?v=20261026c" defer></script>
-    <script src="/assets/js/participer.js?v=20261026c" defer></script>
+    <script src="/assets/data/sponsors.js?v=20261026f" defer></script>
+    <script src="/assets/js/participer.js?v=20261026f" defer></script>
   </body>
 </html>
