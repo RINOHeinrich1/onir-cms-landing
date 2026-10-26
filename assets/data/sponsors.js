@@ -3,23 +3,43 @@
 
   window.ONIR_SPONSORS = [
     {
-      id: "onirtech",
-      name: "ONIRTECH",
-      initials: "OT",
-      kind: "organization",
-      typeLabel: "Société",
-      tier: "Fondateur",
-      sponsorship: ["Hébergement", "Expertise"],
+      id: "onir-cms",
+      name: "ONIR-CMS",
+      initials: "OC",
+      kind: "platform",
+      typeLabel: "Plateforme",
+      tier: "Centre",
+      sponsorship: ["Open source", "Communauté"],
       description:
-        "Éditeur d’ONIR CMS. ONIRTECH héberge la ville et accompagne les projets qui font vivre l’écosystème.",
-      url: "https://onirtech.com",
-      linkLabel: "Visiter onirtech.com",
+        "La plateforme ONIR-CMS : le cœur ouvert de la ville, ses parcours, ses liens et son écosystème.",
+      url: "https://cms.onirtech.com/",
+      linkLabel: "Ouvrir ONIR-CMS",
       accent: "#f08000",
       building: "tower",
       size: "lg",
       district: "centre",
       x: 600,
       y: 382,
+      demo: false
+    },
+    {
+      id: "onirtech",
+      name: "ONIRTECH",
+      initials: "OT",
+      kind: "organization",
+      typeLabel: "Société",
+      tier: "Partenaire",
+      sponsorship: ["Hébergement", "Expertise"],
+      description:
+        "Éditeur d’ONIR CMS et partenaire de l’écosystème. ONIRTECH héberge la ville et accompagne les projets.",
+      url: "https://onirtech.com",
+      linkLabel: "Visiter onirtech.com",
+      accent: "#f08000",
+      building: "workshop",
+      size: "md",
+      district: "partenaires",
+      x: 780,
+      y: 468,
       demo: false
     },
     {

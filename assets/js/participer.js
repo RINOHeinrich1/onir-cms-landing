@@ -6,6 +6,7 @@
   sponsors.forEach(function (sponsor) {
     byId[sponsor.id] = sponsor;
   });
+  var partnerChatUrl = document.querySelector("[data-partner-chat-url]")?.getAttribute("data-partner-chat-url") || "";
 
   function esc(value) {
     return String(value == null ? "" : value)
@@ -339,7 +340,7 @@
       '<path d="M' + (-half + 12) + " " + (-bodyH - 12) + "h" + (w - 24) + '" stroke="#4a4d4c" stroke-width="1.4" opacity=".7"/>' +
       '<path d="M' + (-half + 20) + " " + (-bodyH - 12) + "v-9M" + (half - 20) + " " + (-bodyH - 12) + "v-9" + '" stroke="#5f625f" stroke-width="1"/>' +
       '<rect x="-48" y="' + (-bodyH + 12) + '" width="96" height="15" rx="5" fill="' + accent + '"/>' +
-      '<text x="0" y="' + (-bodyH + 23) + '" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="800" letter-spacing=".1em">ONIR</text>' +
+      '<text x="0" y="' + (-bodyH + 23) + '" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="800" letter-spacing=".1em">ONIR-CMS</text>' +
       '<rect x="' + (-half + 28) + '" y="-8" width="16" height="8" rx="1" fill="#8b5a37" opacity=".8"/>' +
       '<rect x="' + (half - 44) + '" y="-8" width="16" height="8" rx="1" fill="#8b5a37" opacity=".8"/>' +
       '<path d="M' + (half - 4) + ' -112V-141" stroke="#2b3033" stroke-width="2"/>' +
@@ -401,9 +402,9 @@
     var map = document.querySelector("[data-town-map]");
     if (!map) return;
 
-    var center = byId.onirtech;
+    var center = byId["onir-cms"];
     var others = sponsors.filter(function (sponsor) {
-      return sponsor.id !== "onirtech";
+      return sponsor.id !== center.id;
     });
 
     var parkA = "M46 96C118 40 220 58 250 142c28 78-40 137-118 141C57 286 9 201 46 96Z";
@@ -505,7 +506,7 @@
       (center ? buildingMarkup(center) : "") +
       others.map(buildingMarkup).join("") +
       emptyPlotMarkup(420, 300) +
-      emptyPlotMarkup(780, 468) +
+      emptyPlotMarkup(860, 300) +
       "</g>";
   }
 
@@ -652,7 +653,7 @@
 
       try {
         if (!town3d) {
-          var module = await import("/assets/js/town-3d.js?v=20261026h");
+          var module = await import("/assets/js/town-3d.js?v=20261026i");
           town3d = module.createTown3D({
             container: view3d,
             sponsors: sponsors,
@@ -916,6 +917,10 @@
   }
 
   function openChat() {
+    if (partnerChatUrl) {
+      window.open(partnerChatUrl, "_blank", "noopener");
+      return;
+    }
     var dialog = document.querySelector("[data-sponsor-chat]");
     if (!dialog) return;
     if (chatState.phase === "success") resetChat();

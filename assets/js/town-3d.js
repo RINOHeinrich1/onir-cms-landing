@@ -619,7 +619,7 @@ function createOffice(sponsor, center) {
   addBox(group, 4.0, 0.2, 2.5, 0, 0.34, front + 1.0, makePavingMaterial(), false);
 
   addCircuitPlaque(group, sponsor.accent, front + 0.14, 4.05, 6.25, 2.35, 1.15);
-  addSign(group, center ? "ONIR" : sponsor.initials, sponsor.accent, front + 0.2, 3.25, center ? 5.4 : 3.0, center ? 1.4 : 1.0);
+  addSign(group, center ? "ONIR-CMS" : sponsor.initials, sponsor.accent, front + 0.2, 3.25, center ? 6.4 : 3.0, center ? 1.4 : 1.0);
 
   addSideWindow(group, half + 0.06, 2.0, -1.6, 1.9, 1.25, frameMat, glassMat);
   addSideWindow(group, half + 0.06, 2.0, 1.6, 1.9, 1.25, frameMat, glassMat);
@@ -864,7 +864,7 @@ export function createTown3D({ container, sponsors, onOpen, onHover }) {
   }
 
   const emptyMat = new THREE.MeshBasicMaterial({ color: "#f08000", transparent: true, opacity: 0.16, side: THREE.DoubleSide });
-  for (const [x, y] of [[420, 300], [780, 468]]) {
+  for (const [x, y] of [[420, 300], [860, 300]]) {
     const pad = new THREE.Mesh(new THREE.PlaneGeometry(7.4, 5.4), emptyMat);
     pad.rotation.x = -Math.PI / 2;
     pad.position.set(scaleX(x), 0.055, scaleZ(y));
