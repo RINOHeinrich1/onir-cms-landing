@@ -224,33 +224,6 @@
       "</g>";
   }
 
-  function sponsorCardMarkup(sponsor) {
-    return (
-      '<button type="button" class="sponsor-card" data-card-sponsor="' + esc(sponsor.id) + '" data-kind="' + esc(sponsor.kind) + '">' +
-      '<span class="sponsor-card-top">' +
-      '<span class="sponsor-avatar" style="' + accentStyle(sponsor) + '">' + esc(sponsor.initials) + "</span>" +
-      '<span class="sponsor-tier">' + esc(sponsor.tier) + "</span>" +
-      "</span>" +
-      '<span class="sponsor-name">' + esc(sponsor.name) + "</span>" +
-      '<span class="sponsor-card-type">' + esc(sponsor.typeLabel) + "</span>" +
-      '<span class="sponsor-tags">' +
-      sponsor.sponsorship
-        .map(function (item) {
-          return "<span>" + esc(item) + "</span>";
-        })
-        .join("") +
-      "</span>" +
-      '<span class="sponsor-card-link">' + (sponsor.url ? "Ouvrir le site" : "Voir la fiche") + " →</span>" +
-      "</button>"
-    );
-  }
-
-  function renderDirectory() {
-    var grid = document.querySelector("[data-sponsor-grid]");
-    if (!grid) return;
-    grid.innerHTML = sponsors.map(sponsorCardMarkup).join("");
-  }
-
   function openSponsor(sponsor) {
     if (!sponsor) return;
     if (sponsor.url) {
@@ -386,35 +359,6 @@
         centerMap();
       });
     }
-  }
-
-  function initDirectory() {
-    var grid = document.querySelector("[data-sponsor-grid]");
-    if (!grid) return;
-    renderDirectory();
-
-    grid.addEventListener("click", function (event) {
-      var card = event.target.closest("[data-card-sponsor]");
-      if (!card) return;
-      openSponsor(byId[card.getAttribute("data-card-sponsor")]);
-    });
-
-    document.querySelectorAll("[data-sponsor-filter]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        var filter = button.getAttribute("data-sponsor-filter");
-        document.querySelectorAll("[data-sponsor-filter]").forEach(function (item) {
-          item.setAttribute("aria-pressed", String(item === button));
-        });
-        grid.querySelectorAll("[data-kind]").forEach(function (card) {
-          var visible = filter === "all" || card.getAttribute("data-kind") === filter;
-          if (visible) {
-            card.removeAttribute("hidden");
-          } else {
-            card.setAttribute("hidden", "");
-          }
-        });
-      });
-    });
   }
 
   function initSheets() {
@@ -750,8 +694,58 @@
     });
   }
 
+  function initTabs() {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll("[data-tab]"));
+    if (!tabs.length) return;
+    var panels = Array.prototype.slice.call(document.querySelectorAll("[data-panel]"));
+
+    function activate(name, focus, updateHash) {
+      tabs.forEach(function (tab) {
+        var selected = tab.getAttribute("data-tab") === name;
+        tab.setAttribute("aria-selected", String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+        if (selected && focus) tab.focus();
+      });
+      panels.forEach(function (panel) {
+        panel.hidden = panel.getAttribute("data-panel") !== name;
+      });
+      if (updateHash) {
+        try {
+          history.replaceState(null, "", "#" + name);
+        } catch (error) {
+          /* URL non modifiable */
+        }
+      }
+      if (name === "sponsor") {
+        window.setTimeout(function () {
+          window.dispatchEvent(new Event("resize"));
+        }, 30);
+      }
+    }
+
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener("click", function () {
+        activate(tab.getAttribute("data-tab"), false, true);
+      });
+      tab.addEventListener("keydown", function (event) {
+        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+        event.preventDefault();
+        var next = event.key === "ArrowRight" ? (index + 1) % tabs.length : (index - 1 + tabs.length) % tabs.length;
+        activate(tabs[next].getAttribute("data-tab"), true, true);
+      });
+    });
+
+    var initial = window.location.hash.replace("#", "");
+    activate(initial === "developpeur" ? "developpeur" : "sponsor", false, false);
+
+    window.addEventListener("hashchange", function () {
+      var name = window.location.hash.replace("#", "");
+      activate(name === "developpeur" ? "developpeur" : "sponsor", false, false);
+    });
+  }
+
+  initTabs();
   initMap();
-  initDirectory();
   initSheets();
   initChat();
 })();

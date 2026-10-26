@@ -26,23 +26,6 @@
 
   renderTheme();
 
-  var menus = document.querySelectorAll(".site-menu");
-  function closeMenus(except) {
-    menus.forEach(function (menu) {
-      if (menu !== except) menu.removeAttribute("open");
-    });
-  }
-
-  document.addEventListener("click", function (event) {
-    menus.forEach(function (menu) {
-      if (!menu.contains(event.target)) menu.removeAttribute("open");
-    });
-  });
-
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") closeMenus(null);
-  });
-
   var dialog = document.querySelector("[data-demo-dialog]");
   if (dialog !== null) {
     document.querySelectorAll("[data-demo-open]").forEach(function (button) {

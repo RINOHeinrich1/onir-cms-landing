@@ -10,7 +10,7 @@ L’application (dashboard, liens publics, API, documentation) vit dans le dép�
 
 - `index.html` — page d’accueil et choix des démonstrations.
 - `plugins/` — marketplace et téléchargement des templates.
-- `participer/` — hub, page sponsoring (ville interactive, annuaire, chatbot) et page développeur.
+- `participer/` — page unique avec onglets Sponsor (ville interactive + chatbot) et Développeur.
 - `mentions-legales/` — mentions légales.
 - `confidentialite-site/` — politique de confidentialité du site et des démonstrations.
 - `assets/css/` — styles autonomes (aucun framework).
