@@ -56,6 +56,23 @@ Le script plus simple `deploy/deploy.sh` ne synchronise que les fichiers statiqu
 Voir `deploy/nginx-location.conf` pour les règles de routage et les redirections des anciennes
 URL de l’application vers `cms-backoffice.onirtech.com`.
 
+## Preprod
+
+La landing preprod est déployée automatiquement sur chaque push `main` :
+
+```bash
+ssh deploy-preprod@preprod-cms.onirtech.com \
+  "/opt/onir-cms-landing-preprod/deploy/preprod.sh"
+```
+
+- Dépôt serveur : `/opt/onir-cms-landing-preprod`
+- Répertoire web : `/var/www/onir-cms-landing-preprod`
+- URL : `https://preprod-cms.onirtech.com/` (Basic Auth)
+- Les liens vers `cms-backoffice.onirtech.com` sont réécrits vers l’application preprod.
+- Le workflow est dans `.github/workflows/preprod.yml`.
+
+Le déploiement production reste manuel via `deploy/apply-production.sh`.
+
 ## Règles de séparation
 
 - Aucun code applicatif, aucune dépendance Next.js/React ici.
