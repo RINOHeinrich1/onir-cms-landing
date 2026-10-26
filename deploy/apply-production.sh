@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_URL="${REPO_URL:-https://github.com/anjary-05/onir-cms-landing.git}"
+REPO_URL="${REPO_URL:-https://github.com/RINOHeinrich1/onir-cms-landing.git}"
 APP_DIR="${APP_DIR:-/opt/onir-cms-landing}"
 WEB_ROOT="${WEB_ROOT:-/var/www/onir-cms-landing}"
 APP_ENV="${APP_ENV:-/opt/onir-cms/.env.release}"
