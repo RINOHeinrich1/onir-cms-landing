@@ -10,6 +10,7 @@ L’application (dashboard, liens publics, API, documentation) vit dans le dép�
 
 - `index.html` — page d’accueil et choix des démonstrations.
 - `plugins/` — marketplace et téléchargement des templates.
+- `participer/` — hub, page sponsoring (ville interactive, annuaire, chatbot) et page développeur.
 - `mentions-legales/` — mentions légales.
 - `confidentialite-site/` — politique de confidentialité du site et des démonstrations.
 - `assets/css/` — styles autonomes (aucun framework).
@@ -17,6 +18,8 @@ L’application (dashboard, liens publics, API, documentation) vit dans le dép�
 - `assets/fonts/` — Montserrat auto-hébergée.
 - `assets/logo/` — logos clair/sombre.
 - `assets/plugins/` — archives `.onirtech-template` et manifests de release.
+- `assets/data/sponsors.js` — données de la ville et des sponsors (démonstration).
+- `assets/js/participer.js` — carte 2D/3D, annuaire et chatbot de sponsoring.
 
 ## Développement local
 
