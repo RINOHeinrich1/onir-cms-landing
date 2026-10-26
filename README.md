@@ -70,6 +70,7 @@ ssh deploy-preprod@preprod-cms.onirtech.com \
 - URL : `https://preprod-cms.onirtech.com/` (Basic Auth)
 - Les liens vers `cms-backoffice.onirtech.com` sont réécrits vers l’application preprod.
 - Le workflow est dans `.github/workflows/preprod.yml`.
+- Runner self-hosted : `onir-landing-preprod` (utilisateur `deploy-preprod`).
 
 Le déploiement production reste manuel via `deploy/apply-production.sh`.
 
