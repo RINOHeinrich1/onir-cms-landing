@@ -21,6 +21,7 @@ git -C "${ROOT}" reset --hard origin/main
 install -d -m 755 "${WEB_ROOT}"
 rsync -a --delete \
   --exclude ".git" \
+  --exclude ".github" \
   --exclude "deploy" \
   --exclude "README.md" \
   "${ROOT}/" "${WEB_ROOT}/"
