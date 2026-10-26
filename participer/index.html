@@ -70,8 +70,18 @@
       <main id="contenu" class="site-main">
         <div class="site-wrap participate-page">
           <div class="participate-tabs" role="tablist" aria-label="Participer">
-            <button type="button" id="tab-sponsor" role="tab" aria-selected="true" aria-controls="panel-sponsor" data-tab="sponsor">Sponsor</button>
-            <button type="button" id="tab-developpeur" role="tab" aria-selected="false" aria-controls="panel-developpeur" tabindex="-1" data-tab="developpeur">Développeur</button>
+            <button type="button" id="tab-sponsor" role="tab" aria-selected="true" aria-controls="panel-sponsor" data-tab="sponsor">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 21V8l8-5 8 5v13" /><path d="M9 21v-6h6v6" />
+              </svg>
+              <span>Sponsor</span>
+            </button>
+            <button type="button" id="tab-developpeur" role="tab" aria-selected="false" aria-controls="panel-developpeur" tabindex="-1" data-tab="developpeur">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14" />
+              </svg>
+              <span>Développeur</span>
+            </button>
           </div>
 
           <section id="panel-sponsor" role="tabpanel" aria-labelledby="tab-sponsor" data-panel="sponsor">

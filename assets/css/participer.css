@@ -5,35 +5,53 @@
 }
 
 .participate-tabs {
-  display: flex;
-  gap: 0.25rem;
-  margin-top: 2.4rem;
-  border-bottom: 1px solid var(--site-line);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin-top: 2.2rem;
+  padding: 0.28rem;
+  border: 1px solid var(--site-line);
+  border-radius: var(--r-pill);
+  background: var(--site-surface);
+  box-shadow: 0 14px 32px -28px rgb(6 31 24 / 0.5);
 }
 
 .participate-tabs button {
-  margin-bottom: -1px;
-  padding: 0.8rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.55rem;
+  padding: 0 1.15rem;
   border: 0;
-  border-bottom: 2px solid transparent;
+  border-radius: var(--r-pill);
   background: transparent;
   color: var(--site-muted);
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 700;
+  line-height: 1;
   cursor: pointer;
   transition:
-    color 160ms ease,
-    border-color 160ms ease;
+    background-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
 }
 
-.participate-tabs button:hover {
+.participate-tabs button svg {
+  width: 0.98rem;
+  height: 0.98rem;
+}
+
+.participate-tabs button:hover:not([aria-selected="true"]) {
+  background: var(--site-mint);
   color: var(--site-green);
 }
 
 .participate-tabs button[aria-selected="true"] {
-  border-color: var(--site-orange);
-  color: var(--site-green);
+  background: var(--site-btn);
+  color: var(--site-btn-ink);
+  box-shadow: 0 8px 18px -12px rgb(6 31 24 / 0.65);
 }
 
 .sponsor-intro {
@@ -1494,6 +1512,16 @@
   .sponsor-intro h1,
   .dev-intro h1 {
     font-size: clamp(2.45rem, 13vw, 3.6rem);
+  }
+
+  .participate-tabs {
+    display: flex;
+    width: 100%;
+  }
+
+  .participate-tabs button {
+    flex: 1;
+    padding-inline: 0.7rem;
   }
 
   .sponsor-intro {
