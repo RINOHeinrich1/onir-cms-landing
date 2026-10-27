@@ -32,6 +32,6 @@ jobs:
           BASE="https://preprod-cms.onirtech.com"
           AUTH="${PREPROD_BASIC_USER}:${PREPROD_BASIC_PASSWORD}"
           curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" "${BASE}/" | grep -q "ONIR CMS"
-          curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" -o /dev/null "${BASE}/plugins/"
+          curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" -o /dev/null "${BASE}/themes/"
           curl -fsS "${BASE}/api/health" | grep -q '"ok":true'
           echo "Landing preprod smoke test OK."

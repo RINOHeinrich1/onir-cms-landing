@@ -9,7 +9,7 @@ L’application (dashboard, liens publics, API, documentation) vit dans le dép�
 ## Contenu
 
 - `index.html` — page d’accueil et choix des démonstrations.
-- `plugins/` — marketplace et téléchargement des templates.
+- `themes/` — marketplace et téléchargement des templates.
 - `participer/` — page unique avec onglets Sponsor (ville 2D/3D + chatbot) et Développeur.
 - `mentions-legales/` — mentions légales.
 - `confidentialite-site/` — politique de confidentialité du site et des démonstrations.
