@@ -1,8 +1,8 @@
 {
   "id": "immersive",
-  "version": "4.45.1",
+  "version": "4.45.2",
   "hostProtocol": "onirtech.template-host.v1",
-  "sha256": "2b6e0f2c186b04f5a04c642c8e213625ab4112ec4221367bb1d5c41f76b0c9d3",
+  "sha256": "479112a6142982ef2e353c4191c28d55bb392b545a00fbe344b003b5b648cece",
   "files": [
     "CREDITS.md",
     "assets/hdri/brown_photostudio_02_512.hdr",
