@@ -29,7 +29,9 @@ rsync -a --delete \
 # Les liens de l'application doivent rester dans l'environnement preprod.
 find "${WEB_ROOT}" -type f \
   \( -name '*.html' -o -name '*.js' -o -name '*.json' \) \
-  -exec sed -i "s|https://cms-backoffice.onirtech.com|${PREPROD_APP_URL}|g" {} +
+  -exec sed -i \
+    -e "s|https://cms-backoffice.onirtech.com|${PREPROD_APP_URL}|g" \
+    -e "s|https://magic-panel.onir-cms.tech|${PREPROD_APP_URL}|g" {} +
 
 if ! grep -q "ONIR CMS" "${WEB_ROOT}/index.html"; then
   die "index.html preprod invalide"
