@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "title": "Legal notice · ONIR CMS",
+    "description": "Legal notice for the ONIR CMS site, an open-source project published by Onirtech.",
+    "ogTitle": "Legal notice · ONIR CMS",
+    "ogDescription": "Legal notice for the ONIR CMS site, an open-source project published by Onirtech."
+  },
+  "hero": {
+    "kicker": "Legal information",
+    "title": "Legal notice.",
+    "lead": "ONIR CMS is an open-source project published by Onirtech.",
+    "updated": "Last updated: October 2026"
+  },
+  "legalNotice": "This translation is provided for information only. The French version is legally binding.",
+  "sections": [
+    {
+      "title": "Site publisher",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "This site is published by <strong>Onirtech</strong>, an IT company based in Madagascar."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Tax identification number (NIF): 3018830411",
+            "Statistical number: 74908112024007589",
+            "Registered office: Madagascar",
+            "Email: <a href=\"mailto:contact@onirtech.com\">contact@onirtech.com</a>",
+            "Phone: <a href=\"tel:+261349368233\">+261 34 936 82 33</a>"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Publication director",
+      "blocks": [{ "type": "p", "html": "RINO Heinrich." }]
+    },
+    {
+      "title": "Host",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "The site is hosted by OVH, whose European headquarters are located at 2 rue Kellermann, 59100 Roubaix, France."
+        }
+      ]
+    },
+    {
+      "title": "ONIR CMS software",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "ONIR CMS is open-source software distributed under the MIT licence. The source code may be viewed, modified and redistributed under the terms of that licence."
+        },
+        {
+          "type": "p",
+          "html": "Self-hosted ONIR CMS instances are operated under the responsibility of their respective operators. Onirtech is not responsible for data processing carried out by those instances."
+        }
+      ]
+    },
+    {
+      "title": "Intellectual property",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "The texts, images, graphics, logos and brand elements of the site are the property of Onirtech, unless stated otherwise. Any reproduction or representation of the site or its content, by any means, is prohibited without prior written authorisation."
+        },
+        {
+          "type": "p",
+          "html": "The software's MIT licence does not grant any rights to Onirtech's trademarks, logos or editorial content."
+        }
+      ]
+    },
+    {
+      "title": "Personal data and cookies",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "The data collected on this site and during demonstrations is described in the <a href=\"{{privacy}}\">privacy policy</a>."
+        },
+        {
+          "type": "p",
+          "html": "The site does not use any tracking or audience-measurement cookies. The theme preference is stored locally in the browser and is never sent to a server."
+        }
+      ]
+    },
+    {
+      "title": "Liability",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "The published information is as accurate as possible and the site is regularly updated. Errors or omissions may nevertheless remain. Onirtech cannot be held liable for any damage resulting from the use of the site or the inability to access it."
+        }
+      ]
+    },
+    {
+      "title": "Applicable law",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "These legal notices are governed by Malagasy law. In the event of a dispute, the competent courts of Madagascar shall have exclusive jurisdiction."
+        }
+      ]
+    }
+  ],
+  "back": "← Back to home"
+}

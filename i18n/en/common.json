@@ -1,0 +1,37 @@
+{
+  "skip": "Skip to content",
+  "brandHome": "ONIR CMS — home",
+  "nav": {
+    "aria": "Main navigation",
+    "features": "Features",
+    "demos": "Demos",
+    "themes": "Themes",
+    "participate": "Participate",
+    "documentation": "Documentation",
+    "installation": "Installation",
+    "github": "GitHub",
+    "login": "Log in",
+    "legal": "Legal notice",
+    "privacy": "Privacy"
+  },
+  "theme": {
+    "toggle": "Change theme",
+    "light": "Switch to light theme",
+    "dark": "Switch to dark theme"
+  },
+  "lang": {
+    "change": "Change language",
+    "fr": "Français",
+    "en": "English",
+    "mg": "Malagasy"
+  },
+  "footer": {
+    "aria": "Footer links",
+    "tagline": "Chatbot CMS. Open source, in your image.",
+    "legacyTagline": "Conversations, qualification and follow-up. On your infrastructure.",
+    "metaOpenSource": "Open source · MIT · Published by ONIRTECH",
+    "legacyMeta": "Open source · MIT · Self-hosted · Published by ONIRTECH",
+    "metaBrand": "ONIR CMS — Chatbot CMS"
+  },
+  "reviewNotice": ""
+}

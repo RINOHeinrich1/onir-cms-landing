@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="{{ locale.htmlLang }}" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ p.meta.title }}</title>
+  {% if p.meta.description %}<meta name="description" content="{{ p.meta.description }}" />{% endif %}
+  {% if p.meta.robots %}<meta name="robots" content="{{ p.meta.robots }}" />{% endif %}
+  <meta name="theme-color" content="#f4f1e5" />
+  {% for href in css %}<link rel="stylesheet" href="{{ href }}" />{% endfor %}
+  <link rel="icon" href="{{ site.logoLight }}" type="image/webp" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("onir-theme");
+        if (t !== "light" && t !== "dark") t = localStorage.getItem("proto-theme");
+        if (t !== "light" && t !== "dark") t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <div class="site">
+    <a class="site-skip" href="#contenu">{{ t.common.skip }}</a>
+
+    <header class="site-head">
+      <div class="site-wrap site-head-inner">
+        <a href="{{ locale.routes.home }}" class="brand brand-logo site-brand" aria-label="{{ t.common.brandHome }}">
+          <img class="logo-light" src="{{ site.logoLight }}" alt="{{ site.name }}" width="600" height="177" />
+          <img class="logo-dark" src="{{ site.logoDark }}" alt="" aria-hidden="true" width="600" height="177" />
+        </a>
+        <div class="site-actions">
+          <a href="{{ site.login }}" class="site-button site-button-sm">{{ t.common.nav.login }}</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenu" class="site-main">
+      {{ content | safe }}
+    </main>
+  </div>
+</body>
+</html>

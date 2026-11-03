@@ -1,0 +1,78 @@
+---
+layout: layouts/base.njk
+pageKey: themes
+headerVariant: legacy
+wrapper: site
+mainClass: site-main
+css:
+  - /assets/css/base.css
+  - /assets/css/landing.css?v=20261026c
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "{{ locale.routes.themes }}index.html"
+---
+<section class="site-wrap site-page-head">
+  <p class="site-kicker"><span class="site-kicker-dot"></span>{{ p.hero.kicker }}</p>
+  <h1>{{ p.hero.title }}</h1>
+  <p class="site-lead">{{ p.hero.lead }}</p>
+  <p class="site-free-note">{{ p.hero.freeNote }}</p>
+</section>
+
+<section class="site-wrap" aria-label="{{ p.hero.aria }}">
+  <div class="plugin-grid">
+    {% for item in p.items %}
+    <article class="plugin-card plugin-card-{{ item.id }}">
+      <div class="plugin-visual plugin-visual-{{ item.id }}" aria-hidden="true">
+        {% include "components/theme-icon.njk" %}
+      </div>
+
+      <div class="plugin-body">
+        <div class="plugin-top">
+          <span class="site-pill site-pill-free">{{ p.freeLabel }}</span>
+          <span class="plugin-version">{{ item.version }}</span>
+        </div>
+
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.description }}</p>
+
+        <ul class="plugin-meta" aria-label="{{ p.metaAria }}">
+          {% for value in item.meta %}<li>{{ value }}</li>{% endfor %}
+        </ul>
+
+        <div class="plugin-actions">
+          <a class="site-button" href="{{ themeDownloads[item.id].download }}" download="{{ themeDownloads[item.id].downloadName }}">{{ p.download }}</a>
+          <a class="site-button site-button-ghost" href="{{ site.templatesGuide }}">{{ p.guide }}</a>
+        </div>
+
+        <details class="plugin-details">
+          <summary>{{ p.details }}</summary>
+          <p>{{ item.detailsText }}</p>
+          <code>{{ themeDownloads[item.id].sha }}</code>
+        </details>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="site-wrap site-install">
+  <div class="site-section-head">
+    <p class="site-kicker">{{ p.install.kicker }}</p>
+    <h2>{{ p.install.title }}</h2>
+  </div>
+  <ol class="site-steps">
+    {% for step in p.install.steps %}
+    <li>
+      <span class="site-number">{{ step.number }}</span>
+      <strong>{{ step.title }}</strong>
+      <p>{{ step.text }}</p>
+    </li>
+    {% endfor %}
+  </ol>
+  <p class="site-install-link">
+    {{ p.install.detail }}
+    <a href="{{ site.templatesGuide }}">{{ p.install.link }}</a>.
+  </p>
+</section>

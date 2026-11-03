@@ -1,0 +1,11 @@
+{
+  "meta": {
+    "title": "Page introuvable · ONIR CMS",
+    "robots": "noindex"
+  },
+  "kicker": "Erreur 404",
+  "title": "Page introuvable.",
+  "lead": "La page demandée n’existe pas ou a été déplacée.",
+  "home": "Retour à l’accueil",
+  "app": "Ouvrir l’application"
+}

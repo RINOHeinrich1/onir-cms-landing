@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "title": "Endri-javatra — ONIR CMS",
+    "description": "Famoronana chatbot, fanarahan-dresaka, fandraisan'olona, fampidirana sy API, fiche fandraisana mpanjifa, fanamboarana endrika: ny fototry ny ONIR CMS.",
+    "ogTitle": "Endri-javatra — ONIR CMS",
+    "ogDescription": "Famoronana chatbot, fanarahan-dresaka, fandraisan'olona, fampidirana sy API, fiche fandraisana mpanjifa, fanamboarana endrika."
+  },
+  "hero": {
+    "kicker": "Endri-javatra",
+    "title": "Ny fototra, amin'ny tsotra.",
+    "lead": "Fahaiza-manao enina mandrakotra ny fiainan'ny chatbot. Tsy lisitra teknika: izay azonao atao, amin'ny mazava."
+  },
+  "items": [
+    {
+      "kicker": "01 · Mamorona",
+      "title": "Famoronana chatbot",
+      "lead": "Ampidiro amin'ny dingana vitsivitsy ny assistant. Ianao no mamaritra ny andraikiny, ny feony ary ny endriny.",
+      "bullets": [
+        "Andraikitra sy feo mitovy aminao",
+        "Endrika araka ny endrikao",
+        "Modely fanombohana haingana"
+      ]
+    },
+    {
+      "kicker": "02 · Manaraka",
+      "title": "Fanarahan-dresaka",
+      "lead": "Ny resaka rehetra, amin'ny toerana iray. Mazava ny fijery ny fifanakalozana sy ny vaovao angonina.",
+      "bullets": [
+        "Resaka rehetra azo jerena",
+        "Hita ny vaovao angonina",
+        "Fikarohana sy sivana hamantarana resaka"
+      ]
+    },
+    {
+      "kicker": "03 · Mandray ny tanana",
+      "title": "Fandraisan'olona",
+      "lead": "Ny IA no manao ny ankamaroan'ny asa. Rehefa mila olona, ianao no mandray ny tanana — tsy manapaka ny resaka.",
+      "bullets": [
+        "Afaka mamerina ny resaka ny mpandraharaha",
+        "Fampahafantarana rehefa ilaina ianao",
+        "Famintinana hamerina haingana"
+      ]
+    },
+    {
+      "kicker": "04 · Mampiditra",
+      "title": "Fampidirana & API",
+      "lead": "Mifandray amin'ny fitaovanao ny chatbot: pejy, widget amin'ny tranokalao, na API ho fanatontosana.",
+      "bullets": [
+        "Pejy ho an'ny besinimaro sy widget apetaka",
+        "API ho an'ny fitaovanao",
+        "Fampahafantarana mandeha ho azy amin'ny rafitrao"
+      ]
+    },
+    {
+      "kicker": "05 · Manangona",
+      "title": "Fiche fandraisana mpanjifa",
+      "lead": "Angony ny vaovao mety, amin'ny fotoana mety. Ny fifanakalozana rehetra dia mety hamokatra fiche mazava sy azo ampiasaina.",
+      "bullets": [
+        "Saha voafaritra araka ny filanao",
+        "Rakitra azo avy amin'ny resaka",
+        "Fiche vonona hamoahana"
+      ]
+    },
+    {
+      "kicker": "06 · Manamboatra",
+      "title": "Fanamboarana endrika",
+      "lead": "Tokony hitovy aminao ny chatbot. Amboary ny interface araka ny marikao, manomboka amin'ny tsotra ka hatramin'ny immersive.",
+      "bullets": [
+        "Endrika vonona ampiasaina",
+        "Loko, lahatsoratra ary sary azo ovaina",
+        "Traikefa 3D immersive"
+      ]
+    }
+  ],
+  "faq": {
+    "kicker": "Fanontaniana matetika",
+    "title": "Ny ambiny, amin'ny mazava.",
+    "items": [
+      {
+        "q": "Maimaim-poana tokoa ve?",
+        "a": "Open source (MIT) ny kaody ary apetraka ao aminareo tsy misy fahazoan-dalana. Mijanona ny saran'ny fotodrafitrasa sy ny mpamatsy IA safidinao."
+      },
+      {
+        "q": "Afaka mampiasa ny modely IA-ko ve aho?",
+        "a": "Eny. Miasa amin'ny mpamatsy rehetra mifanaraka amin'ny OpenAI ny ONIR CMS, miaraka amin'ny lakileo sy modely iray isaky ny chatbot."
+      },
+      {
+        "q": "Aiza no tehirizina ny angon-drako?",
+        "a": "Ao aminareo, raha ianao no mampiantrano ny instance. Ianao no mitantana ny angon-drakitra, ny media ary ny faharetany."
+      },
+      {
+        "q": "Mila mpamorona ve?",
+        "a": "Tsia, hamorona sy hitantana chatbot. Eny, indraindray, hametraka ny instance na hamorona endrika manokana."
+      }
+    ]
+  },
+  "cta": {
+    "kicker": "Anjaranao",
+    "title": "Andramo, dia apetraho.",
+    "lead": "Ny demo no mampiseho ny vokatra. Ny GitHub sy ny fanoratana no manome ny lakile.",
+    "primary": "Jereo ny demo",
+    "secondary": "Jereo ao amin'ny GitHub"
+  },
+  "footer": {
+    "tagline": "Ny CMS open source ho an'ny chatbot. Araka ny endrikao, ao aminareo.",
+    "metaBrand": "ONIR CMS — Mamorona chatbot araka ny endrikareo"
+  }
+}

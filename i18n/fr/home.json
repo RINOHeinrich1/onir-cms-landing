@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "title": "ONIR CMS — CMS pour chatbot",
+    "description": "Avec ONIR CMS, créez des assistants IA ou chatbots adaptés à vos besoins réels et à votre image. Open source, compatible standard OpenAI.",
+    "ogTitle": "ONIR CMS — CMS pour chatbot",
+    "ogDescription": "Avec ONIR CMS, créez des assistants IA ou chatbots adaptés à vos besoins réels et à votre image."
+  },
+  "hero": {
+    "kicker": "CMS pour chatbot",
+    "title": "Créez des assistants IA",
+    "titleEmphasis": "à votre image.",
+    "lead": "Avec ONIR CMS, créez des assistants IA ou chatbots adaptés à vos besoins réels et à votre image.",
+    "cta": "Essayer"
+  },
+  "mock": {
+    "url": "cms · mes-chatbots",
+    "rail": ["Chatbots", "Conversations", "Fiches", "Intégrations", "Apparence"],
+    "title": "Assistant — Accueil",
+    "status": "En ligne",
+    "steps": [
+      { "label": "Rôle & ton", "value": "OK" },
+      { "label": "Apparence", "value": "OK" },
+      { "label": "Conversations", "value": "3" },
+      { "label": "Intégrations", "value": "2" }
+    ],
+    "channels": ["Page", "Widget", "API"],
+    "live": "Reprise humaine disponible"
+  },
+  "demos": {
+    "kicker": "Démos",
+    "title": "Essayez.",
+    "lead": "Choisissez un chatbot et discutez directement.",
+    "cta": "Essayer →",
+    "items": [
+      {
+        "key": "simple",
+        "tag": "Simple",
+        "title": "Assistant — l’essentiel",
+        "lead": "Le chat ONIR CMS, sans 3D."
+      },
+      {
+        "key": "immersive",
+        "tag": "Immersif",
+        "title": "Expérience 3D",
+        "lead": "Une scène 3D avec avatar et discussion guidée."
+      },
+      {
+        "key": "sponsor",
+        "tag": "Collecte",
+        "title": "Parcours sponsoring",
+        "lead": "Un exemple de collecte d’informations."
+      }
+    ]
+  },
+  "openSource": {
+    "kicker": "Libre et open source",
+    "title": "L’IA pour tout le monde.",
+    "lead": "Le même accès à l’IA pour toutes les organisations : installez ONIR CMS chez vous, gardez vos données et décidez.",
+    "cta": "Voir le code sur GitHub"
+  },
+  "malagasy": {
+    "kicker": "Initiative malagasy",
+    "title": "Une initiative malagasy pour l’IA.",
+    "lead": "ONIR CMS est né à Madagascar. Nous croyons que l’IA doit être ouverte, accessible et utile aux organisations d’ici comme d’ailleurs.",
+    "caption": "Fièrement malagasy",
+    "mapLabel": "Madagascar aux couleurs du drapeau malgache"
+  },
+  "providers": {
+    "kicker": "Modèles IA",
+    "title": "Tous les modèles au standard OpenAI.",
+    "lead": "Utilisez le fournisseur et le modèle de votre choix, avec vos propres clés.",
+    "note": "Directement ou via une passerelle compatible OpenAI. Les marques et logos appartiennent à leurs propriétaires."
+  },
+  "features": {
+    "kicker": "Fonctionnalités",
+    "title": "L’essentiel.",
+    "cta": "Voir les fonctionnalités →",
+    "items": [
+      { "title": "Création de chatbot", "lead": "Un rôle, un ton, une apparence." },
+      { "title": "Suivi des conversations", "lead": "Tous les échanges au même endroit." },
+      { "title": "Prise en main humaine", "lead": "Reprenez la main quand il faut." },
+      { "title": "Intégrations & API", "lead": "Branchez vos outils." },
+      { "title": "Fiches de prospection", "lead": "Collectez et retrouvez l’essentiel." },
+      { "title": "Personnalisation de thème", "lead": "À votre marque, jusqu’à la 3D." }
+    ]
+  },
+  "support": {
+    "kicker": "Soutenir le projet",
+    "title": "L’IA libre a besoin de vous.",
+    "lead": "Contribuez, sponsorisez ou faites connaître ONIR CMS.",
+    "cta": "Participer"
+  },
+  "footer": {
+    "tagline": "CMS pour chatbot. Open source, à votre image.",
+    "metaBrand": "ONIR CMS — CMS pour chatbot"
+  }
+}

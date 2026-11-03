@@ -1,0 +1,37 @@
+{
+  "skip": "Hankany amin'ny votoaty",
+  "brandHome": "ONIR CMS — fandraisana",
+  "nav": {
+    "aria": "Fizahana lehibe",
+    "features": "Endri-javatra",
+    "demos": "Demo",
+    "themes": "Endrika",
+    "participate": "Handray anjara",
+    "documentation": "Fanoratana",
+    "installation": "Fametrahana",
+    "github": "GitHub",
+    "login": "Hiditra",
+    "legal": "Fampahafantarana ara-dalàna",
+    "privacy": "Tsiambaratelo"
+  },
+  "theme": {
+    "toggle": "Hanova ny loko",
+    "light": "Hampiasa ny loko mazava",
+    "dark": "Hampiasa ny loko maizina"
+  },
+  "lang": {
+    "change": "Hanova ny fiteny",
+    "fr": "Français",
+    "en": "English",
+    "mg": "Malagasy"
+  },
+  "footer": {
+    "aria": "Rohin'ny pejy",
+    "tagline": "CMS ho an'ny chatbot. Open source, araka ny endrikareo.",
+    "legacyTagline": "Resaka, fanasokajiana ary fanarahana. Eo an-tranonao.",
+    "metaOpenSource": "Open source · MIT · Navoakan'ny ONIRTECH",
+    "legacyMeta": "Open source · MIT · Auto-hébergé · Navoakan'ny ONIRTECH",
+    "metaBrand": "ONIR CMS — Mamorona chatbot araka ny endrikareo"
+  },
+  "reviewNotice": "Version malagasy en cours de relecture."
+}

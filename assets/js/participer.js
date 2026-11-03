@@ -7,6 +7,7 @@
     byId[sponsor.id] = sponsor;
   });
   var partnerChatUrl = document.querySelector("[data-partner-chat-url]")?.getAttribute("data-partner-chat-url") || "";
+  var privacyUrl = document.querySelector("[data-privacy-url]")?.getAttribute("data-privacy-url") || "/confidentialite-site/";
 
   function esc(value) {
     return String(value == null ? "" : value)
@@ -867,7 +868,7 @@
         (data.phone ? "<div><dt>Téléphone</dt><dd>" + esc(data.phone) + "</dd></div>" : "") +
         "<div><dt>Soutien</dt><dd>" + esc(data.sponsorship) + "</dd></div>" +
         "</div>" +
-        '<label class="chat-consent"><input type="checkbox" data-chat-consent' + (data.consent ? " checked" : "") + ' /> J’accepte que ces informations soient utilisées pour recontacter ma demande de sponsoring. <a href="/confidentialite-site/" target="_blank" rel="noreferrer">Confidentialité</a></label>' +
+        '<label class="chat-consent"><input type="checkbox" data-chat-consent' + (data.consent ? " checked" : "") + ' /> J’accepte que ces informations soient utilisées pour recontacter ma demande de sponsoring. <a href="' + privacyUrl + '" target="_blank" rel="noreferrer">Confidentialité</a></label>' +
         '<p class="chat-hint">Maquette : l’envoi est simulé et aucune donnée n’est transmise.</p>' +
         '<div class="chat-actions"><button type="button" class="chat-submit" data-chat-send>Envoyer la demande</button></div>' +
         '<button type="button" class="chat-back" data-chat-back>← Retour</button>' +

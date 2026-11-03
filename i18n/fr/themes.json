@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "title": "Thèmes gratuits · ONIR CMS",
+    "description": "Téléchargez les templates visuels Immersive et Starter pour ONIR CMS. Gratuits, prêts à importer.",
+    "ogTitle": "Thèmes gratuits · ONIR CMS",
+    "ogDescription": "Téléchargez les templates visuels Immersive et Starter pour ONIR CMS."
+  },
+  "hero": {
+    "kicker": "Marketplace",
+    "title": "Thèmes gratuits.",
+    "lead": "Des templates visuels prêts à importer dans ONIR CMS. Téléchargement libre, sans paiement.",
+    "freeNote": "Tous les thèmes actuels sont gratuits.",
+    "aria": "Thèmes disponibles"
+  },
+  "freeLabel": "Gratuit",
+  "metaAria": "Caractéristiques",
+  "download": "Télécharger",
+  "guide": "Guide d’import",
+  "details": "Détails techniques",
+  "items": [
+    {
+      "id": "immersive",
+      "version": "v4.45.2",
+      "name": "Immersive",
+      "description": "Une scène 3D complète : maison d’entrée, salle, avatar, album, discussion guidée et import de pièces jointes.",
+      "meta": ["Scène 3D", "Avatar", "Album", "Pièces jointes", "3,8 Mo"],
+      "detailsText": "Template officiel avec assets CC0 inclus. Scène 3D, avatar TalkingHead, album, connaissances, médias, paramètres de lien et pièces jointes (CV, documents)."
+    },
+    {
+      "id": "starter",
+      "version": "v1.4.1",
+      "name": "Starter",
+      "description": "Le template de référence : formulaire d’identification, conversation et médias.",
+      "meta": ["Formulaire", "Chat", "Médias", "2,8 Ko"],
+      "detailsText": "Le point de départ minimal pour comprendre le contrat hôte et créer votre propre template visuel."
+    }
+  ],
+  "install": {
+    "kicker": "Installation",
+    "title": "Trois étapes.",
+    "steps": [
+      { "number": "01", "title": "Téléchargez", "text": "Récupérez l’archive du thème." },
+      { "number": "02", "title": "Importez", "text": "Dashboard → Templates visuels → Importer." },
+      { "number": "03", "title": "Rattachez", "text": "Associez le template à un lien de chat." }
+    ],
+    "detail": "Besoin du détail ?",
+    "link": "Lire la documentation des templates"
+  }
+}

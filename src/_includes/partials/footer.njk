@@ -1,0 +1,57 @@
+{% if headerVariant == "legacy" %}
+<footer class="site-foot">
+  <div class="site-wrap site-foot-inner">
+    <div class="site-foot-brand">
+      <a href="{{ locale.routes.home }}" class="brand brand-logo site-brand" aria-label="{{ t.common.brandHome }}">
+        <img class="logo-light" src="{{ site.logoLight }}" alt="{{ site.name }}" width="600" height="177" loading="lazy" />
+        <img class="logo-dark" src="{{ site.logoDark }}" alt="" aria-hidden="true" width="600" height="177" loading="lazy" />
+      </a>
+      <p>{{ p.footer.tagline or t.common.footer.legacyTagline }}</p>
+    </div>
+    <nav class="site-foot-nav" aria-label="{{ t.common.footer.aria }}">
+      <a href="{{ locale.routes.features }}">{{ t.common.nav.features }}</a>
+      <a href="{{ locale.routes.home }}#demos">{{ t.common.nav.demos }}</a>
+      <a href="{{ locale.routes.themes }}">{{ t.common.nav.themes }}</a>
+      <a href="{{ locale.routes.participate }}">{{ t.common.nav.participate }}</a>
+      <a href="{{ site.documentation }}">{{ t.common.nav.documentation }}</a>
+      <a href="{{ site.installationGuide }}">{{ t.common.nav.installation }}</a>
+      <a href="{{ site.github }}" target="_blank" rel="noreferrer">{{ t.common.nav.github }}</a>
+      <a href="{{ site.login }}">{{ t.common.nav.login }}</a>
+      <a href="{{ locale.routes.legal }}">{{ t.common.nav.legal }}</a>
+      <a href="{{ locale.routes.privacy }}">{{ t.common.nav.privacy }}</a>
+    </nav>
+    <p class="site-foot-meta">{{ t.common.footer.legacyMeta }}</p>
+    {% if t.common.reviewNotice %}<p class="site-foot-review">{{ t.common.reviewNotice }}</p>{% endif %}
+  </div>
+</footer>
+{% else %}
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="{{ locale.routes.home }}" aria-label="{{ t.common.brandHome }}">
+          <img class="light" src="{{ site.logoLight }}" alt="{{ site.name }}" width="600" height="177" />
+          <img class="dark" src="{{ site.logoDark }}" alt="" width="600" height="177" />
+        </a>
+        <p>{{ p.footer.tagline or t.common.footer.tagline }}</p>
+      </div>
+      <nav class="foot-nav" aria-label="{{ t.common.footer.aria }}">
+        <a href="{{ locale.routes.features }}">{{ t.common.nav.features }}</a>
+        <a href="{{ locale.routes.home }}#demos">{{ t.common.nav.demos }}</a>
+        <a href="{{ locale.routes.themes }}">{{ t.common.nav.themes }}</a>
+        <a href="{{ locale.routes.participate }}">{{ t.common.nav.participate }}</a>
+        <a href="{{ site.documentation }}">{{ t.common.nav.documentation }}</a>
+        <a href="{{ site.github }}" target="_blank" rel="noreferrer">{{ t.common.nav.github }}</a>
+        <a href="{{ site.login }}">{{ t.common.nav.login }}</a>
+        <a href="{{ locale.routes.legal }}">{{ t.common.nav.legal }}</a>
+        <a href="{{ locale.routes.privacy }}">{{ t.common.nav.privacy }}</a>
+      </nav>
+    </div>
+    <div class="foot-meta">
+      <span>{{ t.common.footer.metaOpenSource }}</span>
+      <span>{{ p.footer.metaBrand or t.common.footer.metaBrand }}</span>
+    </div>
+    {% if t.common.reviewNotice %}<p class="foot-review">{{ t.common.reviewNotice }}</p>{% endif %}
+  </div>
+</footer>
+{% endif %}

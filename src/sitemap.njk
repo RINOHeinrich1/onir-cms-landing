@@ -1,0 +1,23 @@
+---
+permalink: sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{%- for item in sitemapPages %}
+{%- for locale in allLocales %}
+{%- if locale.available %}
+  <url>
+    <loc>{{ site.baseUrl }}{{ locale.routes[item.pageKey] }}</loc>
+    <changefreq>{{ item.changefreq }}</changefreq>
+    <priority>{{ item.priority }}</priority>
+    {%- for alt in allLocales %}
+    {%- if alt.available %}
+    <xhtml:link rel="alternate" hreflang="{{ alt.htmlLang }}" href="{{ site.baseUrl }}{{ alt.routes[item.pageKey] }}" />
+    {%- endif %}
+    {%- endfor %}
+  </url>
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+</urlset>

@@ -1,0 +1,14 @@
+{
+  "name": "onir-cms-landing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/check-i18n.mjs && eleventy",
+    "dev": "node scripts/check-i18n.mjs && eleventy --serve",
+    "check:i18n": "node scripts/check-i18n.mjs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.7"
+  }
+}

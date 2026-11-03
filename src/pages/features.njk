@@ -1,0 +1,59 @@
+---
+layout: layouts/base.njk
+pageKey: features
+headerVariant: v2
+css:
+  - /assets/css/landing-v2.css?v=8
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "{{ locale.routes.features }}index.html"
+---
+<section class="page-hero wrap">
+  <p class="kicker">{{ p.hero.kicker }}</p>
+  <h1>{{ p.hero.title }}</h1>
+  <p>{{ p.hero.lead }}</p>
+</section>
+
+{% for item in p.items %}
+<section class="feature-section wrap">
+  <div class="split">
+    <div class="split-copy">
+      <p class="kicker">{{ item.kicker }}</p>
+      <h2>{{ item.title }}</h2>
+      <p>{{ item.lead }}</p>
+    </div>
+    <div class="split-visual">
+      <ul class="check-list">
+        {% for bullet in item.bullets %}<li>{{ bullet }}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endfor %}
+
+<section class="section wrap">
+  <div class="section-head">
+    <p class="kicker">{{ p.faq.kicker }}</p>
+    <h2>{{ p.faq.title }}</h2>
+  </div>
+  <div class="faq">
+    {% for item in p.faq.items %}
+    <details>
+      <summary>{{ item.q }}</summary>
+      <p>{{ item.a }}</p>
+    </details>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="cta wrap">
+  <p class="kicker">{{ p.cta.kicker }}</p>
+  <h2>{{ p.cta.title }}</h2>
+  <p>{{ p.cta.lead }}</p>
+  <div class="cta-row">
+    <a class="btn btn-accent" href="{{ locale.routes.home }}#demos">{{ p.cta.primary }}</a>
+    <a class="btn btn-ghost" href="{{ site.github }}" target="_blank" rel="noreferrer">{{ p.cta.secondary }}</a>
+  </div>
+</section>

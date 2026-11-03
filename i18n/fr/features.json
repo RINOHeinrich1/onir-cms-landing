@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "title": "Fonctionnalités — ONIR CMS",
+    "description": "Création de chatbot, suivi des conversations, prise en main humaine, intégrations et API, fiches de prospection, personnalisation de thème : l’essentiel d’ONIR CMS.",
+    "ogTitle": "Fonctionnalités — ONIR CMS",
+    "ogDescription": "Création de chatbot, suivi des conversations, prise en main humaine, intégrations et API, fiches de prospection, personnalisation de thème."
+  },
+  "hero": {
+    "kicker": "Fonctionnalités",
+    "title": "L’essentiel, simplement.",
+    "lead": "Six capacités qui couvrent le cycle de vie d’un chatbot. Pas de liste technique : ce que vous pouvez faire, concrètement."
+  },
+  "items": [
+    {
+      "kicker": "01 · Créer",
+      "title": "Création de chatbot",
+      "lead": "Donnez vie à un assistant en quelques étapes. Vous décidez de son rôle, de son ton et de son apparence.",
+      "bullets": [
+        "Un rôle et un ton qui vous ressemblent",
+        "Une apparence à votre image",
+        "Des modèles de départ pour aller vite"
+      ]
+    },
+    {
+      "kicker": "02 · Suivre",
+      "title": "Suivi des conversations",
+      "lead": "Tout ce qui se dit, au même endroit. Vous gardez une vue claire sur les échanges et les informations recueillies.",
+      "bullets": [
+        "Toutes les conversations accessibles",
+        "Les informations collectées visibles",
+        "Recherche et filtres pour retrouver un échange"
+      ]
+    },
+    {
+      "kicker": "03 · Reprendre la main",
+      "title": "Prise en main humaine",
+      "lead": "L’IA fait le plus gros. Quand il faut une personne, vous prenez le relais — sans casser la conversation.",
+      "bullets": [
+        "Reprise de la conversation par un opérateur",
+        "Notification quand votre attention est nécessaire",
+        "Résumé pour reprendre rapidement"
+      ]
+    },
+    {
+      "kicker": "04 · Intégrer",
+      "title": "Intégrations & API",
+      "lead": "Votre chatbot s’intègre à vos outils : une page, un widget sur votre site, ou l’API pour automatiser.",
+      "bullets": [
+        "Page publique et widget à copier-coller",
+        "API pour vos propres outils",
+        "Notifications automatiques vers vos systèmes"
+      ]
+    },
+    {
+      "kicker": "05 · Collecter",
+      "title": "Fiches de prospection",
+      "lead": "Collectez les bonnes informations, au bon moment. Chaque échange peut produire une fiche claire et exploitable.",
+      "bullets": [
+        "Champs définis selon votre besoin",
+        "Pièces jointes récupérées dans la conversation",
+        "Fiche prête à exporter"
+      ]
+    },
+    {
+      "kicker": "06 · Personnaliser",
+      "title": "Personnalisation de thème",
+      "lead": "Votre chatbot doit vous ressembler. Adaptez l’interface à votre marque, du plus simple au plus immersif.",
+      "bullets": [
+        "Thèmes prêts à l’emploi",
+        "Couleurs, textes et images personnalisables",
+        "Expérience 3D immersive"
+      ]
+    }
+  ],
+  "faq": {
+    "kicker": "Questions fréquentes",
+    "title": "Le reste, en clair.",
+    "items": [
+      {
+        "q": "Est-ce vraiment gratuit ?",
+        "a": "Le code est open source (MIT) et s’installe chez vous sans licence. Il reste les coûts de votre infrastructure et du fournisseur IA que vous choisissez."
+      },
+      {
+        "q": "Puis-je utiliser mon propre modèle IA ?",
+        "a": "Oui. ONIR CMS fonctionne avec tous les fournisseurs compatibles OpenAI, avec vos propres clés et un modèle par chatbot."
+      },
+      {
+        "q": "Où sont stockées mes données ?",
+        "a": "Chez vous, si vous auto-hébergez l’instance. Vous gardez la main sur les données, les médias et la durée de conservation."
+      },
+      {
+        "q": "Faut-il être développeur ?",
+        "a": "Non pour créer et gérer un chatbot. Oui, ponctuellement, pour installer l’instance ou personnaliser un thème sur mesure."
+      }
+    ]
+  },
+  "cta": {
+    "kicker": "À vous",
+    "title": "Testez, puis installez.",
+    "lead": "La démo montre le produit. GitHub et la documentation vous donnent les clés.",
+    "primary": "Voir les démos",
+    "secondary": "Voir sur GitHub"
+  },
+  "footer": {
+    "tagline": "Le CMS open source des chatbots. À votre image, chez vous.",
+    "metaBrand": "ONIR CMS — Créez des chatbots à votre image"
+  }
+}

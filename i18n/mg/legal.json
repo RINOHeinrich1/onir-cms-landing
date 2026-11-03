@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "title": "Fampahafantarana ara-dalàna · ONIR CMS",
+    "description": "Fampahafantarana ara-dalàna ny tranokala ONIR CMS, tetikasa open source navoakan'ny Onirtech.",
+    "ogTitle": "Fampahafantarana ara-dalàna · ONIR CMS",
+    "ogDescription": "Fampahafantarana ara-dalàna ny tranokala ONIR CMS, tetikasa open source navoakan'ny Onirtech."
+  },
+  "hero": {
+    "kicker": "Fampahafantarana ara-dalàna",
+    "title": "Fampahafantarana ara-dalàna.",
+    "lead": "Tetikasa open source navoakan'ny Onirtech ny ONIR CMS.",
+    "updated": "Fanavaozana farany: Oktobra 2026"
+  },
+  "legalNotice": "Fandikan-teny ho fanazavana ihany ity. Ny dika frantsay no manan-kery ara-dalàna.",
+  "sections": [
+    {
+      "title": "Mpamoaka ny tranokala",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Navoakan'ny <strong>Onirtech</strong>, orinasa informatika monina eto Madagasikara, ity tranokala ity."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Laharana fandoavam-bola (NIF): 3018830411",
+            "Laharana statistika: 74908112024007589",
+            "Toerana foibe: Madagasikara",
+            "Mailaka: <a href=\"mailto:contact@onirtech.com\">contact@onirtech.com</a>",
+            "Telefaona: <a href=\"tel:+261349368233\">+261 34 936 82 33</a>"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Tale mpamoaka",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "RINO Heinrich."
+        }
+      ]
+    },
+    {
+      "title": "Mpampiantrano",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "OVH no mampiantrano ny tranokala, ary ao amin'ny 2 rue Kellermann, 59100 Roubaix, France no misy ny foibeny eoropeanina."
+        }
+      ]
+    },
+    {
+      "title": "Rindranasa ONIR CMS",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Rindranasa open source izay zaraina amin'ny alalan'ny fahazoan-dalana MIT ny ONIR CMS. Azo jerena, ovaina ary zaraina araka ny fepetran'io fahazoan-dalana io ny kaody loharano."
+        },
+        {
+          "type": "p",
+          "html": "Ny instance ONIR CMS auto-hébergé dia tantanan'ny mpandraharaha tsirairay. Tsy tompon'andraikitra amin'ny fanodinana angona ataon'ireo instance ireo ny Onirtech."
+        }
+      ]
+    },
+    {
+      "title": "Fananana ara-tsaina",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "An'ny Onirtech ny lahatsoratra, sary, sary an-tsary, logo ary singa marika ao amin'ny tranokala, raha tsy misy fanamarihana hafa. Voarara ny fandikana na fampisehoana ny tranokala na ny votoatiny, na amin'ny fomba rehetra, raha tsy misy fahazoan-dalana an-tsoratra mialoha."
+        },
+        {
+          "type": "p",
+          "html": "Tsy manome zo amin'ny marika, logo na votoaty editorial an'ny Onirtech ny fahazoan-dalana MIT."
+        }
+      ]
+    },
+    {
+      "title": "Angona manokana sy cookies",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Voalaza ao amin'ny <a href=\"{{privacy}}\">politika tsiambaratelo</a> ny angona angonina amin'ity tranokala ity sy mandritra ny demo."
+        },
+        {
+          "type": "p",
+          "html": "Tsy mampiasa cookie fanarahan-dia na fandrefesana mpitsidika ny tranokala. Voatahiry ao amin'ny navigateur ny safidy loko ary tsy alefa amin'ny serveur."
+        }
+      ]
+    },
+    {
+      "title": "Andraikitra",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Marina araka ny azo atao ny vaovao navoaka ary havaozina tsy tapaka ny tranokala. Mety hisy hadisoana na tsy fahampiana. Tsy tompon'andraikitra amin'ny fahavoazana vokatry ny fampiasana ny tranokala na ny tsy fahafahana miditra aminy ny Onirtech."
+        }
+      ]
+    },
+    {
+      "title": "Lalàna mihatra",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Fehezin'ny lalàna malagasy ireto fampahafantarana ara-dalàna ireto. Raha misy fifandirana, ny fitsarana mahay ao Madagasikara ihany no hanao didim-pitsarana."
+        }
+      ]
+    }
+  ],
+  "back": "← Hiverina any amin'ny fandraisana"
+}

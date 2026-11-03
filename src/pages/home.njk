@@ -1,0 +1,139 @@
+---
+layout: layouts/base.njk
+pageKey: home
+headerVariant: v2
+css:
+  - /assets/css/landing-v2.css?v=8
+showWidget: true
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "{{ locale.routes.home }}index.html"
+---
+<section class="hero wrap">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="kicker">{{ p.hero.kicker }}</p>
+      <h1>{{ p.hero.title }} <em>{{ p.hero.titleEmphasis }}</em></h1>
+      <p class="hero-lead">{{ p.hero.lead }}</p>
+      <div class="hero-ctas">
+        <a class="btn btn-accent btn-xl" href="#demos">{{ p.hero.cta }}</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="mock">
+        <div class="mock-inner">
+          <div class="mock-bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="mock-url">{{ p.mock.url }}</span>
+          </div>
+          <div class="mock-body">
+            <div class="mock-rail">
+              {% for item in p.mock.rail %}<span{% if loop.first %} class="on"{% endif %}>{{ item }}</span>{% endfor %}
+            </div>
+            <div class="mock-main">
+              <div class="mock-title">
+                <strong>{{ p.mock.title }}</strong>
+                <span class="pill">{{ p.mock.status }}</span>
+              </div>
+              <div class="mock-steps">
+                {% for step in p.mock.steps %}
+                <div class="mock-step{% if loop.index <= 2 %} done{% endif %}"><i>{{ loop.index }}</i> {{ step.label }} <span>{{ step.value }}</span></div>
+                {% endfor %}
+              </div>
+              <div class="mock-channels">
+                {% for channel in p.mock.channels %}<b>{{ channel }}</b>{% endfor %}
+              </div>
+              <div class="mock-live">{{ p.mock.live }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="demos">
+  <div class="section-head">
+    <p class="kicker">{{ p.demos.kicker }}</p>
+    <h2>{{ p.demos.title }}</h2>
+    <p>{{ p.demos.lead }}</p>
+  </div>
+  <div class="demo-cards">
+    {% for item in p.demos.items %}
+    <a class="demo-card" href="{{ demoLinks[item.key] }}" target="_blank" rel="noreferrer">
+      <span class="demo-tag">{{ item.tag }}</span>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.lead }}</p>
+      <span class="demo-cta">{{ p.demos.cta }}</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="band band-solo">
+    <div class="inner">
+      <p class="kicker">{{ p.openSource.kicker }}</p>
+      <h2>{{ p.openSource.title }}</h2>
+      <p>{{ p.openSource.lead }}</p>
+      <a class="btn btn-light" href="{{ site.github }}" target="_blank" rel="noreferrer">{{ p.openSource.cta }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="split">
+    <div class="split-copy">
+      <p class="kicker">{{ p.malagasy.kicker }}</p>
+      <h2>{{ p.malagasy.title }}</h2>
+      <p>{{ p.malagasy.lead }}</p>
+    </div>
+    <div class="split-visual flag-card">
+      {% set mapLabel = p.malagasy.mapLabel %}
+      {% include "components/malagasy-map.njk" %}
+      <p class="flag-caption">{{ p.malagasy.caption }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <p class="kicker">{{ p.providers.kicker }}</p>
+    <h2>{{ p.providers.title }}</h2>
+    <p>{{ p.providers.lead }}</p>
+  </div>
+  {% include "components/providers.njk" %}
+  <p class="providers-note">{{ p.providers.note }}</p>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <p class="kicker">{{ p.features.kicker }}</p>
+    <h2>{{ p.features.title }}</h2>
+  </div>
+  <div class="simple-grid">
+    {% for item in p.features.items %}
+    <article class="simple">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.lead }}</p>
+    </article>
+    {% endfor %}
+  </div>
+  <div class="hero-ctas">
+    <a class="btn btn-ghost" href="{{ locale.routes.features }}">{{ p.features.cta }}</a>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="support">
+    <div>
+      <p class="kicker">{{ p.support.kicker }}</p>
+      <h2>{{ p.support.title }}</h2>
+      <p>{{ p.support.lead }}</p>
+    </div>
+    <a class="btn btn-accent" href="{{ locale.routes.participate }}">{{ p.support.cta }}</a>
+  </div>
+</section>

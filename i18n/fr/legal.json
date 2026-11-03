@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "title": "Mentions légales · ONIR CMS",
+    "description": "Mentions légales du site ONIR CMS, projet open source édité par Onirtech.",
+    "ogTitle": "Mentions légales · ONIR CMS",
+    "ogDescription": "Mentions légales du site ONIR CMS, projet open source édité par Onirtech."
+  },
+  "hero": {
+    "kicker": "Informations légales",
+    "title": "Mentions légales.",
+    "lead": "ONIR CMS est un projet open source édité par Onirtech.",
+    "updated": "Dernière mise à jour : octobre 2026"
+  },
+  "sections": [
+    {
+      "title": "Éditeur du site",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Le présent site est édité par <strong>Onirtech</strong>, entreprise informatique basée à Madagascar."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Numéro d’identification fiscale (NIF) : 3018830411",
+            "Numéro statistique : 74908112024007589",
+            "Siège social : Madagascar",
+            "E-mail : <a href=\"mailto:contact@onirtech.com\">contact@onirtech.com</a>",
+            "Téléphone : <a href=\"tel:+261349368233\">+261 34 936 82 33</a>"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Directeur de publication",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "RINO Heinrich."
+        }
+      ]
+    },
+    {
+      "title": "Hébergeur",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Le site est hébergé par OVH, dont le siège européen est situé au 2 rue Kellermann, 59100 Roubaix, France."
+        }
+      ]
+    },
+    {
+      "title": "Logiciel ONIR CMS",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "ONIR CMS est un logiciel open source distribué sous licence MIT. Le code source peut être consulté, modifié et redistribué dans les conditions de cette licence."
+        },
+        {
+          "type": "p",
+          "html": "Les instances ONIR CMS auto-hébergées sont exploitées sous la responsabilité de leurs opérateurs respectifs. Onirtech n’est pas responsable des traitements de données réalisés par ces instances."
+        }
+      ]
+    },
+    {
+      "title": "Propriété intellectuelle",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Les textes, images, graphismes, logos et éléments de marque du site sont la propriété de Onirtech, sauf mention contraire. Toute reproduction ou représentation du site ou de son contenu, par quelque procédé que ce soit, est interdite sans autorisation écrite préalable."
+        },
+        {
+          "type": "p",
+          "html": "La licence MIT du logiciel ne confère aucun droit sur les marques, logos ou contenus éditoriaux de Onirtech."
+        }
+      ]
+    },
+    {
+      "title": "Données personnelles et cookies",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Les données collectées sur ce site et lors des démonstrations sont décrites dans la <a href=\"{{privacy}}\">politique de confidentialité</a>."
+        },
+        {
+          "type": "p",
+          "html": "Le site n’utilise aucun cookie de suivi ou de mesure d’audience. La préférence de thème est conservée localement dans le navigateur et n’est jamais transmise à un serveur."
+        }
+      ]
+    },
+    {
+      "title": "Responsabilité",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Les informations publiées sont aussi précises que possible et le site est régulièrement mis à jour. Des erreurs ou omissions peuvent toutefois subsister. Onirtech ne saurait être responsable des dommages résultant de l’utilisation du site ou de l’impossibilité d’y accéder."
+        }
+      ]
+    },
+    {
+      "title": "Droit applicable",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Les présentes mentions légales sont régies par le droit malgache. En cas de litige, les tribunaux compétents de Madagascar seront seuls compétents."
+        }
+      ]
+    }
+  ],
+  "back": "← Retour à l’accueil",
+  "legalNotice": ""
+}
