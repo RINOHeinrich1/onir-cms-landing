@@ -6,9 +6,7 @@
     "ogDescription": "Création de chatbot, suivi des conversations, prise en main humaine, intégrations et API, fiches de prospection, personnalisation de thème."
   },
   "hero": {
-    "kicker": "Fonctionnalités",
-    "title": "L’essentiel, simplement.",
-    "lead": "Six capacités qui couvrent le cycle de vie d’un chatbot. Pas de liste technique : ce que vous pouvez faire, concrètement."
+    "title": "Les fonctionnalités essentielles"
   },
   "items": [
     {

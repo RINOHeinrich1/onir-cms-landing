@@ -6,15 +6,13 @@
     "ogDescription": "Famoronana chatbot, fanarahan-dresaka, fandraisan'olona, fampidirana sy API, fiche fandraisana mpanjifa, fanamboarana endrika."
   },
   "hero": {
-    "kicker": "Ireo fampiasa",
-    "title": "Ny fototra, amin'ny tsotra.",
-    "lead": "Fahaiza-manao enina mandrakotra ny fiainan'ny chatbot. Tsy lisitra teknika: izay azonao atao, amin'ny mazava."
+    "title": "Ireo fampiasa fototra"
   },
   "items": [
     {
       "kicker": "01 · Mamorona",
       "title": "Famoronana chatbot",
-      "lead": "Ampidiro amin'ny dingana vitsivitsy ny assistant. Ianao no mamaritra ny andraikiny, ny feony ary ny endriny.",
+      "lead": "Ampidiro amin'ny dingana vitsivitsy ny assistant. Ianao no mamaritra ny andraikiny, ny fomba firesany ary ny endriny.",
       "bullets": [
         "Andraikitra sy feo mitovy aminao",
         "Endrika araka ny endrikao",
