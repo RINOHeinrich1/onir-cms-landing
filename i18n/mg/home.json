@@ -1,15 +1,15 @@
 {
   "meta": {
     "title": "ONIR CMS — CMS ho an'ny chatbot",
-    "description": "Amiaraka amin'ny ONIR CMS, mamorona assistant IA na chatbot mifanaraka amin'ny filanao sy ny endrikao. Open source, mifanaraka amin'ny standard OpenAI.",
+    "description": "Miaraka amin'ny ONIR CMS, mamorona assistant IA na chatbot mifanaraka amin'ny filanao sy ny endrika ilainao azy. Open source, mifanaraka amin'ny standard OpenAI.",
     "ogTitle": "ONIR CMS — CMS ho an'ny chatbot",
-    "ogDescription": "Amiaraka amin'ny ONIR CMS, mamorona assistant IA na chatbot mifanaraka amin'ny filanao sy ny endrikao."
+    "ogDescription": "Miaraka amin'ny ONIR CMS, mamorona assistant IA na chatbot mifanaraka amin'ny filanao sy ny endrika ilainao azy."
   },
   "hero": {
     "kicker": "CMS ho an'ny chatbot",
     "title": "Mamorona assistant IA",
     "titleEmphasis": "araka ny endrikareo.",
-    "lead": "Amiaraka amin'ny ONIR CMS, mamorona assistant IA na chatbot mifanaraka amin'ny filanao sy ny endrikao.",
+    "lead": "Miaraka amin'ny ONIR CMS, mamorona assistant IA na chatbot mifanaraka amin'ny filanao sy ny endrika ilainao azy.",
     "cta": "Andramo"
   },
   "mock": {
