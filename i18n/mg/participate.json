@@ -34,14 +34,14 @@
     "cards": [
       {
         "number": "01",
-        "title": "Mamorona kaody",
+        "title": "Mikaody",
         "text": "Issues voafaritra, famerenana kaody, fitsapana. Atombohy amin'ny fanitsiana kely na fanatsarana voafaritra.",
         "cta": "Jereo ny issues"
       },
       {
         "number": "02",
         "title": "Mamorona endrika",
-        "text": "Modely hita maso, lalana, component: raisin'ny marketplace ny endrika ilaina sy voarakitra.",
+        "text": "Mamorona endrikana chatbot azo ampirahina amin'ny ONIR-CMS, ho alefantsika ao amin'ny marketplace.",
         "cta": "Torolalana ny modely"
       },
       {
