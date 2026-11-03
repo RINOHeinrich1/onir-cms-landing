@@ -869,6 +869,37 @@ a { color: inherit; }
 .support h2 { font-size: clamp(1.6rem, 2.8vw, 2.2rem); margin-top: 0.6rem; }
 .support p { margin-top: 0.6rem; color: var(--ink-soft); }
 
+
+/* ---------- Fournisseurs de modèles ---------- */
+.providers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+.provider {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--card);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+.provider-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  color: var(--green-2);
+}
+.providers-note {
+  margin-top: 1rem;
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
   .hero-grid, .split, .band { grid-template-columns: 1fr; }
