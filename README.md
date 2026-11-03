@@ -12,7 +12,7 @@ Le site est généré statiquement en trois langues :
 
 - français à la racine (`/`, `/fonctionnalites/`, `/themes/`, `/participer/`, …) ;
 - anglais sous `/en/` (`/en/features/`, `/en/themes/`, `/en/participate/`, …) ;
-- malagasy sous `/mg/` (`/mg/endri-javatra/`, `/mg/endrika/`, `/mg/handray-anjara/`, …).
+- malagasy sous `/mg/` (`/mg/fampiasa/`, `/mg/endrika/`, `/mg/handray-anjara/`, …).
 
 Le sélecteur de langue du header pointe vers la **même page** dans chaque langue. Les liens
 `hreflang`, le canonical et le sitemap sont générés depuis la table de routes
@@ -102,7 +102,7 @@ sudo -u deploy-preprod /opt/onir-cms-landing-preprod/deploy/preprod.sh
 - Le script construit `dist/`, synchronise le répertoire web, puis réécrit les liens vers
   `cms-backoffice.onirtech.com` et `magic-panel.onir-cms.tech` vers l’application preprod.
 - Le workflow est dans `.github/workflows/preprod.yml` et vérifie `/`, `/themes/`, `/en/`,
-  `/mg/`, `/en/features/` et `/mg/endri-javatra/`.
+  `/mg/`, `/en/features/` et `/mg/fampiasa/`.
 
 Le déploiement production reste manuel via `deploy/apply-production.sh`.
 

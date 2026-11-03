@@ -3,7 +3,7 @@ const routes = {
   features: {
     fr: "/fonctionnalites/",
     en: "/en/features/",
-    mg: "/mg/endri-javatra/",
+    mg: "/mg/fampiasa/",
   },
   themes: { fr: "/themes/", en: "/en/themes/", mg: "/mg/endrika/" },
   participate: {
