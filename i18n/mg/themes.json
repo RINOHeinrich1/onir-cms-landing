@@ -23,7 +23,13 @@
       "version": "v4.45.2",
       "name": "Immersive",
       "description": "Sehatra 3D feno: trano fidirana, efitrano, avatar, album, resaka tari-dalana ary fampidirana rakitra.",
-      "meta": ["Sehatra 3D", "Avatar", "Album", "Rakitra", "3,8 Mo"],
+      "meta": [
+        "Sehatra 3D",
+        "Avatar",
+        "Album",
+        "Rakitra",
+        "3,8 Mo"
+      ],
       "detailsText": "Modely ofisialy misy assets CC0. Sehatra 3D, avatar TalkingHead, album, fahalalana, media, fandrindrana rohy ary rakitra (CV, antontan-taratasy)."
     },
     {
@@ -31,7 +37,12 @@
       "version": "v1.4.1",
       "name": "Starter",
       "description": "Ny modely fototra: taratasy fanamarinana, resaka ary media.",
-      "meta": ["Taratasy", "Chat", "Media", "2,8 Ko"],
+      "meta": [
+        "Taratasy",
+        "Chat",
+        "Media",
+        "2,8 Ko"
+      ],
       "detailsText": "Ny fiandohana kely indrindra hahatakarana ny fifanarahana mpampiantrano sy hamoronana ny modely hita maso anao."
     }
   ],
@@ -39,11 +50,23 @@
     "kicker": "Fametrahana",
     "title": "Dingana telo.",
     "steps": [
-      { "number": "01", "title": "Alaina", "text": "Alaivo ny archive-n'ny endrika." },
-      { "number": "02", "title": "Ampidiro", "text": "Dashboard → Modely hita maso → Ampidiro." },
-      { "number": "03", "title": "Ampifandraiso", "text": "Ampifandraiso amin'ny rohy chat ny modely." }
+      {
+        "number": "01",
+        "title": "Alaina",
+        "text": "Alaivo ny archive-n'ny endrika."
+      },
+      {
+        "number": "02",
+        "title": "Ampidiro",
+        "text": "Dashboard → Modely hita maso → Ampidiro."
+      },
+      {
+        "number": "03",
+        "title": "Ampifandraiso",
+        "text": "Ampifandraiso amin'ny rohy chat ny modely."
+      }
     ],
     "detail": "Mila antsipiriany?",
-    "link": "Vakio ny fanoratana ny modely"
+    "link": "Vakio ny torolalana momba ny modely"
   }
 }

@@ -29,7 +29,7 @@
     "title": "Handray anjara amin'ny kaody.",
     "lead": "Open source ny ONIR CMS. Afaka manitsy, manitatra, manoratra na mitatitra izay manakana ianao. Ny anjara dia dinihina ary ampidirina tsikelikely.",
     "github": "Hanokatra GitHub",
-    "docs": "Hamaky ny fanoratana",
+    "docs": "Hamaky ny torolalana",
     "note": "Stack: Next.js, TypeScript, PostgreSQL, modely web-components.",
     "cards": [
       {
@@ -47,7 +47,7 @@
       {
         "number": "03",
         "title": "Manoratra sy mitsapa",
-        "text": "Famerenan'ny mpampiasa, bug azo averina na pejy fanoratana tsy misy dia mitovy lanja amin'ny PR.",
+        "text": "Famerenan'ny mpampiasa, bug azo averina na pejy torolalana tsy misy dia mitovy lanja amin'ny PR.",
         "cta": "Mitantara bug"
       }
     ]
@@ -57,6 +57,6 @@
     "subtitle": "Tanàna ONIR · fifanakalozana tari-dalana",
     "close": "Hidio",
     "progress": "Dingana 1 amin'ny 4",
-    "demo": "Demo"
+    "demo": "Fanandramana"
   }
 }
