@@ -54,8 +54,7 @@ hors clés optionnelles, un placeholder différent ou une balise HTML non autori
 
 - `fr` est la langue de référence.
 - `en` et `mg` doivent avoir exactement les mêmes clés que `fr`.
-- Le malagasy est un **brouillon** : un avertissement « version malagasy en cours de relecture »
-  est affiché dans le footer tant que la relecture native n’est pas terminée.
+- Le malagasy est un **brouillon** en attente de relecture native.
 - Les mentions légales et la politique de confidentialité EN/MG portent la mention
   « seule la version française fait foi ».
 - Les libellés générés dynamiquement par `assets/js/participer.js` (ville 3D, chatbot de
