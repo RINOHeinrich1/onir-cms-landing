@@ -21,9 +21,9 @@
       <a href="{{ locale.routes.privacy }}">{{ t.common.nav.privacy }}</a>
     </nav>
     <div class="site-foot-contact">
-      <strong>{{ t.common.contact.kicker }}</strong>
-      <a href="{{ site.whatsappUrl }}" target="_blank" rel="noopener">{{ t.common.contact.whatsapp }}</a>
-      <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>
+      <span>{{ t.common.contact.kicker }}</span>
+      <a class="site-foot-contact-icon" href="{{ site.whatsappUrl }}" target="_blank" rel="noopener" aria-label="WhatsApp : {{ site.whatsappNumber }}" title="WhatsApp : {{ site.whatsappNumber }}"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 3.7 19.1L2 22l3-.8A11.8 11.8 0 1 0 20.5 3.5Z" stroke="currentColor" stroke-width="1.8"/><path d="M8.2 7.4c.2-.5.4-.5.7-.5h.6c.2 0 .4 0 .6.5l.8 1.9c.1.3 0 .5-.1.7l-.6.8c-.2.2-.1.4 0 .6.5.9 1.2 1.6 2.1 2.1.2.1.4.2.6 0l.8-.6c.2-.2.4-.2.7-.1l1.9.8c.4.2.5.4.5.6v.6c0 .3 0 .5-.5.7-1.2.8-2.8.8-4.6-.1-1.8-.9-3.5-2.6-4.4-4.4-.9-1.8-1-3.4-.2-4.6Z" fill="currentColor"/></svg></a>
+      <a class="site-foot-contact-icon" href="mailto:{{ site.contactEmail }}" aria-label="Email : {{ site.contactEmail }}" title="Email : {{ site.contactEmail }}"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="m3 7 9 6 9-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <p class="site-foot-meta">{{ t.common.footer.legacyMeta }}</p>
     {% if t.common.reviewNotice %}<p class="site-foot-review">{{ t.common.reviewNotice }}</p>{% endif %}
@@ -53,9 +53,9 @@
       </nav>
     </div>
     <div class="foot-contact">
-      <strong>{{ t.common.contact.kicker }}</strong>
-      <a href="{{ site.whatsappUrl }}" target="_blank" rel="noopener">{{ t.common.contact.whatsapp }}</a>
-      <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>
+      <span>{{ t.common.contact.kicker }}</span>
+      <a class="foot-contact-icon" href="{{ site.whatsappUrl }}" target="_blank" rel="noopener" aria-label="WhatsApp : {{ site.whatsappNumber }}" title="WhatsApp : {{ site.whatsappNumber }}"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 3.7 19.1L2 22l3-.8A11.8 11.8 0 1 0 20.5 3.5Z" stroke="currentColor" stroke-width="1.8"/><path d="M8.2 7.4c.2-.5.4-.5.7-.5h.6c.2 0 .4 0 .6.5l.8 1.9c.1.3 0 .5-.1.7l-.6.8c-.2.2-.1.4 0 .6.5.9 1.2 1.6 2.1 2.1.2.1.4.2.6 0l.8-.6c.2-.2.4-.2.7-.1l1.9.8c.4.2.5.4.5.6v.6c0 .3 0 .5-.5.7-1.2.8-2.8.8-4.6-.1-1.8-.9-3.5-2.6-4.4-4.4-.9-1.8-1-3.4-.2-4.6Z" fill="currentColor"/></svg></a>
+      <a class="foot-contact-icon" href="mailto:{{ site.contactEmail }}" aria-label="Email : {{ site.contactEmail }}" title="Email : {{ site.contactEmail }}"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="m3 7 9 6 9-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="foot-meta">
       <span>{{ t.common.footer.metaOpenSource }}</span>

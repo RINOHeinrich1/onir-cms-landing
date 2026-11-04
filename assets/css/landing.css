@@ -685,7 +685,7 @@
 
 .site-foot {
   margin-top: auto;
-  border-top: 1px solid var(--site-line);
+  border-top: 0;
   background: var(--site-surface);
 }
 
@@ -1142,7 +1142,6 @@
 
 /* ---------- Section contact (legacy) ---------- */
 .contact-band {
-  border-top: 1px solid var(--site-line);
   background: var(--site-surface);
   padding-block: 3.2rem;
 }
@@ -1179,25 +1178,34 @@
   text-decoration: none;
 }
 .contact-action:hover { border-color: var(--site-ink); }
-.contact-action span { color: var(--site-muted); font-size: 0.76rem; font-weight: 700; }
+.contact-action-label { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--site-muted); font-size: 0.76rem; font-weight: 700; }
+.contact-icon { width: 1rem; height: 1rem; flex: none; }
 .contact-action strong { font-size: 0.88rem; text-align: right; overflow-wrap: anywhere; }
 .contact-action-primary { background: var(--site-ink); border-color: var(--site-ink); color: var(--site-bg); }
 .contact-action-primary span { color: inherit; opacity: 0.72; }
 .site-foot-contact {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 0.55rem 1.1rem;
+  gap: 0.7rem;
   grid-column: 1 / -1;
   margin-top: 0.9rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--site-line);
-  color: var(--site-muted);
-  font-size: 0.8rem;
+  padding-top: 0;
+  border-top: 0;
 }
-.site-foot-contact strong { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
-.site-foot-contact a { color: var(--site-ink); font-weight: 700; text-decoration: none; }
-.site-foot-contact a:hover { text-decoration: underline; }
+.site-foot-contact > span { color: var(--site-muted); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.site-foot-contact-icon {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid var(--site-line);
+  border-radius: 999px;
+  color: var(--site-ink);
+  background: var(--site-bg);
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+.site-foot-contact-icon svg { width: 1rem; height: 1rem; }
+.site-foot-contact-icon:hover { border-color: var(--site-ink); transform: translateY(-1px); }
 @media (max-width: 760px) {
   .contact-inner { grid-template-columns: minmax(0, 1fr); }
   .contact-band { padding-block: 2.5rem; }
