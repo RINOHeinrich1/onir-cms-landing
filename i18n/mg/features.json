@@ -12,7 +12,7 @@
     {
       "kicker": "01 · Mamorona",
       "title": "Famoronana chatbot",
-      "lead": "Ampidiro amin'ny dingana vitsivitsy ny assistant. Ianao no mamaritra ny andraikiny, ny fomba firesaka ary ny endriny.",
+      "lead": "Forony amin'ny dingana vitsivitsy ny assistant IA anao. Ianao no mamaritra ny andraikiny, ny fomba firesaka ary ny endriny.",
       "bullets": [
         "Andraikitra sy fomba firesaka araka ny ilainao azy",
         "Endrika araka ny endrikao",
@@ -75,8 +75,8 @@
     "title": "Ny ambiny, amin'ny mazava.",
     "items": [
       {
-        "q": "Maimaim-poana tokoa ve?",
-        "a": "Open source (MIT) ny kaody ary apetraka ao aminareo tsy misy fahazoan-dalana. Mijanona ny saran'ny fotodrafitrasa sy ny mpamatsy IA safidinao."
+        "q": "Malalaka ve ny kaody?",
+        "a": "Open source (MIT) ny kaody ary apetraka ao aminareo tsy misy fahazoan-dalana. Safidio ny fotodrafitrasa sy ny mpamatsy IA."
       },
       {
         "q": "Afaka mampiasa ny modely IA-ko ve aho?",

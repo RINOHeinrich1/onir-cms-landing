@@ -53,7 +53,7 @@
     ]
   },
   "openSource": {
-    "kicker": "Free and open source",
+    "kicker": "Libre and open source",
     "title": "AI for everyone.",
     "lead": "The same access to AI for every organisation: install ONIR CMS yourself, keep your data and decide.",
     "cta": "View the code on GitHub"
@@ -86,7 +86,7 @@
   },
   "support": {
     "kicker": "Support the project",
-    "title": "Free AI needs you.",
+    "title": "Open-source AI needs you.",
     "lead": "Contribute, sponsor or spread the word about ONIR CMS.",
     "cta": "Participate"
   },

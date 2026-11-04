@@ -1,18 +1,18 @@
 {
   "meta": {
-    "title": "Thèmes gratuits · ONIR CMS",
-    "description": "Téléchargez les templates visuels Immersive et Starter pour ONIR CMS. Gratuits, prêts à importer.",
-    "ogTitle": "Thèmes gratuits · ONIR CMS",
+    "title": "Thèmes libres · ONIR CMS",
+    "description": "Téléchargez les templates visuels Immersive et Starter pour ONIR CMS. Libres, prêts à importer.",
+    "ogTitle": "Thèmes libres · ONIR CMS",
     "ogDescription": "Téléchargez les templates visuels Immersive et Starter pour ONIR CMS."
   },
   "hero": {
     "kicker": "Marketplace",
-    "title": "Thèmes gratuits.",
-    "lead": "Des templates visuels prêts à importer dans ONIR CMS. Téléchargement libre, sans paiement.",
-    "freeNote": "Tous les thèmes actuels sont gratuits.",
+    "title": "Thèmes libres.",
+    "lead": "Des templates visuels prêts à importer dans ONIR CMS. Téléchargement libre.",
+    "freeNote": "Tous les thèmes actuels sont libres.",
     "aria": "Thèmes disponibles"
   },
-  "freeLabel": "Gratuit",
+  "freeLabel": "Libre",
   "metaAria": "Caractéristiques",
   "download": "Télécharger",
   "guide": "Guide d’import",

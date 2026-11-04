@@ -75,8 +75,8 @@
     "title": "The rest, in plain words.",
     "items": [
       {
-        "q": "Is it really free?",
-        "a": "The code is open source (MIT) and installs on your own infrastructure without a licence. You still pay for your infrastructure and the AI provider you choose."
+        "q": "Is the code open source?",
+        "a": "The code is open source (MIT) and installs on your own infrastructure without a licence. You choose your infrastructure and AI provider."
       },
       {
         "q": "Can I use my own AI model?",

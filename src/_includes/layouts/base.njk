@@ -2,7 +2,7 @@
 <html lang="{{ locale.htmlLang }}" data-theme="light">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="{{ viewport }}" />
+  <meta name="viewport" content="{{ viewport or 'width=device-width, initial-scale=1' }}" />
   <title>{{ p.meta.title }}</title>
   <meta name="description" content="{{ p.meta.description }}" />
   {% if canonical %}<link rel="canonical" href="{{ canonical }}" />{% endif %}

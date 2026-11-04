@@ -7,7 +7,7 @@ export default {
   footerVariant: (data) => data.footerVariant ?? data.headerVariant ?? "v2",
   wrapper: (data) => data.wrapper ?? null,
   mainClass: (data) => data.mainClass ?? "",
-  viewport: (data) => data.viewport ?? "width=device-width, initial-scale=1",
+  viewport: (data) => data.viewport || "width=device-width, initial-scale=1",
   headExtra: (data) => data.headExtra ?? "",
   bodyScripts: (data) => data.bodyScripts ?? [],
   mainAttrs: (data) => {

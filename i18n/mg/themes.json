@@ -1,18 +1,18 @@
 {
   "meta": {
-    "title": "Endrika maimaim-poana · ONIR CMS",
-    "description": "Alaivo ny modely hita maso Immersive sy Starter ho an'ny ONIR CMS. Maimaim-poana, vonona ampidirina.",
-    "ogTitle": "Endrika maimaim-poana · ONIR CMS",
+    "title": "Endrika azonao ampiasaina · ONIR CMS",
+    "description": "Alaivo ny modely hita maso Immersive sy Starter ho an'ny ONIR CMS. Malalaka, vonona ampidirina.",
+    "ogTitle": "Endrika azonao ampiasaina · ONIR CMS",
     "ogDescription": "Alaivo ny modely hita maso Immersive sy Starter ho an'ny ONIR CMS."
   },
   "hero": {
     "kicker": "Marketplace",
-    "title": "Endrika maimaim-poana.",
+    "title": "Endrika azonao ampiasaina",
     "lead": "Azonao atao ny manovanova ny endrikin'ny assistant IA araka izay endriny tianao, azonao atao ihany koa ny mampamorona endriny vaovao",
-    "freeNote": "Maimaim-poana avokoa ny endrika rehetra ankehitriny.",
+    "freeNote": "Malalaka avokoa ny endrika rehetra ankehitriny.",
     "aria": "Endrika misy"
   },
-  "freeLabel": "Maimaim-poana",
+  "freeLabel": "Malalaka",
   "metaAria": "Toetra",
   "download": "Alaina",
   "guide": "Torolalana fampidirana",

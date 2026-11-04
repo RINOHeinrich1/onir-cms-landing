@@ -75,8 +75,8 @@
     "title": "Le reste, en clair.",
     "items": [
       {
-        "q": "Est-ce vraiment gratuit ?",
-        "a": "Le code est open source (MIT) et s’installe chez vous sans licence. Il reste les coûts de votre infrastructure et du fournisseur IA que vous choisissez."
+        "q": "Le code est-il libre ?",
+        "a": "Le code est open source (MIT) et s’installe chez vous sans licence. Vous choisissez votre infrastructure et votre fournisseur IA."
       },
       {
         "q": "Puis-je utiliser mon propre modèle IA ?",

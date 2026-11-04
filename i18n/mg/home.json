@@ -75,9 +75,9 @@
     ]
   },
   "openSource": {
-    "kicker": "Maimaim-poana sy open source",
+    "kicker": "Malalaka sy open source",
     "title": "Ny IA ho an'ny rehetra.",
-    "lead": "Ny fidirana mitovy amin'ny IA ho an'ny fikambanana rehetra: apetraho ao aminareo ny ONIR CMS, tehirizo ny angon-drakitrao ary manapaha hevitra.",
+    "lead": "Mananjo hampiasa sy hitrandraka ny IA amin'izay mahasoa sy manampy azy ny rehetra",
     "cta": "Jereo ny kaody ao amin'ny GitHub"
   },
   "malagasy": {
@@ -126,8 +126,8 @@
   },
   "support": {
     "kicker": "Tohanana ny tetikasa",
-    "title": "Mila anao ny IA malalaka.",
-    "lead": "Manohana, mpanohana na mampahafantatra an'i ONIR CMS.",
+    "title": "Mila ny fanampinao izahay hafahana mitrandraka ny IA hoan'ny rehetra",
+    "lead": "Mandraisa anjara, tohano ny vokatra, ary hampafataro ONIR-CMS",
     "cta": "Handray anjara"
   },
   "footer": {

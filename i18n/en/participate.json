@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Participate · ONIR CMS",
-    "description": "Let's build the free future of AI together. Sponsor the ONIR City or contribute to the ONIR CMS code.",
+    "description": "Let's build the open future of AI together. Sponsor the ONIR City or contribute to the ONIR CMS code.",
     "ogTitle": "Participate · ONIR CMS",
-    "ogDescription": "Let's build the free future of AI together. Sponsor the ONIR City or contribute to the ONIR CMS code."
+    "ogDescription": "Let's build the open future of AI together. Sponsor the ONIR City or contribute to the ONIR CMS code."
   },
   "tabs": {
     "aria": "Participate",
@@ -11,7 +11,7 @@
     "developer": "Developer"
   },
   "sponsor": {
-    "title": "Let's build the free future of AI together",
+    "title": "Let's build the open future of AI together",
     "cta": "Become a sponsor",
     "viewToggle": "3D view",
     "mapLabel": "Interactive map of ONIR City",
