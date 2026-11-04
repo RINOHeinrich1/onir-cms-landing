@@ -7,13 +7,28 @@
     </div>
     <div class="contact-actions">
       <a class="contact-action contact-action-primary" href="{{ site.whatsappUrl }}" target="_blank" rel="noopener">
-        <span class="contact-action-label"><svg class="contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 3.7 19.1L2 22l3-.8A11.8 11.8 0 1 0 20.5 3.5Z" stroke="currentColor" stroke-width="1.8"/><path d="M8.2 7.4c.2-.5.4-.5.7-.5h.6c.2 0 .4 0 .6.5l.8 1.9c.1.3 0 .5-.1.7l-.6.8c-.2.2-.1.4 0 .6.5.9 1.2 1.6 2.1 2.1.2.1.4.2.6 0l.8-.6c.2-.2.4-.2.7-.1l1.9.8c.4.2.5.4.5.6v.6c0 .3 0 .5-.5.7-1.2.8-2.8.8-4.6-.1-1.8-.9-3.5-2.6-4.4-4.4-.9-1.8-1-3.4-.2-4.6Z" fill="currentColor"/></svg>{{ t.common.contact.whatsapp }}</span>
+        <span class="contact-action-label">
+          <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.52 3.48A11.9 11.9 0 0 0 12.06 0C5.5 0 .17 5.33.17 11.89c0 2.1.55 4.15 1.6 5.96L0 24l6.3-1.65a11.9 11.9 0 0 0 5.76 1.47h.01c6.56 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.17-3.44-8.45ZM12.07 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.28c0-5.45 4.43-9.88 9.9-9.88 2.64 0 5.12 1.03 6.98 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.45-4.43 9.88-9.88 9.88Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.2 5.07 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z" fill="currentColor"/></svg>
+          {{ t.common.contact.whatsapp }}
+        </span>
         <strong>{{ site.whatsappNumber }}</strong>
       </a>
       <a class="contact-action" href="mailto:{{ site.contactEmail }}">
-        <span class="contact-action-label"><svg class="contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="m3 7 9 6 9-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ t.common.contact.email }}</span>
+        <span class="contact-action-label">
+          <svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="m3 7 9 6 9-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {{ t.common.contact.email }}
+        </span>
         <strong>{{ site.contactEmail }}</strong>
       </a>
+      <div class="contact-socials">
+        <span>{{ t.common.contact.follow }}</span>
+        <a class="contact-social-icon" href="{{ site.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M7.5 10.5V17M7.5 7.5v.1M11.5 17v-3.7c0-1.5 1-2.5 2.4-2.5 1.3 0 2.1.9 2.1 2.5V17M11.5 10.5V17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </a>
+        <a class="contact-social-icon" href="{{ site.facebook }}" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.5 8.5h2V5.5h-2.2C11.8 5.5 10 7.3 10 9.8v1.7H8v3h2V21h3v-6.5h2.4l.5-3h-2.9V9.8c0-.8.4-1.3 1.5-1.3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>
