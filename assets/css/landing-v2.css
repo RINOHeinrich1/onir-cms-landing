@@ -704,6 +704,17 @@ a { color: inherit; }
 .foot-nav { display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem; align-content: start; }
 .foot-nav a { font-size: 0.84rem; text-decoration: none; color: var(--ink-soft); }
 .foot-nav a:hover { color: var(--ink); }
+.foot-contact {
+  margin-top: 1.8rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+}
+.foot-contact p { margin: 0 0 0.35rem; }
+.foot-contact a { color: var(--ink); font-weight: 700; text-decoration: none; }
+.foot-contact a:hover { text-decoration: underline; }
+
 .foot-meta {
   margin-top: 2.2rem;
   padding-top: 1.2rem;
@@ -960,7 +971,18 @@ a { color: inherit; }
   .mock-rail { display: flex; flex-wrap: wrap; overflow-x: visible; border-right: 0; border-bottom: 1px solid var(--line); }
   .mock-rail span { flex: none; }
   .anchors-inner { flex-wrap: wrap; overflow-x: visible; }
-  .foot-meta { flex-direction: column; }
+  .foot-contact {
+  margin-top: 1.8rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+}
+.foot-contact p { margin: 0 0 0.35rem; }
+.foot-contact a { color: var(--ink); font-weight: 700; text-decoration: none; }
+.foot-contact a:hover { text-decoration: underline; }
+
+.foot-meta { flex-direction: column; }
 }
 @media (max-width: 320px) {
   .providers { grid-template-columns: 1fr; }
