@@ -13,6 +13,8 @@ export default {
   whatsappUrl: "https://wa.me/261349368233",
   whatsappNumber: "+261349368233",
   contactEmail: "contact@onir-cms.tech",
+  linkedin: "https://www.linkedin.com/groups/40618339/",
+  facebook: "https://www.facebook.com/people/Onir-Cms/61595921202498/",
   widget: {
     src: "https://cms-backoffice.onirtech.com/widget/v2.js",
     token: "kLrv9RS6vNxdb77hDQWGLZEL7XvVgb1g",

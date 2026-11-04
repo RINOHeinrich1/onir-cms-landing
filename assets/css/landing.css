@@ -1165,12 +1165,17 @@
 }
 .contact-copy p { max-width: 46ch; margin: 0; color: var(--site-muted); line-height: 1.65; }
 .contact-actions { display: grid; gap: 0.65rem; }
+.contact-socials { display: flex; align-items: center; gap: 0.65rem; padding-top: 0.35rem; }
+.contact-socials > span { color: var(--site-muted); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.contact-social-icon { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border: 1px solid var(--site-line); border-radius: 999px; color: var(--site-ink); background: var(--site-bg); text-decoration: none; }
+.contact-social-icon svg { width: 1.15rem; height: 1.15rem; }
+.contact-social-icon:hover { border-color: var(--site-ink); }
 .contact-action {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.2rem;
-  padding: 0.9rem 1.1rem;
+  padding: 1rem 1.15rem;
   border: 1px solid var(--site-line);
   border-radius: 0.9rem;
   background: var(--site-bg);
@@ -1178,8 +1183,8 @@
   text-decoration: none;
 }
 .contact-action:hover { border-color: var(--site-ink); }
-.contact-action-label { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--site-muted); font-size: 0.76rem; font-weight: 700; }
-.contact-icon { width: 1rem; height: 1rem; flex: none; }
+.contact-action-label { display: inline-flex; align-items: center; gap: 0.55rem; color: var(--site-muted); font-size: 0.76rem; font-weight: 700; }
+.contact-icon { width: 1.15rem; height: 1.15rem; flex: none; }
 .contact-action strong { font-size: 0.88rem; text-align: right; overflow-wrap: anywhere; }
 .contact-action-primary { background: var(--site-ink); border-color: var(--site-ink); color: var(--site-bg); }
 .contact-action-primary span { color: inherit; opacity: 0.72; }
@@ -1196,15 +1201,15 @@
 .site-foot-contact-icon {
   display: grid;
   place-items: center;
-  width: 2.1rem;
-  height: 2.1rem;
+  width: 2.4rem;
+  height: 2.4rem;
   border: 1px solid var(--site-line);
   border-radius: 999px;
   color: var(--site-ink);
   background: var(--site-bg);
   transition: border-color 160ms ease, transform 160ms ease;
 }
-.site-foot-contact-icon svg { width: 1rem; height: 1rem; }
+.site-foot-contact-icon svg { width: 1.15rem; height: 1.15rem; }
 .site-foot-contact-icon:hover { border-color: var(--site-ink); transform: translateY(-1px); }
 @media (max-width: 760px) {
   .contact-inner { grid-template-columns: minmax(0, 1fr); }
