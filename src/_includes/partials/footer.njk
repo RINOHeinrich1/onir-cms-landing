@@ -20,6 +20,14 @@
       <a href="{{ locale.routes.legal }}">{{ t.common.nav.legal }}</a>
       <a href="{{ locale.routes.privacy }}">{{ t.common.nav.privacy }}</a>
     </nav>
+    <div class="site-foot-contact">
+      <p>{{ t.common.footer.contactLead }}</p>
+      <p>
+        <a href="{{ site.whatsappUrl }}" target="_blank" rel="noopener">WhatsApp : {{ site.whatsappNumber }}</a>
+        <span aria-hidden="true"> · </span>
+        <a href="mailto:{{ site.contactEmail }}">Email : {{ site.contactEmail }}</a>
+      </p>
+    </div>
     <p class="site-foot-meta">{{ t.common.footer.legacyMeta }}</p>
     {% if t.common.reviewNotice %}<p class="site-foot-review">{{ t.common.reviewNotice }}</p>{% endif %}
   </div>
@@ -46,6 +54,14 @@
         <a href="{{ locale.routes.legal }}">{{ t.common.nav.legal }}</a>
         <a href="{{ locale.routes.privacy }}">{{ t.common.nav.privacy }}</a>
       </nav>
+    </div>
+    <div class="foot-contact">
+      <p>{{ t.common.footer.contactLead }}</p>
+      <p>
+        <a href="{{ site.whatsappUrl }}" target="_blank" rel="noopener">WhatsApp : {{ site.whatsappNumber }}</a>
+        <span aria-hidden="true"> · </span>
+        <a href="mailto:{{ site.contactEmail }}">Email : {{ site.contactEmail }}</a>
+      </p>
     </div>
     <div class="foot-meta">
       <span>{{ t.common.footer.metaOpenSource }}</span>
