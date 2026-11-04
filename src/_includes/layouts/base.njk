@@ -46,12 +46,13 @@
     {{ content | safe }}
   </main>
 
+  {% include "partials/contact.njk" %}
   {% include "partials/footer.njk" %}
   {% if wrapper %}</div>{% endif %}
 
   <script src="/assets/js/main.js?v=20261103" defer></script>
   {% for script in bodyScripts %}<script src="{{ script }}" defer></script>
-  {% endfor %}  {% if showWidget %}
+  {% endfor %}  {% if showWidget != false %}
   <script
     async
     src="{{ site.widget.src }}"

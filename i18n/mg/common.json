@@ -34,5 +34,12 @@
     "metaBrand": "ONIR CMS — Mamorona chatbot araka ny endrikareo",
     "contactLead": "Miresaka mivantana amin’ny assistant IA anay na mifandraisa aminay mivantana amin’ny :"
   },
-  "reviewNotice": ""
+  "reviewNotice": "",
+  "contact": {
+    "kicker": "Fifandraisana",
+    "title": "Andao hiresaka momba ny tetikasanareo.",
+    "lead": "Miresaka mivantana amin’ny assistant IA anay na mifandraisa aminay mivantana amin’ny :",
+    "whatsapp": "WhatsApp",
+    "email": "Email"
+  }
 }

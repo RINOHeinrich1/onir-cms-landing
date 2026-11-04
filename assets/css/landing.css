@@ -1139,3 +1139,66 @@
     white-space: nowrap;
   }
 }
+
+/* ---------- Section contact (legacy) ---------- */
+.contact-band {
+  border-top: 1px solid var(--site-line);
+  background: var(--site-surface);
+  padding-block: 3.2rem;
+}
+.contact-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+}
+.contact-kicker {
+  color: var(--site-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.contact-copy h2 {
+  margin: 0.55rem 0 0.7rem;
+  font-size: clamp(1.8rem, 3.4vw, 2.7rem);
+  letter-spacing: -0.05em;
+}
+.contact-copy p { max-width: 46ch; margin: 0; color: var(--site-muted); line-height: 1.65; }
+.contact-actions { display: grid; gap: 0.65rem; }
+.contact-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--site-line);
+  border-radius: 0.9rem;
+  background: var(--site-bg);
+  color: var(--site-ink);
+  text-decoration: none;
+}
+.contact-action:hover { border-color: var(--site-ink); }
+.contact-action span { color: var(--site-muted); font-size: 0.76rem; font-weight: 700; }
+.contact-action strong { font-size: 0.88rem; text-align: right; overflow-wrap: anywhere; }
+.contact-action-primary { background: var(--site-ink); border-color: var(--site-ink); color: var(--site-bg); }
+.contact-action-primary span { color: inherit; opacity: 0.72; }
+.site-foot-contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 1.1rem;
+  grid-column: 1 / -1;
+  margin-top: 0.9rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--site-line);
+  color: var(--site-muted);
+  font-size: 0.8rem;
+}
+.site-foot-contact strong { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.site-foot-contact a { color: var(--site-ink); font-weight: 700; text-decoration: none; }
+.site-foot-contact a:hover { text-decoration: underline; }
+@media (max-width: 760px) {
+  .contact-inner { grid-template-columns: minmax(0, 1fr); }
+  .contact-band { padding-block: 2.5rem; }
+}
