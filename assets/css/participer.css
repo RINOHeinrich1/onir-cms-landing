@@ -1655,7 +1655,8 @@
   }
 
   .town-map {
-    min-width: 700px;
+    min-width: 0;
+    width: 100%;
   }
 
   .town-stage.is-3d .map-perspective {

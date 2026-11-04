@@ -6,38 +6,65 @@ L’application (dashboard, liens publics, API, documentation) vit dans le dép�
 [`RINOHeinrich1/onir-cms`](https://github.com/RINOHeinrich1/onir-cms) et est servie sur
 **https://cms-backoffice.onirtech.com**.
 
-## Contenu
+## Langues
 
-- `index.html` — page d’accueil et liste des démonstrations.
-- `fonctionnalites/` — page détaillée des fonctionnalités.
-- `themes/` — marketplace et téléchargement des templates.
-- `participer/` — page unique avec onglets Sponsor (ville 2D/3D + chatbot) et Développeur.
-- `mentions-legales/` — mentions légales.
-- `confidentialite-site/` — politique de confidentialité du site et des démonstrations.
-- `assets/css/` — styles autonomes (aucun framework) ; `landing.css` pour les pages
-  historiques, `landing-v2.css` pour l’accueil et la page fonctionnalités.
-- `assets/js/` — thème clair/sombre et dialogue de démonstration.
-- `assets/fonts/` — Montserrat auto-hébergée.
-- `assets/logo/` — logos clair/sombre.
-- `assets/plugins/` — archives `.onirtech-template` et manifests de release.
-- `assets/data/sponsors.js` — données de la ville et des sponsors (démonstration).
-- `assets/js/participer.js` — carte 2D, onglets et chatbot de sponsoring.
-- `assets/js/town-3d.js` — scène Three.js low-poly chargée à la demande.
-- `assets/vendor/` — Three.js et OrbitControls (MIT, fichiers de licence inclus).
+Le site est généré statiquement en trois langues :
+
+- français à la racine (`/`, `/fonctionnalites/`, `/themes/`, `/participer/`, …) ;
+- anglais sous `/en/` (`/en/features/`, `/en/themes/`, `/en/participate/`, …) ;
+- malagasy sous `/mg/` (`/mg/fampiasa/`, `/mg/endrika/`, `/mg/handray-anjara/`, …).
+
+Le sélecteur de langue du header pointe vers la **même page** dans chaque langue. Les liens
+`hreflang`, le canonical et le sitemap sont générés depuis la table de routes
+`src/_data/allLocales.js`.
+
+## Structure
+
+- `src/pages/` — gabarits Nunjucks des pages (accueil, fonctionnalités, thèmes, participer,
+  mentions légales, confidentialité, 404).
+- `src/_includes/` — layout, header/footer (variantes v2 et legacy), sélecteur de langue et
+  composants (carte malagasy, fournisseurs, icônes de thèmes).
+- `src/_data/` — locales/routes, métadonnées du site, liens de démonstration, téléchargements
+  de thèmes et données calculées (canonical, hreflang, CSS).
+- `i18n/fr/`, `i18n/en/`, `i18n/mg/` — dictionnaires JSON par page. Le français est la source ;
+  `npm run check:i18n` vérifie la parité des clés et des placeholders.
+- `assets/` — CSS, JS, polices, logos, plugins et vendor (inchangé, copié tel quel dans `dist/`).
+- `deploy/` — scripts et vhosts Nginx.
+- `dist/` — sortie générée, **non versionnée**.
+
+Les pages historiques (`themes`, `participer`, `mentions-legales`, `confidentialite-site`)
+utilisent encore `landing.css` et un header/footer « legacy » ; l’accueil et la page
+fonctionnalités utilisent `landing-v2.css`. Le sélecteur de langue est commun aux deux.
 
 ## Développement local
 
-Aucun build. Servir la racine du dépôt avec un serveur statique :
-
 ```bash
-python3 -m http.server 8080
-# http://localhost:8080
+npm ci
+npm run check:i18n
+npm run dev          # serveur local Eleventy
+# ou
+npm run build        # génère dist/
+python3 -m http.server 8080 --directory dist
 ```
+
+Le build exécute `check:i18n` avant de générer les pages. Une clé manquante, une valeur vide
+hors clés optionnelles, un placeholder différent ou une balise HTML non autorisée bloque le build.
+
+## Traductions
+
+- `fr` est la langue de référence.
+- `en` et `mg` doivent avoir exactement les mêmes clés que `fr`.
+- Le malagasy est un **brouillon** en attente de relecture native.
+- Les mentions légales et la politique de confidentialité EN/MG portent la mention
+  « seule la version française fait foi ».
+- Les libellés générés dynamiquement par `assets/js/participer.js` (ville 3D, chatbot de
+  sponsoring) restent en français ; un avertissement localisé est affiché sur les pages
+  EN/MG.
 
 ## Déploiement
 
-Le site est un ensemble de fichiers statiques. Le serveur cible est un répertoire servi par
-Nginx (par défaut `/var/www/onir-cms-landing`).
+Le site est généré dans `dist/` puis synchronisé vers le répertoire servi par Nginx
+(par défaut `/var/www/onir-cms-landing`).
 
 ```bash
 sudo ./deploy/apply-production.sh
@@ -45,7 +72,8 @@ sudo ./deploy/apply-production.sh
 
 Le script :
 
-- met à jour le clone serveur et synchronise le site dans `/var/www/onir-cms-landing` ;
+- met à jour le clone serveur, exécute `npm ci` et `npm run build` ;
+- synchronise `dist/` dans `/var/www/onir-cms-landing` ;
 - installe les vhosts `onir-cms.tech` (statique), `cms.onirtech.com` (redirection 301 vers
   `onir-cms.tech`) et `cms-backoffice.onirtech.com` (proxy vers l’application sur
   `127.0.0.1:3100`) ;
@@ -55,7 +83,7 @@ Le script :
 
 Variables surchargeables : `APP_VERSION`, `APP_DIR`, `WEB_ROOT`, `APP_ENV`, `APP_DEPLOY`.
 
-Le script plus simple `deploy/deploy.sh` ne synchronise que les fichiers statiques.
+Le script plus simple `deploy/deploy.sh` ne synchronise que le site statique généré.
 Voir `deploy/nginx-location.conf` pour les règles de routage et les redirections des anciennes
 URL de l’application vers `cms-backoffice.onirtech.com`.
 
@@ -70,10 +98,10 @@ sudo -u deploy-preprod /opt/onir-cms-landing-preprod/deploy/preprod.sh
 - Dépôt serveur : `/opt/onir-cms-landing-preprod`
 - Répertoire web : `/var/www/onir-cms-landing-preprod`
 - URL : `https://preprod-cms.onirtech.com/` (Basic Auth)
-- Les liens vers `cms-backoffice.onirtech.com` et `magic-panel.onir-cms.tech` sont réécrits
-  vers l’application preprod.
-- Le workflow est dans `.github/workflows/preprod.yml`.
-- Runner self-hosted : `onir-landing-preprod` (utilisateur `deploy-preprod`).
+- Le script construit `dist/`, synchronise le répertoire web, puis réécrit les liens vers
+  `cms-backoffice.onirtech.com` et `magic-panel.onir-cms.tech` vers l’application preprod.
+- Le workflow est dans `.github/workflows/preprod.yml` et vérifie `/`, `/themes/`, `/en/`,
+  `/mg/`, `/en/features/` et `/mg/fampiasa/`.
 
 Le déploiement production reste manuel via `deploy/apply-production.sh`.
 

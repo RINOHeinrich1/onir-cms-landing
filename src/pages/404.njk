@@ -1,0 +1,21 @@
+---
+layout: layouts/minimal.njk
+pageKey: notFound
+css:
+  - /assets/css/base.css
+  - /assets/css/landing.css?v=20261026c
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "{{ locale.routes.notFound }}"
+---
+<section class="site-wrap site-page-head">
+  <p class="site-kicker"><span class="site-kicker-dot"></span>{{ p.kicker }}</p>
+  <h1>{{ p.title }}</h1>
+  <p class="site-lead">{{ p.lead }}</p>
+  <div class="site-cta-row">
+    <a href="{{ locale.routes.home }}" class="site-button">{{ p.home }}</a>
+    <a href="{{ site.login }}" class="site-button site-button-ghost">{{ p.app }}</a>
+  </div>
+</section>

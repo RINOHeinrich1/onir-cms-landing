@@ -14,17 +14,19 @@ die() {
 [[ -d "${ROOT}/.git" ]] || die "dépôt introuvable: ${ROOT}"
 [[ "${WEB_ROOT}" == *preprod* ]] || die "répertoire web inattendu: ${WEB_ROOT}"
 command -v rsync >/dev/null 2>&1 || die "rsync introuvable"
+command -v npm >/dev/null 2>&1 || die "npm introuvable"
 
 git -C "${ROOT}" fetch origin main
 git -C "${ROOT}" reset --hard origin/main
 
+cd "${ROOT}"
+npm ci --no-audit --no-fund
+npm run build
+
+[[ -f "${ROOT}/dist/index.html" ]] || die "build incomplet: dist/index.html absent"
+
 install -d -m 755 "${WEB_ROOT}"
-rsync -a --delete \
-  --exclude ".git" \
-  --exclude ".github" \
-  --exclude "deploy" \
-  --exclude "README.md" \
-  "${ROOT}/" "${WEB_ROOT}/"
+rsync -a --delete "${ROOT}/dist/" "${WEB_ROOT}/"
 
 # Les liens de l'application doivent rester dans l'environnement preprod.
 find "${WEB_ROOT}" -type f \
@@ -41,6 +43,6 @@ if grep -Rq "https://cms-backoffice.onirtech.com" "${WEB_ROOT}"; then
 fi
 
 printf 'Landing preprod synchronisée.\n'
-printf 'Source   : %s\n' "${ROOT}"
+printf 'Source   : %s\n' "${ROOT}/dist"
 printf 'Web root : %s\n' "${WEB_ROOT}"
 printf 'App URL  : %s\n' "${PREPROD_APP_URL}"

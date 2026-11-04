@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "ONIR CMS — CMS ho an'ny chatbot",
+    "description": "Miaraka amin'ny ONIR CMS, mamorona assistant IA na chatbot mifanaraka amin'ny filanao sy ny endrika ilainao azy. Open source, mifanaraka amin'ny standard OpenAI.",
+    "ogTitle": "ONIR CMS — CMS ho an'ny chatbot",
+    "ogDescription": "Miaraka amin'ny ONIR CMS, mamorona assistant IA na chatbot mifanaraka amin'ny filanao sy ny endrika ilainao azy."
+  },
+  "hero": {
+    "kicker": "CMS ho an'ny chatbot",
+    "title": "Mamorona assistant IA",
+    "titleEmphasis": "araka ny endrikareo.",
+    "lead": "Miaraka amin'ny ONIR CMS, mamorona assistant IA na chatbot mifanaraka amin'ny filanao sy ny endrika ilainao azy.",
+    "cta": "Andramo"
+  },
+  "mock": {
+    "url": "cms · ny chatbot-ko",
+    "rail": [
+      "Chatbot",
+      "Resaka",
+      "Fiche",
+      "Fampidirana",
+      "Endrika"
+    ],
+    "title": "Assistant — Fandraisana",
+    "status": "An-tserasera",
+    "steps": [
+      {
+        "label": "Andraikitra & fomba firesaka",
+        "value": "OK"
+      },
+      {
+        "label": "Endrika",
+        "value": "OK"
+      },
+      {
+        "label": "Resaka",
+        "value": "3"
+      },
+      {
+        "label": "Fampidirana",
+        "value": "2"
+      }
+    ],
+    "channels": [
+      "Pejy",
+      "Widget",
+      "API"
+    ],
+    "live": "Misy olona afaka mandray ny resaka"
+  },
+  "demos": {
+    "kicker": "Fanandramana",
+    "title": "Andramo.",
+    "lead": "Misafidiana chatbot ary miresaha mivantana.",
+    "cta": "Andramo →",
+    "items": [
+      {
+        "key": "simple",
+        "tag": "Tsotra",
+        "title": "Assistant — fototra",
+        "lead": "Ny chat ONIR CMS, tsy misy 3D."
+      },
+      {
+        "key": "immersive",
+        "tag": "Immersif",
+        "title": "Traikefa 3D",
+        "lead": "Sehatra 3D misy avatar sy resaka tari-dalana."
+      },
+      {
+        "key": "sponsor",
+        "tag": "Fanangonana",
+        "title": "Dalan'ny fanohanana",
+        "lead": "Ohatra amin'ny fanangonana vaovao."
+      }
+    ]
+  },
+  "openSource": {
+    "kicker": "Malalaka sy open source",
+    "title": "Ny IA ho an'ny rehetra.",
+    "lead": "Mananjo hampiasa sy hitrandraka ny IA amin'izay mahasoa sy manampy azy ny rehetra",
+    "cta": "Jereo ny kaody ao amin'ny GitHub"
+  },
+  "malagasy": {
+    "kicker": "Tetikasa malagasy",
+    "title": "Tetikasa malagasy ho an'ny IA.",
+    "lead": "Teraka tao Madagasikara ny ONIR CMS. Mino izahay fa tokony ho malalaka, azo idirana ary mahasoa ny fikambanana eto sy any an-kafa ny IA.",
+    "caption": "Mirehareha ho malagasy",
+    "mapLabel": "Madagasikara amin'ny lokon'ny sainam-pirenena malagasy"
+  },
+  "providers": {
+    "kicker": "Modely IA",
+    "title": "Ny modely rehetra mifanaraka amin'ny OpenAI.",
+    "lead": "Ampiasao ny mpamatsy sy ny modely tianao, miaraka amin'ny lakileo manokana.",
+    "note": "Mivantana na amin'ny alalan'ny vavahady mifanaraka amin'ny OpenAI. Ny marika sy ny logo dia an'ny tompony."
+  },
+  "features": {
+    "kicker": "Ireo fampiasa",
+    "title": "Ny fototra.",
+    "cta": "Jereo ireo fampiasa →",
+    "items": [
+      {
+        "title": "Famoronana chatbot",
+        "lead": "Andraikitra, fomba firesaka ary endrika."
+      },
+      {
+        "title": "Fanarahan-dresaka",
+        "lead": "Ny resaka rehetra amin'ny toerana iray."
+      },
+      {
+        "title": "Fandraisan'olona",
+        "lead": "Raiso ny tanana rehefa ilaina."
+      },
+      {
+        "title": "Fampidirana & API",
+        "lead": "Ampifandraiso amin'ny fitaovanao."
+      },
+      {
+        "title": "Fiche fandraisana mpanjifa",
+        "lead": "Angony sy hita ny zava-dehibe."
+      },
+      {
+        "title": "Fanamboarana endrika",
+        "lead": "Araka ny marikao, hatramin'ny 3D."
+      }
+    ]
+  },
+  "support": {
+    "kicker": "Tohanana ny tetikasa",
+    "title": "Mila ny fanampinao izahay hafahana mitrandraka ny IA hoan'ny rehetra",
+    "lead": "Mandraisa anjara, tohano ny vokatra, ary hampafataro ONIR-CMS",
+    "cta": "Handray anjara"
+  },
+  "footer": {
+    "tagline": "CMS ho an'ny chatbot. Open source, araka ny endrikareo.",
+    "metaBrand": "ONIR CMS — Mamorona chatbot araka ny endrikareo"
+  }
+}

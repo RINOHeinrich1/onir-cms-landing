@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "Politique de confidentialité · ONIR CMS",
+    "description": "Données collectées sur le site ONIR CMS et lors des démonstrations : finalités, destinataires, conservation et droits.",
+    "ogTitle": "Politique de confidentialité · ONIR CMS",
+    "ogDescription": "Données collectées sur le site et les démonstrations ONIR CMS."
+  },
+  "hero": {
+    "kicker": "Données personnelles",
+    "title": "Politique de confidentialité.",
+    "lead": "Cette politique couvre le site ONIR CMS et ses démonstrations. Elle ne couvre pas les instances ONIR CMS auto-hébergées par des tiers.",
+    "updated": "Dernière mise à jour : octobre 2026"
+  },
+  "sections": [
+    {
+      "title": "Responsable de traitement",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Le responsable de traitement du site et des démonstrations est <strong>Onirtech</strong>, joignable à <a href=\"mailto:contact@onirtech.com\">contact@onirtech.com</a>."
+        }
+      ]
+    },
+    {
+      "title": "Données traitées",
+      "blocks": [
+        {
+          "type": "ul",
+          "items": [
+            "<strong>Navigation et sécurité</strong> : données techniques de connexion (adresse IP, navigateur, page demandée, horodatage, journaux serveur) nécessaires au fonctionnement et à la sécurité du site.",
+            "<strong>Contact et estimation</strong> : nom, adresse e-mail, contenu du message et, le cas échéant, téléphone et informations sur le projet.",
+            "<strong>Démonstration</strong> : nom, adresse e-mail, coordonnées complémentaires facultatives, messages échangés avec l’assistant, fiches générées et horodatage du consentement.",
+            "<strong>Préférences locales</strong> : thème clair ou sombre, conservé dans le navigateur et non transmis à un serveur."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Finalités",
+      "blocks": [
+        {
+          "type": "ul",
+          "items": [
+            "Répondre aux demandes de contact et préparer une estimation.",
+            "Faire fonctionner les démonstrations et restituer les échanges.",
+            "Qualifier une demande et permettre à l’équipe de recontacter le visiteur.",
+            "Assurer la sécurité, prévenir les abus et maintenir le service."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Bases légales",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Selon les cas, le traitement repose sur le consentement du visiteur (notamment pour la démonstration), sur l’exécution d’une demande précontractuelle ou sur l’intérêt légitime de Onirtech à assurer la sécurité et le bon fonctionnement du site, dans le respect de la réglementation applicable."
+        }
+      ]
+    },
+    {
+      "title": "Destinataires et sous-traitants",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Les données sont accessibles aux personnes habilitées de Onirtech et peuvent être traitées par ses prestataires techniques :"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "OVH, pour l’hébergement du site et de la base de données.",
+            "Infomaniak, pour l’exécution des réponses générées par l’intelligence artificielle."
+          ]
+        },
+        {
+          "type": "p",
+          "html": "Les données ne sont ni vendues ni cédées à des tiers à des fins commerciales. Les prestataires peuvent être situés hors de Madagascar ; dans ce cas, les garanties appropriées sont mises en place lorsque la réglementation l’exige."
+        }
+      ]
+    },
+    {
+      "title": "Durées de conservation",
+      "blocks": [
+        {
+          "type": "ul",
+          "items": [
+            "Données de contact et d’estimation : 24 mois à compter du dernier échange, sauf obligation légale contraire.",
+            "Données de démonstration : 12 mois à compter du dernier échange, sauf demande de suppression.",
+            "Journaux techniques : durée nécessaire à la sécurité et au diagnostic, généralement limitée à 12 mois."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Vos droits",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Vous pouvez demander l’accès à vos données, leur rectification, leur effacement, la limitation de leur traitement ou vous opposer à leur traitement, dans les conditions prévues par la réglementation applicable. Pour exercer ces droits, écrivez à <a href=\"mailto:contact@onirtech.com\">contact@onirtech.com</a>."
+        },
+        {
+          "type": "p",
+          "html": "Vous pouvez également introduire une réclamation auprès de l’autorité compétente en matière de protection des données."
+        }
+      ]
+    },
+    {
+      "title": "Cookies et stockage local",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Le site n’utilise aucun cookie de suivi ou de mesure d’audience. Le choix du thème et certains états de la démonstration peuvent être conservés localement dans votre navigateur ; ces informations ne sont pas transmises à un serveur."
+        }
+      ]
+    },
+    {
+      "title": "Instances auto-hébergées",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Lorsqu’une organisation installe ONIR CMS sur sa propre infrastructure, elle devient responsable des données traitées dans son instance. Onirtech n’intervient pas dans ces traitements et invite chaque exploitant à publier sa propre politique de confidentialité."
+        }
+      ]
+    },
+    {
+      "title": "Modification de cette politique",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Cette politique peut être mise à jour pour tenir compte de l’évolution du site ou de la réglementation. La date de dernière mise à jour figure en haut de cette page."
+        }
+      ]
+    }
+  ],
+  "back": "← Retour à l’accueil",
+  "legalNotice": ""
+}

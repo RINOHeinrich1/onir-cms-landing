@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "title": "Features — ONIR CMS",
+    "description": "Chatbot creation, conversation tracking, human handover, integrations and API, prospecting sheets, theme customisation: the essentials of ONIR CMS.",
+    "ogTitle": "Features — ONIR CMS",
+    "ogDescription": "Chatbot creation, conversation tracking, human handover, integrations and API, prospecting sheets, theme customisation."
+  },
+  "hero": {
+    "title": "The essential features"
+  },
+  "items": [
+    {
+      "kicker": "01 · Create",
+      "title": "Chatbot creation",
+      "lead": "Bring an assistant to life in a few steps. You decide its role, tone and appearance.",
+      "bullets": [
+        "A role and tone that feel like you",
+        "An appearance in your image",
+        "Starting templates to move fast"
+      ]
+    },
+    {
+      "kicker": "02 · Track",
+      "title": "Conversation tracking",
+      "lead": "Everything that is said, in one place. You keep a clear view of exchanges and the information collected.",
+      "bullets": [
+        "Every conversation accessible",
+        "Collected information visible",
+        "Search and filters to find an exchange"
+      ]
+    },
+    {
+      "kicker": "03 · Take over",
+      "title": "Human handover",
+      "lead": "AI does most of the work. When a person is needed, you take over — without breaking the conversation.",
+      "bullets": [
+        "An operator can resume the conversation",
+        "Notification when your attention is needed",
+        "A summary to pick up quickly"
+      ]
+    },
+    {
+      "kicker": "04 · Integrate",
+      "title": "Integrations & API",
+      "lead": "Your chatbot connects to your tools: a page, a widget on your site, or the API to automate.",
+      "bullets": [
+        "Public page and copy-paste widget",
+        "API for your own tools",
+        "Automatic notifications to your systems"
+      ]
+    },
+    {
+      "kicker": "05 · Collect",
+      "title": "Prospecting sheets",
+      "lead": "Collect the right information at the right time. Every exchange can produce a clear, usable sheet.",
+      "bullets": [
+        "Fields defined for your needs",
+        "Attachments collected in the conversation",
+        "A sheet ready to export"
+      ]
+    },
+    {
+      "kicker": "06 · Customise",
+      "title": "Theme customisation",
+      "lead": "Your chatbot should look like you. Adapt the interface to your brand, from the simplest to the most immersive.",
+      "bullets": [
+        "Ready-to-use themes",
+        "Customisable colours, text and images",
+        "An immersive 3D experience"
+      ]
+    }
+  ],
+  "faq": {
+    "kicker": "Frequently asked questions",
+    "title": "The rest, in plain words.",
+    "items": [
+      {
+        "q": "Is the code open source?",
+        "a": "The code is open source (MIT) and installs on your own infrastructure without a licence. You choose your infrastructure and AI provider."
+      },
+      {
+        "q": "Can I use my own AI model?",
+        "a": "Yes. ONIR CMS works with every OpenAI-compatible provider, with your own keys and one model per chatbot."
+      },
+      {
+        "q": "Where is my data stored?",
+        "a": "On your infrastructure, if you self-host the instance. You keep control of the data, media and retention period."
+      },
+      {
+        "q": "Do I need to be a developer?",
+        "a": "No, to create and manage a chatbot. Yes, occasionally, to install the instance or build a custom theme."
+      }
+    ]
+  },
+  "cta": {
+    "kicker": "Your turn",
+    "title": "Try it, then install it.",
+    "lead": "The demo shows the product. GitHub and the documentation give you the keys.",
+    "primary": "See the demos",
+    "secondary": "View on GitHub"
+  },
+  "footer": {
+    "tagline": "The open-source chatbot CMS. In your image, on your infrastructure.",
+    "metaBrand": "ONIR CMS — Build chatbots in your image"
+  }
+}

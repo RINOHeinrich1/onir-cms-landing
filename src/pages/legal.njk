@@ -1,0 +1,41 @@
+---
+layout: layouts/base.njk
+pageKey: legal
+headerVariant: legacy
+wrapper: site
+mainClass: site-main
+css:
+  - /assets/css/base.css
+  - /assets/css/landing.css?v=20261026c
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "{{ locale.routes.legal }}index.html"
+---
+<section class="site-wrap site-page-head">
+  <p class="site-kicker"><span class="site-kicker-dot"></span>{{ p.hero.kicker }}</p>
+  <h1>{{ p.hero.title }}</h1>
+  <p class="site-lead">{{ p.hero.lead }}</p>
+  <p class="site-legal-updated">{{ p.hero.updated }}</p>
+  {% if p.legalNotice %}<p class="site-legal-notice">{{ p.legalNotice }}</p>{% endif %}
+</section>
+
+<section class="site-wrap site-legal">
+  <article class="site-legal-card">
+    {% for section in p.sections %}
+    <h2>{{ section.title }}</h2>
+    {% for block in section.blocks %}
+    {% if block.type == "p" %}
+    <p>{{ block.html | replace("{{privacy}}", locale.routes.privacy) | safe }}</p>
+    {% elif block.type == "ul" %}
+    <ul>
+      {% for item in block.items %}<li>{{ item | replace("{{privacy}}", locale.routes.privacy) | safe }}</li>{% endfor %}
+    </ul>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+
+    <p><a href="{{ locale.routes.home }}">{{ p.back }}</a></p>
+  </article>
+</section>

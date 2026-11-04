@@ -19,8 +19,12 @@ else
   git -C "$APP_DIR" reset --hard "origin/$BRANCH"
 fi
 
+cd "$APP_DIR"
+npm ci --no-audit --no-fund
+npm run build
+
 install -d -m 0755 "$WEB_ROOT"
-rsync -a --delete --exclude ".git" --exclude "deploy" "$APP_DIR/" "$WEB_ROOT/"
+rsync -a --delete "$APP_DIR/dist/" "$WEB_ROOT/"
 chown -R www-data:www-data "$WEB_ROOT"
 
 nginx -t

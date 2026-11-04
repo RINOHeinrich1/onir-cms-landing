@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "title": "Participate · ONIR CMS",
+    "description": "Let's build the open future of AI together. Sponsor the ONIR City or contribute to the ONIR CMS code.",
+    "ogTitle": "Participate · ONIR CMS",
+    "ogDescription": "Let's build the open future of AI together. Sponsor the ONIR City or contribute to the ONIR CMS code."
+  },
+  "tabs": {
+    "aria": "Participate",
+    "sponsor": "Sponsor",
+    "developer": "Developer"
+  },
+  "sponsor": {
+    "title": "Let's build the open future of AI together",
+    "cta": "Become a sponsor",
+    "viewToggle": "3D view",
+    "mapLabel": "Interactive map of ONIR City",
+    "loading": "Building the 3D city…",
+    "legendAria": "Map legend",
+    "legend": [
+      "Building: organisation",
+      "House: individual",
+      "Available plot"
+    ],
+    "runtimeNotice": "The interactive 3D map and sponsorship chat are currently available in French."
+  },
+  "developer": {
+    "kicker": "Developer",
+    "title": "Contribute to the code.",
+    "lead": "ONIR CMS is open source. You can fix, extend, document or simply report what is blocking. Contributions are reviewed and merged in small steps.",
+    "github": "Open GitHub",
+    "docs": "Read the documentation",
+    "note": "Stack: Next.js, TypeScript, PostgreSQL, web-component templates.",
+    "cards": [
+      {
+        "number": "01",
+        "title": "Code",
+        "text": "Targeted issues, code review, tests. Start with a small fix or a well-scoped improvement.",
+        "cta": "See the issues"
+      },
+      {
+        "number": "02",
+        "title": "Create a theme",
+        "text": "A visual template, a journey, a component: the marketplace welcomes useful, documented themes.",
+        "cta": "Template guide"
+      },
+      {
+        "number": "03",
+        "title": "Document and test",
+        "text": "Field feedback, a reproducible bug or a missing documentation page are worth as much as a PR.",
+        "cta": "Report a bug"
+      }
+    ]
+  },
+  "chat": {
+    "title": "Become a sponsor",
+    "subtitle": "ONIR City · guided exchange",
+    "close": "Close",
+    "progress": "Step 1 of 4",
+    "demo": "Demo"
+  }
+}

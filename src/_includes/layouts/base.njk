@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="{{ locale.htmlLang }}" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="{{ viewport or 'width=device-width, initial-scale=1' }}" />
+  <title>{{ p.meta.title }}</title>
+  <meta name="description" content="{{ p.meta.description }}" />
+  {% if canonical %}<link rel="canonical" href="{{ canonical }}" />{% endif %}
+  {% if p.meta.robots %}<meta name="robots" content="{{ p.meta.robots }}" />{% endif %}
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="{{ locale.ogLocale }}" />
+  {% for alt in alternates %}{% if alt.code != locale.code %}<meta property="og:locale:alternate" content="{{ alt.ogLocale }}" />{% endif %}{% endfor %}
+  <meta property="og:site_name" content="{{ site.name }}" />
+  <meta property="og:title" content="{{ p.meta.ogTitle or p.meta.title }}" />
+  <meta property="og:description" content="{{ p.meta.ogDescription or p.meta.description }}" />
+  {% if canonical %}<meta property="og:url" content="{{ canonical }}" />{% endif %}
+  <meta property="og:image" content="{{ site.baseUrl }}{{ p.meta.ogImage or site.logoLight }}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#f4f1e5" />
+  {% for alt in alternates %}<link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ alt.href }}" />{% endfor %}
+  {% if pageKey != "notFound" %}<link rel="alternate" hreflang="x-default" href="{{ site.baseUrl }}{{ allLocales[0].routes[pageKey] }}" />{% endif %}
+  {% for href in css %}<link rel="stylesheet" href="{{ href }}" />{% endfor %}
+  <link rel="stylesheet" href="/assets/css/i18n.css?v=1" />
+  <link rel="icon" href="{{ site.logoLight }}" type="image/webp" />
+  {% if headExtra %}{{ headExtra | safe }}{% endif %}
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("onir-theme");
+        if (t !== "light" && t !== "dark") t = localStorage.getItem("proto-theme");
+        if (t !== "light" && t !== "dark") t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  {% if wrapper %}<div class="{{ wrapper }}">{% endif %}
+  {% if headerVariant == "legacy" %}{% set skipClass = "site-skip" %}{% else %}{% set skipClass = "skip" %}{% endif %}
+  <a class="{{ skipClass }}" href="#contenu">{{ t.common.skip }}</a>
+
+  {% include "partials/header.njk" %}
+
+  <main id="contenu"{% if mainClass %} class="{{ mainClass }}"{% endif %}{% if mainAttrs %} {{ mainAttrs | safe }}{% endif %}>
+    {{ content | safe }}
+  </main>
+
+  {% include "partials/footer.njk" %}
+  {% if wrapper %}</div>{% endif %}
+
+  <script src="/assets/js/main.js?v=20261103" defer></script>
+  {% for script in bodyScripts %}<script src="{{ script }}" defer></script>
+  {% endfor %}  {% if showWidget %}
+  <script
+    async
+    src="{{ site.widget.src }}"
+    data-onir-token="{{ site.widget.token }}"
+    data-onir-position="{{ site.widget.position }}"
+  ></script>
+  {% endif %}
+</body>
+</html>

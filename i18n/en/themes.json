@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "title": "Open themes · ONIR CMS",
+    "description": "Download the Immersive and Starter visual templates for ONIR CMS. Open, ready to import.",
+    "ogTitle": "Open themes · ONIR CMS",
+    "ogDescription": "Download the Immersive and Starter visual templates for ONIR CMS."
+  },
+  "hero": {
+    "kicker": "Marketplace",
+    "title": "Open themes.",
+    "lead": "Visual templates ready to import into ONIR CMS. Download them from the project.",
+    "freeNote": "All current themes are open.",
+    "aria": "Available themes"
+  },
+  "freeLabel": "Open",
+  "metaAria": "Features",
+  "download": "Download",
+  "guide": "Import guide",
+  "details": "Technical details",
+  "items": [
+    {
+      "id": "immersive",
+      "version": "v4.45.2",
+      "name": "Immersive",
+      "description": "A complete 3D scene: entrance house, room, avatar, album, guided conversation and attachment import.",
+      "meta": [
+        "3D scene",
+        "Avatar",
+        "Album",
+        "Attachments",
+        "3.8 MB"
+      ],
+      "detailsText": "Official template with CC0 assets included. 3D scene, TalkingHead avatar, album, knowledge, media, link settings and attachments (CV, documents)."
+    },
+    {
+      "id": "starter",
+      "version": "v1.4.1",
+      "name": "Starter",
+      "description": "The reference template: identification form, conversation and media.",
+      "meta": [
+        "Form",
+        "Chat",
+        "Media",
+        "2.8 KB"
+      ],
+      "detailsText": "The minimal starting point to understand the host contract and build your own visual template."
+    }
+  ],
+  "install": {
+    "kicker": "Installation",
+    "title": "Three steps.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Download",
+        "text": "Get the theme archive."
+      },
+      {
+        "number": "02",
+        "title": "Import",
+        "text": "Dashboard → Visual templates → Import."
+      },
+      {
+        "number": "03",
+        "title": "Attach",
+        "text": "Attach the template to the assistant."
+      }
+    ],
+    "detail": "Need the details?",
+    "link": "Read the template documentation"
+  }
+}

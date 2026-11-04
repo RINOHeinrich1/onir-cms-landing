@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "title": "Handray anjara · ONIR CMS",
+    "description": "Andao hiara-hanangana ny hoavin'ny IA malalaka. Ho mpanohana ny tanàna ONIR na handray anjara amin'ny kaody ONIR CMS.",
+    "ogTitle": "Handray anjara · ONIR CMS",
+    "ogDescription": "Andao hiara-hanangana ny hoavin'ny IA malalaka. Ho mpanohana ny tanàna ONIR na handray anjara amin'ny kaody ONIR CMS."
+  },
+  "tabs": {
+    "aria": "Handray anjara",
+    "sponsor": "Mpanohana",
+    "developer": "Mpamorona"
+  },
+  "sponsor": {
+    "title": "Andao hiara-hanangana ny hoavin'ny IA malalaka",
+    "cta": "Ho mpanohana",
+    "viewToggle": "Fijery 3D",
+    "mapLabel": "Sarintany azo idirana amin'ny tanàna ONIR",
+    "loading": "Manangana ny tanàna 3D…",
+    "legendAria": "Fanazavana ny sarintany",
+    "legend": [
+      "Trano: fikambanana",
+      "Trano: olona tsy miankina",
+      "Toerana malalaka"
+    ],
+    "runtimeNotice": "Mbola amin'ny teny frantsay ny sarintany 3D sy ny resaka fanohanana."
+  },
+  "developer": {
+    "kicker": "Mpamorona",
+    "title": "Handray anjara amin'ny kaody.",
+    "lead": "Open source ny ONIR CMS. Afaka manitsy, manitatra, manoratra na mitatitra izay manakana ianao. Ny anjara dia dinihina ary ampidirina tsikelikely.",
+    "github": "Hanokatra GitHub",
+    "docs": "Hamaky ny torolalana",
+    "note": "Stack: Next.js, TypeScript, PostgreSQL, modely web-components.",
+    "cards": [
+      {
+        "number": "01",
+        "title": "Mikaody",
+        "text": "Issues voafaritra, famerenana kaody, fitsapana. Atombohy amin'ny fanitsiana kely na fanatsarana voafaritra.",
+        "cta": "Jereo ny issues"
+      },
+      {
+        "number": "02",
+        "title": "Mamorona endrika",
+        "text": "Mamorona endrikana chatbot azo ampirahina amin'ny ONIR-CMS, ho alefantsika ao amin'ny marketplace.",
+        "cta": "Torolalana ny modely"
+      },
+      {
+        "number": "03",
+        "title": "Mitatitra sy manandrana",
+        "text": "Manao fanandramana, mijery sy mitatitra tsy fahatomombana, na torolalana tsy ampy",
+        "cta": "Mitantara bug"
+      }
+    ]
+  },
+  "chat": {
+    "title": "Ho mpanohana",
+    "subtitle": "Tanàna ONIR · fifanakalozana tari-dalana",
+    "close": "Hidio",
+    "progress": "Dingana 1 amin'ny 4",
+    "demo": "Fanandramana"
+  }
+}

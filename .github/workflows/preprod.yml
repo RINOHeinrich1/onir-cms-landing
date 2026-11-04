@@ -33,5 +33,9 @@ jobs:
           AUTH="${PREPROD_BASIC_USER}:${PREPROD_BASIC_PASSWORD}"
           curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" "${BASE}/" | grep -q "ONIR CMS"
           curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" -o /dev/null "${BASE}/themes/"
+          curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" "${BASE}/en/" | grep -q "ONIR CMS"
+          curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" "${BASE}/mg/" | grep -q "ONIR CMS"
+          curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" -o /dev/null "${BASE}/en/features/"
+          curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" -o /dev/null "${BASE}/mg/fampiasa/"
           curl -fsS "${BASE}/api/health" | grep -q '"ok":true'
           echo "Landing preprod smoke test OK."

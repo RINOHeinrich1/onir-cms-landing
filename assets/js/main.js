@@ -4,10 +4,19 @@
   var root = document.documentElement;
   var toggles = document.querySelectorAll("[data-theme-toggle]");
 
+  function label(button, attribute, fallback) {
+    return button.getAttribute(attribute) || fallback;
+  }
+
   function renderTheme() {
     var dark = root.dataset.theme === "dark";
     toggles.forEach(function (button) {
-      button.setAttribute("aria-label", dark ? "Activer le thème clair" : "Activer le thème sombre");
+      button.setAttribute(
+        "aria-label",
+        dark
+          ? label(button, "data-theme-label-light", "Activer le thème clair")
+          : label(button, "data-theme-label-dark", "Activer le thème sombre"),
+      );
     });
   }
 
@@ -16,7 +25,9 @@
       var next = root.dataset.theme === "dark" ? "light" : "dark";
       root.dataset.theme = next;
       try {
+        localStorage.setItem("onir-theme", next);
         localStorage.setItem("theme", next);
+        localStorage.setItem("proto-theme", next);
       } catch (error) {
         /* stockage indisponible */
       }

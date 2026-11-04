@@ -1,0 +1,120 @@
+/* Sélecteur de langue — commun aux en-têtes v2 et legacy. */
+.lang-switch {
+  position: relative;
+  flex: none;
+}
+
+.lang-switch details {
+  position: relative;
+}
+
+.lang-switch summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.42rem 0.6rem;
+  border: 1px solid var(--line, var(--site-line, #d7ddce));
+  border-radius: var(--r-pill, 999px);
+  color: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.lang-switch summary::-webkit-details-marker {
+  display: none;
+}
+
+.lang-switch summary:hover,
+.lang-switch[open] summary {
+  border-color: var(--green, var(--site-green, #004a38));
+}
+
+.lang-globe {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+.lang-switch ul {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  z-index: 60;
+  min-width: 9.5rem;
+  margin: 0;
+  padding: 0.35rem;
+  border: 1px solid var(--line, var(--site-line, #d7ddce));
+  border-radius: var(--r-md, 0.75rem);
+  background: var(--card, var(--site-surface, #fffdf6));
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.45);
+  list-style: none;
+}
+
+.lang-switch li {
+  margin: 0;
+}
+
+.lang-switch li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.45rem 0.55rem;
+  border-radius: 0.4rem;
+  color: inherit;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.lang-switch li a:hover,
+.lang-switch li a:focus-visible {
+  background: var(--bg-soft, var(--site-mint, #e1eedc));
+}
+
+.lang-switch li a[aria-current="page"] {
+  font-weight: 800;
+}
+
+@media (max-width: 640px) {
+  .lang-switch summary {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .lang-switch ul {
+    right: -0.25rem;
+  }
+}
+
+.foot-review,
+.site-foot-review {
+  margin: 0.75rem 0 0;
+  font-size: 0.78rem;
+  opacity: 0.72;
+}
+
+.site-legal-notice {
+  margin: 0.8rem 0 0;
+  padding: 0.6rem 0.8rem;
+  border-left: 3px solid var(--site-orange, #f08000);
+  background: var(--site-mint, #e1eedc);
+  color: var(--site-ink, #063d2e);
+  font-size: 0.86rem;
+}
+
+.runtime-notice {
+  margin: 0.75rem 0 0;
+  font-size: 0.82rem;
+  opacity: 0.72;
+}
+
+/* Les traductions peuvent contenir des mots longs (malagasy) : on autorise
+   la coupure uniquement lorsque le mot ne tient pas dans la ligne. */
+h1,
+h2,
+h3 {
+  overflow-wrap: anywhere;
+}

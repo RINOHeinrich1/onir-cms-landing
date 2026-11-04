@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "title": "Participer · ONIR CMS",
+    "description": "Construisons ensemble l’avenir libre de l’IA. Devenez sponsor de la Ville ONIR ou contribuez au code de ONIR CMS.",
+    "ogTitle": "Participer · ONIR CMS",
+    "ogDescription": "Construisons ensemble l’avenir libre de l’IA. Devenez sponsor de la Ville ONIR ou contribuez au code de ONIR CMS."
+  },
+  "tabs": {
+    "aria": "Participer",
+    "sponsor": "Sponsor",
+    "developer": "Développeur"
+  },
+  "sponsor": {
+    "title": "Construisons ensemble l’avenir libre de l’IA",
+    "cta": "Devenir sponsor",
+    "viewToggle": "Vue 3D",
+    "mapLabel": "Carte interactive de la Ville ONIR",
+    "loading": "Construction de la ville 3D…",
+    "legendAria": "Légende de la carte",
+    "legend": [
+      "Bâtiment : organisation",
+      "Maison : particulier",
+      "Emplacement libre"
+    ],
+    "runtimeNotice": ""
+  },
+  "developer": {
+    "kicker": "Développeur",
+    "title": "Contribuer au code.",
+    "lead": "ONIR CMS est open source. Vous pouvez corriger, étendre, documenter ou simplement signaler ce qui bloque. Les contributions sont relues et intégrées par petites étapes.",
+    "github": "Ouvrir GitHub",
+    "docs": "Lire la documentation",
+    "note": "Stack : Next.js, TypeScript, PostgreSQL, templates web-components.",
+    "cards": [
+      {
+        "number": "01",
+        "title": "Coder",
+        "text": "Issues ciblées, revue de code, tests. Commencez par une petite correction ou une amélioration bien délimitée.",
+        "cta": "Voir les issues"
+      },
+      {
+        "number": "02",
+        "title": "Créer un thème",
+        "text": "Un template visuel, un parcours, un composant : la marketplace accueille les thèmes utiles et documentés.",
+        "cta": "Guide des templates"
+      },
+      {
+        "number": "03",
+        "title": "Documenter et tester",
+        "text": "Un retour de terrain, un bug reproductible ou une page de documentation manquante valent autant qu’une PR.",
+        "cta": "Signaler un bug"
+      }
+    ]
+  },
+  "chat": {
+    "title": "Devenir sponsor",
+    "subtitle": "Ville ONIR · échange guidé",
+    "close": "Fermer",
+    "progress": "Étape 1 sur 4",
+    "demo": "Démonstration"
+  }
+}

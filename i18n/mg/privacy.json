@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "Fepetra mifehy ny tsiambaratelo · ONIR CMS",
+    "description": "Angona angonina amin'ny tranokala ONIR CMS sy mandritra ny demo: tanjona, mpandray, fitehirizana ary zo.",
+    "ogTitle": "Fepetra mifehy ny tsiambaratelo · ONIR CMS",
+    "ogDescription": "Angona angonina amin'ny tranokala ONIR CMS sy ny demo ao aminy."
+  },
+  "hero": {
+    "kicker": "Angona manokana",
+    "title": "Fepetra mifehy ny tsiambaratelo.",
+    "lead": "Mandrakotra ny tranokala ONIR CMS sy ny demo ao aminy ireto fepetra ireto. Tsy mandrakotra ny instance ONIR CMS auto-hébergé ataon'ny hafa izy.",
+    "updated": "Fanavaozana farany: Oktobra 2026"
+  },
+  "legalNotice": "Fandikan-teny ho fanazavana ihany ity. Ny dika frantsay no manan-kery ara-dalàna.",
+  "sections": [
+    {
+      "title": "Tompon'andraikitra amin'ny fanodinana",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Ny tompon'andraikitra amin'ny fanodinana ny tranokala sy ny demo dia <strong>Onirtech</strong>, azo ifandraisana amin'ny <a href=\"mailto:contact@onirtech.com\">contact@onirtech.com</a>."
+        }
+      ]
+    },
+    {
+      "title": "Angona dinihina",
+      "blocks": [
+        {
+          "type": "ul",
+          "items": [
+            "<strong>Fizahana sy fiarovana</strong>: angona teknika fifandraisana (adiresy IP, navigateur, pejy nangatahina, ora, journal serveur) ilaina amin'ny fiasan'ny tranokala sy ny fiarovany.",
+            "<strong>Fifandraisana sy tombantombana</strong>: anarana, adiresy mailaka, votoatin'ny hafatra ary, raha ilaina, telefaona sy vaovao momba ny tetikasa.",
+            "<strong>Fanandramana</strong>: anarana, adiresy mailaka, fifandraisana fanampiny tsy voatery, hafatra nifanakalozana tamin'ny assistant, fiche namboarina ary ora fanekena.",
+            "<strong>Safidy eo an-toerana</strong>: loko mazava na maizina, voatahiry ao amin'ny navigateur ary tsy alefa amin'ny serveur."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Tanjona",
+      "blocks": [
+        {
+          "type": "ul",
+          "items": [
+            "Mamaly ny fangatahana fifandraisana sy hanomana tombantombana.",
+            "Hampandeha ny demo sy hamerenana ny fifanakalozana.",
+            "Hanamarina fangatahana sy hamela ny ekipa hifandray indray amin'ny mpitsidika.",
+            "Hiantoka ny fiarovana, hisoroka ny fanararaotana ary hitazona ny serivisy."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Fototra ara-dalàna",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Araka ny tranga, mifototra amin'ny faneken'ny mpitsidika (indrindra ho an'ny demo), amin'ny fanatanterahana fangatahana mialoha ny fifanarahana na amin'ny tombontsoa ara-dalàna an'ny Onirtech hiantoka ny fiarovana sy ny fiasan'ny tranokala, araka ny lalàna mihatra, ny fanodinana."
+        }
+      ]
+    },
+    {
+      "title": "Mpandray sy mpiara-miasa",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Azon'ny olona nahazo alalana ao amin'ny Onirtech idirana ny angona ary mety hojerena amin'ny mpiara-miasa teknika:"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "OVH, ho an'ny fampiantranoana ny tranokala sy ny tahiry angona.",
+            "Infomaniak, ho an'ny fanatanterahana ny valiny noforonin'ny fahaiza-misaina artifisialy."
+          ]
+        },
+        {
+          "type": "p",
+          "html": "Tsy amidy na afindra amin'ny hafa ho tanjona ara-barotra ny angona. Mety ho any ivelan'i Madagasikara ny mpiara-miasa; amin'izay, apetraka ny fiarovana mety rehefa takian'ny lalàna."
+        }
+      ]
+    },
+    {
+      "title": "Faharetana",
+      "blocks": [
+        {
+          "type": "ul",
+          "items": [
+            "Angona fifandraisana sy tombantombana: 24 volana manomboka amin'ny fifanakalozana farany, raha tsy misy adidy ara-dalàna mifanohitra.",
+            "Angona demo: 12 volana manomboka amin'ny fifanakalozana farany, raha tsy misy fangatahana famafana.",
+            "Journal teknika: ny fotoana ilaina amin'ny fiarovana sy ny diagnostika, matetika 12 volana."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ny zo",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Afaka mangataka ny fidirana amin'ny angonao, fanitsiana, famafana, famerana ny fanodinana na fanoherana ny fanodinana ianao, araka ny fepetra voalazan'ny lalàna mihatra. Hanatanterahana ireo zo ireo, manorata amin'ny <a href=\"mailto:contact@onirtech.com\">contact@onirtech.com</a>."
+        },
+        {
+          "type": "p",
+          "html": "Afaka manao fitarainana amin'ny manam-pahefana mahay momba ny fiarovana angona koa ianao."
+        }
+      ]
+    },
+    {
+      "title": "Cookies sy fitehirizana eo an-toerana",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Tsy mampiasa cookie fanarahan-dia na fandrefesana mpitsidika ny tranokala. Ny safidy loko sy ny sasany amin'ny toetry ny demo dia mety ho voatahiry ao amin'ny navigateur; tsy alefa amin'ny serveur ireo vaovao ireo."
+        }
+      ]
+    },
+    {
+      "title": "Instance auto-hébergé",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Rehefa mametraka ONIR CMS amin'ny fotodrafitrasany manokana ny fikambanana iray, dia izy no tompon'andraikitra amin'ny angona dinihina ao amin'ny instance-ny. Tsy miditra amin'izany fanodinana izany ny Onirtech ary manasa ny mpandraharaha tsirairay hamoaka ny politika tsiambaratelo-ny."
+        }
+      ]
+    },
+    {
+      "title": "Fanovana ity politika ity",
+      "blocks": [
+        {
+          "type": "p",
+          "html": "Mety havaozina ity politika ity mba handraisana ny fiovan'ny tranokala na ny lalàna. Eo an-tampon'ity pejy ity ny datin'ny fanavaozana farany."
+        }
+      ]
+    }
+  ],
+  "back": "← Hiverina any amin'ny fandraisana"
+}
