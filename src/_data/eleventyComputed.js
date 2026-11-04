@@ -15,7 +15,7 @@ export default {
     if (data.partnerChat) return `data-partner-chat-url="${data.site.partnerChat}" data-privacy-url="${data.locale.routes.privacy}"`;
     return "";
   },
-  showWidget: (data) => data.showWidget ?? false,
+  showWidget: (data) => data.showWidget ?? true,
   canonical: (data) => {
     if (!data.pageKey || data.pageKey === "notFound") return null;
     return `${data.site.baseUrl}${data.locale?.routes?.[data.pageKey] ?? "/"}`;

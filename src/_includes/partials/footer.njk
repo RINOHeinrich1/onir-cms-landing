@@ -21,12 +21,9 @@
       <a href="{{ locale.routes.privacy }}">{{ t.common.nav.privacy }}</a>
     </nav>
     <div class="site-foot-contact">
-      <p>{{ t.common.footer.contactLead }}</p>
-      <p>
-        <a href="{{ site.whatsappUrl }}" target="_blank" rel="noopener">WhatsApp : {{ site.whatsappNumber }}</a>
-        <span aria-hidden="true"> · </span>
-        <a href="mailto:{{ site.contactEmail }}">Email : {{ site.contactEmail }}</a>
-      </p>
+      <strong>{{ t.common.contact.kicker }}</strong>
+      <a href="{{ site.whatsappUrl }}" target="_blank" rel="noopener">{{ t.common.contact.whatsapp }}</a>
+      <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>
     </div>
     <p class="site-foot-meta">{{ t.common.footer.legacyMeta }}</p>
     {% if t.common.reviewNotice %}<p class="site-foot-review">{{ t.common.reviewNotice }}</p>{% endif %}
@@ -56,12 +53,9 @@
       </nav>
     </div>
     <div class="foot-contact">
-      <p>{{ t.common.footer.contactLead }}</p>
-      <p>
-        <a href="{{ site.whatsappUrl }}" target="_blank" rel="noopener">WhatsApp : {{ site.whatsappNumber }}</a>
-        <span aria-hidden="true"> · </span>
-        <a href="mailto:{{ site.contactEmail }}">Email : {{ site.contactEmail }}</a>
-      </p>
+      <strong>{{ t.common.contact.kicker }}</strong>
+      <a href="{{ site.whatsappUrl }}" target="_blank" rel="noopener">{{ t.common.contact.whatsapp }}</a>
+      <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>
     </div>
     <div class="foot-meta">
       <span>{{ t.common.footer.metaOpenSource }}</span>

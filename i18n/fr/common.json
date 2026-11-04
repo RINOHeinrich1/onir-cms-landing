@@ -34,5 +34,12 @@
     "metaBrand": "ONIR CMS — CMS pour chatbot",
     "contactLead": "Parler directement avec notre assistant IA ou nous contacter directement au :"
   },
-  "reviewNotice": ""
+  "reviewNotice": "",
+  "contact": {
+    "kicker": "Contact",
+    "title": "Parlons de votre projet.",
+    "lead": "Parler directement avec notre assistant IA ou nous contacter directement au :",
+    "whatsapp": "WhatsApp",
+    "email": "Email"
+  }
 }

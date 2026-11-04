@@ -1,0 +1,19 @@
+<section class="contact-band" id="contact" aria-labelledby="contact-title">
+  <div class="wrap site-wrap contact-inner">
+    <div class="contact-copy">
+      <span class="contact-kicker">{{ t.common.contact.kicker }}</span>
+      <h2 id="contact-title">{{ t.common.contact.title }}</h2>
+      <p>{{ t.common.contact.lead }}</p>
+    </div>
+    <div class="contact-actions">
+      <a class="contact-action contact-action-primary" href="{{ site.whatsappUrl }}" target="_blank" rel="noopener">
+        <span>{{ t.common.contact.whatsapp }}</span>
+        <strong>{{ site.whatsappNumber }}</strong>
+      </a>
+      <a class="contact-action" href="mailto:{{ site.contactEmail }}">
+        <span>{{ t.common.contact.email }}</span>
+        <strong>{{ site.contactEmail }}</strong>
+      </a>
+    </div>
+  </div>
+</section>
