@@ -4,202 +4,557 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Maquette — Configuration d’un chatbot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
-        --navy: #071f43;
-        --navy-2: #0e3565;
-        --ink: #17243a;
-        --muted: #627089;
-        --line: #dfe5ee;
-        --surface: #ffffff;
-        --canvas: #f5f7fb;
-        --orange: #f6a21a;
-        --orange-soft: #fff4dd;
-        --green: #167a55;
-        --green-soft: #e8f7f0;
-        --blue-soft: #edf4ff;
-        --shadow: 0 16px 44px rgba(10, 34, 68, 0.11);
-        --radius: 16px;
+        --green-deep: #003528;
+        --green: #004a38;
+        --mint: #e1eedc;
+        --cream: #f4f1e5;
+        --paper: #fffdf6;
+        --orange: #f08000;
+        --orange-light: #ffc46b;
+        --ink: #063d2e;
+        --muted: #4e6b5f;
+        --line: #d7ddce;
+        --success: #2f7d5b;
+        --success-soft: #e2f0e8;
+        --warning: #b45309;
+        --warning-soft: #fbead8;
+        --sh-card: 0 1px 2px rgb(0 74 56 / 0.05), 0 14px 34px -24px rgb(0 74 56 / 0.22);
+        --r-sm: 8px;
+        --r-md: 14px;
+        --r-lg: 20px;
+        --r-pill: 999px;
       }
       * { box-sizing: border-box; }
+      html, body { min-height: 100%; }
       body {
         margin: 0;
-        background: var(--canvas);
+        background: var(--cream);
         color: var(--ink);
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-family: Montserrat, "Segoe UI", Arial, sans-serif;
         font-size: 14px;
-        line-height: 1.45;
+        line-height: 1.5;
       }
       button, input, select, textarea { font: inherit; }
       button { cursor: pointer; }
       .topbar {
-        height: 62px;
-        background: var(--navy);
+        min-height: 64px;
+        background: var(--green-deep);
         color: #fff;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 18px;
         padding: 0 28px;
-        gap: 16px;
       }
-      .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .2px; }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+      }
       .brand-mark {
-        width: 30px; height: 30px; border-radius: 9px;
-        display: grid; place-items: center;
-        background: var(--orange); color: var(--navy);
-        font-weight: 900; font-size: 15px;
+        width: 17px;
+        height: 17px;
+        border-radius: 3px;
+        background: var(--orange);
+        transform: rotate(45deg);
+        flex: none;
       }
-      .brand small { font-weight: 500; color: #b9c8dd; margin-left: 2px; }
-      .top-actions { display: flex; align-items: center; gap: 10px; color: #c9d6e8; font-size: 12px; }
-      .demo-pill { border: 1px solid rgba(255,255,255,.22); border-radius: 999px; padding: 5px 10px; }
-      .shell { display: grid; grid-template-columns: 292px minmax(0, 1fr); min-height: calc(100vh - 62px); }
-      .rail { background: #fff; border-right: 1px solid var(--line); padding: 24px 18px; }
-      .rail-title { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 800; margin: 0 10px 14px; }
-      .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+      .brand small {
+        color: #cbe7c5;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: none;
+      }
+      .top-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: #cbe7c5;
+        font-size: 11px;
+        text-align: right;
+      }
+      .demo-pill {
+        border: 1px solid rgba(255,255,255,.25);
+        border-radius: var(--r-pill);
+        padding: 5px 10px;
+        white-space: nowrap;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 300px minmax(0, 1fr);
+        min-height: calc(100vh - 64px);
+      }
+      .rail {
+        background: var(--paper);
+        border-right: 1px solid var(--line);
+        padding: 28px 20px;
+      }
+      .rail-kicker {
+        margin: 0 10px 16px;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+      }
+      .steps {
+        display: grid;
+        gap: 7px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
       .step-btn {
-        width: 100%; border: 0; background: transparent; text-align: left;
-        display: flex; gap: 11px; align-items: flex-start;
-        border-radius: 12px; padding: 10px; color: var(--muted);
+        width: 100%;
+        border: 0;
+        background: transparent;
+        border-radius: 12px;
+        color: var(--muted);
+        display: flex;
+        align-items: flex-start;
+        gap: 11px;
+        padding: 10px;
+        text-align: left;
       }
-      .step-btn:hover { background: var(--canvas); }
-      .step-btn.active { background: var(--blue-soft); color: var(--navy); }
+      .step-btn:hover { background: var(--mint); }
+      .step-btn.active { background: var(--mint); color: var(--green-deep); }
       .step-btn.done .step-number { background: var(--green); color: #fff; border-color: var(--green); }
+      .step-btn.active .step-number { background: var(--green-deep); border-color: var(--green-deep); color: #fff; }
       .step-number {
-        flex: none; width: 27px; height: 27px; border-radius: 50%;
-        display: grid; place-items: center; font-size: 12px; font-weight: 800;
-        border: 1px solid var(--line); background: #fff;
+        align-items: center;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        display: grid;
+        flex: none;
+        font-size: 11px;
+        font-weight: 800;
+        height: 27px;
+        place-items: center;
+        width: 27px;
       }
-      .step-btn.active .step-number { background: var(--navy); color: #fff; border-color: var(--navy); }
-      .step-copy strong { display: block; color: var(--ink); font-size: 13px; }
-      .step-copy small { display: block; margin-top: 2px; font-size: 11.5px; line-height: 1.3; }
+      .step-copy strong {
+        color: var(--ink);
+        display: block;
+        font-size: 13px;
+        line-height: 1.25;
+      }
+      .step-copy small {
+        display: block;
+        font-size: 11px;
+        line-height: 1.35;
+        margin-top: 3px;
+      }
       .rail-note {
-        margin: 22px 8px 0; padding: 13px;
-        border: 1px solid var(--line); border-radius: 12px;
-        color: var(--muted); font-size: 11.5px; background: #fbfcfe;
+        background: var(--cream);
+        border: 1px solid var(--line);
+        border-radius: var(--r-md);
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.45;
+        margin: 24px 6px 0;
+        padding: 14px;
       }
-      .rail-note strong { color: var(--navy); display: block; margin-bottom: 4px; }
-      main { min-width: 0; padding: 30px 38px 120px; }
-      .page-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 22px; }
-      .eyebrow { margin: 0 0 5px; color: var(--orange); font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-      h1 { margin: 0; font-size: clamp(24px, 3vw, 33px); letter-spacing: -.03em; color: var(--navy); }
-      .page-head p { margin: 7px 0 0; color: var(--muted); max-width: 700px; }
-      .progress { flex: none; min-width: 130px; text-align: right; color: var(--muted); font-size: 12px; }
-      .progress-bar { width: 130px; height: 5px; background: #e5eaf2; border-radius: 999px; overflow: hidden; margin-top: 8px; }
-      .progress-bar span { display: block; height: 100%; width: 20%; background: var(--orange); border-radius: inherit; transition: width .25s ease; }
+      .rail-note strong {
+        color: var(--green);
+        display: block;
+        font-size: 11px;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+      }
+      main {
+        min-width: 0;
+        padding: 32px 42px 120px;
+      }
+      .page-head {
+        align-items: flex-start;
+        display: flex;
+        gap: 24px;
+        justify-content: space-between;
+        margin-bottom: 24px;
+      }
+      .eyebrow {
+        color: var(--orange);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .14em;
+        margin: 0 0 6px;
+        text-transform: uppercase;
+      }
+      h1 {
+        color: var(--green-deep);
+        font-size: clamp(26px, 3vw, 36px);
+        letter-spacing: -.035em;
+        line-height: 1.1;
+        margin: 0;
+      }
+      .page-head p {
+        color: var(--muted);
+        font-size: 14px;
+        margin: 8px 0 0;
+        max-width: 720px;
+      }
+      .progress {
+        color: var(--muted);
+        flex: none;
+        font-size: 11px;
+        min-width: 132px;
+        text-align: right;
+      }
+      .progress-track {
+        background: var(--mint);
+        border-radius: var(--r-pill);
+        height: 5px;
+        margin-top: 8px;
+        overflow: hidden;
+        width: 132px;
+      }
+      .progress-track span {
+        background: var(--orange);
+        border-radius: inherit;
+        display: block;
+        height: 100%;
+        transition: width .25s ease;
+        width: 20%;
+      }
       .panel { display: none; }
       .panel.active { display: block; }
       .card {
-        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-        box-shadow: 0 2px 0 rgba(10,34,68,.02);
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: var(--r-lg);
+        box-shadow: var(--sh-card);
       }
-      .card + .card { margin-top: 14px; }
-      .card-pad { padding: 18px; }
-      .card-head { display: flex; justify-content: space-between; gap: 14px; align-items: flex-start; }
-      .card h2 { margin: 0; color: var(--navy); font-size: 16px; }
-      .card h3 { margin: 0; color: var(--navy); font-size: 14px; }
-      .card p { margin: 5px 0 0; color: var(--muted); }
-      .split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 14px; align-items: start; }
-      .field { display: grid; gap: 6px; color: var(--ink); font-weight: 600; font-size: 12px; }
+      .card + .card { margin-top: 16px; }
+      .card-pad { padding: 20px; }
+      .card-head {
+        align-items: flex-start;
+        display: flex;
+        gap: 16px;
+        justify-content: space-between;
+      }
+      .card h2 {
+        color: var(--green-deep);
+        font-size: 16px;
+        letter-spacing: -.015em;
+        margin: 0;
+      }
+      .card h3 {
+        color: var(--green-deep);
+        font-size: 14px;
+        margin: 0;
+      }
+      .card p { color: var(--muted); margin: 6px 0 0; }
+      .hint { color: var(--muted); font-size: 11.5px; line-height: 1.45; }
+      .split { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+      .field { color: var(--ink); display: grid; font-size: 11.5px; font-weight: 700; gap: 6px; }
       .field input, .field select, .field textarea {
-        width: 100%; border: 1px solid var(--line); border-radius: 9px;
-        padding: 9px 10px; background: #fff; color: var(--ink); font-weight: 400;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: var(--r-sm);
+        color: var(--ink);
+        font-weight: 500;
+        padding: 10px 11px;
+        width: 100%;
       }
       .field textarea { resize: vertical; }
-      .hint { color: var(--muted); font-size: 11.5px; line-height: 1.4; }
-      .mission-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
-      .mission {
-        border: 1px solid var(--line); border-radius: 12px; padding: 13px;
-        background: #fff; text-align: left; color: var(--ink);
+      .field input:focus, .field select:focus, .field textarea:focus {
+        border-color: var(--orange);
+        outline: 2px solid rgb(240 128 0 / .18);
       }
-      .mission:hover { border-color: #b7c8dd; }
-      .mission.selected { border-color: var(--orange); background: var(--orange-soft); box-shadow: inset 0 0 0 1px var(--orange); }
-      .mission strong { display: block; font-size: 13px; color: var(--navy); }
-      .mission small { display: block; margin-top: 5px; color: var(--muted); font-size: 11.5px; line-height: 1.35; }
-      .mission-icon { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: var(--blue-soft); color: var(--navy-2); font-weight: 900; margin-bottom: 9px; }
-      .choice-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-      .segmented { display: inline-flex; border: 1px solid var(--line); border-radius: 9px; overflow: hidden; background: #fff; }
-      .segmented button { border: 0; background: transparent; padding: 7px 10px; color: var(--muted); font-size: 12px; }
-      .segmented button.active { background: var(--navy); color: #fff; }
-      .toggle { display: inline-flex; align-items: center; gap: 8px; user-select: none; font-size: 12px; color: var(--ink); font-weight: 600; }
-      .switch { width: 34px; height: 19px; border-radius: 999px; background: #cbd5e1; padding: 2px; transition: .2s ease; }
-      .switch span { display: block; width: 15px; height: 15px; border-radius: 50%; background: #fff; transition: .2s ease; }
-      .switch.on { background: var(--green); }
-      .switch.on span { transform: translateX(15px); }
-      .source-card { border: 1px solid var(--line); border-radius: 13px; padding: 14px; }
-      .source-card + .source-card { margin-top: 10px; }
-      .source-card.off { background: #fbfcfe; }
+      .mission-grid {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-top: 15px;
+      }
+      .mission {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: var(--r-md);
+        color: var(--ink);
+        padding: 14px;
+        text-align: left;
+      }
+      .mission:hover { border-color: var(--green); }
+      .mission.selected {
+        background: var(--mint);
+        border-color: var(--green);
+        box-shadow: inset 0 0 0 1px var(--green);
+      }
+      .mission strong { color: var(--green-deep); display: block; font-size: 12.5px; }
+      .mission small { color: var(--muted); display: block; font-size: 11px; line-height: 1.4; margin-top: 6px; }
+      .mission-icon {
+        align-items: center;
+        background: var(--cream);
+        border-radius: 9px;
+        color: var(--green);
+        display: grid;
+        font-size: 13px;
+        font-weight: 800;
+        height: 30px;
+        margin-bottom: 10px;
+        place-items: center;
+        width: 30px;
+      }
+      .mission.selected .mission-icon { background: var(--green); color: #fff; }
+      .callout {
+        background: var(--warning-soft);
+        border: 1px solid #f0ce9f;
+        border-radius: var(--r-md);
+        color: var(--warning);
+        font-size: 12px;
+        line-height: 1.45;
+        margin-top: 14px;
+        padding: 12px 14px;
+      }
+      .callout strong { color: var(--ink); }
+      .ai-card {
+        align-items: center;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--orange);
+        border-radius: var(--r-lg);
+        display: flex;
+        gap: 18px;
+        justify-content: space-between;
+        margin-bottom: 16px;
+        padding: 18px 20px;
+      }
+      .ai-card h2 { margin: 0; }
+      .ai-card p { max-width: 720px; }
+      .ai-panel {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: var(--r-lg);
+        margin: -4px 0 16px;
+        padding: 18px;
+      }
+      .ai-panel .tools { margin-top: 12px; align-items: center; }
+      .tools { align-items: center; display: flex; flex-wrap: wrap; gap: 8px; }
+      .btn {
+        border: 1px solid transparent;
+        border-radius: var(--r-sm);
+        font-size: 11.5px;
+        font-weight: 800;
+        padding: 9px 12px;
+      }
+      .btn.primary { background: var(--green); color: #fff; }
+      .btn.primary:hover { background: var(--green-deep); }
+      .btn.orange { background: var(--orange); color: #06281f; }
+      .btn.ghost { background: var(--paper); border-color: var(--line); color: var(--green); }
+      .btn.ghost:hover { border-color: var(--green); background: var(--mint); }
+      .btn.small { font-size: 11px; padding: 7px 9px; }
+      .badge {
+        border-radius: var(--r-pill);
+        display: inline-flex;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .02em;
+        padding: 4px 8px;
+        white-space: nowrap;
+      }
+      .badge.on { background: var(--success-soft); color: var(--success); }
+      .badge.off { background: var(--cream); color: var(--muted); }
+      .badge.info { background: var(--mint); color: var(--green); }
+      .badge.warn { background: var(--warning-soft); color: var(--warning); }
+      .subhead {
+        align-items: flex-start;
+        display: flex;
+        gap: 16px;
+        justify-content: space-between;
+        margin: 4px 0 14px;
+      }
+      .subhead h2 { margin: 0; }
+      .source-card {
+        border: 1px solid var(--line);
+        border-radius: var(--r-md);
+        padding: 15px;
+      }
+      .source-card + .source-card { margin-top: 11px; }
+      .source-card.off { background: #fbfaf4; }
       .source-card.off .source-body { opacity: .5; }
-      .source-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-      .source-title strong { color: var(--navy); font-size: 13px; }
-      .source-body { margin-top: 10px; display: grid; gap: 10px; }
-      .source-body .field { font-size: 11.5px; }
-      .source-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-      .chips { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 8px; }
-      .chip { border: 1px solid var(--line); border-radius: 999px; padding: 6px 9px; color: var(--muted); background: #fff; font-size: 11.5px; }
-      .chip.selected { border-color: var(--navy); color: var(--navy); background: var(--blue-soft); }
-      .added-list { margin: 11px 0 0; padding: 0; list-style: none; display: grid; gap: 7px; }
-      .added-list li { display: flex; justify-content: space-between; gap: 10px; align-items: center; border: 1px solid var(--line); border-radius: 9px; padding: 8px 10px; font-size: 12px; }
-      .add-menu { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; padding: 10px; border: 1px dashed #b9c8dd; border-radius: 10px; background: #fbfcfe; }
-      .btn { border: 1px solid transparent; border-radius: 9px; padding: 8px 12px; font-weight: 700; font-size: 12px; }
-      .btn.primary { background: var(--navy); color: #fff; }
-      .btn.primary:hover { background: var(--navy-2); }
-      .btn.ghost { background: #fff; color: var(--navy); border-color: var(--line); }
-      .btn.soft { background: var(--blue-soft); color: var(--navy); }
-      .btn.small { padding: 6px 9px; font-size: 11.5px; }
-      .badge { display: inline-flex; align-items: center; gap: 5px; border-radius: 999px; padding: 4px 8px; font-size: 10.5px; font-weight: 800; letter-spacing: .02em; }
-      .badge.off { background: #eef1f5; color: var(--muted); }
-      .badge.on { background: var(--green-soft); color: var(--green); }
-      .badge.info { background: var(--blue-soft); color: var(--navy-2); }
-      .callout { border: 1px solid #f2d296; background: #fffaf0; border-radius: 12px; padding: 12px 14px; color: #6c4a0c; font-size: 12px; }
-      .callout strong { color: #5b3b00; }
-      .summary { display: grid; gap: 0; border: 1px solid var(--line); border-radius: 13px; overflow: hidden; }
-      .summary-row { display: grid; grid-template-columns: 170px 1fr; gap: 14px; padding: 12px 14px; border-bottom: 1px solid var(--line); background: #fff; font-size: 12.5px; }
+      .source-head {
+        align-items: center;
+        display: flex;
+        gap: 14px;
+        justify-content: space-between;
+      }
+      .source-head strong { color: var(--green-deep); display: block; font-size: 13px; }
+      .source-body { display: grid; gap: 11px; margin-top: 12px; }
+      .source-grid { display: grid; gap: 10px; grid-template-columns: 1.1fr .9fr; }
+      .toggle {
+        align-items: center;
+        cursor: pointer;
+        display: inline-flex;
+        gap: 8px;
+        position: relative;
+      }
+      .toggle input {
+        height: 1px;
+        opacity: 0;
+        position: absolute;
+        width: 1px;
+      }
+      .toggle:focus-within .switch { outline: 2px solid var(--orange); outline-offset: 2px; }
+      .switch {
+        background: #c7d1c3;
+        border-radius: var(--r-pill);
+        display: block;
+        height: 21px;
+        padding: 3px;
+        transition: background .2s ease;
+        width: 38px;
+      }
+      .switch span {
+        background: #fff;
+        border-radius: 50%;
+        display: block;
+        height: 15px;
+        transition: transform .2s ease;
+        width: 15px;
+      }
+      .switch.on { background: var(--success); }
+      .switch.on span { transform: translateX(17px); }
+      .segmented {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: var(--r-sm);
+        display: inline-flex;
+        overflow: hidden;
+      }
+      .segmented button {
+        background: transparent;
+        border: 0;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+        padding: 8px 10px;
+      }
+      .segmented button.active { background: var(--green); color: #fff; }
+      .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+      .chip {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: var(--r-pill);
+        color: var(--muted);
+        font-size: 11px;
+        padding: 6px 9px;
+      }
+      .chip.selected { background: var(--mint); border-color: var(--green); color: var(--green); font-weight: 700; }
+      .search-config {
+        background: var(--cream);
+        border: 1px solid var(--line);
+        border-radius: var(--r-sm);
+        display: grid;
+        gap: 11px;
+        margin-top: 4px;
+        padding: 12px;
+      }
+      .search-config .field { font-size: 11px; }
+      .added-list { display: grid; gap: 7px; list-style: none; margin: 12px 0 0; padding: 0; }
+      .added-list li {
+        align-items: center;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: var(--r-sm);
+        display: flex;
+        font-size: 11.5px;
+        gap: 10px;
+        justify-content: space-between;
+        padding: 9px 10px;
+      }
+      .add-menu {
+        background: var(--cream);
+        border: 1px dashed var(--line);
+        border-radius: var(--r-sm);
+        display: flex;
+        gap: 8px;
+        margin-top: 10px;
+        padding: 10px;
+      }
+      .summary { border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; }
+      .summary-row {
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        font-size: 12px;
+        gap: 16px;
+        grid-template-columns: 180px 1fr;
+        padding: 12px 14px;
+      }
       .summary-row:last-child { border-bottom: 0; }
       .summary-row dt { color: var(--muted); }
-      .summary-row dd { margin: 0; color: var(--ink); font-weight: 600; }
-      .footer {
-        position: fixed; left: 292px; right: 0; bottom: 0;
-        display: flex; justify-content: space-between; align-items: center; gap: 14px;
-        padding: 14px 38px; border-top: 1px solid var(--line); background: rgba(255,255,255,.94);
-        backdrop-filter: blur(8px);
+      .summary-row dd { color: var(--ink); font-weight: 700; margin: 0; }
+      .success {
+        background: var(--success-soft);
+        border: 1px solid #bfe3d3;
+        border-radius: var(--r-md);
+        color: var(--success);
+        font-size: 12px;
+        margin-top: 14px;
+        padding: 12px 14px;
       }
-      .footer .step-label { color: var(--muted); font-size: 12px; }
+      .footer {
+        align-items: center;
+        backdrop-filter: blur(10px);
+        background: rgb(255 253 246 / .95);
+        border-top: 1px solid var(--line);
+        bottom: 0;
+        display: flex;
+        gap: 14px;
+        justify-content: space-between;
+        left: 300px;
+        padding: 14px 42px;
+        position: fixed;
+        right: 0;
+      }
+      .footer-label { color: var(--muted); font-size: 11px; }
       .footer-actions { display: flex; gap: 8px; }
-      .warn { color: #a15a05; background: var(--orange-soft); border: 1px solid #f2d296; border-radius: 10px; padding: 10px 12px; font-size: 12px; }
-      .success { color: var(--green); background: var(--green-soft); border: 1px solid #bfe8d7; border-radius: 10px; padding: 10px 12px; font-size: 12px; }
       .hidden { display: none !important; }
-      .inline-field { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-      .inline-field label { font-size: 12px; font-weight: 700; color: var(--ink); }
-      .inline-field input { max-width: 270px; }
-      @media (max-width: 980px) {
-        .shell { grid-template-columns: 1fr; }
-        .rail { border-right: 0; border-bottom: 1px solid var(--line); padding: 14px 16px; }
-        .steps { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
-        .step-btn { padding: 8px 6px; gap: 6px; }
+      @media (max-width: 1000px) {
+        .layout { grid-template-columns: 1fr; }
+        .rail { border-bottom: 1px solid var(--line); border-right: 0; padding: 16px; }
+        .steps { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; }
+        .step-btn { gap: 6px; padding: 8px 5px; }
         .step-copy small { display: none; }
-        .step-copy strong { font-size: 11px; }
-        .step-number { width: 22px; height: 22px; font-size: 10px; }
-        main { padding: 22px 18px 110px; }
+        .step-copy strong { font-size: 10px; }
+        .step-number { font-size: 10px; height: 22px; width: 22px; }
+        main { padding: 24px 18px 110px; }
         .footer { left: 0; padding: 12px 18px; }
         .split, .source-grid { grid-template-columns: 1fr; }
       }
-      @media (max-width: 640px) {
+      @media (max-width: 680px) {
         .topbar { padding: 0 16px; }
-        .brand small, .top-actions .demo-pill { display: none; }
+        .brand small, .demo-pill { display: none; }
         .mission-grid { grid-template-columns: 1fr; }
-        .summary-row { grid-template-columns: 1fr; gap: 3px; }
         .page-head { display: block; }
-        .progress { text-align: left; margin-top: 12px; }
-        .progress-bar { width: 100%; }
-        .footer-actions .btn { padding: 8px 10px; }
+        .progress { margin-top: 12px; text-align: left; }
+        .progress-track { width: 100%; }
+        .ai-card { align-items: flex-start; flex-direction: column; }
+        .summary-row { gap: 3px; grid-template-columns: 1fr; }
       }
     </style>
   </head>
   <body>
     <header class="topbar">
       <div class="brand">
-        <span class="brand-mark">O</span>
-        ONIR CMS <small>/ maquette de configuration</small>
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>ONIR CMS <small>/ maquette configuration</small></span>
       </div>
       <div class="top-actions">
         <span class="demo-pill">Prototype non fonctionnel</span>
@@ -207,123 +562,128 @@
       </div>
     </header>
 
-    <div class="shell">
+    <div class="layout">
       <aside class="rail">
-        <p class="rail-title">Parcours proposé</p>
+        <p class="rail-kicker">Parcours proposé</p>
         <ol class="steps" id="steps">
-          <li>
-            <button class="step-btn active" data-goto="0">
+          <li data-step-item="cadrage">
+            <button class="step-btn active" data-step="cadrage">
               <span class="step-number">1</span>
-              <span class="step-copy"><strong>Cadrage</strong><small>Qui, quoi, mission</small></span>
+              <span class="step-copy"><strong>Cadrage</strong><small>Identité, mission, comportement</small></span>
             </button>
           </li>
-          <li>
-            <button class="step-btn" data-goto="1">
+          <li data-step-item="collecte">
+            <button class="step-btn" data-step="collecte">
               <span class="step-number">2</span>
-              <span class="step-copy"><strong>Alimentation</strong><small>Collecte &amp; sources</small></span>
+              <span class="step-copy"><strong>Collecte</strong><small>Fiches à remplir</small></span>
             </button>
           </li>
-          <li>
-            <button class="step-btn" data-goto="2">
+          <li data-step-item="alimentation">
+            <button class="step-btn" data-step="alimentation">
               <span class="step-number">3</span>
-              <span class="step-copy"><strong>Publication</strong><small>Où le chatbot est diffusé</small></span>
+              <span class="step-copy"><strong>Alimentation</strong><small>Sources à consulter</small></span>
             </button>
           </li>
-          <li>
-            <button class="step-btn" data-goto="3">
+          <li data-step-item="publication">
+            <button class="step-btn" data-step="publication">
               <span class="step-number">4</span>
+              <span class="step-copy"><strong>Publication</strong><small>Canaux et apparence</small></span>
+            </button>
+          </li>
+          <li data-step-item="ia">
+            <button class="step-btn" data-step="ia">
+              <span class="step-number">5</span>
               <span class="step-copy"><strong>IA &amp; secours</strong><small>Modèles et repli</small></span>
             </button>
           </li>
-          <li>
-            <button class="step-btn" data-goto="4">
-              <span class="step-number">5</span>
+          <li data-step-item="validation">
+            <button class="step-btn" data-step="validation">
+              <span class="step-number">6</span>
               <span class="step-copy"><strong>Validation</strong><small>Limites et récapitulatif</small></span>
             </button>
           </li>
         </ol>
         <div class="rail-note">
-          <strong>Le principe</strong>
-          La mission décide de ce que l’on voit ensuite. On ne mélange plus collecte, sources et publication.
+          <strong>La règle</strong>
+          La mission décide si l’on affiche <b>Collecte</b>, <b>Alimentation</b>, ou les deux. Chaque écran ne traite qu’un seul sujet.
         </div>
       </aside>
 
       <main>
         <div class="page-head">
           <div>
-            <p class="eyebrow" id="eyebrow">Étape 1 sur 5</p>
+            <p class="eyebrow" id="eyebrow">Étape 1 sur 6</p>
             <h1 id="page-title">Cadrage</h1>
-            <p id="page-subtitle">Définir l’identité du chatbot et son rôle avant de choisir ses contenus.</p>
+            <p id="page-subtitle">Définir l’identité du chatbot et sa mission avant de choisir ses contenus.</p>
           </div>
           <div class="progress">
-            <span id="progress-label">20 %</span>
-            <div class="progress-bar"><span id="progress-fill"></span></div>
+            <span id="progress-label">17 %</span>
+            <div class="progress-track"><span id="progress-fill"></span></div>
           </div>
         </div>
 
-        <section class="panel active" data-panel="0">
+        <section class="panel active" data-panel="cadrage">
+          <div class="ai-card">
+            <div>
+              <h2>Créer avec l’IA</h2>
+              <p class="hint">Décrivez votre activité. L’IA prépare une première version du cadrage, des fiches et des contenus.</p>
+            </div>
+            <button class="btn orange" id="ai-open">Créer avec l’IA</button>
+          </div>
+          <div class="ai-panel hidden" id="ai-panel">
+            <label class="field">
+              Que doit faire ce chatbot ?
+              <textarea rows="3">Nous vendons des équipements industriels. Le chatbot doit répondre aux questions techniques et collecter les demandes de devis.</textarea>
+            </label>
+            <div class="tools">
+              <button class="btn primary" id="ai-generate">Générer le brouillon</button>
+              <span class="hint" id="ai-status">Le résultat préremplit les étapes suivantes.</span>
+            </div>
+          </div>
+
           <div class="card card-pad">
             <div class="card-head">
               <div>
-                <h2>Identité du chatbot</h2>
+                <h2>Identité</h2>
                 <p>Les informations visibles par l’utilisateur et l’équipe.</p>
               </div>
               <span class="badge info">Obligatoire</span>
             </div>
             <div class="split" style="margin-top:16px">
-              <label class="field">
-                Nom du chatbot
-                <input value="Assistant commercial" />
-              </label>
-              <label class="field">
-                Type
-                <select>
-                  <option>Standard</option>
-                  <option>Spécifique à un prospect</option>
-                </select>
-              </label>
-              <label class="field">
-                Expiration
-                <input type="date" />
-              </label>
-              <label class="field">
-                Catégorie
-                <select>
-                  <option>Commercial</option>
-                  <option>Support</option>
-                  <option>Information</option>
-                </select>
-              </label>
+              <label class="field">Nom du chatbot<input value="Assistant commercial" /></label>
+              <label class="field">Type<select><option>Standard</option><option>Spécifique à un prospect</option></select></label>
+              <label class="field">Expiration<input type="date" /></label>
+              <label class="field">Catégorie<select><option>Commercial</option><option>Support</option><option>Information</option></select></label>
             </div>
           </div>
 
           <div class="card card-pad">
             <div class="card-head">
               <div>
-                <h2>Mission du chatbot</h2>
-                <p>La mission pilote automatiquement la prochaine étape.</p>
+                <h2>Mission</h2>
+                <p>Le choix qui décide des étapes Collecte et Alimentation.</p>
               </div>
-              <span class="badge off" id="mission-badge">À choisir</span>
+              <span class="badge on" id="mission-badge">Hybride</span>
             </div>
             <div class="mission-grid" id="mission-grid">
               <button class="mission" data-mission="collect">
                 <span class="mission-icon">↓</span>
-                <strong>Collecter des fiches</strong>
-                <small>Remplit une fiche de collecte. Ne consulte aucune source.</small>
+                <strong>Collecter</strong>
+                <small>Remplit une fiche. Aucune source consultée.</small>
               </button>
               <button class="mission selected" data-mission="hybrid">
                 <span class="mission-icon">↔</span>
                 <strong>Collecter et informer</strong>
-                <small>Répond avec des sources, puis collecte si le visiteur le demande.</small>
+                <small>Répond avec des sources, puis collecte si besoin.</small>
               </button>
               <button class="mission" data-mission="inform">
                 <span class="mission-icon">↑</span>
                 <strong>Informer</strong>
-                <small>Répond à partir des contenus. Ne remplit aucune fiche.</small>
+                <small>Répond avec les contenus. Aucune fiche remplie.</small>
               </button>
             </div>
-            <div class="callout" style="margin-top:12px" id="mission-explain">
-              <strong>Hybride :</strong> le chatbot consulte d’abord les sources autorisées. Il ne collecte que si le visiteur demande explicitement à remplir une fiche.
+            <div class="callout" id="mission-explain">
+              <strong>Hybride :</strong> les étapes Collecte et Alimentation sont toutes les deux affichées.
             </div>
           </div>
 
@@ -331,300 +691,255 @@
             <div class="card-head">
               <div>
                 <h2>Comportement</h2>
-                <p>Comment le chatbot doit parler et se comporter.</p>
+                <p>Le ton et les limites du chatbot.</p>
               </div>
             </div>
             <div class="split" style="margin-top:14px">
-              <label class="field">
-                Mode
-                <select>
-                  <option>Guidé — prompt généré</option>
-                  <option>Expert — prompt libre</option>
-                </select>
-              </label>
-              <label class="field">
-                Objectif
-                <textarea rows="2">Comprendre le besoin et proposer la bonne offre.</textarea>
-              </label>
+              <label class="field">Mode<select><option>Guidé — prompt généré</option><option>Expert — prompt libre</option></select></label>
+              <label class="field">Objectif<textarea rows="2">Comprendre le besoin et proposer la bonne offre.</textarea></label>
             </div>
           </div>
         </section>
 
-        <section class="panel" data-panel="1">
+        <section class="panel" data-panel="collecte">
+          <div class="card card-pad">
+            <div class="card-head">
+              <div>
+                <h2>Choisir la fiche de collecte</h2>
+                <p>Cette étape sert uniquement à sélectionner la fiche que le chatbot remplira quand l’utilisateur veut collecter des informations.</p>
+              </div>
+              <span class="badge on">Affichée pour cette mission</span>
+            </div>
+
+            <div class="subhead" style="margin-top:20px">
+              <div>
+                <h3>Fiche à collecter</h3>
+                <p class="hint">La fiche définit les champs et les statuts. Le chatbot en conserve une copie.</p>
+              </div>
+              <button class="btn ghost small">+ Choisir une fiche</button>
+            </div>
+            <div class="chips">
+              <button class="chip selected">Fiche de qualification commerciale</button>
+              <button class="chip">Fiche demande de devis</button>
+              <button class="chip">Fiche rappel</button>
+            </div>
+
+            <div class="callout" style="margin-top:16px">
+              <strong>À quoi ça sert :</strong> si la mission est « Informer », cette étape est masquée. Si elle est « Collecter » ou « Hybride », cette fiche est disponible pour recueillir les informations du visiteur.
+            </div>
+            <p class="hint" style="margin-top:12px">
+              Les champs détaillés sont gérés dans la fiche de collecte, pas dans ce parcours de configuration du chatbot.
+            </p>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="alimentation">
           <div class="card card-pad">
             <div class="card-head">
               <div>
                 <h2>Alimentation</h2>
-                <p>Un seul endroit pour dire ce qu’il collecte et ce qu’il consulte.</p>
+                <p>Les sources que le chatbot consulte. Une source = un contenu + une règle d’usage, réglés au même endroit.</p>
               </div>
-              <span class="badge info" id="alimentation-badge">Hybride</span>
-            </div>
-            <div class="callout" style="margin-top:12px" id="alimentation-summary">
-              <strong>Mission hybride :</strong> une fiche à collecter + au moins une source à consulter.
+              <span class="badge on">Affichée pour cette mission</span>
             </div>
           </div>
 
-          <div class="card card-pad" id="collect-block">
-            <div class="card-head">
+          <div class="card card-pad">
+            <div class="subhead">
               <div>
-                <h2>1. Ce qu’il collecte</h2>
-                <p>Une fiche = un formulaire que le chatbot peut remplir.</p>
+                <h2>Fiches existantes</h2>
+                <p class="hint">Rechercher dans les fiches déjà collectées.</p>
               </div>
-              <span class="badge on">Activé</span>
+              <label class="toggle">
+                <input type="checkbox" class="source-toggle" checked />
+                <span class="switch on"><span></span></span>
+              </label>
             </div>
-            <div class="choice-row" style="margin-top:13px">
-              <span class="chip selected">Fiche de qualification commerciale</span>
-              <span class="chip">Fiche demande de devis</span>
-              <button class="btn ghost small">+ Choisir une fiche</button>
+            <p class="hint" style="margin-top:-4px">
+              Désactivé par défaut dans l’application ; activé ici pour montrer les paramètres de recherche.
+            </p>
+            <div class="source-body">
+              <div class="source-grid">
+                <label class="field">Quand l’utiliser<input value="Quand le visiteur cherche une information déjà collectée." /></label>
+                <label class="field">Portée<select><option>Toutes les fiches du chatbot</option><option>Certaines fiches</option></select></label>
+              </div>
+              <div class="search-config">
+                <div class="field">
+                  Types de fiches
+                  <div class="chips">
+                    <button class="chip selected">Qualification commerciale</button>
+                    <button class="chip selected">Demande de devis</button>
+                    <button class="chip">Rappel</button>
+                  </div>
+                </div>
+                <div class="source-grid">
+                  <label class="field">Mode de statut<select><option>Statut imposé masqué (public)</option><option>Statut visible par le modèle (backoffice)</option><option>Aucun filtre de statut</option></select></label>
+                  <label class="field">Tri des résultats<select><option>Rotation équitable</option><option>Date de création</option><option>Pertinence (non disponible)</option></select></label>
+                </div>
+                <div class="field">
+                  Statuts fixes appliqués
+                  <div class="chips">
+                    <button class="chip selected">Nouveau</button>
+                    <button class="chip">Qualifié</button>
+                    <button class="chip">À rappeler</button>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p class="hint" style="margin-top:9px">La fiche est une copie figée au moment de la création du chatbot.</p>
           </div>
 
-          <div class="card card-pad" id="sources-block">
-            <div class="card-head">
+          <div class="card card-pad">
+            <div class="subhead">
               <div>
-                <h2>2. Ce qu’il consulte</h2>
-                <p>Chaque source se règle au même endroit : on l’active, on choisit son contenu, puis on dit quand l’utiliser.</p>
+                <h2>Connaissances</h2>
+                <p class="hint">Articles, procédures, informations métier.</p>
               </div>
+              <label class="toggle">
+                <input type="checkbox" class="source-toggle" checked />
+                <span class="switch on"><span></span></span>
+              </label>
             </div>
-
-            <div style="margin-top:14px">
-              <div class="source-card off" data-source="fiches">
-                <div class="source-title">
-                  <div>
-                    <strong>Fiches existantes</strong>
-                    <div class="hint">Chercher dans les fiches déjà collectées.</div>
-                  </div>
-                  <label class="toggle">
-                    <input type="checkbox" class="source-toggle" />
-                    <span class="switch"><span></span></span>
-                  </label>
-                </div>
-                <div class="source-body">
-                  <div class="source-grid">
-                    <label class="field">
-                      Quand l’utiliser
-                      <input value="Quand le visiteur cherche une information déjà collectée." />
-                    </label>
-                    <label class="field">
-                      Périmètre
-                      <select>
-                        <option>Toutes les fiches du chatbot</option>
-                        <option>Seulement certaines fiches</option>
-                      </select>
-                    </label>
-                  </div>
-                  <span class="badge off">Désactivé par défaut</span>
-                </div>
-              </div>
-
-              <div class="source-card" data-source="connaissances">
-                <div class="source-title">
-                  <div>
-                    <strong>Connaissances</strong>
-                    <div class="hint">Articles, procédures, informations métier.</div>
-                  </div>
-                  <label class="toggle">
-                    <input type="checkbox" class="source-toggle" checked />
-                    <span class="switch on"><span></span></span>
-                  </label>
-                </div>
-                <div class="source-body">
-                  <div class="source-grid">
-                    <label class="field">
-                      Quand l’utiliser
-                      <input value="Pour répondre aux questions sur les offres et procédures." />
-                    </label>
-                    <div class="field">
-                      Contenus
-                      <div class="segmented" data-mode="connaissances">
-                        <button class="active" data-scope="all">Toute la bibliothèque</button>
-                        <button data-scope="selected">Choisir</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="choice-row" data-picker="connaissances" style="display:none">
-                    <span class="chip selected">Tarifs</span>
-                    <span class="chip">Procédure SAV</span>
-                    <span class="chip">Présentation entreprise</span>
+            <div class="source-body">
+              <div class="source-grid">
+                <label class="field">Quand l’utiliser<input value="Pour répondre aux questions sur les offres et procédures." /></label>
+                <div class="field">
+                  Contenus
+                  <div class="segmented" data-mode="connaissances">
+                    <button class="active" data-scope="all">Toute la bibliothèque</button>
+                    <button data-scope="selected">Choisir</button>
                   </div>
                 </div>
               </div>
-
-              <div class="source-card" data-source="photos">
-                <div class="source-title">
-                  <div>
-                    <strong>Photos</strong>
-                    <div class="hint">Images utilisées pour illustrer une réponse.</div>
-                  </div>
-                  <label class="toggle">
-                    <input type="checkbox" class="source-toggle" checked />
-                    <span class="switch on"><span></span></span>
-                  </label>
-                </div>
-                <div class="source-body">
-                  <div class="source-grid">
-                    <label class="field">
-                      Quand l’utiliser
-                      <input value="Quand une illustration aide à comprendre la réponse." />
-                    </label>
-                    <div class="field">
-                      Contenus
-                      <div class="segmented" data-mode="photos">
-                        <button class="active" data-scope="all">Toute la bibliothèque</button>
-                        <button data-scope="selected">Choisir</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="choice-row" data-picker="photos" style="display:none">
-                    <span class="chip selected">Showroom</span>
-                    <span class="chip">Produit A</span>
-                    <span class="chip">Équipe</span>
-                  </div>
-                </div>
+              <div class="chips hidden" data-picker="connaissances">
+                <button class="chip selected">Tarifs</button>
+                <button class="chip">Procédure SAV</button>
+                <button class="chip">Présentation entreprise</button>
               </div>
-
-              <div class="source-card" data-source="liens">
-                <div class="source-title">
-                  <div>
-                    <strong>Liens</strong>
-                    <div class="hint">Pages web, formulaires ou ressources externes.</div>
-                  </div>
-                  <label class="toggle">
-                    <input type="checkbox" class="source-toggle" checked />
-                    <span class="switch on"><span></span></span>
-                  </label>
-                </div>
-                <div class="source-body">
-                  <div class="source-grid">
-                    <label class="field">
-                      Quand l’utiliser
-                      <input value="Quand le visiteur doit consulter une page ou un formulaire." />
-                    </label>
-                    <div class="field">
-                      Contenus
-                      <div class="segmented" data-mode="liens">
-                        <button class="active" data-scope="all">Toute la bibliothèque</button>
-                        <button data-scope="selected">Choisir</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="choice-row" data-picker="liens" style="display:none">
-                    <span class="chip selected">Page contact</span>
-                    <span class="chip">Demande de devis</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--line)">
-              <div class="card-head">
-                <div>
-                  <h3>Contenus ajoutés à ce chatbot</h3>
-                  <p class="hint">Ces contenus sont réservés à ce chatbot et ne modifient pas la bibliothèque.</p>
-                </div>
-                <button class="btn ghost small" id="add-toggle">+ Ajouter un contenu</button>
-              </div>
-              <div class="add-menu hidden" id="add-menu">
-                <button class="btn soft small" data-add="Connaissance">Connaissance</button>
-                <button class="btn soft small" data-add="Photo">Photo</button>
-                <button class="btn soft small" data-add="Lien">Lien</button>
-              </div>
-              <ul class="added-list" id="added-list">
-                <li><span><strong>Connaissance</strong> · Argumentaire de vente</span><span class="badge info">Ce chatbot</span></li>
-              </ul>
             </div>
           </div>
 
-          <div class="warn" id="inform-warning" style="display:none">
-            Mission « Informer » : la collecte de fiches est masquée. Seules les sources sont disponibles.
+          <div class="card card-pad">
+            <div class="subhead">
+              <div>
+                <h2>Photos</h2>
+                <p class="hint">Images utilisées pour illustrer une réponse.</p>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" class="source-toggle" checked />
+                <span class="switch on"><span></span></span>
+              </label>
+            </div>
+            <div class="source-body">
+              <div class="source-grid">
+                <label class="field">Quand l’utiliser<input value="Quand une illustration aide à comprendre la réponse." /></label>
+                <div class="field">
+                  Contenus
+                  <div class="segmented" data-mode="photos">
+                    <button class="active" data-scope="all">Toute la bibliothèque</button>
+                    <button data-scope="selected">Choisir</button>
+                  </div>
+                </div>
+              </div>
+              <div class="chips hidden" data-picker="photos">
+                <button class="chip selected">Showroom</button>
+                <button class="chip">Produit A</button>
+              </div>
+            </div>
           </div>
-          <div class="warn" id="collect-warning" style="display:none">
-            Mission « Collecter » : les sources sont masquées. Le chatbot remplit uniquement une fiche.
+
+          <div class="card card-pad">
+            <div class="subhead">
+              <div>
+                <h2>Liens</h2>
+                <p class="hint">Pages web, formulaires ou ressources externes.</p>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" class="source-toggle" checked />
+                <span class="switch on"><span></span></span>
+              </label>
+            </div>
+            <div class="source-body">
+              <div class="source-grid">
+                <label class="field">Quand l’utiliser<input value="Quand le visiteur doit consulter une page ou un formulaire." /></label>
+                <div class="field">
+                  Contenus
+                  <div class="segmented" data-mode="liens">
+                    <button class="active" data-scope="all">Toute la bibliothèque</button>
+                    <button data-scope="selected">Choisir</button>
+                  </div>
+                </div>
+              </div>
+              <div class="chips hidden" data-picker="liens">
+                <button class="chip selected">Page contact</button>
+                <button class="chip">Demande de devis</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-pad">
+            <div class="subhead">
+              <div>
+                <h2>Contenus ajoutés à ce chatbot</h2>
+                <p class="hint">Réservés à ce chatbot. La bibliothèque n’est pas modifiée.</p>
+              </div>
+              <button class="btn ghost small" id="add-toggle">+ Ajouter un contenu</button>
+            </div>
+            <div class="add-menu hidden" id="add-menu">
+              <button class="btn ghost small" data-add="Connaissance">Connaissance</button>
+              <button class="btn ghost small" data-add="Photo">Photo</button>
+              <button class="btn ghost small" data-add="Lien">Lien</button>
+            </div>
+            <ul class="added-list" id="added-list">
+              <li><span><strong>Connaissance</strong> · Argumentaire de vente</span><span class="badge info">Ce chatbot</span></li>
+            </ul>
           </div>
         </section>
 
-        <section class="panel" data-panel="2">
+        <section class="panel" data-panel="publication">
           <div class="card card-pad">
             <div class="card-head">
               <div>
                 <h2>Publication</h2>
-                <p>Où le chatbot est disponible. Le contenu a déjà été défini à l’étape précédente.</p>
+                <p>Où le chatbot est disponible. Le contenu a déjà été défini dans Collecte et Alimentation.</p>
               </div>
             </div>
-            <div class="split" style="margin-top:14px">
-              <label class="field">
-                Page publique
-                <select>
-                  <option>Activée</option>
-                  <option>Désactivée</option>
-                </select>
-              </label>
-              <label class="field">
-                Widget
-                <select>
-                  <option>Activé</option>
-                  <option>Désactivé</option>
-                </select>
-              </label>
-              <label class="field">
-                Template visuel
-                <select>
-                  <option>MandamPro — widget</option>
-                  <option>Template standard</option>
-                </select>
-              </label>
-              <label class="field">
-                Identification
-                <select>
-                  <option>Formulaire de contact</option>
-                  <option>Anonyme</option>
-                </select>
-              </label>
+            <div class="split" style="margin-top:16px">
+              <label class="field">Page publique<select><option>Activée</option><option>Désactivée</option></select></label>
+              <label class="field">Widget<select><option>Activé</option><option>Désactivé</option></select></label>
+              <label class="field">Template visuel<select><option>MandamPro — widget</option><option>Template standard</option></select></label>
+              <label class="field">Identification<select><option>Formulaire de contact</option><option>Anonyme</option></select></label>
             </div>
           </div>
           <div class="card card-pad">
             <h2>Options avancées</h2>
-            <p class="hint" style="margin-top:5px">État visiteur, bindings de données et paramètres du template.</p>
+            <p class="hint" style="margin-top:6px">État visiteur, bindings de données et paramètres du template.</p>
           </div>
         </section>
 
-        <section class="panel" data-panel="3">
+        <section class="panel" data-panel="ia">
           <div class="card card-pad">
             <div class="card-head">
               <div>
                 <h2>IA &amp; secours</h2>
-                <p>Les modèles qui répondent, et ce qui se passe s’ils ne répondent pas.</p>
+                <p>Les modèles qui répondent et le comportement de secours s’ils ne répondent pas.</p>
               </div>
             </div>
-            <div class="split" style="margin-top:14px">
+            <div class="split" style="margin-top:16px">
               <div class="card card-pad" style="box-shadow:none">
                 <h3>Modèles IA</h3>
-                <p class="hint">Réponse, analyse, recherche de fiches.</p>
-                <label class="field" style="margin-top:10px">
-                  Modèle par défaut
-                  <select>
-                    <option>Hériter de l’organisation — onir-answer-cluster</option>
-                    <option>Choisir un modèle</option>
-                  </select>
-                </label>
+                <p class="hint">Réponse, analyse et recherche de fiches.</p>
+                <label class="field" style="margin-top:10px">Modèle par défaut<select><option>Hériter de l’organisation — onir-answer-cluster</option><option>Choisir un modèle</option></select></label>
               </div>
               <div class="card card-pad" style="box-shadow:none">
                 <h3>Si l’IA ne répond pas</h3>
                 <p class="hint">Menu de secours avec des réponses fermées.</p>
-                <label class="field" style="margin-top:10px">
-                  Secours
-                  <select>
-                    <option>Activé</option>
-                    <option>Désactivé</option>
-                  </select>
-                </label>
+                <label class="field" style="margin-top:10px">Secours<select><option>Activé</option><option>Désactivé</option></select></label>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="panel" data-panel="4">
+        <section class="panel" data-panel="validation">
           <div class="card card-pad">
             <div class="card-head">
               <div>
@@ -633,22 +948,22 @@
               </div>
               <span class="badge on">Cohérent</span>
             </div>
-            <dl class="summary" style="margin-top:14px">
+            <dl class="summary" style="margin-top:16px">
               <div class="summary-row"><dt>Mission</dt><dd id="summary-mission">Collecter et informer</dd></div>
-              <div class="summary-row"><dt>Fiches à collecter</dt><dd>Fiche de qualification commerciale</dd></div>
-              <div class="summary-row"><dt>Sources</dt><dd>Connaissances · Photos · Liens</dd></div>
+              <div class="summary-row" id="summary-collect"><dt>Fiches à collecter</dt><dd>Fiche de qualification commerciale</dd></div>
+              <div class="summary-row" id="summary-sources"><dt>Sources</dt><dd>Fiches existantes · Connaissances · Photos · Liens</dd></div>
               <div class="summary-row"><dt>Publication</dt><dd>Page publique · Widget</dd></div>
               <div class="summary-row"><dt>IA</dt><dd>Modèle par défaut de l’organisation</dd></div>
               <div class="summary-row"><dt>Secours</dt><dd>Menu de secours activé</dd></div>
             </dl>
-            <div class="success" style="margin-top:14px">Tout est cohérent : la mission, les fiches et les sources sont compatibles.</div>
+            <div class="success">Tout est cohérent : la mission, les fiches et les sources sont compatibles.</div>
           </div>
         </section>
       </main>
     </div>
 
     <footer class="footer">
-      <div class="step-label" id="footer-step">Étape 1 sur 5 · Cadrage</div>
+      <div class="footer-label" id="footer-label">Étape 1 sur 6 · Cadrage</div>
       <div class="footer-actions">
         <button class="btn ghost" id="back">Précédent</button>
         <button class="btn primary" id="next">Suivant</button>
@@ -657,90 +972,102 @@
 
     <script>
       (function () {
-        var current = 0;
-        var missions = {
-          collect: {
-            title: "Collecter des fiches",
-            summary: "<strong>Mission collecter :</strong> une fiche est requise. Les sources sont désactivées.",
-            badge: "Collecter"
-          },
-          inform: {
-            title: "Informer",
-            summary: "<strong>Mission informer :</strong> au moins une source est requise. Aucune fiche n’est collectée.",
-            badge: "Informer"
-          },
-          hybrid: {
-            title: "Collecter et informer",
-            summary: "<strong>Mission hybride :</strong> une fiche à collecter + au moins une source à consulter.",
-            badge: "Hybride"
-          }
+        var steps = ["cadrage", "collecte", "alimentation", "publication", "ia", "validation"];
+        var pages = {
+          cadrage: ["Cadrage", "Définir l’identité du chatbot et sa mission avant de choisir ses contenus."],
+          collecte: ["Collecte", "Sélectionner la fiche de collecte à remplir lorsque l’utilisateur veut recueillir des informations."],
+          alimentation: ["Alimentation", "Les sources que le chatbot consulte, avec leurs paramètres de recherche."],
+          publication: ["Publication", "Choisir les canaux et l’apparence une fois le contenu défini."],
+          ia: ["IA & secours", "Configurer les modèles IA et le comportement de secours."],
+          validation: ["Validation", "Vérifier la cohérence puis créer le chatbot."]
         };
-        var pages = [
-          ["Cadrage", "Définir l’identité du chatbot et son rôle avant de choisir ses contenus."],
-          ["Alimentation", "Ce que le chatbot collecte et les sources qu’il consulte, dans un même écran."],
-          ["Publication", "Choisir les canaux et l’apparence une fois le contenu défini."],
-          ["IA & secours", "Configurer les modèles IA et le comportement de secours."],
-          ["Validation", "Vérifier la cohérence puis créer le chatbot."]
-        ];
         var mission = "hybrid";
+        var current = "cadrage";
+        var missionLabels = {
+          collect: { label: "Collecter", text: "Collecter : étape Collecte affichée, étape Alimentation masquée." },
+          inform: { label: "Informer", text: "Informer : étape Alimentation affichée, étape Collecte masquée." },
+          hybrid: { label: "Hybride", text: "Hybride : étapes Collecte et Alimentation affichées." }
+        };
 
         function $(selector, root) { return (root || document).querySelector(selector); }
         function $$(selector, root) { return Array.prototype.slice.call((root || document).querySelectorAll(selector)); }
-
-        function setStep(index) {
-          current = Math.max(0, Math.min(4, index));
-          $$(".panel").forEach(function (panel) { panel.classList.toggle("active", Number(panel.dataset.panel) === current); });
-          $$(".step-btn").forEach(function (button, buttonIndex) {
-            button.classList.toggle("active", buttonIndex === current);
-            button.classList.toggle("done", buttonIndex < current);
+        function visibleSteps() {
+          return steps.filter(function (step) {
+            if (step === "collecte") return mission !== "inform";
+            if (step === "alimentation") return mission !== "collect";
+            return true;
           });
-          $("#eyebrow").textContent = "Étape " + (current + 1) + " sur 5";
+        }
+        function render() {
+          var visible = visibleSteps();
+          $$("[data-step-item]").forEach(function (item) {
+            item.classList.toggle("hidden", visible.indexOf(item.dataset.stepItem) === -1);
+          });
+          $$("[data-step]").forEach(function (button) {
+            var position = visible.indexOf(button.dataset.step);
+            button.classList.toggle("active", button.dataset.step === current);
+            button.classList.toggle("done", position < visible.indexOf(current));
+            $(".step-number", button).textContent = String(position + 1);
+          });
+          $$(".panel").forEach(function (panel) {
+            panel.classList.toggle("active", panel.dataset.panel === current);
+          });
+          var index = visible.indexOf(current);
+          var percent = Math.round(((index + 1) / visible.length) * 100);
+          $("#eyebrow").textContent = "Étape " + (index + 1) + " sur " + visible.length;
           $("#page-title").textContent = pages[current][0];
           $("#page-subtitle").textContent = pages[current][1];
-          $("#progress-label").textContent = ((current + 1) * 20) + " %";
-          $("#progress-fill").style.width = ((current + 1) * 20) + "%";
-          $("#footer-step").textContent = "Étape " + (current + 1) + " sur 5 · " + pages[current][0];
-          $("#back").style.visibility = current === 0 ? "hidden" : "visible";
-          $("#next").textContent = current === 4 ? "Créer le chatbot" : "Suivant";
+          $("#progress-label").textContent = percent + " %";
+          $("#progress-fill").style.width = percent + "%";
+          $("#footer-label").textContent = "Étape " + (index + 1) + " sur " + visible.length + " · " + pages[current][0];
+          $("#back").style.visibility = index === 0 ? "hidden" : "visible";
+          $("#next").textContent = index === visible.length - 1 ? "Créer le chatbot" : "Suivant";
         }
-
+        function go(step) {
+          if (visibleSteps().indexOf(step) === -1) return;
+          current = step;
+          render();
+        }
         function setMission(next) {
           mission = next;
           $$(".mission").forEach(function (button) { button.classList.toggle("selected", button.dataset.mission === mission); });
-          $("#mission-badge").textContent = missions[mission].badge;
-          $("#mission-badge").className = "badge on";
-          $("#mission-explain").innerHTML = missions[mission].summary;
-          $("#alimentation-badge").textContent = missions[mission].badge;
-          $("#alimentation-summary").innerHTML = missions[mission].summary;
-          $("#collect-block").classList.toggle("hidden", mission === "inform");
-          $("#sources-block").classList.toggle("hidden", mission === "collect");
-          $("#collect-warning").style.display = mission === "collect" ? "block" : "none";
-          $("#inform-warning").style.display = mission === "inform" ? "block" : "none";
-          $("#summary-mission").textContent = missions[mission].title;
+          $("#mission-badge").textContent = missionLabels[mission].label;
+          $("#mission-explain").textContent = missionLabels[mission].text;
+          $("#summary-mission").textContent = missionLabels[mission].label;
+          $("#summary-collect").classList.toggle("hidden", mission === "inform");
+          $("#summary-sources").classList.toggle("hidden", mission === "collect");
+          if (visibleSteps().indexOf(current) === -1) {
+            current = mission === "inform" ? "alimentation" : "collecte";
+          }
+          render();
         }
 
-        $$(".step-btn").forEach(function (button) { button.addEventListener("click", function () { setStep(Number(button.dataset.goto)); }); });
-        $("#next").addEventListener("click", function () {
-          if (current === 4) {
-            $("#next").textContent = "Maquette prête";
-            return;
-          }
-          setStep(current + 1);
-        });
-        $("#back").addEventListener("click", function () { setStep(current - 1); });
+        $$("[data-step]").forEach(function (button) { button.addEventListener("click", function () { go(button.dataset.step); }); });
         $$(".mission").forEach(function (button) { button.addEventListener("click", function () { setMission(button.dataset.mission); }); });
+        $("#next").addEventListener("click", function () {
+          var visible = visibleSteps();
+          var index = visible.indexOf(current);
+          if (index === visible.length - 1) { $("#next").textContent = "Maquette prête"; return; }
+          go(visible[index + 1]);
+        });
+        $("#back").addEventListener("click", function () {
+          var visible = visibleSteps();
+          var index = visible.indexOf(current);
+          if (index > 0) go(visible[index - 1]);
+        });
+
+        $("#ai-open").addEventListener("click", function () { $("#ai-panel").classList.toggle("hidden"); });
+        $("#ai-generate").addEventListener("click", function () {
+          $("#ai-status").textContent = "Brouillon IA appliqué (démo) : hybride, fiche commerciale et 3 sources préremplies.";
+          $("#ai-status").style.color = "var(--success)";
+        });
 
         $$(".source-toggle").forEach(function (input) {
           function sync() {
             var card = input.closest(".source-card");
-            card.classList.toggle("off", !input.checked);
-            var switchEl = $(".switch", card);
-            switchEl.classList.toggle("on", input.checked);
-            var badge = $(".source-body .badge", card);
-            if (badge) {
-              badge.textContent = input.checked ? "Activé" : "Désactivé";
-              badge.className = "badge " + (input.checked ? "on" : "off");
-            }
+            if (card !== null) card.classList.toggle("off", !input.checked);
+            var switchEl = input.nextElementSibling;
+            if (switchEl) switchEl.classList.toggle("on", input.checked);
           }
           input.addEventListener("change", sync);
           sync();
@@ -752,7 +1079,7 @@
               $$("button", group).forEach(function (entry) { entry.classList.remove("active"); });
               button.classList.add("active");
               var picker = $("[data-picker='" + group.dataset.mode + "']");
-              if (picker) picker.style.display = button.dataset.scope === "selected" ? "flex" : "none";
+              if (picker) picker.classList.toggle("hidden", button.dataset.scope !== "selected");
             });
           });
         });
@@ -761,9 +1088,7 @@
           chip.addEventListener("click", function () { chip.classList.toggle("selected"); });
         });
 
-        $("#add-toggle").addEventListener("click", function () {
-          $("#add-menu").classList.toggle("hidden");
-        });
+        $("#add-toggle").addEventListener("click", function () { $("#add-menu").classList.toggle("hidden"); });
         $$("#add-menu [data-add]").forEach(function (button) {
           button.addEventListener("click", function () {
             var item = document.createElement("li");
@@ -774,7 +1099,7 @@
         });
 
         setMission(mission);
-        setStep(0);
+        render();
       })();
     </script>
   </body>
