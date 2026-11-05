@@ -44,6 +44,20 @@
         "2.8 KB"
       ],
       "detailsText": "The minimal starting point to understand the host contract and build your own visual template."
+    },
+    {
+      "id": "mandampro",
+      "version": "v1.0.1",
+      "name": "MandamPro",
+      "description": "A public conversation inspired by ChatGPT: form, messages, fiche search and media.",
+      "meta": [
+        "ChatGPT style",
+        "Fiche search",
+        "Media",
+        "Form",
+        "23 KB"
+      ],
+      "detailsText": "MandamPro public template, UI-only, rendering search blocks, media and typed fields."
     }
   ],
   "install": {

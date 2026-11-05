@@ -1,0 +1,18 @@
+{
+  "id": "mandampro",
+  "version": "1.0.1",
+  "hostProtocol": "onirtech.template-host.v1",
+  "sha256": "469527635e8adc4e603582f686f14d67cb4ee5a5ca5a8add18e20e364c60b69f",
+  "files": [
+    ".gitignore",
+    "README.md",
+    "harness/host.mjs",
+    "onirtech.template.json",
+    "package-lock.json",
+    "package.json",
+    "src/blocks.js",
+    "src/index.js",
+    "tests/blocks.test.mjs",
+    "tools/onirtech-template.mjs"
+  ]
+}

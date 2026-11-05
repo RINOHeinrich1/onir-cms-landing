@@ -44,6 +44,20 @@
         "2,8 Ko"
       ],
       "detailsText": "Ny fiandohana kely indrindra hahatakarana ny fifanarahana mpampiantrano sy hamoronana ny modely hita maso anao."
+    },
+    {
+      "id": "mandampro",
+      "version": "v1.0.1",
+      "name": "MandamPro",
+      "description": "Resaka ho an’ny besinimaro misy endrika ChatGPT: taratasy, hafatra, fikarohana fiche ary media.",
+      "meta": [
+        "Endrika ChatGPT",
+        "Fikarohana fiche",
+        "Media",
+        "Taratasy",
+        "23 Ko"
+      ],
+      "detailsText": "Modely ho an’ny besinimaro MandamPro, UI-only, maneho blocs fikarohana, media ary saha voafaritra."
     }
   ],
   "install": {

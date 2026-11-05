@@ -44,6 +44,20 @@
         "2,8 Ko"
       ],
       "detailsText": "Le point de départ minimal pour comprendre le contrat hôte et créer votre propre template visuel."
+    },
+    {
+      "id": "mandampro",
+      "version": "v1.0.1",
+      "name": "MandamPro",
+      "description": "Une conversation publique inspirée de ChatGPT : formulaire, messages, recherche de fiches et médias.",
+      "meta": [
+        "Style ChatGPT",
+        "Recherche de fiches",
+        "Médias",
+        "Formulaire",
+        "23 Ko"
+      ],
+      "detailsText": "Template public MandamPro, UI-only, avec rendu des blocs de recherche, des médias et des champs typés."
     }
   ],
   "install": {
