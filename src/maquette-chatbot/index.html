@@ -347,6 +347,12 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
 
           <div class="card card-pad">
             <div class="card-head"><div><h2>Bibliothèque de l’organisation</h2><p>Sélectionnez les contenus que ce chatbot peut utiliser. Leur portée n’est jamais modifiée.</p></div></div>
+            <div class="switch-row" style="margin-top:14px">
+              <label class="switch-label"><input type="checkbox" checked /><span class="switch on"><span></span></span>Connaissances</label>
+              <label class="switch-label"><input type="checkbox" checked /><span class="switch on"><span></span></span>Photos</label>
+              <label class="switch-label"><input type="checkbox" checked /><span class="switch on"><span></span></span>Liens</label>
+              <label class="switch-label"><input type="checkbox" id="fiches-toggle" checked /><span class="switch on"><span></span></span>Fiches</label>
+            </div>
             <div class="channel-tabs" style="margin-top:14px" role="tablist" aria-label="Bibliothèque">
               <button class="channel-tab active" data-library-tab="connaissances">Connaissances <span class="badge muted">3</span></button>
               <button class="channel-tab" data-library-tab="photos">Photos <span class="badge muted">2</span></button>
@@ -356,8 +362,7 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
 
             <div data-library-panel="fiches" class="hidden">
               <fieldset><legend>Outil de recherche de fiches</legend><p class="hint">Ces politiques sont versionnées avec le chatbot. Elles s’appliquent avant toute recherche et ne sont jamais modifiables par le modèle (ADR-0067).</p>
-                <label class="switch-label" style="margin-top:10px"><input type="checkbox" id="search-toggle" checked /><span class="switch on"><span></span></span>Activer l’outil de recherche</label>
-                <p class="hint" id="search-hint">L’outil est activé pour ce chatbot. Configurez ci-dessous les types de fiches, le statut, le tri et la portée.</p>
+                <p class="hint" id="fiches-disabled-hint" style="display:none">Activez « Fiches » au-dessus des onglets pour utiliser et configurer l’outil de recherche.</p>
                 <div class="config" id="search-config">
                   <div class="field"><span>Fiches de collecte interrogées</span><div class="tag-box"><span class="tag">Qualification commerciale <button type="button">×</button></span><span class="tag">Demande de devis <button type="button">×</button></span><input placeholder="Rechercher une fiche de collecte…" /></div><span class="hint">La recherche portera sur toutes les instances de ces fiches de collecte dans l’organisation.</span></div>
                   <div class="source-grid"><label class="field">Mode de statut<select><option>Statut imposé masqué (public)</option><option>Statut visible par le modèle (backoffice)</option><option>Aucun filtre de statut (backoffice)</option></select></label><label class="field">Tri des résultats<select><option>Rotation équitable</option><option>Date de création</option><option disabled>Pertinence (non implémenté)</option></select></label></div>
@@ -575,9 +580,9 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
           $("#ai-status").textContent = "Brouillon généré avec le fournisseur IA · modèle par défaut. Vérifiez-le avant d’enregistrer."; $("#ai-status").style.color = "var(--success)";
         });
         $$(".switch-label input").forEach(function (input) { input.addEventListener("change", function () { syncSwitch(input); }); syncSwitch(input); });
-        $("#search-toggle").addEventListener("change", function () {
+        $("#fiches-toggle").addEventListener("change", function () {
           $("#search-config").classList.toggle("hidden", !this.checked);
-          $("#search-hint").textContent = this.checked ? "L’outil est activé pour ce chatbot. Configurez ci-dessous les types de fiches, le statut, le tri et la portée." : "Désactivé par défaut : le chatbot répond normalement, sans outil de recherche. Activez explicitement l’outil pour ce chatbot.";
+          $("#fiches-disabled-hint").style.display = this.checked ? "none" : "block";
         });
         $$("[data-mode]").forEach(function (group) {
           $$("button", group).forEach(function (button) {
