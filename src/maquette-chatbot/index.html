@@ -32,6 +32,7 @@
         --r-pill: 999px;
       }
       * { box-sizing: border-box; }
+      html, body { overflow-x: hidden; }
       body {
         margin: 0;
         background: var(--cream);
@@ -64,8 +65,7 @@
       .step-number { align-items: center; background: var(--paper); border: 1px solid var(--line); border-radius: 50%; display: grid; flex: none; font-size: 11px; font-weight: 800; height: 27px; place-items: center; width: 27px; }
       .step-copy strong { color: var(--ink); display: block; font-size: 13px; line-height: 1.25; }
       .step-copy small { display: block; font-size: 11px; line-height: 1.35; margin-top: 3px; }
-      .rail-note { background: var(--cream); border: 1px solid var(--line); border-radius: var(--r-md); color: var(--muted); font-size: 11px; line-height: 1.45; margin: 24px 6px 0; padding: 14px; }
-      .rail-note strong { color: var(--green); display: block; font-size: 11px; letter-spacing: .06em; margin-bottom: 5px; text-transform: uppercase; }
+
       main { min-width: 0; padding: 32px 42px 120px; }
       .page-head { align-items: flex-start; display: flex; gap: 24px; justify-content: space-between; margin-bottom: 24px; }
       .eyebrow { color: var(--orange); font-size: 10px; font-weight: 800; letter-spacing: .14em; margin: 0 0 6px; text-transform: uppercase; }
@@ -217,6 +217,13 @@
         .split, .source-grid, .data-filters { grid-template-columns: 1fr; }
       }
       @media (max-width: 680px) {
+        .card-head { align-items: stretch; flex-direction: column; }
+        .card-head > .btn { align-self: flex-start; }
+        .channel-tabs { overflow-x: auto; padding-bottom: 2px; }
+        .channel-tab { flex: none; }
+        .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .step-btn { align-items: center; }
+        .step-copy strong { overflow-wrap: anywhere; }
         .topbar { padding: 0 16px; }
         .brand small, .demo-pill { display: none; }
         .mission-grid { grid-template-columns: 1fr; }
@@ -246,7 +253,6 @@
           <li data-step-item="ia"><button class="step-btn" data-step="ia"><span class="step-number">5</span><span class="step-copy"><strong>IA &amp; secours</strong><small>Modèles et repli</small></span></button></li>
           <li data-step-item="validation"><button class="step-btn" data-step="validation"><span class="step-number">6</span><span class="step-copy"><strong>Validation</strong><small>Limites et récapitulatif</small></span></button></li>
         </ol>
-        <div class="rail-note"><strong>La règle</strong>La mission décide si l’on affiche <b>Collecte</b>, <b>Alimentation</b>, ou les deux. Chaque écran ne traite qu’un seul sujet.</div>
       </aside>
 
       <main>
