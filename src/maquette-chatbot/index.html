@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Maquette — Configuration d’un chatbot</title>
+    <style>
+      :root {
+        --navy: #071f43;
+        --navy-2: #0e3565;
+        --ink: #17243a;
+        --muted: #627089;
+        --line: #dfe5ee;
+        --surface: #ffffff;
+        --canvas: #f5f7fb;
+        --orange: #f6a21a;
+        --orange-soft: #fff4dd;
+        --green: #167a55;
+        --green-soft: #e8f7f0;
+        --blue-soft: #edf4ff;
+        --shadow: 0 16px 44px rgba(10, 34, 68, 0.11);
+        --radius: 16px;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--canvas);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+      button, input, select, textarea { font: inherit; }
+      button { cursor: pointer; }
+      .topbar {
+        height: 62px;
+        background: var(--navy);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 28px;
+        gap: 16px;
+      }
+      .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .2px; }
+      .brand-mark {
+        width: 30px; height: 30px; border-radius: 9px;
+        display: grid; place-items: center;
+        background: var(--orange); color: var(--navy);
+        font-weight: 900; font-size: 15px;
+      }
+      .brand small { font-weight: 500; color: #b9c8dd; margin-left: 2px; }
+      .top-actions { display: flex; align-items: center; gap: 10px; color: #c9d6e8; font-size: 12px; }
+      .demo-pill { border: 1px solid rgba(255,255,255,.22); border-radius: 999px; padding: 5px 10px; }
+      .shell { display: grid; grid-template-columns: 292px minmax(0, 1fr); min-height: calc(100vh - 62px); }
+      .rail { background: #fff; border-right: 1px solid var(--line); padding: 24px 18px; }
+      .rail-title { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 800; margin: 0 10px 14px; }
+      .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+      .step-btn {
+        width: 100%; border: 0; background: transparent; text-align: left;
+        display: flex; gap: 11px; align-items: flex-start;
+        border-radius: 12px; padding: 10px; color: var(--muted);
+      }
+      .step-btn:hover { background: var(--canvas); }
+      .step-btn.active { background: var(--blue-soft); color: var(--navy); }
+      .step-btn.done .step-number { background: var(--green); color: #fff; border-color: var(--green); }
+      .step-number {
+        flex: none; width: 27px; height: 27px; border-radius: 50%;
+        display: grid; place-items: center; font-size: 12px; font-weight: 800;
+        border: 1px solid var(--line); background: #fff;
+      }
+      .step-btn.active .step-number { background: var(--navy); color: #fff; border-color: var(--navy); }
+      .step-copy strong { display: block; color: var(--ink); font-size: 13px; }
+      .step-copy small { display: block; margin-top: 2px; font-size: 11.5px; line-height: 1.3; }
+      .rail-note {
+        margin: 22px 8px 0; padding: 13px;
+        border: 1px solid var(--line); border-radius: 12px;
+        color: var(--muted); font-size: 11.5px; background: #fbfcfe;
+      }
+      .rail-note strong { color: var(--navy); display: block; margin-bottom: 4px; }
+      main { min-width: 0; padding: 30px 38px 120px; }
+      .page-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 22px; }
+      .eyebrow { margin: 0 0 5px; color: var(--orange); font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+      h1 { margin: 0; font-size: clamp(24px, 3vw, 33px); letter-spacing: -.03em; color: var(--navy); }
+      .page-head p { margin: 7px 0 0; color: var(--muted); max-width: 700px; }
+      .progress { flex: none; min-width: 130px; text-align: right; color: var(--muted); font-size: 12px; }
+      .progress-bar { width: 130px; height: 5px; background: #e5eaf2; border-radius: 999px; overflow: hidden; margin-top: 8px; }
+      .progress-bar span { display: block; height: 100%; width: 20%; background: var(--orange); border-radius: inherit; transition: width .25s ease; }
+      .panel { display: none; }
+      .panel.active { display: block; }
+      .card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+        box-shadow: 0 2px 0 rgba(10,34,68,.02);
+      }
+      .card + .card { margin-top: 14px; }
+      .card-pad { padding: 18px; }
+      .card-head { display: flex; justify-content: space-between; gap: 14px; align-items: flex-start; }
+      .card h2 { margin: 0; color: var(--navy); font-size: 16px; }
+      .card h3 { margin: 0; color: var(--navy); font-size: 14px; }
+      .card p { margin: 5px 0 0; color: var(--muted); }
+      .split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 14px; align-items: start; }
+      .field { display: grid; gap: 6px; color: var(--ink); font-weight: 600; font-size: 12px; }
+      .field input, .field select, .field textarea {
+        width: 100%; border: 1px solid var(--line); border-radius: 9px;
+        padding: 9px 10px; background: #fff; color: var(--ink); font-weight: 400;
+      }
+      .field textarea { resize: vertical; }
+      .hint { color: var(--muted); font-size: 11.5px; line-height: 1.4; }
+      .mission-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+      .mission {
+        border: 1px solid var(--line); border-radius: 12px; padding: 13px;
+        background: #fff; text-align: left; color: var(--ink);
+      }
+      .mission:hover { border-color: #b7c8dd; }
+      .mission.selected { border-color: var(--orange); background: var(--orange-soft); box-shadow: inset 0 0 0 1px var(--orange); }
+      .mission strong { display: block; font-size: 13px; color: var(--navy); }
+      .mission small { display: block; margin-top: 5px; color: var(--muted); font-size: 11.5px; line-height: 1.35; }
+      .mission-icon { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: var(--blue-soft); color: var(--navy-2); font-weight: 900; margin-bottom: 9px; }
+      .choice-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+      .segmented { display: inline-flex; border: 1px solid var(--line); border-radius: 9px; overflow: hidden; background: #fff; }
+      .segmented button { border: 0; background: transparent; padding: 7px 10px; color: var(--muted); font-size: 12px; }
+      .segmented button.active { background: var(--navy); color: #fff; }
+      .toggle { display: inline-flex; align-items: center; gap: 8px; user-select: none; font-size: 12px; color: var(--ink); font-weight: 600; }
+      .switch { width: 34px; height: 19px; border-radius: 999px; background: #cbd5e1; padding: 2px; transition: .2s ease; }
+      .switch span { display: block; width: 15px; height: 15px; border-radius: 50%; background: #fff; transition: .2s ease; }
+      .switch.on { background: var(--green); }
+      .switch.on span { transform: translateX(15px); }
+      .source-card { border: 1px solid var(--line); border-radius: 13px; padding: 14px; }
+      .source-card + .source-card { margin-top: 10px; }
+      .source-card.off { background: #fbfcfe; }
+      .source-card.off .source-body { opacity: .5; }
+      .source-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+      .source-title strong { color: var(--navy); font-size: 13px; }
+      .source-body { margin-top: 10px; display: grid; gap: 10px; }
+      .source-body .field { font-size: 11.5px; }
+      .source-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .chips { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 8px; }
+      .chip { border: 1px solid var(--line); border-radius: 999px; padding: 6px 9px; color: var(--muted); background: #fff; font-size: 11.5px; }
+      .chip.selected { border-color: var(--navy); color: var(--navy); background: var(--blue-soft); }
+      .added-list { margin: 11px 0 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+      .added-list li { display: flex; justify-content: space-between; gap: 10px; align-items: center; border: 1px solid var(--line); border-radius: 9px; padding: 8px 10px; font-size: 12px; }
+      .add-menu { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; padding: 10px; border: 1px dashed #b9c8dd; border-radius: 10px; background: #fbfcfe; }
+      .btn { border: 1px solid transparent; border-radius: 9px; padding: 8px 12px; font-weight: 700; font-size: 12px; }
+      .btn.primary { background: var(--navy); color: #fff; }
+      .btn.primary:hover { background: var(--navy-2); }
+      .btn.ghost { background: #fff; color: var(--navy); border-color: var(--line); }
+      .btn.soft { background: var(--blue-soft); color: var(--navy); }
+      .btn.small { padding: 6px 9px; font-size: 11.5px; }
+      .badge { display: inline-flex; align-items: center; gap: 5px; border-radius: 999px; padding: 4px 8px; font-size: 10.5px; font-weight: 800; letter-spacing: .02em; }
+      .badge.off { background: #eef1f5; color: var(--muted); }
+      .badge.on { background: var(--green-soft); color: var(--green); }
+      .badge.info { background: var(--blue-soft); color: var(--navy-2); }
+      .callout { border: 1px solid #f2d296; background: #fffaf0; border-radius: 12px; padding: 12px 14px; color: #6c4a0c; font-size: 12px; }
+      .callout strong { color: #5b3b00; }
+      .summary { display: grid; gap: 0; border: 1px solid var(--line); border-radius: 13px; overflow: hidden; }
+      .summary-row { display: grid; grid-template-columns: 170px 1fr; gap: 14px; padding: 12px 14px; border-bottom: 1px solid var(--line); background: #fff; font-size: 12.5px; }
+      .summary-row:last-child { border-bottom: 0; }
+      .summary-row dt { color: var(--muted); }
+      .summary-row dd { margin: 0; color: var(--ink); font-weight: 600; }
+      .footer {
+        position: fixed; left: 292px; right: 0; bottom: 0;
+        display: flex; justify-content: space-between; align-items: center; gap: 14px;
+        padding: 14px 38px; border-top: 1px solid var(--line); background: rgba(255,255,255,.94);
+        backdrop-filter: blur(8px);
+      }
+      .footer .step-label { color: var(--muted); font-size: 12px; }
+      .footer-actions { display: flex; gap: 8px; }
+      .warn { color: #a15a05; background: var(--orange-soft); border: 1px solid #f2d296; border-radius: 10px; padding: 10px 12px; font-size: 12px; }
+      .success { color: var(--green); background: var(--green-soft); border: 1px solid #bfe8d7; border-radius: 10px; padding: 10px 12px; font-size: 12px; }
+      .hidden { display: none !important; }
+      .inline-field { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+      .inline-field label { font-size: 12px; font-weight: 700; color: var(--ink); }
+      .inline-field input { max-width: 270px; }
+      @media (max-width: 980px) {
+        .shell { grid-template-columns: 1fr; }
+        .rail { border-right: 0; border-bottom: 1px solid var(--line); padding: 14px 16px; }
+        .steps { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+        .step-btn { padding: 8px 6px; gap: 6px; }
+        .step-copy small { display: none; }
+        .step-copy strong { font-size: 11px; }
+        .step-number { width: 22px; height: 22px; font-size: 10px; }
+        main { padding: 22px 18px 110px; }
+        .footer { left: 0; padding: 12px 18px; }
+        .split, .source-grid { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 640px) {
+        .topbar { padding: 0 16px; }
+        .brand small, .top-actions .demo-pill { display: none; }
+        .mission-grid { grid-template-columns: 1fr; }
+        .summary-row { grid-template-columns: 1fr; gap: 3px; }
+        .page-head { display: block; }
+        .progress { text-align: left; margin-top: 12px; }
+        .progress-bar { width: 100%; }
+        .footer-actions .btn { padding: 8px 10px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">O</span>
+        ONIR CMS <small>/ maquette de configuration</small>
+      </div>
+      <div class="top-actions">
+        <span class="demo-pill">Prototype non fonctionnel</span>
+        <span>Preprod · 05/11/2026</span>
+      </div>
+    </header>
+
+    <div class="shell">
+      <aside class="rail">
+        <p class="rail-title">Parcours proposé</p>
+        <ol class="steps" id="steps">
+          <li>
+            <button class="step-btn active" data-goto="0">
+              <span class="step-number">1</span>
+              <span class="step-copy"><strong>Cadrage</strong><small>Qui, quoi, mission</small></span>
+            </button>
+          </li>
+          <li>
+            <button class="step-btn" data-goto="1">
+              <span class="step-number">2</span>
+              <span class="step-copy"><strong>Alimentation</strong><small>Collecte &amp; sources</small></span>
+            </button>
+          </li>
+          <li>
+            <button class="step-btn" data-goto="2">
+              <span class="step-number">3</span>
+              <span class="step-copy"><strong>Publication</strong><small>Où le chatbot est diffusé</small></span>
+            </button>
+          </li>
+          <li>
+            <button class="step-btn" data-goto="3">
+              <span class="step-number">4</span>
+              <span class="step-copy"><strong>IA &amp; secours</strong><small>Modèles et repli</small></span>
+            </button>
+          </li>
+          <li>
+            <button class="step-btn" data-goto="4">
+              <span class="step-number">5</span>
+              <span class="step-copy"><strong>Validation</strong><small>Limites et récapitulatif</small></span>
+            </button>
+          </li>
+        </ol>
+        <div class="rail-note">
+          <strong>Le principe</strong>
+          La mission décide de ce que l’on voit ensuite. On ne mélange plus collecte, sources et publication.
+        </div>
+      </aside>
+
+      <main>
+        <div class="page-head">
+          <div>
+            <p class="eyebrow" id="eyebrow">Étape 1 sur 5</p>
+            <h1 id="page-title">Cadrage</h1>
+            <p id="page-subtitle">Définir l’identité du chatbot et son rôle avant de choisir ses contenus.</p>
+          </div>
+          <div class="progress">
+            <span id="progress-label">20 %</span>
+            <div class="progress-bar"><span id="progress-fill"></span></div>
+          </div>
+        </div>
+
+        <section class="panel active" data-panel="0">
+          <div class="card card-pad">
+            <div class="card-head">
+              <div>
+                <h2>Identité du chatbot</h2>
+                <p>Les informations visibles par l’utilisateur et l’équipe.</p>
+              </div>
+              <span class="badge info">Obligatoire</span>
+            </div>
+            <div class="split" style="margin-top:16px">
+              <label class="field">
+                Nom du chatbot
+                <input value="Assistant commercial" />
+              </label>
+              <label class="field">
+                Type
+                <select>
+                  <option>Standard</option>
+                  <option>Spécifique à un prospect</option>
+                </select>
+              </label>
+              <label class="field">
+                Expiration
+                <input type="date" />
+              </label>
+              <label class="field">
+                Catégorie
+                <select>
+                  <option>Commercial</option>
+                  <option>Support</option>
+                  <option>Information</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="card card-pad">
+            <div class="card-head">
+              <div>
+                <h2>Mission du chatbot</h2>
+                <p>La mission pilote automatiquement la prochaine étape.</p>
+              </div>
+              <span class="badge off" id="mission-badge">À choisir</span>
+            </div>
+            <div class="mission-grid" id="mission-grid">
+              <button class="mission" data-mission="collect">
+                <span class="mission-icon">↓</span>
+                <strong>Collecter des fiches</strong>
+                <small>Remplit une fiche de collecte. Ne consulte aucune source.</small>
+              </button>
+              <button class="mission selected" data-mission="hybrid">
+                <span class="mission-icon">↔</span>
+                <strong>Collecter et informer</strong>
+                <small>Répond avec des sources, puis collecte si le visiteur le demande.</small>
+              </button>
+              <button class="mission" data-mission="inform">
+                <span class="mission-icon">↑</span>
+                <strong>Informer</strong>
+                <small>Répond à partir des contenus. Ne remplit aucune fiche.</small>
+              </button>
+            </div>
+            <div class="callout" style="margin-top:12px" id="mission-explain">
+              <strong>Hybride :</strong> le chatbot consulte d’abord les sources autorisées. Il ne collecte que si le visiteur demande explicitement à remplir une fiche.
+            </div>
+          </div>
+
+          <div class="card card-pad">
+            <div class="card-head">
+              <div>
+                <h2>Comportement</h2>
+                <p>Comment le chatbot doit parler et se comporter.</p>
+              </div>
+            </div>
+            <div class="split" style="margin-top:14px">
+              <label class="field">
+                Mode
+                <select>
+                  <option>Guidé — prompt généré</option>
+                  <option>Expert — prompt libre</option>
+                </select>
+              </label>
+              <label class="field">
+                Objectif
+                <textarea rows="2">Comprendre le besoin et proposer la bonne offre.</textarea>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="1">
+          <div class="card card-pad">
+            <div class="card-head">
+              <div>
+                <h2>Alimentation</h2>
+                <p>Un seul endroit pour dire ce qu’il collecte et ce qu’il consulte.</p>
+              </div>
+              <span class="badge info" id="alimentation-badge">Hybride</span>
+            </div>
+            <div class="callout" style="margin-top:12px" id="alimentation-summary">
+              <strong>Mission hybride :</strong> une fiche à collecter + au moins une source à consulter.
+            </div>
+          </div>
+
+          <div class="card card-pad" id="collect-block">
+            <div class="card-head">
+              <div>
+                <h2>1. Ce qu’il collecte</h2>
+                <p>Une fiche = un formulaire que le chatbot peut remplir.</p>
+              </div>
+              <span class="badge on">Activé</span>
+            </div>
+            <div class="choice-row" style="margin-top:13px">
+              <span class="chip selected">Fiche de qualification commerciale</span>
+              <span class="chip">Fiche demande de devis</span>
+              <button class="btn ghost small">+ Choisir une fiche</button>
+            </div>
+            <p class="hint" style="margin-top:9px">La fiche est une copie figée au moment de la création du chatbot.</p>
+          </div>
+
+          <div class="card card-pad" id="sources-block">
+            <div class="card-head">
+              <div>
+                <h2>2. Ce qu’il consulte</h2>
+                <p>Chaque source se règle au même endroit : on l’active, on choisit son contenu, puis on dit quand l’utiliser.</p>
+              </div>
+            </div>
+
+            <div style="margin-top:14px">
+              <div class="source-card off" data-source="fiches">
+                <div class="source-title">
+                  <div>
+                    <strong>Fiches existantes</strong>
+                    <div class="hint">Chercher dans les fiches déjà collectées.</div>
+                  </div>
+                  <label class="toggle">
+                    <input type="checkbox" class="source-toggle" />
+                    <span class="switch"><span></span></span>
+                  </label>
+                </div>
+                <div class="source-body">
+                  <div class="source-grid">
+                    <label class="field">
+                      Quand l’utiliser
+                      <input value="Quand le visiteur cherche une information déjà collectée." />
+                    </label>
+                    <label class="field">
+                      Périmètre
+                      <select>
+                        <option>Toutes les fiches du chatbot</option>
+                        <option>Seulement certaines fiches</option>
+                      </select>
+                    </label>
+                  </div>
+                  <span class="badge off">Désactivé par défaut</span>
+                </div>
+              </div>
+
+              <div class="source-card" data-source="connaissances">
+                <div class="source-title">
+                  <div>
+                    <strong>Connaissances</strong>
+                    <div class="hint">Articles, procédures, informations métier.</div>
+                  </div>
+                  <label class="toggle">
+                    <input type="checkbox" class="source-toggle" checked />
+                    <span class="switch on"><span></span></span>
+                  </label>
+                </div>
+                <div class="source-body">
+                  <div class="source-grid">
+                    <label class="field">
+                      Quand l’utiliser
+                      <input value="Pour répondre aux questions sur les offres et procédures." />
+                    </label>
+                    <div class="field">
+                      Contenus
+                      <div class="segmented" data-mode="connaissances">
+                        <button class="active" data-scope="all">Toute la bibliothèque</button>
+                        <button data-scope="selected">Choisir</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="choice-row" data-picker="connaissances" style="display:none">
+                    <span class="chip selected">Tarifs</span>
+                    <span class="chip">Procédure SAV</span>
+                    <span class="chip">Présentation entreprise</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="source-card" data-source="photos">
+                <div class="source-title">
+                  <div>
+                    <strong>Photos</strong>
+                    <div class="hint">Images utilisées pour illustrer une réponse.</div>
+                  </div>
+                  <label class="toggle">
+                    <input type="checkbox" class="source-toggle" checked />
+                    <span class="switch on"><span></span></span>
+                  </label>
+                </div>
+                <div class="source-body">
+                  <div class="source-grid">
+                    <label class="field">
+                      Quand l’utiliser
+                      <input value="Quand une illustration aide à comprendre la réponse." />
+                    </label>
+                    <div class="field">
+                      Contenus
+                      <div class="segmented" data-mode="photos">
+                        <button class="active" data-scope="all">Toute la bibliothèque</button>
+                        <button data-scope="selected">Choisir</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="choice-row" data-picker="photos" style="display:none">
+                    <span class="chip selected">Showroom</span>
+                    <span class="chip">Produit A</span>
+                    <span class="chip">Équipe</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="source-card" data-source="liens">
+                <div class="source-title">
+                  <div>
+                    <strong>Liens</strong>
+                    <div class="hint">Pages web, formulaires ou ressources externes.</div>
+                  </div>
+                  <label class="toggle">
+                    <input type="checkbox" class="source-toggle" checked />
+                    <span class="switch on"><span></span></span>
+                  </label>
+                </div>
+                <div class="source-body">
+                  <div class="source-grid">
+                    <label class="field">
+                      Quand l’utiliser
+                      <input value="Quand le visiteur doit consulter une page ou un formulaire." />
+                    </label>
+                    <div class="field">
+                      Contenus
+                      <div class="segmented" data-mode="liens">
+                        <button class="active" data-scope="all">Toute la bibliothèque</button>
+                        <button data-scope="selected">Choisir</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="choice-row" data-picker="liens" style="display:none">
+                    <span class="chip selected">Page contact</span>
+                    <span class="chip">Demande de devis</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--line)">
+              <div class="card-head">
+                <div>
+                  <h3>Contenus ajoutés à ce chatbot</h3>
+                  <p class="hint">Ces contenus sont réservés à ce chatbot et ne modifient pas la bibliothèque.</p>
+                </div>
+                <button class="btn ghost small" id="add-toggle">+ Ajouter un contenu</button>
+              </div>
+              <div class="add-menu hidden" id="add-menu">
+                <button class="btn soft small" data-add="Connaissance">Connaissance</button>
+                <button class="btn soft small" data-add="Photo">Photo</button>
+                <button class="btn soft small" data-add="Lien">Lien</button>
+              </div>
+              <ul class="added-list" id="added-list">
+                <li><span><strong>Connaissance</strong> · Argumentaire de vente</span><span class="badge info">Ce chatbot</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="warn" id="inform-warning" style="display:none">
+            Mission « Informer » : la collecte de fiches est masquée. Seules les sources sont disponibles.
+          </div>
+          <div class="warn" id="collect-warning" style="display:none">
+            Mission « Collecter » : les sources sont masquées. Le chatbot remplit uniquement une fiche.
+          </div>
+        </section>
+
+        <section class="panel" data-panel="2">
+          <div class="card card-pad">
+            <div class="card-head">
+              <div>
+                <h2>Publication</h2>
+                <p>Où le chatbot est disponible. Le contenu a déjà été défini à l’étape précédente.</p>
+              </div>
+            </div>
+            <div class="split" style="margin-top:14px">
+              <label class="field">
+                Page publique
+                <select>
+                  <option>Activée</option>
+                  <option>Désactivée</option>
+                </select>
+              </label>
+              <label class="field">
+                Widget
+                <select>
+                  <option>Activé</option>
+                  <option>Désactivé</option>
+                </select>
+              </label>
+              <label class="field">
+                Template visuel
+                <select>
+                  <option>MandamPro — widget</option>
+                  <option>Template standard</option>
+                </select>
+              </label>
+              <label class="field">
+                Identification
+                <select>
+                  <option>Formulaire de contact</option>
+                  <option>Anonyme</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <div class="card card-pad">
+            <h2>Options avancées</h2>
+            <p class="hint" style="margin-top:5px">État visiteur, bindings de données et paramètres du template.</p>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="3">
+          <div class="card card-pad">
+            <div class="card-head">
+              <div>
+                <h2>IA &amp; secours</h2>
+                <p>Les modèles qui répondent, et ce qui se passe s’ils ne répondent pas.</p>
+              </div>
+            </div>
+            <div class="split" style="margin-top:14px">
+              <div class="card card-pad" style="box-shadow:none">
+                <h3>Modèles IA</h3>
+                <p class="hint">Réponse, analyse, recherche de fiches.</p>
+                <label class="field" style="margin-top:10px">
+                  Modèle par défaut
+                  <select>
+                    <option>Hériter de l’organisation — onir-answer-cluster</option>
+                    <option>Choisir un modèle</option>
+                  </select>
+                </label>
+              </div>
+              <div class="card card-pad" style="box-shadow:none">
+                <h3>Si l’IA ne répond pas</h3>
+                <p class="hint">Menu de secours avec des réponses fermées.</p>
+                <label class="field" style="margin-top:10px">
+                  Secours
+                  <select>
+                    <option>Activé</option>
+                    <option>Désactivé</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="4">
+          <div class="card card-pad">
+            <div class="card-head">
+              <div>
+                <h2>Validation</h2>
+                <p>Un dernier contrôle avant de créer le chatbot.</p>
+              </div>
+              <span class="badge on">Cohérent</span>
+            </div>
+            <dl class="summary" style="margin-top:14px">
+              <div class="summary-row"><dt>Mission</dt><dd id="summary-mission">Collecter et informer</dd></div>
+              <div class="summary-row"><dt>Fiches à collecter</dt><dd>Fiche de qualification commerciale</dd></div>
+              <div class="summary-row"><dt>Sources</dt><dd>Connaissances · Photos · Liens</dd></div>
+              <div class="summary-row"><dt>Publication</dt><dd>Page publique · Widget</dd></div>
+              <div class="summary-row"><dt>IA</dt><dd>Modèle par défaut de l’organisation</dd></div>
+              <div class="summary-row"><dt>Secours</dt><dd>Menu de secours activé</dd></div>
+            </dl>
+            <div class="success" style="margin-top:14px">Tout est cohérent : la mission, les fiches et les sources sont compatibles.</div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div class="step-label" id="footer-step">Étape 1 sur 5 · Cadrage</div>
+      <div class="footer-actions">
+        <button class="btn ghost" id="back">Précédent</button>
+        <button class="btn primary" id="next">Suivant</button>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var current = 0;
+        var missions = {
+          collect: {
+            title: "Collecter des fiches",
+            summary: "<strong>Mission collecter :</strong> une fiche est requise. Les sources sont désactivées.",
+            badge: "Collecter"
+          },
+          inform: {
+            title: "Informer",
+            summary: "<strong>Mission informer :</strong> au moins une source est requise. Aucune fiche n’est collectée.",
+            badge: "Informer"
+          },
+          hybrid: {
+            title: "Collecter et informer",
+            summary: "<strong>Mission hybride :</strong> une fiche à collecter + au moins une source à consulter.",
+            badge: "Hybride"
+          }
+        };
+        var pages = [
+          ["Cadrage", "Définir l’identité du chatbot et son rôle avant de choisir ses contenus."],
+          ["Alimentation", "Ce que le chatbot collecte et les sources qu’il consulte, dans un même écran."],
+          ["Publication", "Choisir les canaux et l’apparence une fois le contenu défini."],
+          ["IA & secours", "Configurer les modèles IA et le comportement de secours."],
+          ["Validation", "Vérifier la cohérence puis créer le chatbot."]
+        ];
+        var mission = "hybrid";
+
+        function $(selector, root) { return (root || document).querySelector(selector); }
+        function $$(selector, root) { return Array.prototype.slice.call((root || document).querySelectorAll(selector)); }
+
+        function setStep(index) {
+          current = Math.max(0, Math.min(4, index));
+          $$(".panel").forEach(function (panel) { panel.classList.toggle("active", Number(panel.dataset.panel) === current); });
+          $$(".step-btn").forEach(function (button, buttonIndex) {
+            button.classList.toggle("active", buttonIndex === current);
+            button.classList.toggle("done", buttonIndex < current);
+          });
+          $("#eyebrow").textContent = "Étape " + (current + 1) + " sur 5";
+          $("#page-title").textContent = pages[current][0];
+          $("#page-subtitle").textContent = pages[current][1];
+          $("#progress-label").textContent = ((current + 1) * 20) + " %";
+          $("#progress-fill").style.width = ((current + 1) * 20) + "%";
+          $("#footer-step").textContent = "Étape " + (current + 1) + " sur 5 · " + pages[current][0];
+          $("#back").style.visibility = current === 0 ? "hidden" : "visible";
+          $("#next").textContent = current === 4 ? "Créer le chatbot" : "Suivant";
+        }
+
+        function setMission(next) {
+          mission = next;
+          $$(".mission").forEach(function (button) { button.classList.toggle("selected", button.dataset.mission === mission); });
+          $("#mission-badge").textContent = missions[mission].badge;
+          $("#mission-badge").className = "badge on";
+          $("#mission-explain").innerHTML = missions[mission].summary;
+          $("#alimentation-badge").textContent = missions[mission].badge;
+          $("#alimentation-summary").innerHTML = missions[mission].summary;
+          $("#collect-block").classList.toggle("hidden", mission === "inform");
+          $("#sources-block").classList.toggle("hidden", mission === "collect");
+          $("#collect-warning").style.display = mission === "collect" ? "block" : "none";
+          $("#inform-warning").style.display = mission === "inform" ? "block" : "none";
+          $("#summary-mission").textContent = missions[mission].title;
+        }
+
+        $$(".step-btn").forEach(function (button) { button.addEventListener("click", function () { setStep(Number(button.dataset.goto)); }); });
+        $("#next").addEventListener("click", function () {
+          if (current === 4) {
+            $("#next").textContent = "Maquette prête";
+            return;
+          }
+          setStep(current + 1);
+        });
+        $("#back").addEventListener("click", function () { setStep(current - 1); });
+        $$(".mission").forEach(function (button) { button.addEventListener("click", function () { setMission(button.dataset.mission); }); });
+
+        $$(".source-toggle").forEach(function (input) {
+          function sync() {
+            var card = input.closest(".source-card");
+            card.classList.toggle("off", !input.checked);
+            var switchEl = $(".switch", card);
+            switchEl.classList.toggle("on", input.checked);
+            var badge = $(".source-body .badge", card);
+            if (badge) {
+              badge.textContent = input.checked ? "Activé" : "Désactivé";
+              badge.className = "badge " + (input.checked ? "on" : "off");
+            }
+          }
+          input.addEventListener("change", sync);
+          sync();
+        });
+
+        $$(".segmented").forEach(function (group) {
+          $$("button", group).forEach(function (button) {
+            button.addEventListener("click", function () {
+              $$("button", group).forEach(function (entry) { entry.classList.remove("active"); });
+              button.classList.add("active");
+              var picker = $("[data-picker='" + group.dataset.mode + "']");
+              if (picker) picker.style.display = button.dataset.scope === "selected" ? "flex" : "none";
+            });
+          });
+        });
+
+        $$(".chip").forEach(function (chip) {
+          chip.addEventListener("click", function () { chip.classList.toggle("selected"); });
+        });
+
+        $("#add-toggle").addEventListener("click", function () {
+          $("#add-menu").classList.toggle("hidden");
+        });
+        $$("#add-menu [data-add]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            var item = document.createElement("li");
+            item.innerHTML = "<span><strong>" + button.dataset.add + "</strong> · Nouveau contenu</span><span class='badge info'>Ce chatbot</span>";
+            $("#added-list").appendChild(item);
+            $("#add-menu").classList.add("hidden");
+          });
+        });
+
+        setMission(mission);
+        setStep(0);
+      })();
+    </script>
+  </body>
+</html>
