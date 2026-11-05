@@ -288,7 +288,6 @@
               <label class="field">Libellé du chatbot (optionnel)<input type="text" placeholder="Ex. Salon IT, Stand, Campagne" maxlength="120" /></label>
               <label class="field">Type de chatbot<select id="type-select"><option value="standard">Standard</option><option value="specifique">Spécifique à un prospect</option></select></label>
               <label class="field hidden" id="prospect-field">Prospect rattaché *<select><option value="">— Choisir —</option><option>Rakoto Rajaona (rakoto@example.mg)</option><option>Narindra Rajaonarison (narindra@example.mg)</option></select><span class="hint">Identification : prospect lié au lien. Aucun formulaire de contact.</span></label>
-              <label class="field">Expiration (optionnel)<input type="date" /><span class="hint">Vide = sans expiration. Le lien reste valide jusqu’à la fin du jour choisi.</span></label>
             </div>
           </div>
 
@@ -460,6 +459,7 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
               <label class="field" style="margin-top:10px">Budget de tokens IA<input type="number" min="0" step="1" placeholder="Illimité" /><span class="hint">Toutes les opérations IA du chatbot sont comptées : réponses, connaissances, médias et fiches.</span></label>
               <label class="field" style="margin-top:10px">Réinitialisation du budget tokens<select id="token-reset"><option value="manual">Manuelle par un administrateur</option><option value="duration">Automatique après une durée</option></select></label>
               <label class="field hidden" id="reset-days" style="margin-top:10px">Durée avant réinitialisation (jours)<input type="number" min="1" max="3650" step="1" placeholder="30" /></label>
+              <label class="field" style="margin-top:10px">Expiration (optionnel)<input type="date" /><span class="hint">Vide = sans expiration. Le lien reste valide jusqu’à la fin du jour choisi.</span></label>
               <span class="hint">La limite de fiches est définitive. Le budget de tokens peut être réinitialisé manuellement ou automatiquement.</span>
             </fieldset>
           </div>
