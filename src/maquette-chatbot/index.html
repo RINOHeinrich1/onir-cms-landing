@@ -219,8 +219,8 @@
       @media (max-width: 680px) {
         .card-head { align-items: stretch; flex-direction: column; }
         .card-head > .btn { align-self: flex-start; }
-        .channel-tabs { overflow-x: auto; padding-bottom: 2px; }
-        .channel-tab { flex: none; }
+        .channel-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: visible; }
+        .channel-tab { border-bottom: 1px solid var(--line); text-align: left; width: 100%; }
         .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .step-btn { align-items: center; }
         .step-copy strong { overflow-wrap: anywhere; }
