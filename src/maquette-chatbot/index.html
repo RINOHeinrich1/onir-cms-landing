@@ -346,48 +346,53 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
           <div class="card card-pad"><div class="card-head"><div><h2>Alimentation</h2><p>Les sources que le chatbot consulte. Une source = un contenu + une règle d’usage, réglés au même endroit.</p></div><span class="badge on">Affichée pour cette mission</span></div></div>
 
           <div class="card card-pad">
-            <fieldset><legend>Contenus recherchés à la génération</legend><span class="hint">Seuls les contenus cochés sont interrogés pour composer la réponse.</span>
-              <div class="switch-row"><label class="switch-label"><input type="checkbox" checked /><span class="switch on"><span></span></span>Connaissances</label><label class="switch-label"><input type="checkbox" checked /><span class="switch on"><span></span></span>Photos</label><label class="switch-label"><input type="checkbox" checked /><span class="switch on"><span></span></span>Liens</label></div>
-            </fieldset>
-          </div>
-
-          <div class="card card-pad">
-            <fieldset><legend>Outil de recherche de fiches</legend><p class="hint">Ces politiques sont versionnées avec le chatbot. Elles s’appliquent avant toute recherche et ne sont jamais modifiables par le modèle (ADR-0067).</p>
-              <label class="switch-label" style="margin-top:10px"><input type="checkbox" id="search-toggle" checked /><span class="switch on"><span></span></span>Activer l’outil de recherche</label>
-              <p class="hint" id="search-hint">L’outil est activé pour ce chatbot. Configurez ci-dessous les types de fiches, le statut, le tri et la portée.</p>
-              <div class="config" id="search-config">
-                <div class="field"><span>Fiches de collecte interrogées</span><div class="tag-box"><span class="tag">Qualification commerciale <button type="button">×</button></span><span class="tag">Demande de devis <button type="button">×</button></span><input placeholder="Rechercher une fiche de collecte…" /></div><span class="hint">La recherche portera sur toutes les instances de ces fiches de collecte dans l’organisation.</span></div>
-                <div class="source-grid"><label class="field">Mode de statut<select><option>Statut imposé masqué (public)</option><option>Statut visible par le modèle (backoffice)</option><option>Aucun filtre de statut (backoffice)</option></select></label><label class="field">Tri des résultats<select><option>Rotation équitable</option><option>Date de création</option><option disabled>Pertinence (non implémenté)</option></select></label></div>
-                <div class="field"><span>Statuts fixes appliqués</span><div class="check-options"><label class="check"><input type="checkbox" checked /> Nouveau</label><label class="check"><input type="checkbox" /> Qualifié</label><label class="check"><input type="checkbox" /> À rappeler</label></div><span class="hint">Le filtre est appliqué automatiquement ; il n’est jamais transmis au modèle sur un lien public.</span></div>
-              </div>
-            </fieldset>
-          </div>
-
-          <div class="card card-pad">
-            <h2>Libellés des sources</h2>
-            <fieldset style="margin-top:12px"><legend>Fiches existantes</legend><div class="split"><label class="field">Libellé de la source<input type="text" value="Fiches existantes" maxlength="120" /></label><label class="field">Quand l’utiliser<input type="text" value="Pour retrouver une information déjà collectée." maxlength="400" /></label></div></fieldset>
-            <fieldset style="margin-top:10px"><legend>Connaissances</legend><div class="split"><label class="field">Libellé de la source<input type="text" value="Connaissances" maxlength="120" /></label><label class="field">Quand l’utiliser<input type="text" value="Pour répondre aux questions sur les offres et procédures." maxlength="400" /></label></div></fieldset>
-            <fieldset style="margin-top:10px"><legend>Médias</legend><div class="split"><label class="field">Libellé de la source<input type="text" value="Médias" maxlength="120" /></label><label class="field">Quand l’utiliser<input type="text" value="Pour illustrer une réponse avec une photo ou un lien." maxlength="400" /></label></div></fieldset>
-          </div>
-
-          <div class="card card-pad">
             <div class="card-head"><div><h2>Bibliothèque de l’organisation</h2><p>Sélectionnez les contenus que ce chatbot peut utiliser. Leur portée n’est jamais modifiée.</p></div></div>
-            <fieldset style="margin-top:12px"><legend>Contenus utilisés par ce chatbot</legend>
-              <label class="check"><input type="radio" name="data-mode" value="all" checked /> Toute la bibliothèque (par défaut)</label>
-              <label class="check" style="margin-top:7px"><input type="radio" name="data-mode" value="selected" /> Choisir des contenus</label>
-              <p class="hint" id="data-mode-hint">Tous les contenus de la bibliothèque sont accessibles, sans modifier leur portée.</p>
-            </fieldset>
-            <div id="data-selected" class="hidden">
-              <div class="channel-tabs" style="margin-top:12px"><button class="channel-tab active">Connaissances <span class="badge muted">3</span></button><button class="channel-tab">Photos <span class="badge muted">2</span></button><button class="channel-tab">Liens <span class="badge muted">2</span></button></div>
-              <div class="data-filters"><label class="field">Rechercher<input type="search" placeholder="Titre, libellé ou description…" /></label><label class="check" style="align-self:end"><input type="checkbox" /> Sélectionnés uniquement (1)</label></div>
-              <div class="tools data-bulk"><button class="btn ghost small">Actualiser</button><button class="btn ghost small">Tout sélectionner sur cette page</button><button class="btn ghost small">Tout désélectionner</button><span class="hint">3 résultat(s) · 3 affiché(s)</span></div>
-              <div class="data-list">
-                <label class="data-item"><input type="checkbox" checked /><span><strong>Tarifs</strong><small>Grille tarifaire publique et conditions.</small></span><span class="badge info">Bibliothèque</span></label>
-                <label class="data-item"><input type="checkbox" /><span><strong>Procédure SAV</strong><small>Étapes de prise en charge après-vente.</small></span><span class="badge info">Bibliothèque</span></label>
-                <label class="data-item"><input type="checkbox" /><span><strong>Présentation entreprise</strong><small>Histoire, valeurs et implantations.</small></span><span class="badge info">Bibliothèque</span></label>
-              </div>
+            <div class="channel-tabs" style="margin-top:14px" role="tablist" aria-label="Bibliothèque">
+              <button class="channel-tab active" data-library-tab="connaissances">Connaissances <span class="badge muted">3</span></button>
+              <button class="channel-tab" data-library-tab="photos">Photos <span class="badge muted">2</span></button>
+              <button class="channel-tab" data-library-tab="liens">Liens <span class="badge muted">2</span></button>
+              <button class="channel-tab" data-library-tab="fiches">Fiches <span class="badge muted">1</span></button>
             </div>
-            <div id="data-all"><p class="hint" style="margin-top:10px">Toute la bibliothèque est accessible.</p><div class="data-counts"><span class="badge muted">Connaissances 3</span><span class="badge muted">Photos 2</span><span class="badge muted">Liens 2</span></div></div>
+
+            <div data-library-panel="fiches" class="hidden">
+              <fieldset><legend>Outil de recherche de fiches</legend><p class="hint">Ces politiques sont versionnées avec le chatbot. Elles s’appliquent avant toute recherche et ne sont jamais modifiables par le modèle (ADR-0067).</p>
+                <label class="switch-label" style="margin-top:10px"><input type="checkbox" id="search-toggle" checked /><span class="switch on"><span></span></span>Activer l’outil de recherche</label>
+                <p class="hint" id="search-hint">L’outil est activé pour ce chatbot. Configurez ci-dessous les types de fiches, le statut, le tri et la portée.</p>
+                <div class="config" id="search-config">
+                  <div class="field"><span>Fiches de collecte interrogées</span><div class="tag-box"><span class="tag">Qualification commerciale <button type="button">×</button></span><span class="tag">Demande de devis <button type="button">×</button></span><input placeholder="Rechercher une fiche de collecte…" /></div><span class="hint">La recherche portera sur toutes les instances de ces fiches de collecte dans l’organisation.</span></div>
+                  <div class="source-grid"><label class="field">Mode de statut<select><option>Statut imposé masqué (public)</option><option>Statut visible par le modèle (backoffice)</option><option>Aucun filtre de statut (backoffice)</option></select></label><label class="field">Tri des résultats<select><option>Rotation équitable</option><option>Date de création</option><option disabled>Pertinence (non implémenté)</option></select></label></div>
+                  <div class="field"><span>Statuts fixes appliqués</span><div class="check-options"><label class="check"><input type="checkbox" checked /> Nouveau</label><label class="check"><input type="checkbox" /> Qualifié</label><label class="check"><input type="checkbox" /> À rappeler</label></div><span class="hint">Le filtre est appliqué automatiquement ; il n’est jamais transmis au modèle sur un lien public.</span></div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div data-library-panel="connaissances">
+              <fieldset><legend>Contenus utilisés par ce chatbot</legend>
+                <label class="check"><input type="radio" name="data-mode" value="all" checked /> Toute la bibliothèque (par défaut)</label>
+                <label class="check" style="margin-top:7px"><input type="radio" name="data-mode" value="selected" /> Choisir des contenus</label>
+                <p class="hint" id="data-mode-hint">Tous les contenus de la bibliothèque sont accessibles, sans modifier leur portée.</p>
+              </fieldset>
+              <div id="data-selected" class="hidden">
+                <div class="data-filters"><label class="field">Rechercher<input type="search" placeholder="Titre, libellé ou description…" /></label><label class="check" style="align-self:end"><input type="checkbox" /> Sélectionnés uniquement (1)</label></div>
+                <div class="tools data-bulk"><button class="btn ghost small">Actualiser</button><button class="btn ghost small">Tout sélectionner sur cette page</button><button class="btn ghost small">Tout désélectionner</button><span class="hint">3 résultat(s) · 3 affiché(s)</span></div>
+                <div class="data-list">
+                  <label class="data-item"><input type="checkbox" checked /><span><strong>Tarifs</strong><small>Grille tarifaire publique et conditions.</small></span><span class="badge info">Bibliothèque</span></label>
+                  <label class="data-item"><input type="checkbox" /><span><strong>Procédure SAV</strong><small>Étapes de prise en charge après-vente.</small></span><span class="badge info">Bibliothèque</span></label>
+                  <label class="data-item"><input type="checkbox" /><span><strong>Présentation entreprise</strong><small>Histoire, valeurs et implantations.</small></span><span class="badge info">Bibliothèque</span></label>
+                </div>
+              </div>
+              <div id="data-all"><p class="hint" style="margin-top:10px">Toute la bibliothèque est accessible.</p><div class="data-counts"><span class="badge muted">Connaissances 3</span><span class="badge muted">Photos 2</span><span class="badge muted">Liens 2</span></div></div>
+            </div>
+
+            <div data-library-panel="photos" class="hidden">
+              <p class="hint" style="margin-top:10px">Les photos de la bibliothèque sont accessibles pour ce chatbot.</p>
+              <div class="data-list"><label class="data-item"><input type="checkbox" checked /><span><strong>Showroom</strong><small>Photo du showroom.</small></span><span class="badge info">Bibliothèque</span></label><label class="data-item"><input type="checkbox" /><span><strong>Produit A</strong><small>Photo produit.</small></span><span class="badge info">Bibliothèque</span></label></div>
+            </div>
+
+            <div data-library-panel="liens" class="hidden">
+              <p class="hint" style="margin-top:10px">Les liens de la bibliothèque sont accessibles pour ce chatbot.</p>
+              <div class="data-list"><label class="data-item"><input type="checkbox" checked /><span><strong>Page contact</strong><small>Formulaire de contact.</small></span><span class="badge info">Bibliothèque</span></label><label class="data-item"><input type="checkbox" /><span><strong>Demande de devis</strong><small>Formulaire de devis.</small></span><span class="badge info">Bibliothèque</span></label></div>
+            </div>
           </div>
 
           <div class="card card-pad">
@@ -581,6 +586,15 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
               button.classList.add("active");
               var picker = $("[data-picker='" + group.dataset.mode + "']");
               if (picker) picker.classList.toggle("hidden", button.dataset.scope !== "selected");
+            });
+          });
+        });
+        $$("[data-library-tab]").forEach(function (tabButton) {
+          tabButton.addEventListener("click", function () {
+            $$("[data-library-tab]").forEach(function (entry) { entry.classList.remove("active"); });
+            tabButton.classList.add("active");
+            $$("[data-library-panel]").forEach(function (panel) {
+              panel.classList.toggle("hidden", panel.dataset.libraryPanel !== tabButton.dataset.libraryTab);
             });
           });
         });
