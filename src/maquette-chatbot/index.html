@@ -329,7 +329,7 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
 
         <section class="panel" data-panel="collecte">
           <div class="card card-pad">
-            <div class="card-head"><div><h2>Collecte</h2><p>Sélectionner la fiche de collecte à remplir lorsque l’utilisateur veut recueillir des informations.</p></div><span class="badge on">Affichée pour cette mission</span></div>
+            <div class="card-head"><div><h2>Collecte</h2><p>Sélectionner la fiche de collecte à remplir lorsque l’utilisateur veut recueillir des informations.</p></div></div>
             <fieldset style="margin-top:16px"><legend>Choisir parmi les fiches existantes</legend><p class="hint">Sélectionnez une ou plusieurs fiches. Une copie (snapshot) est enregistrée dans le chatbot : les modifications ultérieures des fiches réutilisables ne l’affectent pas.</p>
               <div class="fiche-picker-tools"><input type="search" placeholder="Rechercher une fiche…" aria-label="Rechercher une fiche de collecte" /><button class="btn small">+ Créer une fiche</button><a class="btn ghost small" href="/fiches-collecte" target="_blank" rel="noreferrer">Gérer les fiches</a></div>
               <div class="fiche-options">
@@ -343,10 +343,8 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
         </section>
 
         <section class="panel" data-panel="alimentation">
-          <div class="card card-pad"><div class="card-head"><div><h2>Alimentation</h2><p>Les sources que le chatbot consulte. Une source = un contenu + une règle d’usage, réglés au même endroit.</p></div><span class="badge on">Affichée pour cette mission</span></div></div>
-
           <div class="card card-pad">
-            <div class="card-head"><div><h2>Bibliothèque de l’organisation</h2><p>Sélectionnez les contenus que ce chatbot peut utiliser. Leur portée n’est jamais modifiée.</p></div></div>
+            <div class="card-head"><div><h2>Sources d’information</h2><p>Sélectionnez les contenus que ce chatbot peut utiliser. Leur portée n’est jamais modifiée.</p></div><button class="btn ghost small" id="add-toggle">+ Ajouter un contenu</button></div>
             <div class="switch-row" style="margin-top:14px">
               <label class="switch-label"><input type="checkbox" checked /><span class="switch on"><span></span></span>Connaissances</label>
               <label class="switch-label"><input type="checkbox" checked /><span class="switch on"><span></span></span>Photos</label>
@@ -362,6 +360,7 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
 
             <div data-library-panel="fiches" class="hidden">
               <fieldset><legend>Outil de recherche de fiches</legend><p class="hint">Ces politiques sont versionnées avec le chatbot. Elles s’appliquent avant toute recherche et ne sont jamais modifiables par le modèle (ADR-0067).</p>
+                <div class="source-grid" style="margin-top:12px"><label class="field">Libellé de la source<input type="text" value="Fiches existantes" maxlength="120" /></label><label class="field">Quand l’utiliser<input type="text" value="Rechercher des fiches existantes et leurs informations." maxlength="400" /></label></div>
                 <p class="hint" id="fiches-disabled-hint" style="display:none">Activez « Fiches » au-dessus des onglets pour utiliser et configurer l’outil de recherche.</p>
                 <div class="config" id="search-config">
                   <div class="field"><span>Fiches de collecte interrogées</span><div class="tag-box"><span class="tag">Qualification commerciale <button type="button">×</button></span><span class="tag">Demande de devis <button type="button">×</button></span><input placeholder="Rechercher une fiche de collecte…" /></div><span class="hint">La recherche portera sur toutes les instances de ces fiches de collecte dans l’organisation.</span></div>
@@ -381,9 +380,9 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
                 <div class="data-filters"><label class="field">Rechercher<input type="search" placeholder="Titre, libellé ou description…" /></label><label class="check" style="align-self:end"><input type="checkbox" /> Sélectionnés uniquement (1)</label></div>
                 <div class="tools data-bulk"><button class="btn ghost small">Actualiser</button><button class="btn ghost small">Tout sélectionner sur cette page</button><button class="btn ghost small">Tout désélectionner</button><span class="hint">3 résultat(s) · 3 affiché(s)</span></div>
                 <div class="data-list">
-                  <label class="data-item"><input type="checkbox" checked /><span><strong>Tarifs</strong><small>Grille tarifaire publique et conditions.</small></span><span class="badge info">Bibliothèque</span></label>
-                  <label class="data-item"><input type="checkbox" /><span><strong>Procédure SAV</strong><small>Étapes de prise en charge après-vente.</small></span><span class="badge info">Bibliothèque</span></label>
-                  <label class="data-item"><input type="checkbox" /><span><strong>Présentation entreprise</strong><small>Histoire, valeurs et implantations.</small></span><span class="badge info">Bibliothèque</span></label>
+                  <label class="data-item"><input type="checkbox" checked /><span><strong>Tarifs</strong><small>Grille tarifaire publique et conditions.</small></span><span class="badge info">Source</span></label>
+                  <label class="data-item"><input type="checkbox" /><span><strong>Procédure SAV</strong><small>Étapes de prise en charge après-vente.</small></span><span class="badge info">Source</span></label>
+                  <label class="data-item"><input type="checkbox" /><span><strong>Présentation entreprise</strong><small>Histoire, valeurs et implantations.</small></span><span class="badge info">Source</span></label>
                 </div>
               </div>
               <div id="data-all"><p class="hint" style="margin-top:10px">Toute la bibliothèque est accessible.</p><div class="data-counts"><span class="badge muted">Connaissances 3</span><span class="badge muted">Photos 2</span><span class="badge muted">Liens 2</span></div></div>
@@ -391,23 +390,20 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
 
             <div data-library-panel="photos" class="hidden">
               <p class="hint" style="margin-top:10px">Les photos de la bibliothèque sont accessibles pour ce chatbot.</p>
-              <div class="data-list"><label class="data-item"><input type="checkbox" checked /><span><strong>Showroom</strong><small>Photo du showroom.</small></span><span class="badge info">Bibliothèque</span></label><label class="data-item"><input type="checkbox" /><span><strong>Produit A</strong><small>Photo produit.</small></span><span class="badge info">Bibliothèque</span></label></div>
+              <div class="data-list"><label class="data-item"><input type="checkbox" checked /><span><strong>Showroom</strong><small>Photo du showroom.</small></span><span class="badge info">Source</span></label><label class="data-item"><input type="checkbox" /><span><strong>Produit A</strong><small>Photo produit.</small></span><span class="badge info">Source</span></label></div>
             </div>
 
             <div data-library-panel="liens" class="hidden">
               <p class="hint" style="margin-top:10px">Les liens de la bibliothèque sont accessibles pour ce chatbot.</p>
-              <div class="data-list"><label class="data-item"><input type="checkbox" checked /><span><strong>Page contact</strong><small>Formulaire de contact.</small></span><span class="badge info">Bibliothèque</span></label><label class="data-item"><input type="checkbox" /><span><strong>Demande de devis</strong><small>Formulaire de devis.</small></span><span class="badge info">Bibliothèque</span></label></div>
+              <div class="data-list"><label class="data-item"><input type="checkbox" checked /><span><strong>Page contact</strong><small>Formulaire de contact.</small></span><span class="badge info">Source</span></label><label class="data-item"><input type="checkbox" /><span><strong>Demande de devis</strong><small>Formulaire de devis.</small></span><span class="badge info">Source</span></label></div>
             </div>
+   
+            <div class="add-menu hidden" id="add-menu"><button class="btn ghost small" data-add="Connaissance">Connaissance</button><button class="btn ghost small" data-add="Photo">Photo</button><button class="btn ghost small" data-add="Lien">Lien</button></div>
+            <div class="add-form hidden" id="add-connaissance" data-add-type="connaissances"><label class="field">Titre *<input type="text" maxlength="120" /></label><label class="field">Contenu *<textarea rows="3"></textarea></label><div class="tools"><button class="btn small" data-save-add="connaissances">Ajouter</button><button class="btn ghost small" type="button" data-cancel-add>Annuler</button></div></div>
+            <div class="add-form hidden" id="add-lien" data-add-type="liens"><div class="split"><label class="field">Libellé *<input type="text" maxlength="120" /></label><label class="field">URL *<input type="url" placeholder="https://…" /></label></div><label class="field">Description<textarea rows="2"></textarea></label><div class="tools"><button class="btn small" data-save-add="liens">Ajouter</button><button class="btn ghost small" type="button" data-cancel-add>Annuler</button></div></div>
+            <div class="add-form hidden" id="add-photo" data-add-type="photos"><label class="field">Fichier image *<input type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/avif" /></label><label class="field">Libellé *<input type="text" maxlength="120" /></label><label class="field">Description<textarea rows="2"></textarea></label><div class="tools"><button class="btn small" data-save-add="photos">Ajouter</button><button class="btn ghost small" type="button" data-cancel-add>Annuler</button></div></div>
           </div>
 
-          <div class="card card-pad">
-            <div class="card-head"><div><h2>Contenus ajoutés à ce chatbot</h2><p>Ces contenus sont réservés à ce chatbot et ne modifient pas la bibliothèque.</p></div><button class="btn ghost small" id="add-toggle">+ Ajouter un contenu</button></div>
-            <div class="add-menu hidden" id="add-menu"><button class="btn ghost small" data-add="Connaissance">Connaissance</button><button class="btn ghost small" data-add="Photo">Photo</button><button class="btn ghost small" data-add="Lien">Lien</button></div>
-            <div class="add-form hidden" id="add-connaissance"><label class="field">Titre *<input type="text" maxlength="120" /></label><label class="field">Contenu *<textarea rows="3"></textarea></label><div class="tools"><button class="btn small">Ajouter</button><button class="btn ghost small" type="button" data-cancel-add>Annuler</button></div></div>
-            <div class="add-form hidden" id="add-lien"><div class="split"><label class="field">Libellé *<input type="text" maxlength="120" /></label><label class="field">URL *<input type="url" placeholder="https://…" /></label></div><label class="field">Description<textarea rows="2"></textarea></label><div class="tools"><button class="btn small">Ajouter</button><button class="btn ghost small" type="button" data-cancel-add>Annuler</button></div></div>
-            <div class="add-form hidden" id="add-photo"><label class="field">Fichier image *<input type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/avif" /></label><label class="field">Libellé *<input type="text" maxlength="120" /></label><label class="field">Description<textarea rows="2"></textarea></label><div class="tools"><button class="btn small">Ajouter</button><button class="btn ghost small" type="button" data-cancel-add>Annuler</button></div></div>
-            <ul class="added-list" id="added-list"><li><span><strong>Connaissance</strong> · Argumentaire de vente</span><span class="badge info">Ce chatbot</span></li></ul>
-          </div>
         </section>
 
         <section class="panel" data-panel="publication">
@@ -466,7 +462,7 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
               <div class="summary-row" id="summary-collect"><dt>Fiches</dt><dd>Fiche de qualification commerciale</dd></div>
               <div class="summary-row" id="summary-sources"><dt>Sources</dt><dd>Fiches existantes · Connaissances · Photos · Liens</dd></div>
               <div class="summary-row"><dt>Contenus ajoutés</dt><dd>1 connaissance</dd></div>
-              <div class="summary-row"><dt>Bibliothèque</dt><dd>Toute la bibliothèque</dd></div>
+              <div class="summary-row"><dt>Sources d’information</dt><dd>Toute la bibliothèque</dd></div>
               <div class="summary-row"><dt>Configuration IA</dt><dd>Réponse : modèle par défaut · autres usages hérités</dd></div>
               <div class="summary-row"><dt>Canaux</dt><dd>Page publique · Widget intégrable</dd></div>
               <div class="summary-row"><dt>Secours</dt><dd>1 question · fiche de collecte</dd></div>
@@ -631,6 +627,37 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
           });
         });
         $$("[data-cancel-add]").forEach(function (button) { button.addEventListener("click", function () { button.closest(".add-form").classList.add("hidden"); }); });
+        $$("[data-save-add]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            var type = button.dataset.saveAdd;
+            var form = button.closest(".add-form");
+            var textInput = form.querySelector("input[type='text']");
+            var textarea = form.querySelector("textarea");
+            var fileInput = form.querySelector("input[type='file']");
+            var title = textInput && textInput.value.trim() !== "" ? textInput.value.trim() : (fileInput && fileInput.files.length > 0 ? fileInput.files[0].name : "Nouveau contenu");
+            var description = textarea && textarea.value.trim() !== "" ? textarea.value.trim() : "Contenu ajouté à ce chatbot.";
+            if (type === "connaissances") {
+              var selectedRadio = document.querySelector("input[name='data-mode'][value='selected']");
+              if (selectedRadio) selectedRadio.checked = true;
+              $("#data-all").classList.add("hidden");
+              $("#data-selected").classList.remove("hidden");
+            }
+            var panel = document.querySelector("[data-library-panel='" + type + "']");
+            var list = panel ? panel.querySelector(".data-list") : null;
+            if (list === null && panel) {
+              list = document.createElement("div"); list.className = "data-list"; panel.appendChild(list);
+            }
+            if (list) {
+              var item = document.createElement("label"); item.className = "data-item";
+              item.innerHTML = "<input type=\"checkbox\" checked /><span><strong>" + title + "</strong><small>" + description + "</small></span><span class=\"badge info\">Ce chatbot</span>";
+              list.appendChild(item);
+            }
+            form.classList.add("hidden");
+            $("#add-menu").classList.add("hidden");
+            var tab = document.querySelector("[data-library-tab='" + type + "']");
+            if (tab) tab.click();
+          });
+        });
         $("#add-fallback").addEventListener("click", function () {
           var block = document.createElement("div"); block.className = "fallback-question"; block.innerHTML = "<div class=\"fallback-question-head\"><strong>Question 2</strong><div class=\"tools\"><button class=\"btn ghost small\">↑</button><button class=\"btn ghost small\">↓</button><button class=\"btn ghost small\">Retirer</button></div></div><label class=\"field\" style=\"margin-top:8px\">Libellé affiché *<input type=\"text\" placeholder=\"Quels sont vos tarifs ?\" /></label><label class=\"field\" style=\"margin-top:8px\">Réponse prédéfinie *<textarea rows=\"4\" placeholder=\"Nos tarifs démarrent à …\"></textarea></label>"; $("#fallback-questions").appendChild(block);
         });
