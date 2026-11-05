@@ -251,14 +251,15 @@
           <li data-step-item="alimentation"><button class="step-btn" data-step="alimentation"><span class="step-number">3</span><span class="step-copy"><strong>Alimentation</strong><small>Sources et contenus à consulter</small></span></button></li>
           <li data-step-item="publication"><button class="step-btn" data-step="publication"><span class="step-number">4</span><span class="step-copy"><strong>Publication</strong><small>Canaux et apparence</small></span></button></li>
           <li data-step-item="ia"><button class="step-btn" data-step="ia"><span class="step-number">5</span><span class="step-copy"><strong>IA &amp; secours</strong><small>Modèles et repli</small></span></button></li>
-          <li data-step-item="validation"><button class="step-btn" data-step="validation"><span class="step-number">6</span><span class="step-copy"><strong>Validation</strong><small>Limites et récapitulatif</small></span></button></li>
+          <li data-step-item="restrictions"><button class="step-btn" data-step="restrictions"><span class="step-number">6</span><span class="step-copy"><strong>Restrictions et quotas</strong><small>Limites d’usage</small></span></button></li>
+          <li data-step-item="validation"><button class="step-btn" data-step="validation"><span class="step-number">7</span><span class="step-copy"><strong>Validation</strong><small>Récapitulatif</small></span></button></li>
         </ol>
       </aside>
 
       <main>
         <div class="page-head">
-          <div><p class="eyebrow" id="eyebrow">Étape 1 sur 6</p><h1 id="page-title">Cadrage</h1><p id="page-subtitle">Définir l’identité du chatbot et sa mission avant de choisir ses contenus.</p></div>
-          <div class="progress"><span id="progress-label">17 %</span><div class="progress-track"><span id="progress-fill"></span></div></div>
+          <div><p class="eyebrow" id="eyebrow">Étape 1 sur 7</p><h1 id="page-title">Cadrage</h1><p id="page-subtitle">Définir l’identité du chatbot et sa mission avant de choisir ses contenus.</p></div>
+          <div class="progress"><span id="progress-label">14 %</span><div class="progress-track"><span id="progress-fill"></span></div></div>
         </div>
 
         <section class="panel active" data-panel="cadrage">
@@ -451,9 +452,9 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
           </div>
         </section>
 
-        <section class="panel" data-panel="validation">
+        <section class="panel" data-panel="restrictions">
           <div class="card card-pad">
-            <div class="card-head"><div><h2>Validation</h2><p>Un dernier contrôle avant de créer le chatbot.</p></div><span class="badge on">Cohérent</span></div>
+            <div class="card-head"><div><h2>Restrictions et quotas</h2><p>Définissez les limites d’usage de ce chatbot avant sa mise en service.</p></div></div>
             <fieldset style="margin-top:16px"><legend>Limites du chatbot</legend>
               <label class="field">Fiches maximum (à vie)<input type="number" min="0" step="1" placeholder="Illimité" /></label>
               <label class="field" style="margin-top:10px">Budget de tokens IA<input type="number" min="0" step="1" placeholder="Illimité" /><span class="hint">Toutes les opérations IA du chatbot sont comptées : réponses, connaissances, médias et fiches.</span></label>
@@ -461,6 +462,12 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
               <label class="field hidden" id="reset-days" style="margin-top:10px">Durée avant réinitialisation (jours)<input type="number" min="1" max="3650" step="1" placeholder="30" /></label>
               <span class="hint">La limite de fiches est définitive. Le budget de tokens peut être réinitialisé manuellement ou automatiquement.</span>
             </fieldset>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="validation">
+          <div class="card card-pad">
+            <div class="card-head"><div><h2>Validation</h2><p>Un dernier contrôle avant de créer le chatbot.</p></div><span class="badge on">Cohérent</span></div>
             <dl class="summary" style="margin-top:16px">
               <div class="summary-row"><dt>Type</dt><dd id="summary-type">Standard</dd></div>
               <div class="summary-row"><dt>Prospect</dt><dd id="summary-prospect">Aucun</dd></div>
@@ -481,17 +488,18 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
       </main>
     </div>
 
-    <footer class="footer"><div class="footer-label" id="footer-label">Étape 1 sur 6 · Cadrage</div><div class="footer-actions"><button class="btn ghost" id="back">Précédent</button><button class="btn primary" id="next">Suivant</button></div></footer>
+    <footer class="footer"><div class="footer-label" id="footer-label">Étape 1 sur 7 · Cadrage</div><div class="footer-actions"><button class="btn ghost" id="back">Précédent</button><button class="btn primary" id="next">Suivant</button></div></footer>
 
     <script>
       (function () {
-        var order = ["cadrage", "collecte", "alimentation", "publication", "ia", "validation"];
+        var order = ["cadrage", "collecte", "alimentation", "publication", "ia", "restrictions", "validation"];
         var pages = {
           cadrage: ["Cadrage", "Définir l’identité du chatbot et sa mission avant de choisir ses contenus."],
           collecte: ["Collecte", "Sélectionner la fiche de collecte à remplir lorsque l’utilisateur veut recueillir des informations."],
           alimentation: ["Alimentation", "Les sources que le chatbot consulte, avec leurs paramètres de recherche."],
           publication: ["Publication", "Choisir les canaux et l’apparence une fois le contenu défini."],
           ia: ["IA & secours", "Configurer les modèles IA et le comportement de secours."],
+          restrictions: ["Restrictions et quotas", "Définir les limites de fiches, de tokens IA et leur réinitialisation."],
           validation: ["Validation", "Vérifier la cohérence puis créer le chatbot."]
         };
         var mission = "hybrid";
