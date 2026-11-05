@@ -106,6 +106,11 @@
       .btn.danger { background: var(--paper); border-color: var(--danger-soft); color: var(--danger); }
       .btn.small { font-size: 11px; padding: 7px 9px; }
       .btn:disabled { cursor: not-allowed; opacity: .45; }
+      .help { display: inline-flex; margin-left: 6px; position: relative; vertical-align: middle; }
+      .help > button { align-items: center; background: var(--cream); border: 1px solid var(--line); border-radius: 50%; color: var(--green); display: inline-flex; font-size: 10px; font-weight: 800; height: 19px; justify-content: center; line-height: 1; padding: 0; width: 19px; }
+      .help > button:hover, .help > button:focus { background: var(--mint); border-color: var(--green); outline: none; }
+      .help-bubble { background: var(--green-deep); border-radius: 10px; box-shadow: 0 10px 28px rgb(0 53 40 / .24); color: #fff; display: none; font-size: 11px; font-weight: 500; left: 0; line-height: 1.45; max-width: min(340px, calc(100vw - 40px)); padding: 10px 12px; position: absolute; top: calc(100% + 8px); width: 340px; z-index: 20; }
+      .help:hover .help-bubble, .help:focus-within .help-bubble { display: block; }
       .badge { border-radius: var(--r-pill); display: inline-flex; font-size: 10px; font-weight: 800; letter-spacing: .02em; padding: 4px 8px; white-space: nowrap; }
       .badge.on { background: var(--success-soft); color: var(--success); }
       .badge.off { background: var(--cream); color: var(--muted); }
@@ -218,7 +223,10 @@
       }
       @media (max-width: 680px) {
         .card-head { align-items: stretch; flex-direction: column; }
-        .card-head > .btn { align-self: flex-start; }
+        .card-head > .btn, .card-head > .badge { align-self: flex-start; }
+        .help-center .help-bubble { left: 50%; transform: translateX(-50%); }
+        .help-left .help-bubble { left: 0; transform: none; }
+        .help-bubble { max-width: calc(100vw - 40px); width: min(300px, calc(100vw - 40px)); }
         .channel-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: visible; }
         .channel-tab { border-bottom: 1px solid var(--line); text-align: left; width: 100%; }
         .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -246,7 +254,7 @@
       <aside class="rail">
         <p class="rail-kicker">Parcours proposé</p>
         <ol class="steps" id="steps">
-          <li data-step-item="cadrage"><button class="step-btn active" data-step="cadrage"><span class="step-number">1</span><span class="step-copy"><strong>Cadrage</strong><small>Identité, mission, comportement</small></span></button></li>
+          <li data-step-item="cadrage"><button class="step-btn active" data-step="cadrage"><span class="step-number">1</span><span class="step-copy"><strong>Cadrage</strong><small>Identité, opération, comportement</small></span></button></li>
           <li data-step-item="collecte"><button class="step-btn" data-step="collecte"><span class="step-number">2</span><span class="step-copy"><strong>Collecte</strong><small>Choix de la fiche à remplir</small></span></button></li>
           <li data-step-item="alimentation"><button class="step-btn" data-step="alimentation"><span class="step-number">3</span><span class="step-copy"><strong>Alimentation</strong><small>Sources et contenus à consulter</small></span></button></li>
           <li data-step-item="publication"><button class="step-btn" data-step="publication"><span class="step-number">4</span><span class="step-copy"><strong>Publication</strong><small>Canaux et apparence</small></span></button></li>
@@ -258,7 +266,7 @@
 
       <main>
         <div class="page-head">
-          <div><p class="eyebrow" id="eyebrow">Étape 1 sur 7</p><h1 id="page-title">Cadrage</h1><p id="page-subtitle">Définir l’identité du chatbot et sa mission avant de choisir ses contenus.</p></div>
+          <div><p class="eyebrow" id="eyebrow">Étape 1 sur 7</p><h1 id="page-title">Cadrage</h1><p id="page-subtitle">Définir l’identité du chatbot et son opération avant de choisir ses contenus.</p></div>
           <div class="progress"><span id="progress-label">14 %</span><div class="progress-track"><span id="progress-fill"></span></div></div>
         </div>
 
@@ -286,19 +294,18 @@
             <div class="card-head"><div><h2>Identité</h2><p>Les informations visibles par l’utilisateur et l’équipe.</p></div><span class="badge info">Obligatoire</span></div>
             <div class="split" style="margin-top:16px">
               <label class="field">Libellé du chatbot (optionnel)<input type="text" placeholder="Ex. Salon IT, Stand, Campagne" maxlength="120" /></label>
-              <label class="field">Type de chatbot<select id="type-select"><option value="standard">Standard</option><option value="specifique">Spécifique à un prospect</option></select></label>
-              <label class="field hidden" id="prospect-field">Prospect rattaché *<select><option value="">— Choisir —</option><option>Rakoto Rajaona (rakoto@example.mg)</option><option>Narindra Rajaonarison (narindra@example.mg)</option></select><span class="hint">Identification : prospect lié au lien. Aucun formulaire de contact.</span></label>
+              <label class="field">Prospect cible<span class="help help-left"><button type="button" aria-label="Aide sur le prospect cible">?</button><span class="help-bubble" role="tooltip">Aucun prospect : chatbot standard. Un prospect : lien dédié à ce prospect, sans formulaire de contact.</span></span><select id="prospect-select"><option value="standard">Aucun prospect (standard)</option><option value="rakoto">Rakoto Rajaona (rakoto@example.mg)</option><option value="narindra">Narindra Rajaonarison (narindra@example.mg)</option></select></label>
             </div>
           </div>
 
           <div class="card card-pad">
-            <div class="card-head"><div><h2>Mission du chatbot *</h2><p>La mission est enregistrée avec le chatbot. En mode hybride, il peut informer ou collecter : la collecte est privilégiée lorsqu’une fiche est déjà en cours, ou lorsque le visiteur demande explicitement à la remplir.</p></div><span class="badge on" id="mission-badge">Hybride</span></div>
+            <div class="card-head"><div><h2>Opération *<span class="help help-center"><button type="button" aria-label="Aide sur l’opération">?</button><span class="help-bubble" role="tooltip">L’opération est enregistrée avec le chatbot. En mode hybride, il peut informer ou collecter : la collecte est privilégiée lorsqu’une fiche est déjà en cours, ou lorsque le visiteur demande explicitement à la remplir.</span></span></h2></div><span class="badge on" id="mission-badge">Hybride</span></div>
             <div class="checks-row" id="mission-checks">
               <label class="check"><input type="radio" name="mission" value="collect" /> Collecter des fiches</label>
               <label class="check"><input type="radio" name="mission" value="inform" /> Informer avec des sources</label>
               <label class="check"><input type="radio" name="mission" value="hybrid" checked /> Collecter et informer</label>
             </div>
-            <div class="callout" id="mission-explain"><strong>Hybride :</strong> étapes Collecte et Alimentation affichées. Le chatbot peut informer ou collecter ; la collecte est privilégiée si une fiche est déjà en cours ou si le visiteur demande explicitement à la remplir.</div>
+            <div class="callout" id="mission-explain"><strong>Hybride :</strong> étapes Collecte et Alimentation affichées.</div>
           </div>
 
           <div class="card card-pad">
@@ -469,8 +476,7 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
           <div class="card card-pad">
             <div class="card-head"><div><h2>Validation</h2><p>Un dernier contrôle avant de créer le chatbot.</p></div><span class="badge on">Cohérent</span></div>
             <dl class="summary" style="margin-top:16px">
-              <div class="summary-row"><dt>Type</dt><dd id="summary-type">Standard</dd></div>
-              <div class="summary-row"><dt>Prospect</dt><dd id="summary-prospect">Aucun</dd></div>
+              <div class="summary-row"><dt>Prospect cible</dt><dd id="summary-prospect">Aucun prospect (standard)</dd></div>
               <div class="summary-row"><dt>Comportement</dt><dd id="summary-behavior">Guidé (prompt généré)</dd></div>
               <div class="summary-row" id="summary-collect"><dt>Fiches</dt><dd>Fiche de qualification commerciale</dd></div>
               <div class="summary-row" id="summary-sources"><dt>Sources</dt><dd>Fiches existantes · Connaissances · Photos · Liens</dd></div>
@@ -482,7 +488,7 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
               <div class="summary-row"><dt>Quotas</dt><dd>Fiches illimitées · tokens illimités</dd></div>
               <div class="summary-row"><dt>Expiration</dt><dd>Sans expiration</dd></div>
             </dl>
-            <div class="success">Tout est cohérent : la mission, les fiches et les sources sont compatibles.</div>
+            <div class="success">Tout est cohérent : l’opération, les fiches et les sources sont compatibles.</div>
           </div>
         </section>
       </main>
@@ -494,7 +500,7 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
       (function () {
         var order = ["cadrage", "collecte", "alimentation", "publication", "ia", "restrictions", "validation"];
         var pages = {
-          cadrage: ["Cadrage", "Définir l’identité du chatbot et sa mission avant de choisir ses contenus."],
+          cadrage: ["Cadrage", "Définir l’identité du chatbot et son opération avant de choisir ses contenus."],
           collecte: ["Collecte", "Sélectionner la fiche de collecte à remplir lorsque l’utilisateur veut recueillir des informations."],
           alimentation: ["Alimentation", "Les sources que le chatbot consulte, avec leurs paramètres de recherche."],
           publication: ["Publication", "Choisir les canaux et l’apparence une fois le contenu défini."],
@@ -577,11 +583,9 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
         $("#add-guardrail").addEventListener("click", function () {
           var row = document.createElement("div"); row.className = "guardrail-row"; row.innerHTML = "<input type=\"text\" placeholder=\"Ex. Ne jamais promettre de prix ni de délai\" /><button class=\"btn danger small\" type=\"button\">Retirer</button>"; $("#guardrails").insertBefore(row, this); row.querySelector("button").addEventListener("click", function () { row.remove(); });
         });
-        $("#type-select").addEventListener("change", function (event) {
-          var specific = event.target.value === "specifique";
-          $("#prospect-field").classList.toggle("hidden", !specific);
-          $("#summary-type").textContent = specific ? "Spécifique à un prospect" : "Standard";
-          $("#summary-prospect").textContent = specific ? "— Choisir un prospect —" : "Aucun";
+        $("#prospect-select").addEventListener("change", function (event) {
+          var target = event.target.options[event.target.selectedIndex].textContent;
+          $("#summary-prospect").textContent = target;
         });
         $("#ai-open").addEventListener("click", function () { $("#ai-panel").classList.toggle("hidden"); });
         $("#crawl-toggle").addEventListener("click", function () { $("#crawl-fields").classList.toggle("hidden"); });
