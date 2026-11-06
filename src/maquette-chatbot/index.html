@@ -187,7 +187,12 @@
       .data-bulk { margin-top: 8px; }
       .added-list { display: grid; gap: 7px; list-style: none; margin: 12px 0 0; padding: 0; }
       .added-list li { align-items: center; background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-sm); display: flex; font-size: 11.5px; gap: 10px; justify-content: space-between; padding: 9px 10px; }
-      .add-menu { background: var(--cream); border: 1px dashed var(--line); border-radius: var(--r-sm); display: flex; gap: 8px; margin-top: 10px; padding: 10px; }
+      .add-action { position: relative; }
+      .add-menu { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-sm); box-shadow: 0 10px 26px rgb(0 53 40 / .18); display: flex; flex-direction: column; gap: 4px; min-width: 160px; padding: 6px; position: absolute; right: 0; top: calc(100% + 6px); z-index: 30; }
+      .add-menu .btn { justify-content: flex-start; text-align: left; width: 100%; }
+      .add-modal { align-items: center; background: rgb(0 35 28 / .42); display: flex; inset: 0; justify-content: center; padding: 16px; position: fixed; z-index: 80; }
+      .add-modal-card { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 24px 60px rgb(0 35 28 / .28); max-height: calc(100dvh - 32px); max-width: 520px; overflow: auto; padding: 18px; width: 100%; }
+      .add-modal-card h3 { color: var(--green-deep); font-size: 1rem; margin: 0 0 14px; }
       .add-form { background: var(--cream); border: 1px solid var(--line); border-radius: var(--r-sm); display: grid; gap: 9px; margin-top: 10px; padding: 12px; }
       .channel-toggles { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 12px; }
       .channel-tab { background: transparent; border: 0; border-bottom: 2px solid transparent; color: var(--muted); font-size: 11px; font-weight: 700; padding: 8px 2px; }
@@ -357,7 +362,7 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
 
         <section class="panel" data-panel="alimentation">
           <div class="card card-pad">
-            <div class="card-head"><div><h2>Sources d’information</h2><p>Sélectionnez les contenus que ce chatbot peut utiliser. Leur portée n’est jamais modifiée.</p></div><button class="btn ghost small" id="add-toggle">+ Ajouter un contenu</button></div>
+            <div class="card-head"><div><h2>Sources d’information</h2><p>Sélectionnez les contenus que ce chatbot peut utiliser. Leur portée n’est jamais modifiée.</p></div><div class="add-action"><button class="btn ghost small" id="add-toggle">+ Ajouter un contenu</button><div class="add-menu hidden" id="add-menu"><button class="btn ghost small" data-add="Connaissance">Connaissance</button><button class="btn ghost small" data-add="Photo">Photo</button><button class="btn ghost small" data-add="Lien">Lien</button></div></div></div>
             <div class="switch-row" style="margin-top:14px">
               <label class="switch-label"><input type="checkbox" checked /><span class="switch on"><span></span></span>Connaissances</label>
               <label class="switch-label"><input type="checkbox" checked /><span class="switch on"><span></span></span>Photos</label>
@@ -411,10 +416,9 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
               <div class="data-list"><label class="data-item"><input type="checkbox" checked /><span><strong>Page contact</strong><small>Formulaire de contact.</small></span><span class="badge info">Source</span></label><label class="data-item"><input type="checkbox" /><span><strong>Demande de devis</strong><small>Formulaire de devis.</small></span><span class="badge info">Source</span></label></div>
             </div>
    
-            <div class="add-menu hidden" id="add-menu"><button class="btn ghost small" data-add="Connaissance">Connaissance</button><button class="btn ghost small" data-add="Photo">Photo</button><button class="btn ghost small" data-add="Lien">Lien</button></div>
-            <div class="add-form hidden" id="add-connaissance" data-add-type="connaissances"><label class="field">Titre *<input type="text" maxlength="120" /></label><label class="field">Contenu *<textarea rows="3"></textarea></label><div class="tools"><button class="btn small" data-save-add="connaissances">Ajouter</button><button class="btn ghost small" type="button" data-cancel-add>Annuler</button></div></div>
+            <div class="add-modal hidden" id="add-modal"><div class="add-modal-card"><h3 id="add-modal-title">Ajouter un contenu</h3>            <div class="add-form hidden" id="add-connaissance" data-add-type="connaissances"><label class="field">Titre *<input type="text" maxlength="120" /></label><label class="field">Contenu *<textarea rows="3"></textarea></label><div class="tools"><button class="btn small" data-save-add="connaissances">Ajouter</button><button class="btn ghost small" type="button" data-cancel-add>Annuler</button></div></div>
             <div class="add-form hidden" id="add-lien" data-add-type="liens"><div class="split"><label class="field">Libellé *<input type="text" maxlength="120" /></label><label class="field">URL *<input type="url" placeholder="https://…" /></label></div><label class="field">Description<textarea rows="2"></textarea></label><div class="tools"><button class="btn small" data-save-add="liens">Ajouter</button><button class="btn ghost small" type="button" data-cancel-add>Annuler</button></div></div>
-            <div class="add-form hidden" id="add-photo" data-add-type="photos"><label class="field">Fichier image *<input type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/avif" /></label><label class="field">Libellé *<input type="text" maxlength="120" /></label><label class="field">Description<textarea rows="2"></textarea></label><div class="tools"><button class="btn small" data-save-add="photos">Ajouter</button><button class="btn ghost small" type="button" data-cancel-add>Annuler</button></div></div>
+            <div class="add-form hidden" id="add-photo" data-add-type="photos"><label class="field">Fichier image *<input type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/avif" /></label><label class="field">Libellé *<input type="text" maxlength="120" /></label><label class="field">Description<textarea rows="2"></textarea></label><div class="tools"><button class="btn small" data-save-add="photos">Ajouter</button><button class="btn ghost small" type="button" data-cancel-add>Annuler</button></div></div></div></div>
           </div>
 
         </section>
@@ -642,9 +646,11 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
             $("#add-connaissance").classList.toggle("hidden", button.dataset.add !== "Connaissance");
             $("#add-lien").classList.toggle("hidden", button.dataset.add !== "Lien");
             $("#add-photo").classList.toggle("hidden", button.dataset.add !== "Photo");
+            $("#add-modal-title").textContent = button.dataset.add === "Connaissance" ? "Ajouter une connaissance" : button.dataset.add === "Photo" ? "Ajouter une photo" : "Ajouter un lien";
+            $("#add-modal").classList.remove("hidden");
           });
         });
-        $$("[data-cancel-add]").forEach(function (button) { button.addEventListener("click", function () { button.closest(".add-form").classList.add("hidden"); }); });
+        $$("[data-cancel-add]").forEach(function (button) { button.addEventListener("click", function () { button.closest(".add-form").classList.add("hidden"); $("#add-modal").classList.add("hidden"); }); });
         $$("[data-save-add]").forEach(function (button) {
           button.addEventListener("click", function () {
             var type = button.dataset.saveAdd;
@@ -672,6 +678,7 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
             }
             form.classList.add("hidden");
             $("#add-menu").classList.add("hidden");
+            $("#add-modal").classList.add("hidden");
             var tab = document.querySelector("[data-library-tab='" + type + "']");
             if (tab) tab.click();
           });
