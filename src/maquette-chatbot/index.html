@@ -299,13 +299,13 @@
           </div>
 
           <div class="card card-pad">
-            <div class="card-head"><div><h2>Opération *<span class="help help-center"><button type="button" aria-label="Aide sur l’opération">?</button><span class="help-bubble" role="tooltip">L’opération est enregistrée avec le chatbot. En mode hybride, il peut informer ou collecter : la collecte est privilégiée lorsqu’une fiche est déjà en cours, ou lorsque le visiteur demande explicitement à la remplir.</span></span></h2></div><span class="badge on" id="mission-badge">Hybride</span></div>
+            <div class="card-head"><div><h2>Opération *<span class="help help-center"><button type="button" aria-label="Aide sur l’opération">?</button><span class="help-bubble" role="tooltip">L’opération est enregistrée avec le chatbot. En mode hybride, il peut informer ou collecter : la collecte est privilégiée lorsqu’une fiche est déjà en cours, ou lorsque le visiteur demande explicitement à la remplir.</span></span></h2></div><span class="badge on" id="mission-badge">Informer</span></div>
             <div class="checks-row" id="mission-checks">
               <label class="check"><input type="radio" name="mission" value="collect" /> Collecter des fiches</label>
               <label class="check"><input type="radio" name="mission" value="inform" /> Informer avec des sources</label>
               <label class="check"><input type="radio" name="mission" value="hybrid" checked /> Collecter et informer</label>
             </div>
-            <div class="callout" id="mission-explain"><strong>Hybride :</strong> étapes Collecte et Alimentation affichées.</div>
+            <div class="callout" id="mission-explain"><strong>Informer :</strong> étape Alimentation affichée, étape Collecte masquée.</div>
           </div>
 
           <div class="card card-pad">
@@ -508,7 +508,7 @@ Tu ne promets jamais de prix ni de délai.</pre></details>
           restrictions: ["Restrictions et quotas", "Définir les limites de fiches, de tokens IA et leur réinitialisation."],
           validation: ["Validation", "Vérifier la cohérence puis créer le chatbot."]
         };
-        var mission = "hybrid";
+        var mission = "inform";
         var current = "cadrage";
         var behavior = "guided";
         var missionText = {
