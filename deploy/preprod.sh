@@ -26,7 +26,7 @@ npm run build
 [[ -f "${ROOT}/dist/index.html" ]] || die "build incomplet: dist/index.html absent"
 
 install -d -m 755 "${WEB_ROOT}"
-rsync -a --delete "${ROOT}/dist/" "${WEB_ROOT}/"
+rsync -a --no-owner --no-group --delete "${ROOT}/dist/" "${WEB_ROOT}/"
 
 # Les liens de l'application doivent rester dans l'environnement preprod.
 find "${WEB_ROOT}" -type f \
