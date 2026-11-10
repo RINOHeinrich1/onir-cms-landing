@@ -21,8 +21,7 @@ git -C "${ROOT}" reset --hard origin/main
 
 cd "${ROOT}"
 npm ci --no-audit --no-fund
-npm run build
-
+PREPROD_APP_URL="${PREPROD_APP_URL}" npm run build
 [[ -f "${ROOT}/dist/index.html" ]] || die "build incomplet: dist/index.html absent"
 
 install -d -m 755 "${WEB_ROOT}"
