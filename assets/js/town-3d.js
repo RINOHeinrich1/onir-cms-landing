@@ -1078,7 +1078,7 @@ export function createTown3D({ container, sponsors, availableSlots, zoneTitle, z
       new THREE.MeshStandardMaterial({ color: "#a97745", roughness: 0.9, flatShading: true })
     );
     bench.position.set(scaleX(x), 0.55, scaleZ(y));
-    bench.rotation.y = angle;
+    bench.rotation.y = Math.round(angle / (Math.PI / 2)) * (Math.PI / 2);
     bench.castShadow = true;
     scene.add(bench);
     const back = new THREE.Mesh(new THREE.BoxGeometry(3.6, 0.8, 0.1), bench.material);
