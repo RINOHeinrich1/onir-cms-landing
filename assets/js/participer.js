@@ -166,9 +166,10 @@
           return;
         }
         slot = null;
+        var autoZoneId = partner.nature === "particulier" ? "sud" : "nord";
         slots.some(function (candidate) {
           if (
-            candidate.zoneId === centerZoneId ||
+            candidate.zoneId !== autoZoneId ||
             used[candidate.id] ||
             !slotAllowed(candidate, partner)
           ) {
@@ -244,11 +245,20 @@
     };
   }
 
+  function zoneBySlug(slug) {
+    if (!slug) return null;
+    for (var i = 0; i < zones.length; i += 1) {
+      if (zones[i].slug === slug || zones[i].id === slug) return zones[i];
+    }
+    return null;
+  }
+
   function resolveInitialZone() {
     var hash = window.location.hash.replace(/^#/, "");
     var params = new URLSearchParams(hash);
     var requested = params.get("zone");
-    return requested && zoneById[requested] ? requested : (layout.centerZoneId || "centre");
+    var zone = zoneBySlug(requested);
+    return zone ? zone.id : (layout.centerZoneId || "centre");
   }
 
   function zoneTitle(zoneId) {
@@ -275,7 +285,7 @@
       var target = targetId ? zoneById[targetId] : null;
       if (!target) return "";
       return '<button type="button" class="zone-nav-btn zone-nav-' + direction + '" data-zone-go="' + esc(target.id) + '" aria-label="Aller vers ' + esc(target.title) + '">' +
-        "<span>" + entry[1] + "</span><em>" + esc(target.title) + "</em></button>";
+        "<span>" + entry[1] + "</span><em>" + esc(target.navTitle || target.title) + "</em></button>";
     }).join("");
   }
 
@@ -288,7 +298,8 @@
     updateTownSummary();
     if (updateHash !== false) {
       try {
-        history.replaceState(null, "", "#zone=" + encodeURIComponent(zoneId));
+        var zone = zoneById[zoneId];
+        history.replaceState(null, "", "#zone=" + encodeURIComponent((zone && zone.slug) || zoneId));
       } catch (error) {
         /* URL non modifiable */
       }
