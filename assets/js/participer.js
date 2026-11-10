@@ -104,12 +104,15 @@
 
   function partnerToSponsor(partner, slot) {
     var person = partner.nature === "particulier" || partner.kind === "person";
+    var category = partner.categorie || (person ? "particulier" : "organisation");
     var name = partnerDisplayName(partner);
     var types = partnerTypes(partner);
-    var typeLabelText = partner.typeLabel || (person ? "Personne physique" : "Entreprise");
+    var typeLabelText = partner.typeLabel || (person ? "Personne physique" : category === "institution" ? "Institution" : "Entreprise");
     var description = partner.description || (person
       ? "Particulier partenaire de la Ville ONIR."
-      : "Organisation partenaire de la Ville ONIR.");
+      : category === "institution"
+        ? "Institution partenaire de la Ville ONIR."
+        : "Organisation partenaire de la Ville ONIR.");
     var url = partner.siteUrl || partner.chatbotUrl || partner.url || "";
     return {
       id: String(partner.id || partner.ficheId || slot.id),
@@ -179,6 +182,8 @@
         placed.push(partnerToSponsor(partner, premiumSlot));
         return;
       }
+      var category = partner.categorie || (partner.nature === "particulier" ? "particulier" : "organisation");
+      var autoZoneId = category === "institution" ? "ouest" : category === "particulier" ? "sud" : "nord";
       var slot = requested;
       if (
         !slot ||
@@ -190,7 +195,6 @@
           return;
         }
         slot = null;
-        var autoZoneId = partner.nature === "particulier" ? "sud" : "nord";
         slots.some(function (candidate) {
           if (
             candidate.zoneId !== autoZoneId ||
