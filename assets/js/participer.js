@@ -89,7 +89,7 @@
       description: "La plateforme ONIR-CMS : le cœur ouvert de la ville, ses parcours, ses liens et son écosystème.",
       url: "https://onir-cms.tech/",
       linkLabel: "Ouvrir ONIR-CMS",
-      accent: slot.accent || "#f08000",
+      accent: slot.accent || "#0b5d45",
       building: slot.building || "tower",
       size: slot.size || "lg",
       district: slot.zoneId || "centre",
@@ -122,12 +122,12 @@
       description: description,
       url: url,
       linkLabel: partner.linkLabel || (url ? "Ouvrir le site" : "Voir la fiche"),
-      accent: slot.accent || (person ? "#c96d3b" : "#2f7d63"),
+      accent: slot.accent || (person ? "#2f7d63" : "#0b5d45"),
       building: slot.building,
       size: slot.size,
       district: slot.zoneId,
       zoneId: slot.zoneId,
-      premium: slot.premium === true,
+      premium: partner.premium === true || slot.premium === true,
       x: slot.x,
       y: slot.y,
       slotId: slot.id,
@@ -155,6 +155,30 @@
       var requestedSlot = String(partner.mapSlotId || partner.slotId || "").trim();
       var requested = requestedSlot === "" ? null : slotById[requestedSlot];
       var requestedCenter = requested && requested.zoneId === centerZoneId;
+      if (partner.premium === true) {
+        var premiumSlot = requestedCenter && !used[requested.id] && slotAllowed(requested, partner) ? requested : null;
+        if (!premiumSlot) {
+          slots.some(function (candidate) {
+            if (
+              candidate.zoneId !== centerZoneId ||
+              candidate.reserved ||
+              used[candidate.id] ||
+              !slotAllowed(candidate, partner)
+            ) {
+              return false;
+            }
+            premiumSlot = candidate;
+            return true;
+          });
+        }
+        if (!premiumSlot) {
+          unplaced.push(partner);
+          return;
+        }
+        used[premiumSlot.id] = true;
+        placed.push(partnerToSponsor(partner, premiumSlot));
+        return;
+      }
       var slot = requested;
       if (
         !slot ||
@@ -433,8 +457,8 @@
     return (
       '<g transform="translate(' + x + " " + y + ') scale(' + s + ')" aria-hidden="true">' +
       '<ellipse cx="0" cy="0" rx="24" ry="9" fill="var(--map-park-deep)"/>' +
-      '<circle cx="-14" cy="-2" r="3" fill="#e68b56"/><circle cx="-5" cy="2" r="2.5" fill="#f3c35a"/>' +
-      '<circle cx="5" cy="-2" r="3" fill="#d86f55"/><circle cx="14" cy="2" r="2.5" fill="#f0a34c"/>' +
+      '<circle cx="-14" cy="-2" r="3" fill="#b3263a"/><circle cx="-5" cy="2" r="2.5" fill="#f7f1e2"/>' +
+      '<circle cx="5" cy="-2" r="3" fill="#2f7d63"/><circle cx="14" cy="2" r="2.5" fill="#8fb3b1"/>' +
       '<path d="M-18 3c3-4 5-4 8 0M2 5c3-4 5-4 8 0" fill="none" stroke="var(--map-tree-dark)" stroke-width="1.2" stroke-linecap="round"/>' +
       "</g>"
     );
@@ -447,8 +471,8 @@
       '<ellipse cx="0" cy="2" rx="8" ry="3" fill="var(--map-shadow)" opacity=".35"/>' +
       '<path d="M0 0V-38" stroke="#63746a" stroke-width="3" stroke-linecap="round"/>' +
       '<path d="M0-38h12" stroke="#63746a" stroke-width="2.5" stroke-linecap="round"/>' +
-      '<circle cx="13" cy="-38" r="9" fill="#ffc46b" opacity=".16"/>' +
-      '<circle cx="13" cy="-38" r="4" fill="#ffc46b" stroke="#a96c22" stroke-width=".8"/>' +
+      '<circle cx="13" cy="-38" r="9" fill="#d9e6d2" opacity=".16"/>' +
+      '<circle cx="13" cy="-38" r="4" fill="#d9e6d2" stroke="#5b8b66" stroke-width=".8"/>' +
       "</g>"
     );
   }
@@ -485,7 +509,7 @@
       '<g transform="translate(' + x + " " + y + ')" aria-hidden="true">' +
       '<circle r="27" fill="var(--map-paper)" stroke="var(--map-road-line)" stroke-width="1.2" opacity=".82"/>' +
       '<circle r="21" fill="none" stroke="var(--map-road-line)" stroke-width=".7" stroke-dasharray="2 4" opacity=".7"/>' +
-      '<path d="M0 -17 6 1 0 -3 -6 1Z" fill="#f08000"/>' +
+      '<path d="M0 -17 6 1 0 -3 -6 1Z" fill="#b3263a"/>' +
       '<path d="M0 15 4 3 0 5 -4 3Z" fill="var(--map-muted)" opacity=".55"/>' +
       '<text x="0" y="22" text-anchor="middle" fill="var(--map-muted)" font-size="8" font-weight="800" letter-spacing=".12em">N</text>' +
       "</g>"
@@ -653,6 +677,7 @@
   function towerArt(sponsor, w, h) {
     var half = w / 2;
     var accent = sponsor.accent;
+    var panelColor = sponsor.platform ? "#0b5d45" : accent;
     var bodyH = h - 14;
     var floor = bodyH / 3;
     var art =
@@ -688,12 +713,16 @@
       '<rect x="-27" y="' + (-bodyH - 34) + '" width="28" height="9" fill="#8fb3b1" stroke="#4d5b5d" stroke-width=".8"/>' +
       '<path d="M' + (-half + 12) + " " + (-bodyH - 12) + "h" + (w - 24) + '" stroke="#4a4d4c" stroke-width="1.4" opacity=".7"/>' +
       '<path d="M' + (-half + 20) + " " + (-bodyH - 12) + "v-9M" + (half - 20) + " " + (-bodyH - 12) + "v-9" + '" stroke="#5f625f" stroke-width="1"/>' +
-      '<rect x="-48" y="' + (-bodyH + 12) + '" width="96" height="15" rx="5" fill="' + accent + '"/>' +
+      '<rect x="-48" y="' + (-bodyH + 12) + '" width="96" height="15" rx="5" fill="' + panelColor + '"/>' +
       '<text x="0" y="' + (-bodyH + 23) + '" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="800" letter-spacing=".1em">ONIR-CMS</text>' +
       '<rect x="' + (-half + 28) + '" y="-8" width="16" height="8" rx="1" fill="#8b5a37" opacity=".8"/>' +
       '<rect x="' + (half - 44) + '" y="-8" width="16" height="8" rx="1" fill="#8b5a37" opacity=".8"/>' +
-      '<path d="M' + (half - 4) + ' -112V-141" stroke="#2b3033" stroke-width="2"/>' +
-      '<path d="M' + (half - 4) + ' -141h27l-7 7 7 7h-27z" fill="' + accent + '"/>' +
+      '<path d="M' + (half - 4) + ' -112V-144" stroke="#2b3033" stroke-width="2"/>' +
+      '<g transform="translate(' + (half - 4) + ' -144)">' +
+      '<rect x="0" y="0" width="9" height="18" fill="#f7f1e2"/>' +
+      '<rect x="9" y="0" width="20" height="9" fill="#c8102e"/>' +
+      '<rect x="9" y="9" width="20" height="9" fill="#1f7a4d"/>' +
+      "</g>" +
       mapBush(-half - 16, 0, 0.58) +
       mapBush(half + 16, 0, 0.52) +
       mapBush(-half + 8, -4, 0.38) +
@@ -738,9 +767,9 @@
     var accent = slot.accent || "#2f7d63";
     var premium = slot.premium === true;
     var label = premium ? "Place premium" : "Place disponible";
-    var boardFill = premium ? "#6b3708" : "#063d2e";
-    var iconColor = premium ? "#f0a23c" : accent;
-    var textColor = premium ? "#fff4d8" : "#fff8e8";
+    var boardFill = "#0b5d45";
+    var iconColor = premium ? "#c8102e" : accent;
+    var textColor = "#fff8e8";
     return (
       '<g class="empty-plot available-plot' + (premium ? " premium-plot" : "") + '" data-empty-plot data-slot-id="' + esc(slot.id) + '" tabindex="0" role="button" aria-label="' + label + ' — devenir sponsor" transform="translate(' + slot.x + " " + slot.y + ')">' +
       "<title>" + label + "</title>" +
@@ -975,6 +1004,7 @@
       "</div>" +
       "<p>" + esc(sponsor.description) + "</p>" +
       '<div class="sponsor-tags">' +
+      (sponsor.premium ? '<span class="is-premium">Premium</span>' : "") +
       sponsor.sponsorship
         .map(function (item) {
           return "<span>" + esc(item) + "</span>";
@@ -1017,7 +1047,7 @@
     if (!hover) return;
     hover.innerHTML =
       '<span class="map-hover-avatar" style="' + accentStyle(sponsor) + '">' + esc(sponsor.initials) + "</span>" +
-      "<span><strong>" + esc(sponsor.name) + "</strong><span>" + esc(sponsor.typeLabel) + " · " + esc(sponsor.sponsorship.join(", ")) + "</span><em>" +
+      "<span><strong>" + esc(sponsor.name) + (sponsor.premium ? ' <span class="premium-badge">Premium</span>' : "") + "</strong><span>" + esc(sponsor.typeLabel) + " · " + esc(sponsor.sponsorship.join(", ")) + "</span><em>" +
       (sponsor.url ? "Ouvrir le site" : "Voir la fiche") +
       " →</em></span>";
     hover.classList.add("is-visible");

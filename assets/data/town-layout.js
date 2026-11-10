@@ -55,7 +55,7 @@
         y: 382,
         building: "tower",
         size: "lg",
-        accent: "#f08000",
+        accent: "#0b5d45",
         allowedNatures: ["platform"],
         reserved: true
       },
@@ -66,7 +66,7 @@
         y: 300,
         building: "workshop",
         size: "sm",
-        accent: "#c77819",
+        accent: "#0b5d45",
         allowedNatures: ["entreprise"],
         premium: true
       },
@@ -77,7 +77,7 @@
         y: 300,
         building: "workshop",
         size: "sm",
-        accent: "#c77819",
+        accent: "#0b5d45",
         allowedNatures: ["entreprise"],
         premium: true
       },
@@ -88,7 +88,7 @@
         y: 470,
         building: "workshop",
         size: "sm",
-        accent: "#c77819",
+        accent: "#0b5d45",
         allowedNatures: ["entreprise"],
         premium: true
       },
@@ -99,7 +99,7 @@
         y: 470,
         building: "workshop",
         size: "sm",
-        accent: "#c77819",
+        accent: "#0b5d45",
         allowedNatures: ["entreprise"],
         premium: true
       },
@@ -110,7 +110,7 @@
         y: 125,
         building: "workshop",
         size: "sm",
-        accent: "#c77819",
+        accent: "#0b5d45",
         allowedNatures: ["entreprise"],
         premium: true
       },
@@ -121,7 +121,7 @@
         y: 125,
         building: "workshop",
         size: "sm",
-        accent: "#c77819",
+        accent: "#0b5d45",
         allowedNatures: ["entreprise"],
         premium: true
       },
@@ -132,7 +132,7 @@
         y: 635,
         building: "workshop",
         size: "sm",
-        accent: "#c77819",
+        accent: "#0b5d45",
         allowedNatures: ["entreprise"],
         premium: true
       },
@@ -143,7 +143,7 @@
         y: 635,
         building: "workshop",
         size: "sm",
-        accent: "#c77819",
+        accent: "#0b5d45",
         allowedNatures: ["entreprise"],
         premium: true
       },
@@ -174,7 +174,7 @@
         y: 420,
         building: "workshop",
         size: "sm",
-        accent: "#c96d3b",
+        accent: "#b3263a",
         allowedNatures: ["entreprise"]
       },
       {
@@ -184,7 +184,7 @@
         y: 570,
         building: "workshop",
         size: "md",
-        accent: "#8a6b2f",
+        accent: "#4b6b3a",
         allowedNatures: ["entreprise"]
       },
       {
@@ -224,7 +224,7 @@
         y: 420,
         building: "workshop",
         size: "sm",
-        accent: "#c96d3b",
+        accent: "#b3263a",
         allowedNatures: ["entreprise"]
       },
       {
@@ -234,7 +234,7 @@
         y: 570,
         building: "workshop",
         size: "sm",
-        accent: "#8a6b2f",
+        accent: "#4b6b3a",
         allowedNatures: ["entreprise"]
       },
       {
@@ -254,7 +254,7 @@
         y: 180,
         building: "workshop",
         size: "md",
-        accent: "#f08000",
+        accent: "#0b5d45",
         allowedNatures: ["entreprise"]
       },
       {
@@ -294,7 +294,7 @@
         y: 180,
         building: "workshop",
         size: "sm",
-        accent: "#8a6b2f",
+        accent: "#4b6b3a",
         allowedNatures: ["entreprise"]
       },
       {
@@ -304,7 +304,7 @@
         y: 580,
         building: "workshop",
         size: "sm",
-        accent: "#c96d3b",
+        accent: "#b3263a",
         allowedNatures: ["entreprise"]
       },
       {
@@ -344,7 +344,7 @@
         y: 580,
         building: "workshop",
         size: "sm",
-        accent: "#8a6b2f",
+        accent: "#4b6b3a",
         allowedNatures: ["entreprise"]
       },
       {
@@ -354,7 +354,7 @@
         y: 160,
         building: "house",
         size: "sm",
-        accent: "#c96d3b",
+        accent: "#b3263a",
         allowedNatures: ["particulier"]
       },
       {
@@ -374,7 +374,7 @@
         y: 160,
         building: "house",
         size: "sm",
-        accent: "#8a6b2f",
+        accent: "#4b6b3a",
         allowedNatures: ["particulier"]
       },
       {
@@ -404,7 +404,7 @@
         y: 360,
         building: "house",
         size: "sm",
-        accent: "#c96d3b",
+        accent: "#b3263a",
         allowedNatures: ["particulier"]
       },
       {
@@ -424,7 +424,7 @@
         y: 360,
         building: "house",
         size: "sm",
-        accent: "#8a6b2f",
+        accent: "#4b6b3a",
         allowedNatures: ["particulier"]
       },
       {
@@ -454,7 +454,7 @@
         y: 560,
         building: "house",
         size: "sm",
-        accent: "#c96d3b",
+        accent: "#b3263a",
         allowedNatures: ["particulier"]
       },
       {
@@ -494,7 +494,7 @@
         y: 180,
         building: "workshop",
         size: "sm",
-        accent: "#8a6b2f",
+        accent: "#4b6b3a",
         allowedNatures: ["entreprise"]
       },
       {
@@ -504,7 +504,7 @@
         y: 180,
         building: "workshop",
         size: "sm",
-        accent: "#c96d3b",
+        accent: "#b3263a",
         allowedNatures: ["entreprise"]
       },
       {
@@ -544,7 +544,7 @@
         y: 580,
         building: "workshop",
         size: "sm",
-        accent: "#8a6b2f",
+        accent: "#4b6b3a",
         allowedNatures: ["entreprise"]
       },
       {
@@ -554,7 +554,7 @@
         y: 580,
         building: "workshop",
         size: "sm",
-        accent: "#c96d3b",
+        accent: "#b3263a",
         allowedNatures: ["entreprise"]
       },
       {
