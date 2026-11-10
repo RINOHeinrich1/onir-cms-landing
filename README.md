@@ -42,7 +42,7 @@ La page `/participer/` charge les partenaires publiés depuis
 `https://partner-api.onir-cms.tech/partenaires`, puis les place dans le catalogue
 `assets/data/town-layout.js` (5 zones : Centre, Organisations, Partenaires technologiques, Particuliers, Institutions).
 
-- le Centre est une zone premium limitée à 4 partenaires + ONIR-CMS ;
+- le Centre est une zone premium limitée à 8 partenaires + ONIR-CMS, soit 9 emplacements ;
 - les zones périphériques absorbent la capacité (10 à 12 places) ;
 - une seule zone est visible à la fois, avec des flèches directionnelles ;
 - `mapSlotId` (optionnel, API) force un emplacement ; une place centrale doit être

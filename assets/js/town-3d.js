@@ -872,8 +872,9 @@ function createBuildingLabel(sponsor) {
   const sprite = new THREE.Sprite(material);
   const width = Math.max(12, Math.min(26, text.length * 0.68 + 5));
   sprite.scale.set(width, width / 4, 1);
-  const labelY = sponsor.building === "tower" ? 18.2 : sponsor.building === "house" ? 8.4 : 13.6;
-  sprite.position.set(0, labelY, 0);
+  const labelY = sponsor.building === "tower" ? 21.2 : sponsor.building === "house" ? 9 : 14.4;
+  const sideOffset = sponsor.zoneId === "centre" && !sponsor.platform ? (sponsor.x < 600 ? -10 : 10) : 0;
+  sprite.position.set(sideOffset, labelY, 0);
   sprite.renderOrder = 4;
   return sprite;
 }
