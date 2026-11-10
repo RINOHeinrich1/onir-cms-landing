@@ -21,7 +21,8 @@ git -C "${ROOT}" reset --hard origin/main
 
 cd "${ROOT}"
 npm ci --no-audit --no-fund
-PREPROD_APP_URL="${PREPROD_APP_URL}" PREPROD_PARTNER_API_URL="${PREPROD_PARTNER_API_URL:-https://preprod-partner-api.onir-cms.tech/partenaires}" npm run build
+LANDING_PARTNER_API_URL="${LANDING_PARTNER_API_URL:-https://preprod-partner-api.onir-cms.tech/partenaires}"
+PREPROD_APP_URL="${PREPROD_APP_URL}" PREPROD_PARTNER_API_URL="${LANDING_PARTNER_API_URL}" npm run build
 [[ -f "${ROOT}/dist/index.html" ]] || die "build incomplet: dist/index.html absent"
 
 install -d -m 755 "${WEB_ROOT}"
@@ -43,6 +44,9 @@ if grep -Rq "https://cms-backoffice.onirtech.com" "${WEB_ROOT}"; then
 fi
 if grep -Rq "https://magic-link.onir-cms.tech" "${WEB_ROOT}"; then
   die "des liens magic-link de production subsistent dans la landing preprod"
+fi
+if grep -Rq "https://partner-api.onir-cms.tech" "${WEB_ROOT}"; then
+  die "des liens API partenaire de production subsistent dans la landing preprod"
 fi
 
 printf 'Landing preprod synchronisée.\n'
