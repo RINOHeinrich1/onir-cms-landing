@@ -104,6 +104,50 @@
         premium: true
       },
       {
+        id: "centre-06",
+        zoneId: "centre",
+        x: 380,
+        y: 125,
+        building: "workshop",
+        size: "sm",
+        accent: "#c77819",
+        allowedNatures: ["entreprise"],
+        premium: true
+      },
+      {
+        id: "centre-07",
+        zoneId: "centre",
+        x: 820,
+        y: 125,
+        building: "workshop",
+        size: "sm",
+        accent: "#c77819",
+        allowedNatures: ["entreprise"],
+        premium: true
+      },
+      {
+        id: "centre-08",
+        zoneId: "centre",
+        x: 380,
+        y: 635,
+        building: "workshop",
+        size: "sm",
+        accent: "#c77819",
+        allowedNatures: ["entreprise"],
+        premium: true
+      },
+      {
+        id: "centre-09",
+        zoneId: "centre",
+        x: 820,
+        y: 635,
+        building: "workshop",
+        size: "sm",
+        accent: "#c77819",
+        allowedNatures: ["entreprise"],
+        premium: true
+      },
+      {
         id: "nord-01",
         zoneId: "nord",
         x: 300,
