@@ -10,6 +10,7 @@ export default {
   login: "https://magic-panel.onir-cms.tech/login",
   partnerChat:
     "https://magic-link.onir-cms.tech/l/PRoc__QYCoD6781oNeRruH_LEkZ5wmK7",
+  partnerApi: "https://partner-api.onir-cms.tech/partenaires",
   whatsappUrl: "https://wa.me/261349368233",
   whatsappNumber: "+261349368233",
   contactEmail: "contact@onir-cms.tech",

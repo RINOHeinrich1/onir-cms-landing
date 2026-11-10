@@ -20,7 +20,8 @@
     "legend": [
       "Bâtiment : organisation",
       "Maison : particulier",
-      "Emplacement libre"
+      "Emplacement libre",
+      "Pancarte : place disponible"
     ],
     "runtimeNotice": ""
   },

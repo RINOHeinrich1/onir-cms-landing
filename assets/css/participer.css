@@ -876,12 +876,54 @@
   fill: rgb(23 61 45 / 0.35);
 }
 
+.available-plot .available-sign {
+  pointer-events: none;
+}
+
+.available-plot .available-sign rect {
+  filter: drop-shadow(0 2px 2px rgb(49 45 36 / 0.18));
+}
+
+.available-plot .available-sign-title {
+  fill: var(--site-ink);
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-anchor: middle;
+}
+
+.available-plot .plot-outline {
+  fill: rgb(255 253 246 / 0.18);
+}
+
+:root[data-theme="dark"] .available-plot .plot-outline {
+  fill: rgb(23 61 45 / 0.2);
+}
+
 .empty-plot text {
   fill: var(--site-muted);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.05em;
   text-anchor: middle;
+}
+
+.town-summary {
+  margin-right: auto;
+  color: var(--site-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.town-status {
+  margin: 0.7rem 1rem 0;
+  color: var(--site-muted);
+  font-size: 0.78rem;
+}
+
+.town-status[hidden] {
+  display: none;
 }
 
 /* Annuaire. */

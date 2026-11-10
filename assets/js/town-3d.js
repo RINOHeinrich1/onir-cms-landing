@@ -753,7 +753,43 @@ function createFountain() {
   return group;
 }
 
-export function createTown3D({ container, sponsors, onOpen, onHover }) {
+function createAvailableSign(slot) {
+  const group = new THREE.Group();
+  const accent = slot.accent || "#2f7d63";
+  const metal = new THREE.MeshStandardMaterial({ color: "#5d6e65", roughness: 0.7, metalness: 0.25 });
+  const panelMat = new THREE.MeshStandardMaterial({ color: accent, roughness: 0.75, metalness: 0.02, flatShading: true });
+  const post = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.14, 2.8, 6), metal);
+  post.position.y = 1.4;
+  post.castShadow = true;
+  group.add(post);
+
+  const board = new THREE.Mesh(new THREE.BoxGeometry(4.2, 1.55, 0.18), panelMat);
+  board.position.y = 3.05;
+  board.castShadow = true;
+  group.add(board);
+
+  const texture = makeSignTexture("LIBRE", accent);
+  const face = new THREE.Mesh(
+    new THREE.PlaneGeometry(3.7, 1.1),
+    new THREE.MeshBasicMaterial({ map: texture, transparent: true })
+  );
+  face.position.set(0, 3.05, 0.1);
+  group.add(face);
+
+  const plusMat = new THREE.MeshBasicMaterial({ color: "#fff8e8" });
+  const plusA = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.1, 0.05), plusMat);
+  plusA.position.set(0, 2.15, 0.2);
+  group.add(plusA);
+  const plusB = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.7, 0.05), plusMat);
+  plusB.position.set(0, 2.15, 0.2);
+  group.add(plusB);
+
+  group.position.set(scaleX(slot.x), 0, scaleZ(slot.y));
+  group.rotation.y = slot.x < 600 ? 0.18 : -0.18;
+  return group;
+}
+
+export function createTown3D({ container, sponsors, availableSlots, onOpen, onHover }) {
   const isMobile = window.matchMedia("(max-width: 720px)").matches;
   const isDark = document.documentElement.dataset.theme === "dark";
   const skyColor = isDark ? "#0b2b21" : "#eef4e8";
@@ -863,19 +899,13 @@ export function createTown3D({ container, sponsors, onOpen, onHover }) {
     register(group, sponsor);
   }
 
-  const emptyMat = new THREE.MeshBasicMaterial({ color: "#f08000", transparent: true, opacity: 0.16, side: THREE.DoubleSide });
-  for (const [x, y] of [[420, 300], [860, 300]]) {
-    const pad = new THREE.Mesh(new THREE.PlaneGeometry(7.4, 5.4), emptyMat);
+  const emptyMat = new THREE.MeshBasicMaterial({ color: "#f08000", transparent: true, opacity: 0.12, side: THREE.DoubleSide });
+  for (const slot of availableSlots || []) {
+    const pad = new THREE.Mesh(new THREE.PlaneGeometry(6.4, 4.8), emptyMat);
     pad.rotation.x = -Math.PI / 2;
-    pad.position.set(scaleX(x), 0.055, scaleZ(y));
+    pad.position.set(scaleX(slot.x), 0.055, scaleZ(slot.y));
     scene.add(pad);
-    const crossMat = new THREE.MeshBasicMaterial({ color: "#c77819", transparent: true, opacity: 0.7 });
-    const crossA = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.06, 0.18), crossMat);
-    crossA.position.set(scaleX(x), 0.09, scaleZ(y));
-    scene.add(crossA);
-    const crossB = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.06, 2.4), crossMat);
-    crossB.position.set(scaleX(x), 0.09, scaleZ(y));
-    scene.add(crossB);
+    scene.add(createAvailableSign(slot));
   }
 
   const treePositions = [

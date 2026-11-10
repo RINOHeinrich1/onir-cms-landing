@@ -1,11 +1,20 @@
 (function () {
   "use strict";
 
-  var sponsors = window.ONIR_SPONSORS || [];
+  var layout = window.ONIR_TOWN_LAYOUT || { centerSlotId: "centre-01", slots: [] };
+  var staticSponsors = window.ONIR_SPONSORS || [];
+  var sponsors = [];
   var byId = {};
-  sponsors.forEach(function (sponsor) {
-    byId[sponsor.id] = sponsor;
+  var slotById = {};
+  var town = null;
+  var townApiUrl = document.querySelector("[data-town-api-url]")?.getAttribute("data-town-api-url") || "";
+  var townSummary = document.querySelector("[data-town-summary]");
+  var townStatus = document.querySelector("[data-town-status]");
+
+  layout.slots.forEach(function (slot) {
+    slotById[slot.id] = slot;
   });
+
   var partnerChatUrl = document.querySelector("[data-partner-chat-url]")?.getAttribute("data-partner-chat-url") || "";
   var privacyUrl = document.querySelector("[data-privacy-url]")?.getAttribute("data-privacy-url") || "/confidentialite-site/";
 
@@ -39,6 +48,224 @@
       })
       .join("")
       .toUpperCase();
+  }
+
+  function partnerDisplayName(partner) {
+    var person = partner.nature === "particulier" || partner.kind === "person";
+    var nom = String(partner.nom || "").trim();
+    var prenom = String(partner.prenom || "").trim();
+    if (person) {
+      return [prenom, nom].filter(Boolean).join(" ") || partner.name || "Partenaire";
+    }
+    return nom || partner.name || [prenom, nom].filter(Boolean).join(" ") || "Partenaire";
+  }
+
+  function partnerTypes(partner) {
+    var types = partner.typesPartenariat || partner.sponsorship;
+    if (!Array.isArray(types)) return [];
+    return types.filter(function (entry) {
+      return typeof entry === "string" && entry.trim() !== "";
+    });
+  }
+
+  function platformPartner() {
+    var slot = slotById[layout.centerSlotId] || layout.slots[0] || {};
+    return {
+      id: "onir-cms",
+      name: "ONIR-CMS",
+      initials: "OC",
+      kind: "platform",
+      typeLabel: "Plateforme",
+      tier: "Centre",
+      sponsorship: ["Open source", "Communauté"],
+      description: "La plateforme ONIR-CMS : le cœur ouvert de la ville, ses parcours, ses liens et son écosystème.",
+      url: "https://onir-cms.tech/",
+      linkLabel: "Ouvrir ONIR-CMS",
+      accent: slot.accent || "#f08000",
+      building: slot.building || "tower",
+      size: slot.size || "lg",
+      district: slot.district || "centre",
+      x: slot.x || 600,
+      y: slot.y || 382,
+      slotId: slot.id || layout.centerSlotId,
+      demo: false,
+      platform: true
+    };
+  }
+
+  function partnerToSponsor(partner, slot) {
+    var person = partner.nature === "particulier" || partner.kind === "person";
+    var name = partnerDisplayName(partner);
+    var types = partnerTypes(partner);
+    var typeLabelText = partner.typeLabel || (person ? "Personne physique" : "Entreprise");
+    var description = partner.description || (person
+      ? "Particulier partenaire de la Ville ONIR."
+      : "Organisation partenaire de la Ville ONIR.");
+    var url = partner.siteUrl || partner.chatbotUrl || partner.url || "";
+    return {
+      id: String(partner.id || partner.ficheId || slot.id),
+      name: name,
+      initials: partner.initials || initials(name),
+      kind: person ? "person" : "organization",
+      typeLabel: typeLabelText,
+      tier: partner.tier || (types[0] || "Partenaire"),
+      sponsorship: types.length ? types : ["Soutien"],
+      description: description,
+      url: url,
+      linkLabel: partner.linkLabel || (url ? "Ouvrir le site" : "Voir la fiche"),
+      accent: slot.accent || (person ? "#c96d3b" : "#2f7d63"),
+      building: slot.building,
+      size: slot.size,
+      district: slot.district,
+      x: slot.x,
+      y: slot.y,
+      slotId: slot.id,
+      demo: partner.demo === true,
+      platform: false
+    };
+  }
+
+  function slotAllowed(slot, partner) {
+    var nature = partner.nature || (partner.kind === "person" ? "particulier" : "entreprise");
+    return Array.isArray(slot.allowedNatures) && slot.allowedNatures.indexOf(nature) !== -1;
+  }
+
+  function buildTown(partners, options) {
+    var used = {};
+    var slots = layout.slots.slice();
+    var centerSlotId = layout.centerSlotId;
+    var placed = [platformPartner()];
+    if (slotById[centerSlotId]) used[centerSlotId] = true;
+    var unplaced = [];
+
+    (partners || []).forEach(function (partner) {
+      if (!partner || partner.platform || partner.id === "onir-cms") return;
+      var requestedSlot = String(partner.mapSlotId || partner.slotId || "").trim();
+      var slot = slotById[requestedSlot];
+      if (
+        !slot ||
+        used[slot.id] ||
+        slot.id === centerSlotId ||
+        !slotAllowed(slot, partner)
+      ) {
+        slot = null;
+        slots.some(function (candidate) {
+          if (candidate.id === centerSlotId || used[candidate.id] || !slotAllowed(candidate, partner)) {
+            return false;
+          }
+          slot = candidate;
+          return true;
+        });
+      }
+      if (!slot) {
+        unplaced.push(partner);
+        return;
+      }
+      used[slot.id] = true;
+      placed.push(partnerToSponsor(partner, slot));
+    });
+
+    var slotStates = slots.map(function (slot) {
+      return { slot: slot, occupied: used[slot.id] === true };
+    });
+    var availableSlots = slotStates.filter(function (state) {
+      return !state.occupied;
+    }).map(function (state) {
+      return state.slot;
+    });
+    var nextById = {};
+    placed.forEach(function (sponsor) {
+      nextById[sponsor.id] = sponsor;
+    });
+
+    return {
+      sponsors: placed,
+      byId: nextById,
+      slots: slotStates,
+      availableSlots: availableSlots,
+      unplaced: unplaced,
+      demo: options && options.demo === true,
+      error: options && options.error === true,
+      stats: {
+        total: slots.length,
+        occupied: placed.length,
+        available: availableSlots.length
+      }
+    };
+  }
+
+  function demoPartnerList() {
+    return staticSponsors.filter(function (sponsor) {
+      return sponsor.id !== "onir-cms";
+    }).map(function (sponsor) {
+      return Object.assign({}, sponsor, {
+        nature: sponsor.kind === "person" ? "particulier" : "entreprise",
+        typesPartenariat: sponsor.sponsorship,
+        demo: true
+      });
+    });
+  }
+
+  function loadPartners() {
+    var demoMode = new URLSearchParams(window.location.search).get("demo") === "1";
+    if (demoMode) {
+      return Promise.resolve({ partners: demoPartnerList(), demo: true, error: false });
+    }
+    if (!townApiUrl) {
+      return Promise.resolve({ partners: [], demo: false, error: false });
+    }
+    var controller = typeof AbortController === "function" ? new AbortController() : null;
+    var timer = window.setTimeout(function () {
+      if (controller) controller.abort();
+    }, 4500);
+    return fetch(townApiUrl, {
+      method: "GET",
+      headers: { Accept: "application/json" },
+      signal: controller ? controller.signal : undefined
+    }).then(function (response) {
+      if (!response.ok) throw new Error("API partenaires " + response.status);
+      return response.json();
+    }).then(function (payload) {
+      return {
+        partners: Array.isArray(payload && payload.partenaires) ? payload.partenaires : [],
+        demo: false,
+        error: false
+      };
+    }).catch(function () {
+      return { partners: [], demo: false, error: true };
+    }).finally(function () {
+      window.clearTimeout(timer);
+    });
+  }
+
+  function updateTownSummary() {
+    if (!town) return;
+    var residents = town.sponsors.filter(function (sponsor) {
+      return !sponsor.platform;
+    }).length;
+    var available = town.availableSlots.length;
+    if (townSummary) {
+      townSummary.textContent =
+        residents + " habitant" + (residents > 1 ? "s" : "") +
+        " · " + available + " place" + (available > 1 ? "s" : "") + " disponible" + (available > 1 ? "s" : "");
+    }
+    if (townStatus) {
+      var messages = [];
+      if (town.demo) messages.push("Mode démonstration.");
+      if (town.error) messages.push("API partenaire indisponible : les places libres restent visibles.");
+      if (town.unplaced.length) {
+        messages.push(town.unplaced.length + " partenaire" + (town.unplaced.length > 1 ? "s" : "") + " en liste d’attente.");
+      }
+      townStatus.textContent = messages.join(" ");
+      townStatus.hidden = messages.length === 0;
+    }
+  }
+
+  function applyTown(nextTown) {
+    town = nextTown;
+    sponsors = nextTown.sponsors;
+    byId = nextTown.byId;
+    updateTownSummary();
   }
 
   function accentStyle(sponsor) {
@@ -386,27 +613,33 @@
     );
   }
 
-  function emptyPlotMarkup(x, y) {
+  function availablePlotMarkup(slot) {
+    var accent = slot.accent || "#2f7d63";
     return (
-      '<g class="empty-plot" data-empty-plot tabindex="0" role="button" aria-label="Emplacement libre — devenir sponsor" transform="translate(' + x + " " + y + ')">' +
-      "<title>Votre place</title>" +
+      '<g class="empty-plot available-plot" data-empty-plot data-slot-id="' + esc(slot.id) + '" tabindex="0" role="button" aria-label="Place disponible — devenir sponsor" transform="translate(' + slot.x + " " + slot.y + ')">' +
+      "<title>Place disponible</title>" +
       '<ellipse cx="0" cy="4" rx="42" ry="10" fill="var(--map-shadow)" opacity=".2"/>' +
-      '<rect x="-40" y="-29" width="80" height="58" rx="10" fill="url(#town-paper)" stroke="var(--map-muted)" stroke-width="1.4" stroke-dasharray="7 6" opacity=".82"/>' +
-      '<path d="M0 -14v28M-14 0h28" stroke="var(--map-ink)" stroke-width="2" stroke-linecap="round" opacity=".5"/>' +
-      '<text x="0" y="18" text-anchor="middle" class="map-label" font-size="11">Votre place</text>' +
-      '<text x="0" y="46" class="map-label map-label-small" text-anchor="middle">Devenir sponsor</text>' +
+      '<rect class="plot-outline" x="-40" y="-29" width="80" height="58" rx="10" fill="url(#town-paper)" stroke="' + accent + '" stroke-width="1.3" stroke-dasharray="7 6" opacity=".72"/>' +
+      '<g class="available-sign">' +
+      '<path d="M0 4v31" stroke="' + accent + '" stroke-width="2.2" stroke-linecap="round" opacity=".8"/>' +
+      '<rect x="-43" y="-24" width="86" height="25" rx="6" style="fill:#fff8e8;stroke:' + accent + ';stroke-width:1.6;stroke-dasharray:none"/>' +
+      '<path d="M-33 -12h12M-27 -18v12" stroke="' + accent + '" stroke-width="1.8" stroke-linecap="round"/>' +
+      '<text x="8" y="-8" text-anchor="middle" class="available-sign-title">Place disponible</text>' +
+      "</g>" +
       "</g>"
     );
   }
 
   function renderMap() {
     var map = document.querySelector("[data-town-map]");
-    if (!map) return;
+    if (!map || !town) return;
 
     var center = byId["onir-cms"];
     var others = sponsors.filter(function (sponsor) {
-      return sponsor.id !== center.id;
+      return !center || sponsor.id !== center.id;
     });
+    var occupied = town.stats.occupied;
+    var available = town.stats.available;
 
     var parkA = "M46 96C118 40 220 58 250 142c28 78-40 137-118 141C57 286 9 201 46 96Z";
     var parkB = "M946 54c78-27 155 18 159 91 4 61-44 106-110 104-79-2-116-53-107-113 4-30 27-68 58-82Z";
@@ -414,8 +647,8 @@
     var pond = "M74 636c28-32 91-43 129-15 42 31 31 87-18 108-52 23-119-1-129-42-5-19 3-36 18-51Z";
 
     map.innerHTML =
-      "<title>La Ville ONIR — carte interactive des sponsors</title>" +
-      "<desc>Une carte illustrée en 2D. ONIR-CMS occupe le centre. Cliquez sur un bâtiment pour découvrir son sponsor, ou sur un emplacement libre pour proposer votre soutien.</desc>" +
+      "<title>La Ville ONIR — " + occupied + " habitants, " + available + " places disponibles</title>" +
+      "<desc>Une carte illustrée en 2D. ONIR-CMS occupe le centre et " + available + " places sont disponibles. Cliquez sur un bâtiment pour découvrir son partenaire, ou sur une pancarte pour proposer votre soutien.</desc>" +
       "<defs>" +
       '<pattern id="town-dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="var(--map-road-line)" opacity=".24"/></pattern>' +
       '<pattern id="town-paper" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M0 18 18 0" stroke="var(--map-road-line)" stroke-width=".6" opacity=".18"/></pattern>' +
@@ -506,8 +739,7 @@
       mapBush(1048, 596, 0.6) +
       (center ? buildingMarkup(center) : "") +
       others.map(buildingMarkup).join("") +
-      emptyPlotMarkup(420, 300) +
-      emptyPlotMarkup(860, 300) +
+      town.availableSlots.map(availablePlotMarkup).join("") +
       "</g>";
   }
 
@@ -539,7 +771,7 @@
         })
         .join("") +
       "</div>" +
-      '<p class="sponsor-empty-note">Sponsor simulé pour la maquette. Son site ou son chatbot réel sera relié à la validation.</p>' +
+      (sponsor.demo ? '<p class="sponsor-empty-note">Partenaire de démonstration. Son site ou son chatbot réel sera relié à la validation.</p>' : "") +
       '<div class="sponsor-sheet-actions">' +
       '<button type="button" class="site-button site-button-sm" data-sheet-close>Fermer</button>' +
       '<button type="button" class="site-button site-button-sm site-button-ghost" data-open-chat>Devenir sponsor</button>' +
@@ -550,6 +782,24 @@
     } else {
       sheet.setAttribute("open", "");
     }
+  }
+
+  function districtLabel(district) {
+    return {
+      centre: "Centre",
+      organisations: "Quartier des organisations",
+      partenaires: "Place des partenaires",
+      particuliers: "Allée des particuliers"
+    }[district] || "Ville ONIR";
+  }
+
+  function showAvailableHover(slot) {
+    var hover = document.querySelector("[data-map-hover]");
+    if (!hover) return;
+    hover.innerHTML =
+      '<span class="map-hover-avatar" style="background:#2f7d6322;color:#2f7d63">+</span>' +
+      "<span><strong>Place disponible</strong><span>" + esc(districtLabel(slot.district)) + "</span><em>Devenir sponsor →</em></span>";
+    hover.classList.add("is-visible");
   }
 
   function showHover(sponsor) {
@@ -582,9 +832,19 @@
       return target ? byId[target.getAttribute("data-sponsor-id")] : null;
     }
 
+    function slotFromEvent(event) {
+      var target = event.target.closest("[data-empty-plot][data-slot-id]");
+      return target ? slotById[target.getAttribute("data-slot-id")] : null;
+    }
+
     map.addEventListener("pointerover", function (event) {
       var sponsor = sponsorFromEvent(event);
-      if (sponsor) showHover(sponsor);
+      if (sponsor) {
+        showHover(sponsor);
+        return;
+      }
+      var slot = slotFromEvent(event);
+      if (slot) showAvailableHover(slot);
     });
 
     map.addEventListener("pointerout", function (event) {
@@ -593,7 +853,12 @@
 
     map.addEventListener("focusin", function (event) {
       var sponsor = sponsorFromEvent(event);
-      if (sponsor) showHover(sponsor);
+      if (sponsor) {
+        showHover(sponsor);
+        return;
+      }
+      var slot = slotFromEvent(event);
+      if (slot) showAvailableHover(slot);
     });
 
     map.addEventListener("focusout", hideHover);
@@ -658,6 +923,7 @@
           town3d = module.createTown3D({
             container: view3d,
             sponsors: sponsors,
+            availableSlots: town.availableSlots,
             onOpen: function (id) {
               openSponsor(byId[id]);
             },
@@ -1100,8 +1366,15 @@
     });
   }
 
+  function initTown() {
+    loadPartners().then(function (result) {
+      applyTown(buildTown(result.partners, { demo: result.demo, error: result.error }));
+      initMap();
+    });
+  }
+
   initTabs();
-  initMap();
   initSheets();
   initChat();
+  initTown();
 })();
