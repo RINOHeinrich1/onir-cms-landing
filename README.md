@@ -40,14 +40,18 @@ fonctionnalités utilisent `landing-v2.css`. Le sélecteur de langue est commun 
 
 La page `/participer/` charge les partenaires publiés depuis
 `https://partner-api.onir-cms.tech/partenaires`, puis les place dans le catalogue
-`assets/data/town-layout.js` (26 emplacements : centre, organisations, partenaires,
-particuliers).
+`assets/data/town-layout.js` (5 zones : Centre, Nord, Est, Sud, Ouest).
 
-- `mapSlotId` (optionnel, API) force un emplacement ;
-- sans `mapSlotId`, la première place libre compatible avec `nature` est utilisée ;
+- le Centre est une zone premium limitée à 4 partenaires + ONIR-CMS ;
+- les zones périphériques absorbent la capacité (10 à 12 places) ;
+- une seule zone est visible à la fois, avec des flèches directionnelles ;
+- `mapSlotId` (optionnel, API) force un emplacement ; une place centrale doit être
+  explicitement attribuée et n’est jamais remplie automatiquement ;
+- sans `mapSlotId`, la première place libre périphérique compatible avec `nature` est utilisée ;
 - chaque emplacement libre affiche une pancarte « Place disponible » ;
 - les partenaires sans place restent dans la liste d’attente et sont signalés ;
 - `?demo=1` affiche les données locales de `assets/data/sponsors.js` ;
+- `#zone=nord`, `#zone=est`, `#zone=sud`, `#zone=ouest` ouvrent directement une zone ;
 - si l’API est indisponible, la carte affiche les places libres sans bloquer la page.
 
 ## Développement local

@@ -1,19 +1,27 @@
 (function () {
   "use strict";
 
-  var layout = window.ONIR_TOWN_LAYOUT || { centerSlotId: "centre-01", slots: [] };
+  var layout = window.ONIR_TOWN_LAYOUT || { centerSlotId: "centre-01", centerZoneId: "centre", zones: [], slots: [] };
+  var zones = layout.zones || [];
   var staticSponsors = window.ONIR_SPONSORS || [];
   var sponsors = [];
   var byId = {};
   var slotById = {};
+  var zoneById = {};
+  var activeZoneId = layout.centerZoneId || (zones[0] && zones[0].id) || "centre";
   var town = null;
   var townApiUrl = document.querySelector("[data-town-api-url]")?.getAttribute("data-town-api-url") || "";
   var townSummary = document.querySelector("[data-town-summary]");
   var townStatus = document.querySelector("[data-town-status]");
+  var zoneNav = document.querySelector("[data-zone-nav]");
 
   layout.slots.forEach(function (slot) {
     slotById[slot.id] = slot;
   });
+  zones.forEach(function (zone) {
+    zoneById[zone.id] = zone;
+  });
+  activeZoneId = resolveInitialZone();
 
   var partnerChatUrl = document.querySelector("[data-partner-chat-url]")?.getAttribute("data-partner-chat-url") || "";
   var privacyUrl = document.querySelector("[data-privacy-url]")?.getAttribute("data-privacy-url") || "/confidentialite-site/";
@@ -84,7 +92,8 @@
       accent: slot.accent || "#f08000",
       building: slot.building || "tower",
       size: slot.size || "lg",
-      district: slot.district || "centre",
+      district: slot.zoneId || "centre",
+      zoneId: slot.zoneId || layout.centerZoneId,
       x: slot.x || 600,
       y: slot.y || 382,
       slotId: slot.id || layout.centerSlotId,
@@ -116,7 +125,9 @@
       accent: slot.accent || (person ? "#c96d3b" : "#2f7d63"),
       building: slot.building,
       size: slot.size,
-      district: slot.district,
+      district: slot.zoneId,
+      zoneId: slot.zoneId,
+      premium: slot.premium === true,
       x: slot.x,
       y: slot.y,
       slotId: slot.id,
@@ -134,6 +145,7 @@
     var used = {};
     var slots = layout.slots.slice();
     var centerSlotId = layout.centerSlotId;
+    var centerZoneId = layout.centerZoneId;
     var placed = [platformPartner()];
     if (slotById[centerSlotId]) used[centerSlotId] = true;
     var unplaced = [];
@@ -141,16 +153,25 @@
     (partners || []).forEach(function (partner) {
       if (!partner || partner.platform || partner.id === "onir-cms") return;
       var requestedSlot = String(partner.mapSlotId || partner.slotId || "").trim();
-      var slot = slotById[requestedSlot];
+      var requested = requestedSlot === "" ? null : slotById[requestedSlot];
+      var requestedCenter = requested && requested.zoneId === centerZoneId;
+      var slot = requested;
       if (
         !slot ||
         used[slot.id] ||
-        slot.id === centerSlotId ||
         !slotAllowed(slot, partner)
       ) {
+        if (requestedCenter) {
+          unplaced.push(partner);
+          return;
+        }
         slot = null;
         slots.some(function (candidate) {
-          if (candidate.id === centerSlotId || used[candidate.id] || !slotAllowed(candidate, partner)) {
+          if (
+            candidate.zoneId === centerZoneId ||
+            used[candidate.id] ||
+            !slotAllowed(candidate, partner)
+          ) {
             return false;
           }
           slot = candidate;
@@ -177,12 +198,41 @@
     placed.forEach(function (sponsor) {
       nextById[sponsor.id] = sponsor;
     });
+    var zoneStates = {};
+    var zoneList = zones.map(function (zone) {
+      var zoneSlotStates = slotStates.filter(function (state) {
+        return state.slot.zoneId === zone.id;
+      });
+      var zoneSponsors = placed.filter(function (sponsor) {
+        return sponsor.zoneId === zone.id;
+      });
+      var zoneAvailable = zoneSlotStates.filter(function (state) {
+        return !state.occupied;
+      }).map(function (state) {
+        return state.slot;
+      });
+      var state = {
+        zone: zone,
+        slots: zoneSlotStates,
+        sponsors: zoneSponsors,
+        availableSlots: zoneAvailable,
+        stats: {
+          total: zoneSlotStates.length,
+          occupied: zoneSponsors.length,
+          available: zoneAvailable.length
+        }
+      };
+      zoneStates[zone.id] = state;
+      return state;
+    });
 
     return {
       sponsors: placed,
       byId: nextById,
       slots: slotStates,
       availableSlots: availableSlots,
+      zones: zoneList,
+      zoneById: zoneStates,
       unplaced: unplaced,
       demo: options && options.demo === true,
       error: options && options.error === true,
@@ -193,6 +243,60 @@
       }
     };
   }
+
+  function resolveInitialZone() {
+    var hash = window.location.hash.replace(/^#/, "");
+    var params = new URLSearchParams(hash);
+    var requested = params.get("zone");
+    return requested && zoneById[requested] ? requested : (layout.centerZoneId || "centre");
+  }
+
+  function zoneTitle(zoneId) {
+    var zone = zoneById[zoneId];
+    return zone ? zone.title : "Ville ONIR";
+  }
+
+  function renderZoneNav() {
+    if (!zoneNav) return;
+    var zone = zoneById[activeZoneId];
+    if (!zone) {
+      zoneNav.innerHTML = "";
+      return;
+    }
+    var directions = [
+      ["nord", "↑"],
+      ["est", "→"],
+      ["sud", "↓"],
+      ["ouest", "←"]
+    ];
+    zoneNav.innerHTML = directions.map(function (entry) {
+      var direction = entry[0];
+      var targetId = zone.neighbors && zone.neighbors[direction];
+      var target = targetId ? zoneById[targetId] : null;
+      if (!target) return "";
+      return '<button type="button" class="zone-nav-btn zone-nav-' + direction + '" data-zone-go="' + esc(target.id) + '" aria-label="Aller vers ' + esc(target.title) + '">' +
+        "<span>" + entry[1] + "</span><em>" + esc(target.title) + "</em></button>";
+    }).join("");
+  }
+
+  function setActiveZone(zoneId, updateHash) {
+    if (!town || !town.zoneById[zoneId] || !zoneById[zoneId]) return;
+    activeZoneId = zoneId;
+    hideHover();
+    renderZoneNav();
+    renderMap();
+    updateTownSummary();
+    if (updateHash !== false) {
+      try {
+        history.replaceState(null, "", "#zone=" + encodeURIComponent(zoneId));
+      } catch (error) {
+        /* URL non modifiable */
+      }
+    }
+    if (typeof rebuild3D === "function") rebuild3D();
+  }
+
+  var rebuild3D = null;
 
   function demoPartnerList() {
     return staticSponsors.filter(function (sponsor) {
@@ -240,12 +344,15 @@
 
   function updateTownSummary() {
     if (!town) return;
-    var residents = town.sponsors.filter(function (sponsor) {
+    var current = town.zoneById[activeZoneId];
+    if (!current) return;
+    var residents = current.sponsors.filter(function (sponsor) {
       return !sponsor.platform;
     }).length;
-    var available = town.availableSlots.length;
+    var available = current.availableSlots.length;
     if (townSummary) {
       townSummary.textContent =
+        zoneTitle(activeZoneId) + " · " +
         residents + " habitant" + (residents > 1 ? "s" : "") +
         " · " + available + " place" + (available > 1 ? "s" : "") + " disponible" + (available > 1 ? "s" : "");
     }
@@ -265,6 +372,9 @@
     town = nextTown;
     sponsors = nextTown.sponsors;
     byId = nextTown.byId;
+    activeZoneId = resolveInitialZone();
+    if (!town.zoneById[activeZoneId]) activeZoneId = layout.centerZoneId || "centre";
+    renderZoneNav();
     updateTownSummary();
   }
 
@@ -615,16 +725,18 @@
 
   function availablePlotMarkup(slot) {
     var accent = slot.accent || "#2f7d63";
+    var premium = slot.premium === true;
+    var label = premium ? "Place premium" : "Place disponible";
     return (
-      '<g class="empty-plot available-plot" data-empty-plot data-slot-id="' + esc(slot.id) + '" tabindex="0" role="button" aria-label="Place disponible — devenir sponsor" transform="translate(' + slot.x + " " + slot.y + ')">' +
-      "<title>Place disponible</title>" +
+      '<g class="empty-plot available-plot' + (premium ? " premium-plot" : "") + '" data-empty-plot data-slot-id="' + esc(slot.id) + '" tabindex="0" role="button" aria-label="' + label + ' — devenir sponsor" transform="translate(' + slot.x + " " + slot.y + ')">' +
+      "<title>" + label + "</title>" +
       '<ellipse cx="0" cy="4" rx="42" ry="10" fill="var(--map-shadow)" opacity=".2"/>' +
       '<rect class="plot-outline" x="-40" y="-29" width="80" height="58" rx="10" fill="url(#town-paper)" stroke="' + accent + '" stroke-width="1.3" stroke-dasharray="7 6" opacity=".72"/>' +
       '<g class="available-sign">' +
       '<path d="M0 4v31" stroke="' + accent + '" stroke-width="2.2" stroke-linecap="round" opacity=".8"/>' +
-      '<rect x="-43" y="-24" width="86" height="25" rx="6" style="fill:#fff8e8;stroke:' + accent + ';stroke-width:1.6;stroke-dasharray:none"/>' +
-      '<path d="M-33 -12h12M-27 -18v12" stroke="' + accent + '" stroke-width="1.8" stroke-linecap="round"/>' +
-      '<text x="8" y="-8" text-anchor="middle" class="available-sign-title">Place disponible</text>' +
+      '<rect x="-48" y="-24" width="96" height="25" rx="6" style="fill:#fff8e8;stroke:' + accent + ';stroke-width:1.6;stroke-dasharray:none"/>' +
+      '<path d="M-38 -12h12M-32 -18v12" stroke="' + accent + '" stroke-width="1.8" stroke-linecap="round"/>' +
+      '<text x="9" y="-8" text-anchor="middle" class="available-sign-title">' + label + "</text>" +
       "</g>" +
       "</g>"
     );
@@ -633,13 +745,16 @@
   function renderMap() {
     var map = document.querySelector("[data-town-map]");
     if (!map || !town) return;
+    var current = town.zoneById[activeZoneId];
+    if (!current) return;
 
-    var center = byId["onir-cms"];
-    var others = sponsors.filter(function (sponsor) {
+    var isCenter = current.zone.id === layout.centerZoneId;
+    var center = isCenter ? byId["onir-cms"] : null;
+    var others = current.sponsors.filter(function (sponsor) {
       return !center || sponsor.id !== center.id;
     });
-    var occupied = town.stats.occupied;
-    var available = town.stats.available;
+    var occupied = current.stats.occupied;
+    var available = current.stats.available;
 
     var parkA = "M46 96C118 40 220 58 250 142c28 78-40 137-118 141C57 286 9 201 46 96Z";
     var parkB = "M946 54c78-27 155 18 159 91 4 61-44 106-110 104-79-2-116-53-107-113 4-30 27-68 58-82Z";
@@ -647,8 +762,8 @@
     var pond = "M74 636c28-32 91-43 129-15 42 31 31 87-18 108-52 23-119-1-129-42-5-19 3-36 18-51Z";
 
     map.innerHTML =
-      "<title>La Ville ONIR — " + occupied + " habitants, " + available + " places disponibles</title>" +
-      "<desc>Une carte illustrée en 2D. ONIR-CMS occupe le centre et " + available + " places sont disponibles. Cliquez sur un bâtiment pour découvrir son partenaire, ou sur une pancarte pour proposer votre soutien.</desc>" +
+      "<title>" + esc(zoneTitle(activeZoneId)) + " — " + occupied + " habitants, " + available + " places disponibles</title>" +
+      "<desc>" + esc(zoneTitle(activeZoneId)) + " : une carte illustrée en 2D. " + available + " places sont disponibles. Cliquez sur un bâtiment pour découvrir son partenaire, ou sur une pancarte pour proposer votre soutien.</desc>" +
       "<defs>" +
       '<pattern id="town-dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="var(--map-road-line)" opacity=".24"/></pattern>' +
       '<pattern id="town-paper" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M0 18 18 0" stroke="var(--map-road-line)" stroke-width=".6" opacity=".18"/></pattern>' +
@@ -708,9 +823,9 @@
       mapBench(500, 315, -8) + mapBench(700, 315, 8) + mapBench(500, 456, 8) + mapBench(700, 456, -8) +
       mapFlowerBed(525, 462, 0.8) + mapFlowerBed(675, 462, 0.8) +
       mapLamp(470, 300, 0.95) + mapLamp(730, 300, 0.95) + mapLamp(470, 462, 0.95) + mapLamp(730, 462, 0.95) +
-      '<text x="600" y="30" class="map-district" text-anchor="middle">Quartier des organisations</text>' +
-      '<text x="1110" y="385" class="map-district" text-anchor="middle" transform="rotate(90 1110 385)">Place des partenaires</text>' +
-      '<text x="600" y="744" class="map-district" text-anchor="middle">Allée des particuliers</text>' +
+      '<text x="600" y="30" class="map-district" text-anchor="middle">' + esc(zoneTitle(activeZoneId).toUpperCase()) + ' — VILLE ONIR</text>' +
+      '<text x="1110" y="385" class="map-district" text-anchor="middle" transform="rotate(90 1110 385)">VILLE ONIR</text>' +
+      '<text x="600" y="744" class="map-district" text-anchor="middle">ZONE ' + esc(zoneTitle(activeZoneId).toUpperCase()) + '</text>' +
       roadName("Rue des Orangers", 420, 392, 0) +
       roadName("Passage des Idées", 614, 150, 90) +
       roadName("Boucle des Bâtisseurs", 820, 590, 26) +
@@ -739,7 +854,7 @@
       mapBush(1048, 596, 0.6) +
       (center ? buildingMarkup(center) : "") +
       others.map(buildingMarkup).join("") +
-      town.availableSlots.map(availablePlotMarkup).join("") +
+      current.availableSlots.map(availablePlotMarkup).join("") +
       "</g>";
   }
 
@@ -798,7 +913,7 @@
     if (!hover) return;
     hover.innerHTML =
       '<span class="map-hover-avatar" style="background:#2f7d6322;color:#2f7d63">+</span>' +
-      "<span><strong>Place disponible</strong><span>" + esc(districtLabel(slot.district)) + "</span><em>Devenir sponsor →</em></span>";
+      "<span><strong>" + (slot.premium ? "Place premium" : "Place disponible") + "</strong><span>" + esc(zoneTitle(slot.zoneId)) + "</span><em>Devenir sponsor →</em></span>";
     hover.classList.add("is-visible");
   }
 
@@ -886,6 +1001,19 @@
       }
     });
 
+    if (zoneNav) {
+      zoneNav.addEventListener("click", function (event) {
+        var button = event.target.closest("[data-zone-go]");
+        if (!button) return;
+        setActiveZone(button.getAttribute("data-zone-go"), true);
+      });
+    }
+
+    window.addEventListener("hashchange", function () {
+      var zoneId = resolveInitialZone();
+      if (zoneId !== activeZoneId) setActiveZone(zoneId, false);
+    });
+
     var viewport = stage.querySelector(".town-viewport");
     function centerMap() {
       if (!viewport) return;
@@ -922,8 +1050,9 @@
           var module = await import("/assets/js/town-3d.js?v=20261026i");
           town3d = module.createTown3D({
             container: view3d,
-            sponsors: sponsors,
-            availableSlots: town.availableSlots,
+            sponsors: town.zoneById[activeZoneId].sponsors,
+            availableSlots: town.zoneById[activeZoneId].availableSlots,
+            zoneTitle: zoneTitle(activeZoneId),
             onOpen: function (id) {
               openSponsor(byId[id]);
             },
@@ -951,6 +1080,13 @@
         toggle.removeAttribute("aria-busy");
       }
     }
+
+    rebuild3D = function () {
+      if (!town3d) return;
+      town3d.dispose();
+      town3d = null;
+      if (stage.classList.contains("is-3d")) enter3D();
+    };
 
     function exit3D() {
       if (town3d) town3d.stop();
