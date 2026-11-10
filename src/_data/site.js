@@ -1,3 +1,6 @@
+const appBase = process.env.PREPROD_APP_URL ?? "";
+const partnerChatToken = "PRoc__QYCoD6781oNeRruH_LEkZ5wmK7";
+
 export default {
   name: "ONIR CMS",
   baseUrl: "https://onir-cms.tech",
@@ -8,8 +11,9 @@ export default {
   templatesGuide: "https://cms-backoffice.onirtech.com/documentation/templates-visuels",
   installationGuide: "https://cms-backoffice.onirtech.com/documentation/installation",
   login: "https://magic-panel.onir-cms.tech/login",
-  partnerChat:
-    "https://magic-link.onir-cms.tech/l/PRoc__QYCoD6781oNeRruH_LEkZ5wmK7",
+  partnerChat: appBase
+    ? `${appBase}/l/${partnerChatToken}`
+    : `https://magic-link.onir-cms.tech/l/${partnerChatToken}`,
   partnerApi: "https://partner-api.onir-cms.tech/partenaires",
   whatsappUrl: "https://wa.me/261349368233",
   whatsappNumber: "+261349368233",
