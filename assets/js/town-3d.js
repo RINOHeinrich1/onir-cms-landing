@@ -825,6 +825,59 @@ function createFountain() {
   return group;
 }
 
+function createBuildingLabel(sponsor) {
+  const canvas = document.createElement("canvas");
+  canvas.width = 512;
+  canvas.height = 128;
+  const ctx = canvas.getContext("2d");
+  const accent = sponsor.accent || "#2f7d63";
+  ctx.clearRect(0, 0, 512, 128);
+  ctx.fillStyle = "rgba(255, 248, 232, .97)";
+  ctx.beginPath();
+  ctx.roundRect(8, 16, 496, 96, 28);
+  ctx.fill();
+  ctx.strokeStyle = accent;
+  ctx.lineWidth = 6;
+  ctx.stroke();
+  ctx.fillStyle = accent;
+  ctx.beginPath();
+  ctx.arc(48, 64, 17, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = "#fff8e8";
+  ctx.font = "800 20px Montserrat, Arial, sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText((sponsor.initials || "?").slice(0, 3), 48, 65);
+
+  const text = sponsor.name || "Partenaire";
+  let fontSize = 44;
+  do {
+    ctx.font = "800 " + fontSize + "px Montserrat, Arial, sans-serif";
+    if (ctx.measureText(text).width <= 384) break;
+    fontSize -= 2;
+  } while (fontSize > 24);
+  ctx.fillStyle = "#063d2e";
+  ctx.textAlign = "left";
+  ctx.fillText(text, 82, 65);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.anisotropy = 8;
+  const material = new THREE.SpriteMaterial({
+    map: texture,
+    transparent: true,
+    depthWrite: false,
+    depthTest: true
+  });
+  const sprite = new THREE.Sprite(material);
+  const width = Math.max(12, Math.min(26, text.length * 0.68 + 5));
+  sprite.scale.set(width, width / 4, 1);
+  const labelY = sponsor.building === "tower" ? 18.2 : sponsor.building === "house" ? 8.4 : 13.6;
+  sprite.position.set(0, labelY, 0);
+  sprite.renderOrder = 4;
+  return sprite;
+}
+
 function createAvailableSign(slot) {
   const group = new THREE.Group();
   const accent = slot.accent || "#2f7d63";
@@ -950,6 +1003,7 @@ export function createTown3D({ container, sponsors, availableSlots, zoneTitle, z
   function register(group, sponsor) {
     group.position.set(scaleX(sponsor.x), 0, scaleZ(sponsor.y));
     group.userData.sponsorId = sponsor.id;
+    group.add(createBuildingLabel(sponsor));
     group.traverse((object) => {
       if (!object.isMesh) return;
       object.userData.sponsorId = sponsor.id;
