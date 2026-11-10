@@ -745,7 +745,7 @@
 }
 
 .legend-dot-house {
-  background: var(--site-orange);
+  background: #b3263a;
 }
 
 .legend-dot-empty {
@@ -849,13 +849,13 @@
 
 .empty-plot:hover rect,
 .empty-plot:focus-visible rect {
-  fill: rgb(240 128 0 / 0.12);
-  stroke: var(--site-orange);
+  fill: rgb(11 93 69 / 0.12);
+  stroke: var(--site-green);
 }
 
 .empty-plot:hover .map-label,
 .empty-plot:focus-visible .map-label {
-  fill: var(--site-orange);
+  fill: var(--site-green);
 }
 
 .map-sign {
@@ -935,7 +935,7 @@
 }
 
 .zone-nav-btn span {
-  color: var(--site-orange);
+  color: var(--site-green);
   font-size: 1rem;
   line-height: 1;
 }
@@ -948,8 +948,8 @@
 
 .zone-nav-btn:hover,
 .zone-nav-btn:focus-visible {
-  border-color: var(--site-orange);
-  color: var(--site-orange);
+  border-color: var(--site-green);
+  color: var(--site-green);
 }
 
 .zone-nav-nord {
@@ -981,7 +981,26 @@
 }
 
 .premium-plot .plot-outline {
-  fill: rgb(240 128 0 / 0.12);
+  fill: rgb(11 93 69 / 0.12);
+}
+
+.premium-badge {
+  display: inline-block;
+  margin-left: 0.3rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: var(--r-pill);
+  background: #0b5d45;
+  color: #fff8e8;
+  font-size: 0.55rem;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sponsor-tags .is-premium {
+  background: #0b5d45;
+  color: #fff8e8;
 }
 
 .town-summary {

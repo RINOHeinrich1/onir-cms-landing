@@ -236,7 +236,7 @@ function makeGroundTexture(zoneTitle, zoneId) {
     ctx.fillText("PASSAGE DES IDÉES", 0, 0);
     ctx.restore();
 
-    ctx.fillStyle = "#f08000";
+    ctx.fillStyle = "#b3263a";
     ctx.beginPath();
     ctx.arc(1102, 84, 19, 0, Math.PI * 2);
     ctx.fill();
@@ -642,6 +642,22 @@ function createHouse(sponsor) {
   return group;
 }
 
+function createMalagasyFlag() {
+  const texture = canvasTexture(120, 80, (ctx, width, height) => {
+    const band = Math.round(width / 3);
+    ctx.fillStyle = "#f7f1e2";
+    ctx.fillRect(0, 0, band, height);
+    ctx.fillStyle = "#c8102e";
+    ctx.fillRect(band, 0, width - band, height / 2);
+    ctx.fillStyle = "#1f7a4d";
+    ctx.fillRect(band, height / 2, width - band, height / 2);
+  });
+  return new THREE.Mesh(
+    new THREE.PlaneGeometry(2.2, 1.2),
+    new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide })
+  );
+}
+
 function createOffice(sponsor, center) {
   const group = new THREE.Group();
   const bodyMat = makeOfficeMaterial();
@@ -690,8 +706,9 @@ function createOffice(sponsor, center) {
   addBox(group, 3.4, 0.2, 2.0, 0, 0.15, front + 1.3, makePavingMaterial(), false);
   addBox(group, 4.0, 0.2, 2.5, 0, 0.34, front + 1.0, makePavingMaterial(), false);
 
-  addCircuitPlaque(group, sponsor.accent, front + 0.14, 4.05, 6.25, 2.35, 1.15);
-  addSign(group, center ? "ONIR-CMS" : sponsor.initials, sponsor.accent, front + 0.2, 3.25, center ? 6.4 : 3.0, center ? 1.4 : 1.0);
+  const signColor = center ? "#0b5d45" : sponsor.accent;
+  addCircuitPlaque(group, signColor, front + 0.14, 4.05, 6.25, 2.35, 1.15);
+  addSign(group, center ? "ONIR-CMS" : sponsor.initials, signColor, front + 0.2, 3.25, center ? 6.4 : 3.0, center ? 1.4 : 1.0);
 
   addSideWindow(group, half + 0.06, 2.0, -1.6, 1.9, 1.25, frameMat, glassMat);
   addSideWindow(group, half + 0.06, 2.0, 1.6, 1.9, 1.25, frameMat, glassMat);
@@ -724,7 +741,7 @@ function createOffice(sponsor, center) {
     pole.position.set(7.5, bodyH + 4.7, -2.2);
     pole.castShadow = true;
     group.add(pole);
-    const flag = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 1.2), new THREE.MeshBasicMaterial({ color: sponsor.accent, side: THREE.DoubleSide }));
+    const flag = createMalagasyFlag();
     flag.position.set(8.65, bodyH + 6.4, -2.2);
     group.add(flag);
   }
@@ -790,7 +807,7 @@ function createLamp(x, z) {
   group.add(arm);
   const light = new THREE.Mesh(
     new THREE.SphereGeometry(0.16, 8, 6),
-    new THREE.MeshStandardMaterial({ color: "#ffc46b", emissive: "#f08000", emissiveIntensity: 0.7, roughness: 0.4 })
+    new THREE.MeshStandardMaterial({ color: "#d9e6d2", emissive: "#5b8b66", emissiveIntensity: 0.45, roughness: 0.4 })
   );
   light.position.set(0.86, 3.34, 0);
   group.add(light);
@@ -1027,7 +1044,7 @@ export function createTown3D({ container, sponsors, availableSlots, zoneTitle, z
     register(group, sponsor);
   }
 
-  const emptyMat = new THREE.MeshBasicMaterial({ color: "#f08000", transparent: true, opacity: 0.12, side: THREE.DoubleSide });
+  const emptyMat = new THREE.MeshBasicMaterial({ color: "#0b5d45", transparent: true, opacity: 0.12, side: THREE.DoubleSide });
   for (const slot of availableSlots || []) {
     const pad = new THREE.Mesh(new THREE.PlaneGeometry(6.4, 4.8), emptyMat);
     pad.rotation.x = -Math.PI / 2;
