@@ -8,31 +8,41 @@
     zones: [
       {
         id: "centre",
+        slug: "centre",
         title: "Centre",
+        navTitle: "Centre",
         description: "La place historique, rare et premium, autour d’ONIR-CMS.",
         neighbors: { nord: "nord", est: "est", sud: "sud", ouest: "ouest" }
       },
       {
         id: "nord",
-        title: "Nord",
-        description: "Le quartier des organisations et des projets structurants.",
+        slug: "organisations",
+        title: "Organisations",
+        navTitle: "Organisations",
+        description: "Le quartier des organisations, coopératives et projets structurants.",
         neighbors: { sud: "centre" }
       },
       {
         id: "est",
-        title: "Est",
-        description: "La place des partenaires et des alliances.",
+        slug: "partenaires-technologiques",
+        title: "Partenaires technologiques",
+        navTitle: "Partenaires tech",
+        description: "La place des alliances et des partenaires technologiques.",
         neighbors: { ouest: "centre" }
       },
       {
         id: "sud",
-        title: "Sud",
+        slug: "particuliers",
+        title: "Particuliers",
+        navTitle: "Particuliers",
         description: "L’allée des particuliers et des soutiens indépendants.",
         neighbors: { nord: "centre" }
       },
       {
         id: "ouest",
-        title: "Ouest",
+        slug: "institutions",
+        title: "Institutions",
+        navTitle: "Institutions",
         description: "Le quartier des institutions et de l’extension.",
         neighbors: { est: "centre" }
       }
