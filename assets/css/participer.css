@@ -908,6 +908,82 @@
   text-anchor: middle;
 }
 
+.zone-nav {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.zone-nav-btn {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2rem;
+  padding: 0 0.65rem;
+  border: 1px solid var(--site-line);
+  border-radius: var(--r-pill);
+  background: rgb(255 253 246 / 0.92);
+  color: var(--site-ink);
+  box-shadow: 0 4px 14px rgb(49 45 36 / 0.12);
+  font-size: 0.7rem;
+  font-weight: 800;
+  cursor: pointer;
+  pointer-events: auto;
+  backdrop-filter: blur(5px);
+}
+
+.zone-nav-btn span {
+  color: var(--site-orange);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.zone-nav-btn em {
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.zone-nav-btn:hover,
+.zone-nav-btn:focus-visible {
+  border-color: var(--site-orange);
+  color: var(--site-orange);
+}
+
+.zone-nav-nord {
+  top: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.zone-nav-sud {
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.zone-nav-est {
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+}
+
+.zone-nav-ouest {
+  top: 50%;
+  left: 0.75rem;
+  transform: translateY(-50%);
+}
+
+.premium-plot .available-sign-title {
+  fill: #8a4b0f;
+}
+
+.premium-plot .plot-outline {
+  fill: rgb(240 128 0 / 0.08);
+}
+
 .town-summary {
   margin-right: auto;
   color: var(--site-muted);

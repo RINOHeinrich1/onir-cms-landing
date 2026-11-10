@@ -26,7 +26,7 @@ function canvasTexture(width, height, draw) {
   return texture;
 }
 
-function makeGroundTexture() {
+function makeGroundTexture(zoneTitle) {
   return canvasTexture(1800, 1140, (ctx, width, height) => {
     const scale = width / MAP_W;
     ctx.scale(scale, scale);
@@ -147,13 +147,13 @@ function makeGroundTexture() {
     ctx.font = "800 10px Montserrat, Arial, sans-serif";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText("QUARTIER DES ORGANISATIONS", 600, 30);
+    ctx.fillText((zoneTitle || "Ville ONIR").toUpperCase() + " — VILLE ONIR", 600, 30);
     ctx.save();
     ctx.translate(1110, 385);
     ctx.rotate(Math.PI / 2);
-    ctx.fillText("PLACE DES PARTENAIRES", 0, 0);
+    ctx.fillText("VILLE ONIR", 0, 0);
     ctx.restore();
-    ctx.fillText("ALLÉE DES PARTICULIERS", 600, 744);
+    ctx.fillText("ZONE " + (zoneTitle || "Ville ONIR").toUpperCase(), 600, 744);
 
     ctx.font = "700 8px Montserrat, Arial, sans-serif";
     ctx.fillStyle = "rgba(97, 118, 107, .8)";
@@ -789,7 +789,7 @@ function createAvailableSign(slot) {
   return group;
 }
 
-export function createTown3D({ container, sponsors, availableSlots, onOpen, onHover }) {
+export function createTown3D({ container, sponsors, availableSlots, zoneTitle, onOpen, onHover }) {
   const isMobile = window.matchMedia("(max-width: 720px)").matches;
   const isDark = document.documentElement.dataset.theme === "dark";
   const skyColor = isDark ? "#0b2b21" : "#eef4e8";
@@ -859,7 +859,7 @@ export function createTown3D({ container, sponsors, availableSlots, onOpen, onHo
   base.castShadow = true;
   scene.add(base);
 
-  const groundTexture = makeGroundTexture();
+  const groundTexture = makeGroundTexture(zoneTitle);
   groundTexture.anisotropy = renderer.capabilities.getMaxAnisotropy();
   const ground = new THREE.Mesh(
     new THREE.PlaneGeometry(WORLD_W, WORLD_H),
