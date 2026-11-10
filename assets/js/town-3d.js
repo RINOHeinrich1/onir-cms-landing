@@ -26,7 +26,74 @@ function canvasTexture(width, height, draw) {
   return texture;
 }
 
-function makeGroundTexture(zoneTitle) {
+function drawOuterGround(ctx, zoneTitle, zoneId) {
+  const vertical = zoneId === "nord" || zoneId === "sud";
+  ctx.fillStyle = "#dfead2";
+  if (vertical) {
+    ctx.beginPath();
+    ctx.roundRect(-40, 68, 360, 240, 86);
+    ctx.fill();
+    ctx.fillStyle = "#cbdcbd";
+    ctx.beginPath();
+    ctx.roundRect(880, 452, 360, 260, 96);
+    ctx.fill();
+  } else {
+    ctx.beginPath();
+    ctx.roundRect(58, -36, 330, 240, 86);
+    ctx.fill();
+    ctx.fillStyle = "#cbdcbd";
+    ctx.beginPath();
+    ctx.roundRect(812, 556, 330, 240, 86);
+    ctx.fill();
+  }
+
+  const path = new Path2D(vertical ? "M600 760V0" : "M0 380H1200");
+  const stroke = (color, width) => {
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.stroke(path);
+  };
+  stroke("#d9c9ab", 56);
+  stroke("#e8dcc4", 46);
+  stroke("#fbf7eb", 36);
+  ctx.setLineDash([8, 12]);
+  stroke("#d7c5a4", 1.8);
+  ctx.setLineDash([]);
+
+  ctx.fillStyle = "#61766b";
+  ctx.font = "800 10px Montserrat, Arial, sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText((zoneTitle || "Ville ONIR").toUpperCase() + " — VILLE ONIR", 600, 30);
+  ctx.save();
+  if (vertical) {
+    ctx.translate(614, 330);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText("ROUTE DU CENTRE", 0, 0);
+  } else {
+    ctx.fillText("ROUTE DU CENTRE", 760, 392);
+  }
+  ctx.restore();
+  ctx.fillText("ZONE " + (zoneTitle || "Ville ONIR").toUpperCase(), 600, 744);
+
+  const gate = zoneId === "sud"
+    ? [600, 54, "CENTRE ↑"]
+    : zoneId === "est"
+      ? [66, 380, "← CENTRE"]
+      : zoneId === "ouest"
+        ? [1134, 380, "CENTRE →"]
+        : [600, 706, "CENTRE ↓"];
+  ctx.fillStyle = "#063d2e";
+  ctx.beginPath();
+  ctx.roundRect(gate[0] - 58, gate[1] - 17, 116, 34, 17);
+  ctx.fill();
+  ctx.fillStyle = "#fff8e8";
+  ctx.font = "800 10px Montserrat, Arial, sans-serif";
+  ctx.fillText(gate[2], gate[0], gate[1] + 1);
+}
+
+function makeGroundTexture(zoneTitle, zoneId) {
   return canvasTexture(1800, 1140, (ctx, width, height) => {
     const scale = width / MAP_W;
     ctx.scale(scale, scale);
@@ -39,6 +106,11 @@ function makeGroundTexture(zoneTitle) {
       const y = (i * 47.71) % MAP_H;
       ctx.fillStyle = i % 5 === 0 ? "rgba(197, 177, 141, .22)" : "rgba(255, 253, 246, .3)";
       ctx.fillRect(x, y, 1.2, 1.2);
+    }
+
+    if (zoneId && zoneId !== "centre") {
+      drawOuterGround(ctx, zoneTitle, zoneId);
+      return;
     }
 
     const parkA = new Path2D("M46 96C118 40 220 58 250 142c28 78-40 137-118 141C57 286 9 201 46 96Z");
@@ -789,8 +861,9 @@ function createAvailableSign(slot) {
   return group;
 }
 
-export function createTown3D({ container, sponsors, availableSlots, zoneTitle, onOpen, onHover }) {
+export function createTown3D({ container, sponsors, availableSlots, zoneTitle, zoneId, onOpen, onHover }) {
   const isMobile = window.matchMedia("(max-width: 720px)").matches;
+  const isCenterZone = !zoneId || zoneId === "centre";
   const isDark = document.documentElement.dataset.theme === "dark";
   const skyColor = isDark ? "#0b2b21" : "#eef4e8";
   const scene = new THREE.Scene();
@@ -859,7 +932,7 @@ export function createTown3D({ container, sponsors, availableSlots, zoneTitle, o
   base.castShadow = true;
   scene.add(base);
 
-  const groundTexture = makeGroundTexture(zoneTitle);
+  const groundTexture = makeGroundTexture(zoneTitle, zoneId);
   groundTexture.anisotropy = renderer.capabilities.getMaxAnisotropy();
   const ground = new THREE.Mesh(
     new THREE.PlaneGeometry(WORLD_W, WORLD_H),
@@ -920,12 +993,14 @@ export function createTown3D({ container, sponsors, availableSlots, zoneTitle, o
     scene.add(createTree(scaleX(x), scaleZ(y), scale, type));
   }
 
-  for (const [x, y] of [[470, 300], [730, 300], [470, 462], [730, 462], [250, 300], [950, 300]]) {
-    scene.add(createLamp(scaleX(x), scaleZ(y)));
+  if (isCenterZone) {
+    for (const [x, y] of [[470, 300], [730, 300], [470, 462], [730, 462], [250, 300], [950, 300]]) {
+      scene.add(createLamp(scaleX(x), scaleZ(y)));
+    }
+    scene.add(createFountain());
   }
-  scene.add(createFountain());
 
-  for (const [x, y, angle] of [[500, 315, -0.12], [700, 315, 0.12], [500, 456, 0.12], [700, 456, -0.12]]) {
+  for (const [x, y, angle] of isCenterZone ? [[500, 315, -0.12], [700, 315, 0.12], [500, 456, 0.12], [700, 456, -0.12]] : []) {
     const bench = new THREE.Mesh(
       new THREE.BoxGeometry(3.6, 0.35, 1.1),
       new THREE.MeshStandardMaterial({ color: "#a97745", roughness: 0.9, flatShading: true })

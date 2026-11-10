@@ -727,19 +727,98 @@
     var accent = slot.accent || "#2f7d63";
     var premium = slot.premium === true;
     var label = premium ? "Place premium" : "Place disponible";
+    var boardFill = premium ? "#6b3708" : "#063d2e";
+    var iconColor = premium ? "#f0a23c" : accent;
+    var textColor = premium ? "#fff4d8" : "#fff8e8";
     return (
       '<g class="empty-plot available-plot' + (premium ? " premium-plot" : "") + '" data-empty-plot data-slot-id="' + esc(slot.id) + '" tabindex="0" role="button" aria-label="' + label + ' — devenir sponsor" transform="translate(' + slot.x + " " + slot.y + ')">' +
       "<title>" + label + "</title>" +
-      '<ellipse cx="0" cy="4" rx="42" ry="10" fill="var(--map-shadow)" opacity=".2"/>' +
-      '<rect class="plot-outline" x="-40" y="-29" width="80" height="58" rx="10" fill="url(#town-paper)" stroke="' + accent + '" stroke-width="1.3" stroke-dasharray="7 6" opacity=".72"/>' +
+      '<ellipse cx="0" cy="4" rx="48" ry="11" fill="var(--map-shadow)" opacity=".28"/>' +
+      '<rect class="plot-outline" x="-40" y="-29" width="80" height="58" rx="10" style="fill:rgb(255 253 246 / 0.28);stroke:' + accent + ';stroke-width:1.8;stroke-dasharray:7 6;opacity:.95"/>' +
       '<g class="available-sign">' +
-      '<path d="M0 4v31" stroke="' + accent + '" stroke-width="2.2" stroke-linecap="round" opacity=".8"/>' +
-      '<rect x="-48" y="-24" width="96" height="25" rx="6" style="fill:#fff8e8;stroke:' + accent + ';stroke-width:1.6;stroke-dasharray:none"/>' +
-      '<path d="M-38 -12h12M-32 -18v12" stroke="' + accent + '" stroke-width="1.8" stroke-linecap="round"/>' +
-      '<text x="9" y="-8" text-anchor="middle" class="available-sign-title">' + label + "</text>" +
+      '<path d="M0 4v31" stroke="' + boardFill + '" stroke-width="2.6" stroke-linecap="round"/>' +
+      '<rect x="-50" y="-32" width="100" height="37" rx="5" style="fill:' + boardFill + ';stroke:' + iconColor + ';stroke-width:1.8;stroke-dasharray:none"/>' +
+      '<circle cx="-39" cy="-13" r="6.5" fill="' + iconColor + '"/>' +
+      '<path d="M-43 -13h8M-39 -17v8" stroke="' + textColor + '" stroke-width="1.6" stroke-linecap="round"/>' +
+      '<text x="10" y="-18" text-anchor="middle" class="available-sign-title" style="fill:' + textColor + '">Place</text>' +
+      '<text x="10" y="-7" text-anchor="middle" class="available-sign-title" style="fill:' + textColor + '">' + (premium ? "premium" : "disponible") + "</text>" +
       "</g>" +
       "</g>"
     );
+  }
+
+  function mapDefsMarkup() {
+    return "<defs>" +
+      '<pattern id="town-dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="var(--map-road-line)" opacity=".24"/></pattern>' +
+      '<pattern id="town-paper" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M0 18 18 0" stroke="var(--map-road-line)" stroke-width=".6" opacity=".18"/></pattern>' +
+      '<pattern id="town-grass" width="22" height="18" patternUnits="userSpaceOnUse"><path d="M4 17c2-5 4-5 6 0M14 15c1-4 3-4 4 0" fill="none" stroke="var(--map-tree-dark)" stroke-width="1" opacity=".3"/></pattern>' +
+      '<pattern id="town-roof" width="14" height="9" patternUnits="userSpaceOnUse"><path d="M0 9 7 0l7 9" fill="none" stroke="#ffffff" stroke-width="1" opacity=".3"/></pattern>' +
+      '<pattern id="town-wall" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M0 12 12 0M-3 3 3-3M9 15 15 9" stroke="var(--map-building-edge)" stroke-width=".55" opacity=".25"/></pattern>' +
+      '<pattern id="town-water" width="28" height="14" patternUnits="userSpaceOnUse"><path d="M0 7c7-5 14 5 21 0" fill="none" stroke="var(--map-water-light)" stroke-width="1.4" opacity=".65"/></pattern>' +
+      '<pattern id="wall-cream" width="18" height="18" patternUnits="userSpaceOnUse"><rect width="18" height="18" fill="#e9dfc8"/><circle cx="3" cy="4" r=".8" fill="#fff" opacity=".35"/><circle cx="13" cy="12" r=".6" fill="#7d7160" opacity=".15"/></pattern>' +
+      '<pattern id="stone-base" width="18" height="12" patternUnits="userSpaceOnUse"><rect width="18" height="12" fill="#9b917f"/><path d="M0 6h18M6 0v6M13 6v6" stroke="#7e7565" stroke-width=".8" opacity=".75"/></pattern>' +
+      '<pattern id="office-wall" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="#d9d7d0"/><path d="M0 20 20 0" stroke="#a7a39a" stroke-width=".5" opacity=".35"/></pattern>' +
+      '<pattern id="office-panel" width="23" height="23" patternUnits="userSpaceOnUse"><path d="M0 23 23 0" stroke="#aaa69d" stroke-width=".45" opacity=".35"/></pattern>' +
+      '<pattern id="roof-tile" width="12" height="7" patternUnits="userSpaceOnUse"><path d="M0 7 6 0l6 7" fill="none" stroke="#0e1214" stroke-width=".8" opacity=".55"/><path d="M0 3.5h12" stroke="#5d6265" stroke-width=".45" opacity=".4"/></pattern>' +
+      '<linearGradient id="glass-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7b9aa0"/><stop offset=".48" stop-color="#46656b"/><stop offset="1" stop-color="#263f45"/></linearGradient>' +
+      '<clipPath id="town-clip"><rect width="1200" height="760" rx="30"/></clipPath>' +
+      "</defs>";
+  }
+
+  function centerGateMarkup(zoneId) {
+    var gate = '<g transform="translate(600 706)"><rect x="-62" y="-17" width="124" height="34" rx="17" fill="var(--site-green)"/><text x="0" y="5" text-anchor="middle" fill="#fff8e8" font-size="10" font-weight="800" letter-spacing=".12em">CENTRE ↓</text></g>';
+    if (zoneId === "sud") {
+      gate = '<g transform="translate(600 54)"><rect x="-62" y="-17" width="124" height="34" rx="17" fill="var(--site-green)"/><text x="0" y="5" text-anchor="middle" fill="#fff8e8" font-size="10" font-weight="800" letter-spacing=".12em">CENTRE ↑</text></g>';
+    } else if (zoneId === "est") {
+      gate = '<g transform="translate(66 380)"><rect x="-58" y="-17" width="116" height="34" rx="17" fill="var(--site-green)"/><text x="0" y="5" text-anchor="middle" fill="#fff8e8" font-size="10" font-weight="800" letter-spacing=".12em">← CENTRE</text></g>';
+    } else if (zoneId === "ouest") {
+      gate = '<g transform="translate(1134 380)"><rect x="-58" y="-17" width="116" height="34" rx="17" fill="var(--site-green)"/><text x="0" y="5" text-anchor="middle" fill="#fff8e8" font-size="10" font-weight="800" letter-spacing=".12em">CENTRE →</text></g>';
+    }
+    return gate;
+  }
+
+  function outerMapMarkup(current) {
+    var zone = current.zone;
+    var vertical = zone.id === "nord" || zone.id === "sud";
+    var roadPath = vertical ? "M600 760V0" : "M0 380H1200";
+    var roadLabel = vertical
+      ? roadName("Route du Centre", 614, 330, 90)
+      : roadName("Route du Centre", 760, 392, 0);
+    var fields = vertical
+      ? '<rect x="-40" y="68" width="360" height="240" rx="86" fill="var(--map-park)"/>' +
+        '<rect x="-40" y="68" width="360" height="240" rx="86" fill="url(#town-grass)" opacity=".55"/>' +
+        '<rect x="880" y="452" width="360" height="260" rx="96" fill="var(--map-park-deep)"/>' +
+        '<rect x="880" y="452" width="360" height="260" rx="96" fill="url(#town-grass)" opacity=".5"/>'
+      : '<rect x="58" y="-36" width="330" height="240" rx="86" fill="var(--map-park)"/>' +
+        '<rect x="58" y="-36" width="330" height="240" rx="86" fill="url(#town-grass)" opacity=".55"/>' +
+        '<rect x="812" y="556" width="330" height="240" rx="86" fill="var(--map-park-deep)"/>' +
+        '<rect x="812" y="556" width="330" height="240" rx="86" fill="url(#town-grass)" opacity=".5"/>';
+    var trees = vertical
+      ? mapTree(126, 152, 1.1, "round") + mapTree(190, 198, 0.8, "pine") + mapTree(1040, 160, 1.05, "round") +
+        mapTree(1088, 218, 0.7, "bush") + mapTree(150, 610, 0.9, "round") + mapTree(1044, 650, 1, "pine") +
+        mapTree(940, 700, 0.7, "round")
+      : mapTree(142, 126, 1, "round") + mapTree(296, 92, 0.7, "bush") + mapTree(1040, 104, 0.9, "pine") +
+        mapTree(1100, 162, 0.7, "round") + mapTree(156, 650, 0.9, "pine") + mapTree(250, 700, 0.7, "bush") +
+        mapTree(1050, 650, 1, "round");
+    return "<title>" + esc(zone.title) + " — " + current.stats.occupied + " habitants, " + current.stats.available + " places disponibles</title>" +
+      "<desc>" + esc(zone.description) + ". Une route rejoint le centre-ville. " + current.stats.available + " places sont disponibles.</desc>" +
+      mapDefsMarkup() +
+      '<g clip-path="url(#town-clip)">' +
+      '<rect width="1200" height="760" fill="var(--map-paper)"/>' +
+      '<rect width="1200" height="760" fill="url(#town-dots)"/>' +
+      '<rect width="1200" height="760" fill="url(#town-paper)" opacity=".6"/>' +
+      '<path d="M0 0h1200v760H0z" fill="none" stroke="var(--map-road-line)" stroke-width="2" opacity=".35"/>' +
+      fields +
+      road(roadPath) +
+      centerGateMarkup(zone.id) +
+      '<text x="600" y="30" class="map-district" text-anchor="middle">' + esc(zone.title.toUpperCase()) + ' — VILLE ONIR</text>' +
+      '<text x="600" y="744" class="map-district" text-anchor="middle">ZONE ' + esc(zone.title.toUpperCase()) + '</text>' +
+      roadLabel +
+      mapCompass(1102, 84) +
+      trees +
+      current.sponsors.map(buildingMarkup).join("") +
+      current.availableSlots.map(availablePlotMarkup).join("") +
+      "</g>";
   }
 
   function renderMap() {
@@ -755,6 +834,11 @@
     });
     var occupied = current.stats.occupied;
     var available = current.stats.available;
+
+    if (!isCenter) {
+      map.innerHTML = outerMapMarkup(current);
+      return;
+    }
 
     var parkA = "M46 96C118 40 220 58 250 142c28 78-40 137-118 141C57 286 9 201 46 96Z";
     var parkB = "M946 54c78-27 155 18 159 91 4 61-44 106-110 104-79-2-116-53-107-113 4-30 27-68 58-82Z";
@@ -1053,6 +1137,7 @@
             sponsors: town.zoneById[activeZoneId].sponsors,
             availableSlots: town.zoneById[activeZoneId].availableSlots,
             zoneTitle: zoneTitle(activeZoneId),
+            zoneId: activeZoneId,
             onOpen: function (id) {
               openSponsor(byId[id]);
             },
