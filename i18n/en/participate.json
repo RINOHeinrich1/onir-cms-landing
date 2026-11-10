@@ -20,7 +20,8 @@
     "legend": [
       "Building: organisation",
       "House: individual",
-      "Available plot"
+      "Available plot",
+      "Sign: available place"
     ],
     "runtimeNotice": "The interactive 3D map and sponsorship chat are currently available in French."
   },

@@ -10,7 +10,7 @@ viewport: "width=device-width, initial-scale=1, interactive-widget=resizes-conte
 css:
   - /assets/css/base.css
   - /assets/css/landing.css?v=20261104b
-  - /assets/css/participer.css?v=20261026j
+  - /assets/css/participer.css?v=20261110a
 headExtra: |
   <script type="importmap">
     {
@@ -21,8 +21,9 @@ headExtra: |
     }
   </script>
 bodyScripts:
+  - /assets/data/town-layout.js?v=20261110a
   - /assets/data/sponsors.js?v=20261026i
-  - /assets/js/participer.js?v=20261026i
+  - /assets/js/participer.js?v=20261110a
 pagination:
   data: locales
   size: 1
@@ -51,8 +52,9 @@ permalink: "{{ locale.routes.participate }}index.html"
       <a class="site-button site-button-light" href="{{ site.partnerChat }}" target="_blank" rel="noopener">{{ p.sponsor.cta }}</a>
     </div>
 
-    <div class="town-stage" data-town-stage>
+    <div class="town-stage" data-town-stage data-town-api-url="{{ site.partnerApi }}">
       <div class="town-toolbar">
+        <span class="town-summary" data-town-summary aria-live="polite"></span>
         <div class="town-tools">
           <button type="button" class="town-tool" data-view-toggle aria-pressed="false" aria-controls="town-map">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -73,6 +75,7 @@ permalink: "{{ locale.routes.participate }}index.html"
         <div class="map-hover" data-map-hover aria-hidden="true"></div>
       </div>
 
+      <p class="town-status" data-town-status hidden></p>
       <div class="map-legend" aria-label="{{ p.sponsor.legendAria }}">
         {% for item in p.sponsor.legend %}
         <span><i class="legend-dot{% if loop.index == 2 %} legend-dot-house{% elif loop.index == 3 %} legend-dot-empty{% endif %}" aria-hidden="true"></i>{{ item }}</span>
