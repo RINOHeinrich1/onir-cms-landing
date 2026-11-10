@@ -31,11 +31,15 @@ jobs:
           set -euo pipefail
           BASE="https://preprod-cms.onirtech.com"
           AUTH="${PREPROD_BASIC_USER}:${PREPROD_BASIC_PASSWORD}"
-          curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" "${BASE}/" | grep -q "ONIR CMS"
+          curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" -o /tmp/landing-home.html "${BASE}/"
+          grep -q "ONIR CMS" /tmp/landing-home.html
           curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" -o /dev/null "${BASE}/themes/"
-          curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" "${BASE}/en/" | grep -q "ONIR CMS"
-          curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" "${BASE}/mg/" | grep -q "ONIR CMS"
+          curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" -o /tmp/landing-en.html "${BASE}/en/"
+          grep -q "ONIR CMS" /tmp/landing-en.html
+          curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" -o /tmp/landing-mg.html "${BASE}/mg/"
+          grep -q "ONIR CMS" /tmp/landing-mg.html
           curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" -o /dev/null "${BASE}/en/features/"
           curl -fsS --retry 10 --retry-delay 3 -u "${AUTH}" -o /dev/null "${BASE}/mg/fampiasa/"
-          curl -fsS "${BASE}/api/health" | grep -q '"ok":true'
+          curl -fsS --retry 10 --retry-delay 3 -o /tmp/landing-health.json "${BASE}/api/health"
+          grep -q '"ok":true' /tmp/landing-health.json
           echo "Landing preprod smoke test OK."
