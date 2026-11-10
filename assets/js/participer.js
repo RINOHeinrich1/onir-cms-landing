@@ -479,7 +479,7 @@
 
   function mapBench(x, y, angle) {
     return (
-      '<g transform="translate(' + x + " " + y + ') rotate(' + (angle || 0) + ')" aria-hidden="true">' +
+      '<g transform="translate(' + x + " " + y + ') rotate(' + (Math.round((angle || 0) / 90) * 90) + ')" aria-hidden="true">' +
       '<ellipse cx="0" cy="4" rx="21" ry="4" fill="var(--map-shadow)" opacity=".3"/>' +
       '<rect x="-20" y="-4" width="40" height="5" rx="2" fill="#a97745"/>' +
       '<rect x="-19" y="-13" width="38" height="4" rx="2" fill="#bd8b55"/>' +
