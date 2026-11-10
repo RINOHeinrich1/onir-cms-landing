@@ -885,10 +885,10 @@
 }
 
 .available-plot .available-sign-title {
-  fill: var(--site-ink);
+  fill: #fff8e8;
   font-size: 8.5px;
   font-weight: 800;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   text-anchor: middle;
 }
 
@@ -977,11 +977,11 @@
 }
 
 .premium-plot .available-sign-title {
-  fill: #8a4b0f;
+  fill: #fff4d8;
 }
 
 .premium-plot .plot-outline {
-  fill: rgb(240 128 0 / 0.08);
+  fill: rgb(240 128 0 / 0.12);
 }
 
 .town-summary {
