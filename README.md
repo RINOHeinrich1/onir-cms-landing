@@ -36,6 +36,20 @@ Les pages historiques (`themes`, `participer`, `mentions-legales`, `confidential
 utilisent encore `landing.css` et un header/footer « legacy » ; l’accueil et la page
 fonctionnalités utilisent `landing-v2.css`. Le sélecteur de langue est commun aux deux.
 
+### Carte des partenaires
+
+La page `/participer/` charge les partenaires publiés depuis
+`https://partner-api.onir-cms.tech/partenaires`, puis les place dans le catalogue
+`assets/data/town-layout.js` (26 emplacements : centre, organisations, partenaires,
+particuliers).
+
+- `mapSlotId` (optionnel, API) force un emplacement ;
+- sans `mapSlotId`, la première place libre compatible avec `nature` est utilisée ;
+- chaque emplacement libre affiche une pancarte « Place disponible » ;
+- les partenaires sans place restent dans la liste d’attente et sont signalés ;
+- `?demo=1` affiche les données locales de `assets/data/sponsors.js` ;
+- si l’API est indisponible, la carte affiche les places libres sans bloquer la page.
+
 ## Développement local
 
 ```bash
