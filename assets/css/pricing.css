@@ -563,8 +563,8 @@ body[data-market="INTL"] [data-international-only] {
 }
 
 .cloud-detail-card {
-  flex: 0 0 18rem;
-  width: 18rem;
+  flex: 0 0 23rem;
+  width: 23rem;
   max-width: calc(100vw - 2rem);
   scroll-snap-align: start;
 }
