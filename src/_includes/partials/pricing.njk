@@ -40,8 +40,8 @@
 <section class="section wrap cloud-offers-section" id="offres-cloud">
   <div class="section-head">
     <p class="kicker">{{ t.pricing.cloud.badge }}</p>
-    <h2>{{ t.pricing.offersTitle }}</h2>
-    <p>{{ t.pricing.offersLead }}</p>
+    <h2>{{ t.pricing.cloud.offersTitle }}</h2>
+    <p>{{ t.pricing.cloud.offersLead }}</p>
   </div>
   {% if pricing.offers.length %}
   <div class="cloud-detail-grid">
@@ -56,7 +56,7 @@
         <li><span>{{ duration.months }} {{ t.pricing.months }}</span><b>{{ duration.priceLabel }}</b></li>
         {% endfor %}
       </ul>
-      <button class="btn btn-accent" type="button" data-rdv-open>{{ t.pricing.offersCta }}</button>
+      <button class="btn btn-accent" type="button" data-rdv-open>{{ t.pricing.cloud.offersCta }}</button>
     </article>
     {% endfor %}
   </div>
