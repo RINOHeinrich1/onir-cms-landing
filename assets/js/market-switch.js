@@ -3,10 +3,15 @@
   if (!switcher) return;
   var buttons = switcher.querySelectorAll("[data-market]");
   var params = new URLSearchParams(window.location.search);
-  var initial = params.get("market") === "international" ? "INTL" : "MG";
-  try {
-    initial = window.localStorage.getItem("onir-market") || initial;
-  } catch (error) {}
+  var queryMarket = params.get("market");
+  var initial = queryMarket === null
+    ? "MG"
+    : queryMarket === "international" ? "INTL" : "MG";
+  if (queryMarket === null) {
+    try {
+      initial = window.localStorage.getItem("onir-market") || initial;
+    } catch (error) {}
+  }
 
   function apply(market) {
     document.body.dataset.market = market;
