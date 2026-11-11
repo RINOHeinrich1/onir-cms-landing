@@ -478,3 +478,9 @@
     width: 100%;
   }
 }
+
+.cloud-detail-card .cloud-benefits li {
+  display: list-item;
+  text-align: left;
+  justify-content: initial;
+}
