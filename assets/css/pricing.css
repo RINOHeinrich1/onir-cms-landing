@@ -336,6 +336,11 @@
   cursor: pointer;
 }
 
+.rdv-form[hidden],
+.subscribe-result[hidden] {
+  display: none;
+}
+
 .rdv-form {
   display: grid;
   gap: 0.8rem;
