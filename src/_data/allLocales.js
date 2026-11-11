@@ -5,6 +5,11 @@ const routes = {
     en: "/en/features/",
     mg: "/mg/fampiasa/",
   },
+  pricing: {
+    fr: "/tarifs/",
+    en: "/en/pricing/",
+    mg: "/mg/vidiny/",
+  },
   themes: { fr: "/themes/", en: "/en/themes/", mg: "/mg/endrika/" },
   participate: {
     fr: "/participer/",
@@ -31,28 +36,7 @@ function routesFor(code) {
 }
 
 export default [
-  {
-    code: "fr",
-    label: "Français",
-    htmlLang: "fr",
-    ogLocale: "fr_FR",
-    available: true,
-    routes: routesFor("fr"),
-  },
-  {
-    code: "en",
-    label: "English",
-    htmlLang: "en",
-    ogLocale: "en_US",
-    available: true,
-    routes: routesFor("en"),
-  },
-  {
-    code: "mg",
-    label: "Malagasy",
-    htmlLang: "mg",
-    ogLocale: "mg_MG",
-    available: true,
-    routes: routesFor("mg"),
-  },
+  { code: "fr", label: "Français", htmlLang: "fr", ogLocale: "fr_FR", available: true, routes: routesFor("fr") },
+  { code: "en", label: "English", htmlLang: "en", ogLocale: "en_US", available: true, routes: routesFor("en") },
+  { code: "mg", label: "Malagasy", htmlLang: "mg", ogLocale: "mg_MG", available: true, routes: routesFor("mg") },
 ];

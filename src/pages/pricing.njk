@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+pageKey: pricing
+headerVariant: v2
+css:
+  - /assets/css/landing-v2.css?v=11
+  - /assets/css/pricing.css?v=1
+bodyScripts:
+  - /assets/js/appointment-chat.js?v=1
+showWidget: true
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "{{ locale.routes.pricing }}index.html"
+---
+<section class="page-hero wrap">
+  <p class="kicker">{{ t.common.nav.pricing }}</p>
+  <h1>{{ p.hero.title }}</h1>
+  <p class="hero-lead">{{ p.hero.lead }}</p>
+</section>
+
+{% include "partials/pricing.njk" %}
+
+<section class="cta wrap">
+  <p class="kicker">{{ t.pricing.ctaKicker }}</p>
+  <h2>{{ t.pricing.ctaTitle }}</h2>
+  <p>{{ t.pricing.ctaLead }}</p>
+  <div class="cta-row">
+    <button class="btn btn-accent" type="button" data-rdv-open>{{ t.pricing.ctaButton }}</button>
+    <a class="btn btn-ghost" href="{{ site.github }}" target="_blank" rel="noreferrer">{{ t.pricing.selfHosted.cta }}</a>
+  </div>
+</section>
