@@ -7,6 +7,7 @@
   </div>
   {% endif %}
   <div class="pricing-grid">
+    {% if pageKey == "pricing" %}
     <article class="price-card">
       <span class="price-tag">{{ t.pricing.selfHosted.badge }}</span>
       <h3>{{ t.pricing.selfHosted.title }}</h3>
@@ -17,6 +18,7 @@
       </ul>
       <a class="btn btn-ghost" href="{{ site.github }}" target="_blank" rel="noreferrer">{{ t.pricing.selfHosted.cta }}</a>
     </article>
+    {% endif %}
 
     <article class="price-card price-card-featured">
       <span class="price-tag">{{ t.pricing.cloud.badge }}</span>
