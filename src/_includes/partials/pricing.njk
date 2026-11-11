@@ -20,26 +20,8 @@
       <span class="price-tag">{{ t.pricing.cloud.badge }}</span>
       <h3>{{ t.pricing.cloud.title }}</h3>
       <p>{{ t.pricing.cloud.lead }}</p>
-      {% if pricing.offers.length %}
-      <div class="cloud-offers">
-        {% for offer in pricing.offers %}
-        <div class="cloud-offer">
-          <div class="cloud-offer-head">
-            <strong>{{ offer.name }}</strong>
-            {% if offer.description %}<span>{{ offer.description }}</span>{% endif %}
-          </div>
-          <ul>
-            {% for duration in offer.durations %}
-            <li><span>{{ duration.months }} {{ t.pricing.months }}</span><b>{{ duration.priceLabel }}</b></li>
-            {% endfor %}
-          </ul>
-        </div>
-        {% endfor %}
-      </div>
-      {% else %}
-      <p class="price-empty">{{ t.pricing.cloud.empty }}</p>
-      {% endif %}
-      <button class="btn btn-accent" type="button" data-rdv-open>{{ t.pricing.cloud.cta }}</button>
+      <p class="price-empty">{{ t.pricing.cloud.detail }}</p>
+      <a class="btn btn-accent" href="{{ locale.routes.pricing }}#offres-cloud">{{ t.pricing.cloud.cta }}</a>
     </article>
 
     <article class="price-card">
@@ -53,6 +35,36 @@
     </article>
   </div>
 </section>
+
+{% if pageKey == "pricing" %}
+<section class="section wrap cloud-offers-section" id="offres-cloud">
+  <div class="section-head">
+    <p class="kicker">{{ t.pricing.cloud.badge }}</p>
+    <h2>{{ t.pricing.offersTitle }}</h2>
+    <p>{{ t.pricing.offersLead }}</p>
+  </div>
+  {% if pricing.offers.length %}
+  <div class="cloud-detail-grid">
+    {% for offer in pricing.offers %}
+    <article class="cloud-detail-card">
+      <div class="cloud-offer-head">
+        <strong>{{ offer.name }}</strong>
+        {% if offer.description %}<span>{{ offer.description }}</span>{% endif %}
+      </div>
+      <ul>
+        {% for duration in offer.durations %}
+        <li><span>{{ duration.months }} {{ t.pricing.months }}</span><b>{{ duration.priceLabel }}</b></li>
+        {% endfor %}
+      </ul>
+      <button class="btn btn-accent" type="button" data-rdv-open>{{ t.pricing.offersCta }}</button>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="price-empty">{{ t.pricing.cloud.empty }}</p>
+  {% endif %}
+</section>
+{% endif %}
 
 <dialog class="rdv-dialog" id="rdv-chat" data-whatsapp="{{ site.whatsappUrl }}" aria-labelledby="rdv-title">
   <div class="rdv-head">

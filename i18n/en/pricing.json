@@ -27,9 +27,13 @@
   "cloud": {
     "badge": "ONIR CMS Cloud",
     "title": "Cloud plans",
-    "lead": "Plans published from the commercial backoffice. Choose the duration that suits you.",
+    "lead": "Scalable cloud plans for your needs, designed for small and medium businesses.",
     "empty": "Cloud plans will be available soon.",
-    "cta": "Request this plan"
+    "cta": "View Cloud plans",
+    "detail": "Several plans and durations are available below.",
+    "offersTitle": "Our ONIR CMS Cloud plans",
+    "offersLead": "Choose the plan and duration that fit your organization.",
+    "offersCta": "Request this plan"
   },
   "enterprise": {
     "badge": "Enterprise",

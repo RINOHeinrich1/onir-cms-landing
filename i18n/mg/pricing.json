@@ -27,9 +27,13 @@
   "cloud": {
     "badge": "ONIR CMS Cloud",
     "title": "Tolotra Cloud",
-    "lead": "Ny tolotra navoakan’ny backoffice commercial. Safidio ny faharetana mety aminao.",
+    "lead": "Tolotra cloud mivelatra mifanaraka amin’ny filanao, natao ho an’ny orinasa kely sy salantsalany.",
     "empty": "Ho avy tsy ho ela ny tolotra Cloud.",
-    "cta": "Mangataha ity tolotra ity"
+    "cta": "Jereo ny tolotra Cloud",
+    "detail": "Misy tolotra sy faharetana maromaro etsy ambany.",
+    "offersTitle": "Ny tolotra ONIR CMS Cloud",
+    "offersLead": "Safidio ny tolotra sy ny faharetana mety amin’ny fikambananao.",
+    "offersCta": "Mangataha ity tolotra ity"
   },
   "enterprise": {
     "badge": "Orinasa",

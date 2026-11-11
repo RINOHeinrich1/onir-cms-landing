@@ -72,6 +72,57 @@
   text-align: center;
 }
 
+.price-card .price-empty {
+  flex: 1;
+}
+
+.cloud-offers-section {
+  padding-top: 1rem;
+}
+
+.cloud-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+}
+
+.cloud-detail-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1.35rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.cloud-detail-card ul {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cloud-detail-card li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.7rem;
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+}
+
+.cloud-detail-card li b {
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.cloud-detail-card .btn {
+  margin-top: auto;
+  text-align: center;
+}
+
 .cloud-offers {
   display: grid;
   gap: 0.7rem;

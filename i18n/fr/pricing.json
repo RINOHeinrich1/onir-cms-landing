@@ -27,9 +27,13 @@
   "cloud": {
     "badge": "ONIR CMS Cloud",
     "title": "Les offres Cloud",
-    "lead": "Les offres publiées depuis le backoffice commercial. Choisissez la durée qui vous convient.",
+    "lead": "Des offres cloud scalables selon vos besoins, pensées pour les petites et moyennes entreprises.",
     "empty": "Les offres Cloud seront bientôt disponibles.",
-    "cta": "Demander cette offre"
+    "cta": "Voir les offres Cloud",
+    "detail": "Plusieurs offres et durées sont disponibles ci-dessous.",
+    "offersTitle": "Nos offres ONIR CMS Cloud",
+    "offersLead": "Choisissez l’offre et la durée adaptées à votre organisation.",
+    "offersCta": "Demander cette offre"
   },
   "enterprise": {
     "badge": "Entreprise",
