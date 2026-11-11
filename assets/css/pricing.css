@@ -82,7 +82,7 @@
 
 .cloud-detail-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
   gap: 1rem;
 }
 
@@ -121,6 +121,103 @@
 .cloud-detail-card .btn {
   margin-top: auto;
   text-align: center;
+}
+
+.cloud-duration {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 0.55rem;
+  background: #fff;
+  color: var(--ink);
+  padding: 0.55rem 0.65rem;
+  font: inherit;
+  font-size: 0.82rem;
+}
+
+.subscribe-dialog {
+  width: min(36rem, calc(100% - 2rem));
+}
+
+.subscribe-summary {
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--bg-soft);
+  padding: 0.65rem 0.8rem;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.rdv-field select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 0.55rem;
+  background: #fff;
+  color: var(--ink);
+  padding: 0.6rem 0.7rem;
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.subscribe-result {
+  padding: 1.1rem;
+  color: var(--ink);
+}
+
+.subscribe-result h3 {
+  margin: 0 0 0.5rem;
+}
+
+.subscribe-result > p {
+  margin: 0 0 0.8rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.subscribe-code {
+  border-radius: var(--r-md);
+  background: var(--green);
+  color: #fff;
+  padding: 0.8rem 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.subscribe-result dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.45rem 0.8rem;
+  margin: 1rem 0;
+  font-size: 0.86rem;
+}
+
+.subscribe-result dt {
+  color: var(--ink-soft);
+}
+
+.subscribe-result dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 700;
+}
+
+.subscribe-instructions {
+  border-top: 1px solid var(--line);
+  padding-top: 0.8rem;
+  font-size: 0.86rem;
+}
+
+.subscribe-instructions strong {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.subscribe-instructions p {
+  margin: 0;
+  color: var(--ink-soft);
+  white-space: pre-line;
 }
 
 .cloud-offers {

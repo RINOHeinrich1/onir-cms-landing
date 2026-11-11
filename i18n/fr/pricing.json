@@ -61,5 +61,24 @@
   "ctaKicker": "Passons à l’essentiel",
   "ctaTitle": "Prêt à choisir votre offre ?",
   "ctaLead": "Parlons de votre projet et trouvons la formule adaptée.",
-  "ctaButton": "Demander une offre"
+  "ctaButton": "Demander une offre",
+  "subscription": {
+    "title": "Demande d’abonnement Cloud",
+    "lead": "Renseignez votre organisation et le contact. Vous recevrez un code unique à indiquer dans le transfert Orange Money ou Mvola.",
+    "duration": "Durée choisie",
+    "organization": "Nom de l’organisation",
+    "contactName": "Nom du contact",
+    "email": "Email",
+    "phone": "Téléphone / WhatsApp",
+    "submit": "Envoyer la demande",
+    "successTitle": "Demande enregistrée",
+    "successLead": "Effectuez le paiement Mobile Money avec ce code dans la description. Un opérateur vérifiera votre paiement.",
+    "offerLabel": "Offre",
+    "amountLabel": "Montant attendu",
+    "expiresLabel": "Valable jusqu’au",
+    "instructionsLabel": "Instructions de paiement",
+    "close": "Fermer",
+    "error": "Impossible d’envoyer la demande.",
+    "noInstructions": "Contactez ONIR pour obtenir les coordonnées de paiement."
+  }
 }

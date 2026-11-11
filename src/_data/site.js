@@ -15,6 +15,7 @@ export default {
     ? `${appBase}/l/${partnerChatToken}`
     : `https://magic-link.onir-cms.tech/l/${partnerChatToken}`,
   partnerApi: process.env.PREPROD_PARTNER_API_URL || "https://partner-api.onir-cms.tech/partenaires",
+  commercialApi: process.env.COMMERCIAL_BACK_URL || "https://preprod-backoffice.onir-cms.tech",
   whatsappUrl: "https://wa.me/261349368233",
   whatsappNumber: "+261349368233",
   contactEmail: "contact@onir-cms.tech",

@@ -61,5 +61,24 @@
   "ctaKicker": "Andao hanomboka",
   "ctaTitle": "Vonona hisafidy tolotra ve ianao?",
   "ctaLead": "Andao hiresaka ny tetikasanao ary hitady ny safidy mety.",
-  "ctaButton": "Mangataha tolotra"
+  "ctaButton": "Mangataha tolotra",
+  "subscription": {
+    "title": "Fangatahana abonnement Cloud",
+    "lead": "Fenoy ny mombamomba ny fikambananao sy ny fifandraisana. Hahazo kaody tokana hampiasainao amin’ny famindrana Orange Money na Mvola ianao.",
+    "duration": "Faharetana voafidy",
+    "organization": "Anaran’ny fikambanana",
+    "contactName": "Anaran’ny olona ifandraisana",
+    "email": "Email",
+    "phone": "Telefaona / WhatsApp",
+    "submit": "Alefaso ny fangatahana",
+    "successTitle": "Voatahiry ny fangatahana",
+    "successLead": "Ataovy ny famindrana Mobile Money miaraka amin’ity kaody ity ao amin’ny famaritana. Hisy mpiasa hanamarina ny fandoavam-bola.",
+    "offerLabel": "Tolotra",
+    "amountLabel": "Vola tokony aloa",
+    "expiresLabel": "Mety hatramin’ny",
+    "instructionsLabel": "Torolalana momba ny fandoavam-bola",
+    "close": "Hidio",
+    "error": "Tsy afaka nandefa ny fangatahana.",
+    "noInstructions": "Mifandraisa amin’ONIR hahazoana ny antsipirian’ny fandoavam-bola."
+  }
 }

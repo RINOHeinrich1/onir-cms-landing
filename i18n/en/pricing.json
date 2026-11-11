@@ -61,5 +61,24 @@
   "ctaKicker": "Let’s get started",
   "ctaTitle": "Ready to choose your plan?",
   "ctaLead": "Let’s discuss your project and find the right fit.",
-  "ctaButton": "Request a plan"
+  "ctaButton": "Request a plan",
+  "subscription": {
+    "title": "Cloud subscription request",
+    "lead": "Enter your organization and contact details. You will receive a unique code to include in the Orange Money or Mvola transfer.",
+    "duration": "Selected duration",
+    "organization": "Organization name",
+    "contactName": "Contact name",
+    "email": "Email",
+    "phone": "Phone / WhatsApp",
+    "submit": "Send request",
+    "successTitle": "Request saved",
+    "successLead": "Make the Mobile Money payment with this code in the description. An operator will verify your payment.",
+    "offerLabel": "Plan",
+    "amountLabel": "Amount",
+    "expiresLabel": "Valid until",
+    "instructionsLabel": "Payment instructions",
+    "close": "Close",
+    "error": "Unable to send the request.",
+    "noInstructions": "Contact ONIR for payment details."
+  }
 }

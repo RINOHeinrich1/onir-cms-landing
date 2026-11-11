@@ -56,7 +56,12 @@
         <li><span>{{ duration.months }} {{ t.pricing.months }}</span><b>{{ duration.priceLabel }}</b></li>
         {% endfor %}
       </ul>
-      <button class="btn btn-accent" type="button" data-rdv-open>{{ t.pricing.cloud.offersCta }}</button>
+      <select class="cloud-duration" aria-label="{{ t.pricing.subscription.duration }}">
+        {% for duration in offer.durations %}
+        <option value="{{ duration.months }}">{{ duration.months }} {{ t.pricing.months }} — {{ duration.priceLabel }}</option>
+        {% endfor %}
+      </select>
+      <button class="btn btn-accent js-subscribe" type="button" data-offer-code="{{ offer.code }}" data-offer-name="{{ offer.name }}">{{ t.pricing.cloud.offersCta }}</button>
     </article>
     {% endfor %}
   </div>
@@ -65,6 +70,58 @@
   {% endif %}
 </section>
 {% endif %}
+
+<dialog class="rdv-dialog subscribe-dialog" id="subscribe-dialog" data-api="{{ site.commercialApi }}" aria-labelledby="subscribe-title">
+  <div class="rdv-head">
+    <div>
+      <span class="rdv-status"><i></i>ONIR CLOUD</span>
+      <strong id="subscribe-title">{{ t.pricing.subscription.title }}</strong>
+    </div>
+    <button class="rdv-close" type="button" data-subscribe-close aria-label="{{ t.pricing.subscription.close }}">×</button>
+  </div>
+  <form class="rdv-form" data-subscribe-form>
+    <p class="rdv-lead">{{ t.pricing.subscription.lead }}</p>
+    <div class="subscribe-summary" data-subscribe-summary></div>
+    <input name="offerCode" type="hidden">
+    <label class="rdv-field">
+      <span class="rdv-bubble">{{ t.pricing.subscription.duration }}</span>
+      <select name="durationMonths" required></select>
+    </label>
+    <label class="rdv-field">
+      <span class="rdv-bubble">{{ t.pricing.subscription.organization }}</span>
+      <input name="organizationName" required autocomplete="organization">
+    </label>
+    <label class="rdv-field">
+      <span class="rdv-bubble">{{ t.pricing.subscription.contactName }}</span>
+      <input name="contactName" required autocomplete="name">
+    </label>
+    <label class="rdv-field">
+      <span class="rdv-bubble">{{ t.pricing.subscription.email }}</span>
+      <input name="contactEmail" type="email" required autocomplete="email">
+    </label>
+    <label class="rdv-field">
+      <span class="rdv-bubble">{{ t.pricing.subscription.phone }}</span>
+      <input name="contactPhone" type="tel" autocomplete="tel" placeholder="+261 ...">
+    </label>
+    <p class="rdv-error" data-subscribe-error hidden></p>
+    <button class="btn btn-accent" type="submit">{{ t.pricing.subscription.submit }}</button>
+  </form>
+  <div class="subscribe-result" data-subscribe-result hidden>
+    <h3>{{ t.pricing.subscription.successTitle }}</h3>
+    <p>{{ t.pricing.subscription.successLead }}</p>
+    <div class="subscribe-code" data-subscribe-code></div>
+    <dl>
+      <dt>{{ t.pricing.subscription.offerLabel }}</dt><dd data-subscribe-offer></dd>
+      <dt>{{ t.pricing.subscription.amountLabel }}</dt><dd data-subscribe-amount></dd>
+      <dt>{{ t.pricing.subscription.expiresLabel }}</dt><dd data-subscribe-expires></dd>
+    </dl>
+    <div class="subscribe-instructions">
+      <strong>{{ t.pricing.subscription.instructionsLabel }}</strong>
+      <p data-subscribe-instructions></p>
+    </div>
+    <button class="btn btn-ghost" type="button" data-subscribe-close>{{ t.pricing.subscription.close }}</button>
+  </div>
+</dialog>
 
 <dialog class="rdv-dialog" id="rdv-chat" data-whatsapp="{{ site.whatsappUrl }}" aria-labelledby="rdv-title">
   <div class="rdv-head">
