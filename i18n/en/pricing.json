@@ -9,7 +9,7 @@
     "title": "Choose your plan.",
     "lead": "Start for free with self-hosting, choose a Cloud plan published from the backoffice, or get support from our team."
   },
-  "kicker": "Pricing",
+  "kicker": "Support us",
   "title": "Clear plans, from open source to tailored support.",
   "lead": "Start for free with self-hosting, choose a Cloud plan published from the backoffice, or get support from our team.",
   "selfHosted": {
@@ -86,5 +86,11 @@
     "title": "Support AI within everyone’s reach.",
     "lead": "By using our service, you help fund open, accessible AI for organizations here and elsewhere.",
     "cta": "Use our service"
+  },
+  "partner": {
+    "badge": "Partners",
+    "title": "Become a partner",
+    "lead": "Join the ONIR CMS ecosystem and build useful assistants with us.",
+    "cta": "Participate"
   }
 }

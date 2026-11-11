@@ -35,6 +35,15 @@
       </ul>
       <button class="btn btn-accent" type="button" data-rdv-open>{{ t.pricing.enterprise.cta }}</button>
     </article>
+
+    {% if pageKey != "pricing" %}
+    <article class="price-card">
+      <span class="price-tag">{{ t.pricing.partner.badge }}</span>
+      <h3>{{ t.pricing.partner.title }}</h3>
+      <p>{{ t.pricing.partner.lead }}</p>
+      <a class="btn btn-ghost" href="{{ locale.routes.participate }}">{{ t.pricing.partner.cta }}</a>
+    </article>
+    {% endif %}
   </div>
 </section>
 

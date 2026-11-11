@@ -9,7 +9,7 @@
     "title": "Safidio ny tolotra mety aminao.",
     "lead": "Atombohy maimaim-poana amin’ny fametrahana anao manokana, safidio ny tolotra Cloud navoakan’ny backoffice, na mangataha fanohanana amin’ny ekipanay."
   },
-  "kicker": "Vidiny",
+  "kicker": "Tohanay",
   "title": "Safidy mazava, manomboka amin’ny open source ka hatramin’ny fanarahana manokana.",
   "lead": "Atombohy maimaim-poana amin’ny fametrahana anao manokana, safidio ny tolotra Cloud navoakan’ny backoffice, na mangataha fanohanana amin’ny ekipanay.",
   "selfHosted": {
@@ -86,5 +86,11 @@
     "title": "Tohano ny IA ho an’ny rehetra.",
     "lead": "Amin’ny fampiasana ny serivisinay dia manohana ny IA misokatra sy azo idirana ho an’ny fikambanana eto sy any ivelany ianao.",
     "cta": "Mampiasà ny serivisinay"
+  },
+  "partner": {
+    "badge": "Mpiraka",
+    "title": "Ho lasa mpiara-miombon’antoka",
+    "lead": "Midira ao amin’ny tontolon’ny ONIR CMS ary amboary miaraka aminay ny assistant mahasoa.",
+    "cta": "Handray anjara"
   }
 }

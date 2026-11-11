@@ -9,7 +9,7 @@
     "title": "Choisissez votre formule.",
     "lead": "Commencez gratuitement en autohébergement, choisissez une offre Cloud publiée depuis le backoffice, ou faites-vous accompagner par notre équipe."
   },
-  "kicker": "Tarification",
+  "kicker": "Nous soutenir",
   "title": "Des offres claires, du libre au sur-mesure.",
   "lead": "Commencez gratuitement en autohébergement, choisissez une offre Cloud publiée depuis le backoffice, ou faites-vous accompagner par notre équipe.",
   "selfHosted": {
@@ -86,5 +86,11 @@
     "title": "Soutenez l’IA à la portée de tous.",
     "lead": "En faisant appel à notre service, vous financez une IA ouverte et accessible aux organisations d’ici et d’ailleurs.",
     "cta": "Faire appel à notre service"
+  },
+  "partner": {
+    "badge": "Partenaires",
+    "title": "Devenir partenaire",
+    "lead": "Rejoignez l’écosystème ONIR CMS et construisons ensemble des assistants utiles.",
+    "cta": "Participer"
   }
 }
