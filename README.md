@@ -132,3 +132,8 @@ Le déploiement production reste manuel via `deploy/apply-production.sh`.
 - Les liens de démonstration pointent vers les URL publiques de l’application.
 - `cms.onirtech.com` redirige en 301 vers `onir-cms.tech` ; les anciennes URL applicatives
   sont redirigées vers `cms-backoffice.onirtech.com`.
+
+## Documentation
+
+- [ADR](docs/adr/README.md)
+- [Plan marché Madagascar / international](docs/plans/plan-marche-mada-international.md)
