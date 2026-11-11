@@ -605,3 +605,9 @@ body[data-market="INTL"] [data-international-only] {
   .carousel-prev { left: 0.1rem; }
   .carousel-next { right: 0.1rem; }
 }
+
+@media (min-width: 901px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
