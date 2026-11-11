@@ -1,9 +1,11 @@
 <section class="section wrap" id="pricing">
+  {% if pageKey != "pricing" %}
   <div class="section-head">
     <p class="kicker">{{ t.pricing.kicker }}</p>
     <h2>{{ t.pricing.title }}</h2>
     <p>{{ t.pricing.lead }}</p>
   </div>
+  {% endif %}
   <div class="pricing-grid">
     <article class="price-card">
       <span class="price-tag">{{ t.pricing.selfHosted.badge }}</span>

@@ -80,5 +80,11 @@
     "close": "Close",
     "error": "Unable to send the request.",
     "noInstructions": "Contact ONIR for payment details."
+  },
+  "support": {
+    "kicker": "Our mission",
+    "title": "Support AI within everyone’s reach.",
+    "lead": "By using our service, you help fund open, accessible AI for organizations here and elsewhere.",
+    "cta": "Use our service"
   }
 }

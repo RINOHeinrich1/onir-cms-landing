@@ -80,5 +80,11 @@
     "close": "Hidio",
     "error": "Tsy afaka nandefa ny fangatahana.",
     "noInstructions": "Mifandraisa amin’ONIR hahazoana ny antsipirian’ny fandoavam-bola."
+  },
+  "support": {
+    "kicker": "Ny iraka ataonay",
+    "title": "Tohano ny IA ho an’ny rehetra.",
+    "lead": "Amin’ny fampiasana ny serivisinay dia manohana ny IA misokatra sy azo idirana ho an’ny fikambanana eto sy any ivelany ianao.",
+    "cta": "Mampiasà ny serivisinay"
   }
 }

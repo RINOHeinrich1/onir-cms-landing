@@ -80,5 +80,11 @@
     "close": "Fermer",
     "error": "Impossible d’envoyer la demande.",
     "noInstructions": "Contactez ONIR pour obtenir les coordonnées de paiement."
+  },
+  "support": {
+    "kicker": "Notre mission",
+    "title": "Soutenez l’IA à la portée de tous.",
+    "lead": "En faisant appel à notre service, vous financez une IA ouverte et accessible aux organisations d’ici et d’ailleurs.",
+    "cta": "Faire appel à notre service"
   }
 }
