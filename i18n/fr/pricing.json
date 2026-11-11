@@ -114,5 +114,6 @@
     "STARTER": "Pour démarrer avec un premier chatbot et 1 million de tokens par mois.",
     "BUSINESS": "Pour les PME qui utilisent plusieurs chatbots et un volume professionnel.",
     "SCALE": "Pour les organisations à fort volume et plusieurs cas d’usage."
-  }
+  },
+  "storageLabel": "de stockage"
 }

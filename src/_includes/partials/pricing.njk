@@ -71,14 +71,14 @@
         {% set offerDescription = t.pricing.offerDescriptions[offer.code] or offer.description %}
         {% if offerDescription %}<span>{{ offerDescription }}</span>{% endif %}
       </div>
-      <div class="cloud-includes">
-        {% if offer.maxChatbots != null %}<span>{{ offer.maxChatbots }} {{ t.pricing.includedChatbots }}</span>{% endif %}
-        {% if offer.tokensLabel %}<span>{{ offer.tokensLabel }}</span>{% endif %}
-        {% if offer.maxMessages != null %}<span>{{ offer.maxMessagesFormatted }} {{ t.pricing.includedMessages }}</span>{% endif %}
+      <ul class="price-list cloud-benefits">
+        {% if offer.maxChatbots != null %}<li>{{ offer.maxChatbots }} {{ t.pricing.includedChatbots }}</li>{% endif %}
+        {% if offer.tokensLabel %}<li>{{ offer.tokensLabel }}</li>{% endif %}
+        {% if offer.maxMessages != null %}<li>{{ offer.maxMessagesFormatted }} {{ t.pricing.includedMessages }}</li>{% endif %}
         {% if offer.maxStorageMb != null %}
-        <span>{% if offer.maxStorageMb >= 1024 %}{{ offer.maxStorageMb / 1024 }} {{ t.pricing.storageGb }}{% else %}{{ offer.maxStorageMb }} {{ t.pricing.storageMb }}{% endif %}</span>
+        <li>{% if offer.maxStorageMb >= 1024 %}{{ offer.maxStorageMb / 1024 }} {{ t.pricing.storageGb }}{% else %}{{ offer.maxStorageMb }} {{ t.pricing.storageMb }}{% endif %} {{ t.pricing.storageLabel }}</li>
         {% endif %}
-      </div>
+      </ul>
       <select class="cloud-duration" hidden aria-label="{{ t.pricing.subscription.duration }}">
         {% for duration in offer.durations %}
         <option value="{{ duration.months }}" data-price="{{ duration.priceLabel }}" data-period="{{ t.pricing.pricePeriod[duration.months] }}"{% if loop.first %} selected{% endif %}>{{ duration.months }} {{ t.pricing.months }} — {{ duration.priceLabel }}</option>
