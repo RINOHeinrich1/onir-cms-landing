@@ -122,5 +122,7 @@
     "international": "International",
     "cloudTitle": "ONIR CMS Cloud est disponible uniquement à Madagascar",
     "cloudLead": "Découvrez les offres Self-hosted, Enterprise ou Partenaire pour l’international."
-  }
+  },
+  "carouselPrev": "Offre précédente",
+  "carouselNext": "Offre suivante"
 }

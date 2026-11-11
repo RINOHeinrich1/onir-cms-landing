@@ -61,7 +61,9 @@
     <button class="duration-tab" data-months="6" type="button">{{ t.pricing.durationLabels["6"] }}</button>
     <button class="duration-tab" data-months="12" type="button">{{ t.pricing.durationLabels["12"] }}</button>
   </div>
-  <div class="cloud-detail-grid">
+  <div class="cloud-carousel" data-cloud-carousel>
+    <button class="carousel-button carousel-prev" data-carousel-prev type="button" aria-label="{{ t.pricing.carouselPrev }}">{{ "←" }}</button>
+    <div class="cloud-detail-grid">
     {% for offer in pricing.offers %}
     <article class="cloud-detail-card" data-cloud-card>
       <div class="cloud-offer-head">
@@ -89,6 +91,8 @@
       <button class="btn btn-accent js-subscribe" type="button" data-offer-code="{{ offer.code }}" data-offer-name="{{ offer.name }}">{{ t.pricing.cloud.offersCta }}</button>
     </article>
     {% endfor %}
+    </div>
+    <button class="carousel-button carousel-next" data-carousel-next type="button" aria-label="{{ t.pricing.carouselNext }}">{{ "→" }}</button>
   </div>
   {% else %}
   <p class="price-empty">{{ t.pricing.cloud.empty }}</p>

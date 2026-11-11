@@ -122,5 +122,7 @@
     "international": "Iraisam-pirenena",
     "cloudTitle": "Ny ONIR CMS Cloud dia misy any Madagasikara ihany aloha",
     "cloudLead": "Jereo ny tolotra Self-hosted, Enterprise na Partenaire ho an’ny iraisam-pirenena."
-  }
+  },
+  "carouselPrev": "Tolotra teo aloha",
+  "carouselNext": "Tolotra manaraka"
 }
