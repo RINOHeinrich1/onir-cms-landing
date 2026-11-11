@@ -22,7 +22,8 @@ git -C "${ROOT}" reset --hard origin/main
 cd "${ROOT}"
 npm ci --no-audit --no-fund
 LANDING_PARTNER_API_URL="${LANDING_PARTNER_API_URL:-https://preprod-partner-api.onir-cms.tech/partenaires}"
-PREPROD_APP_URL="${PREPROD_APP_URL}" PREPROD_PARTNER_API_URL="${LANDING_PARTNER_API_URL}" npm run build
+COMMERCIAL_BACK_URL="${COMMERCIAL_BACK_URL:-https://preprod-backoffice.onir-cms.tech}"
+PREPROD_APP_URL="${PREPROD_APP_URL}" PREPROD_PARTNER_API_URL="${LANDING_PARTNER_API_URL}" COMMERCIAL_BACK_URL="${COMMERCIAL_BACK_URL}" npm run build
 [[ -f "${ROOT}/dist/index.html" ]] || die "build incomplet: dist/index.html absent"
 
 install -d -m 755 "${WEB_ROOT}"
