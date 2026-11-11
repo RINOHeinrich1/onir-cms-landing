@@ -13,13 +13,19 @@ export default async function pricing() {
     if (!response.ok) return { offers: [] };
     const payload = await response.json();
     const offers = Array.isArray(payload.offers) ? payload.offers : [];
+    const order = { STARTER: 0, BUSINESS: 1, SCALE: 2 };
     return {
-      offers: offers.map((offer) => ({
+      offers: offers
+        .sort((a, b) => (order[a.code] ?? 99) - (order[b.code] ?? 99))
+        .map((offer) => ({
         code: offer.code,
         name: offer.name,
         description: offer.description,
         maxChatbots: offer.maxChatbots ?? null,
         maxMessages: offer.maxMessages ?? null,
+        maxMessagesFormatted: offer.maxMessages
+          ? new Intl.NumberFormat("fr-FR").format(offer.maxMessages)
+          : null,
         maxStorageMb: offer.maxStorageMb ?? null,
         tokensLabel: offer.maxTokens ? `${new Intl.NumberFormat("fr-FR").format(offer.maxTokens)} tokens / mois` : null,
         durations: (offer.durations || []).map((duration) => ({

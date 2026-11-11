@@ -74,7 +74,7 @@
       <div class="cloud-includes">
         {% if offer.maxChatbots != null %}<span>{{ offer.maxChatbots }} {{ t.pricing.includedChatbots }}</span>{% endif %}
         {% if offer.tokensLabel %}<span>{{ offer.tokensLabel }}</span>{% endif %}
-        {% if offer.maxMessages != null %}<span>{{ offer.maxMessages }} {{ t.pricing.includedMessages }}</span>{% endif %}
+        {% if offer.maxMessages != null %}<span>{{ offer.maxMessagesFormatted }} {{ t.pricing.includedMessages }}</span>{% endif %}
         {% if offer.maxStorageMb != null %}
         <span>{% if offer.maxStorageMb >= 1024 %}{{ offer.maxStorageMb / 1024 }} {{ t.pricing.storageGb }}{% else %}{{ offer.maxStorageMb }} {{ t.pricing.storageMb }}{% endif %}</span>
         {% endif %}
