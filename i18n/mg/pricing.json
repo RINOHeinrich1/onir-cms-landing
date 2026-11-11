@@ -92,5 +92,19 @@
     "title": "Ho lasa mpiara-miombon’antoka",
     "lead": "Midira ao amin’ny tontolon’ny ONIR CMS ary amboary miaraka aminay ny assistant mahasoa.",
     "cta": "Handray anjara"
+  },
+  "includedChatbots": "chatbots tafiditra",
+  "includedTokens": "tokens tafiditra / volana",
+  "durationLabels": {
+    "1": "Isam-bolana",
+    "3": "Isaky ny 3 volana",
+    "6": "Isaky ny 6 volana",
+    "12": "Isan-taona"
+  },
+  "pricePeriod": {
+    "1": "/ volana",
+    "3": "/ 3 volana",
+    "6": "/ 6 volana",
+    "12": "/ 12 volana"
   }
 }

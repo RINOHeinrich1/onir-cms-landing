@@ -25,6 +25,7 @@
     var duration = card ? card.querySelector(".cloud-duration") : null;
     form.elements.offerCode.value = button.getAttribute("data-offer-code") || "";
     form.elements.durationMonths.innerHTML = duration ? duration.innerHTML : "";
+    if (duration) form.elements.durationMonths.value = duration.value;
     summary.textContent = button.getAttribute("data-offer-name") || "";
     reset();
     if (typeof dialog.showModal === "function") dialog.showModal();

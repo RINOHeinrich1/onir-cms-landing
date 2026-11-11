@@ -18,6 +18,8 @@ export default async function pricing() {
         code: offer.code,
         name: offer.name,
         description: offer.description,
+        maxChatbots: offer.maxChatbots ?? null,
+        tokensLabel: offer.maxTokens ? `${new Intl.NumberFormat("fr-FR").format(offer.maxTokens)} tokens / mois` : null,
         durations: (offer.durations || []).map((duration) => ({
           months: duration.months,
           priceLabel: formatPrice(duration.priceMga),

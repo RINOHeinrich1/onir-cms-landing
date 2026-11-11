@@ -57,23 +57,32 @@
     <p>{{ t.pricing.cloud.offersLead }}</p>
   </div>
   {% if pricing.offers.length %}
+  <div class="duration-switch" data-duration-switch aria-label="{{ t.pricing.durationLabels["1"] }}">
+    <button class="duration-tab is-active" data-months="1" type="button">{{ t.pricing.durationLabels["1"] }}</button>
+    <button class="duration-tab" data-months="3" type="button">{{ t.pricing.durationLabels["3"] }}</button>
+    <button class="duration-tab" data-months="6" type="button">{{ t.pricing.durationLabels["6"] }}</button>
+    <button class="duration-tab" data-months="12" type="button">{{ t.pricing.durationLabels["12"] }}</button>
+  </div>
   <div class="cloud-detail-grid">
     {% for offer in pricing.offers %}
-    <article class="cloud-detail-card">
+    <article class="cloud-detail-card" data-cloud-card>
       <div class="cloud-offer-head">
         <strong>{{ offer.name }}</strong>
         {% if offer.description %}<span>{{ offer.description }}</span>{% endif %}
       </div>
-      <ul>
+      <div class="cloud-includes">
+        {% if offer.maxChatbots != null %}<span>{{ offer.maxChatbots }} {{ t.pricing.includedChatbots }}</span>{% endif %}
+        {% if offer.tokensLabel %}<span>{{ offer.tokensLabel }}</span>{% endif %}
+      </div>
+      <select class="cloud-duration" hidden aria-label="{{ t.pricing.subscription.duration }}">
         {% for duration in offer.durations %}
-        <li><span>{{ duration.months }} {{ t.pricing.months }}</span><b>{{ duration.priceLabel }}</b></li>
-        {% endfor %}
-      </ul>
-      <select class="cloud-duration" aria-label="{{ t.pricing.subscription.duration }}">
-        {% for duration in offer.durations %}
-        <option value="{{ duration.months }}">{{ duration.months }} {{ t.pricing.months }} — {{ duration.priceLabel }}</option>
+        <option value="{{ duration.months }}" data-price="{{ duration.priceLabel }}" data-period="{{ t.pricing.pricePeriod[duration.months] }}"{% if loop.first %} selected{% endif %}>{{ duration.months }} {{ t.pricing.months }} — {{ duration.priceLabel }}</option>
         {% endfor %}
       </select>
+      <div class="cloud-price">
+        <strong data-cloud-price>{{ offer.durations[0].priceLabel }}</strong>
+        <span data-cloud-period>{{ t.pricing.pricePeriod[offer.durations[0].months] }}</span>
+      </div>
       <button class="btn btn-accent js-subscribe" type="button" data-offer-code="{{ offer.code }}" data-offer-name="{{ offer.name }}">{{ t.pricing.cloud.offersCta }}</button>
     </article>
     {% endfor %}

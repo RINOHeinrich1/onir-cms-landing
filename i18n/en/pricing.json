@@ -92,5 +92,19 @@
     "title": "Become a partner",
     "lead": "Join the ONIR CMS ecosystem and build useful assistants with us.",
     "cta": "Participate"
+  },
+  "includedChatbots": "chatbots included",
+  "includedTokens": "tokens included / month",
+  "durationLabels": {
+    "1": "Monthly",
+    "3": "Quarterly",
+    "6": "Semi-annual",
+    "12": "Annual"
+  },
+  "pricePeriod": {
+    "1": "/ month",
+    "3": "/ 3 months",
+    "6": "/ 6 months",
+    "12": "/ 12 months"
   }
 }
