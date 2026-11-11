@@ -133,52 +133,5 @@
   "footer": {
     "tagline": "CMS pour chatbot. Open source, à votre image.",
     "metaBrand": "ONIR CMS — CMS pour chatbot"
-  },
-  "pricing": {
-    "kicker": "Tarification",
-    "title": "Des offres claires, du libre au sur-mesure.",
-    "lead": "Commencez gratuitement en autohébergement, choisissez une offre Cloud publiée depuis le backoffice, ou faites-vous accompagner par notre équipe.",
-    "selfHosted": {
-      "badge": "Open source",
-      "title": "Autohébergé et auto-configuré",
-      "price": "0 Ar",
-      "lead": "Installez ONIR CMS chez vous, gardez la main sur vos données et configurez votre instance vous-même.",
-      "items": [
-        "Code source ouvert",
-        "Vos données chez vous",
-        "Configuration autonome"
-      ],
-      "cta": "Voir le code sur GitHub"
-    },
-    "cloud": {
-      "badge": "ONIR CMS Cloud",
-      "title": "Les offres Cloud",
-      "lead": "Les offres publiées depuis le backoffice commercial. Choisissez la durée qui vous convient.",
-      "empty": "Les offres Cloud seront bientôt disponibles.",
-      "cta": "Demander cette offre"
-    },
-    "enterprise": {
-      "badge": "Entreprise",
-      "title": "Support premium et configuration ONIR-CMS",
-      "lead": "Notre équipe prend en charge l’installation, la configuration et le support de votre instance.",
-      "items": [
-        "Support technique premium",
-        "Configuration ONIR-CMS",
-        "Accompagnement sur votre projet"
-      ],
-      "cta": "Prendre rendez-vous"
-    },
-    "months": "mois",
-    "appointment": {
-      "title": "Parlons de votre projet",
-      "lead": "Répondez à quelques questions, nous revenons vers vous avec une proposition adaptée.",
-      "whatsapp": "Votre numéro WhatsApp",
-      "email": "Votre adresse email",
-      "need": "Quel est votre besoin ?",
-      "budget": "Quel budget envisagez-vous ?",
-      "timeline": "Quel délai estimez-vous ?",
-      "submit": "Envoyer ma demande",
-      "note": "Votre demande sera préparée dans WhatsApp ou dans votre messagerie. Aucune donnée n’est stockée sur ce site."
-    }
   }
 }

@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "title": "Vidiny — ONIR CMS",
+    "description": "Atombohy maimaim-poana amin’ny fametrahana anao manokana, safidio ny tolotra Cloud navoakan’ny backoffice, na mangataha fanohanana amin’ny ekipanay.",
+    "ogTitle": "Vidiny — ONIR CMS",
+    "ogDescription": "Atombohy maimaim-poana amin’ny fametrahana anao manokana, safidio ny tolotra Cloud navoakan’ny backoffice, na mangataha fanohanana amin’ny ekipanay."
+  },
+  "hero": {
+    "title": "Safidy mazava, manomboka amin’ny open source ka hatramin’ny fanarahana manokana.",
+    "lead": "Atombohy maimaim-poana amin’ny fametrahana anao manokana, safidio ny tolotra Cloud navoakan’ny backoffice, na mangataha fanohanana amin’ny ekipanay."
+  },
+  "kicker": "Vidiny",
+  "title": "Safidy mazava, manomboka amin’ny open source ka hatramin’ny fanarahana manokana.",
+  "lead": "Atombohy maimaim-poana amin’ny fametrahana anao manokana, safidio ny tolotra Cloud navoakan’ny backoffice, na mangataha fanohanana amin’ny ekipanay.",
+  "selfHosted": {
+    "badge": "Open source",
+    "title": "Fametrahana sy fanamboarana manokana",
+    "price": "0 Ar",
+    "lead": "Apetraho ao amin’ny sehatrao ny ONIR CMS, tazomy ny angonao ary amboary samirery ny instance-nao.",
+    "items": [
+      "Kaody loharano misokatra",
+      "Ny angonao ao aminao",
+      "Fametrahana mahaleo tena"
+    ],
+    "cta": "Jereo ny kaody ao GitHub"
+  },
+  "cloud": {
+    "badge": "ONIR CMS Cloud",
+    "title": "Tolotra Cloud",
+    "lead": "Ny tolotra navoakan’ny backoffice commercial. Safidio ny faharetana mety aminao.",
+    "empty": "Ho avy tsy ho ela ny tolotra Cloud.",
+    "cta": "Mangataha ity tolotra ity"
+  },
+  "enterprise": {
+    "badge": "Orinasa",
+    "title": "Fanohanana premium sy fanamboarana ONIR-CMS",
+    "lead": "Ny ekipanay no miandraikitra ny fametrahana, fanamboarana ary fanohanana ny instance-nao.",
+    "items": [
+      "Fanohanana teknika premium",
+      "Fanamboarana ONIR-CMS",
+      "Fanarahana amin’ny tetikasanao"
+    ],
+    "cta": "Manaova fotoana"
+  },
+  "months": "volana",
+  "appointment": {
+    "title": "Andao hiresaka ny tetikasanao",
+    "lead": "Valio ny fanontaniana vitsivitsy, hiverenanay amin’ny tolo-kevitra mifanaraka aminao.",
+    "whatsapp": "Ny nomerao WhatsApp-nao",
+    "email": "Ny adiresy email-nao",
+    "need": "Inona no ilainao?",
+    "budget": "Ohatrinona ny tetibola eritreretinao?",
+    "timeline": "Ohatrinona ny fotoana eritreretinao?",
+    "submit": "Alefaso ny fangatahako",
+    "note": "Hamboarina ao amin’ny WhatsApp na mailaka ny fangatahanao. Tsy misy angona voatahiry amin’ity tranokala ity."
+  },
+  "ctaKicker": "Andao hanomboka",
+  "ctaTitle": "Vonona hisafidy tolotra ve ianao?",
+  "ctaLead": "Andao hiresaka ny tetikasanao ary hitady ny safidy mety.",
+  "ctaButton": "Mangataha tolotra"
+}

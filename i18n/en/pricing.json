@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "title": "Pricing — ONIR CMS",
+    "description": "Start for free with self-hosting, choose a Cloud plan published from the backoffice, or get support from our team.",
+    "ogTitle": "Pricing — ONIR CMS",
+    "ogDescription": "Start for free with self-hosting, choose a Cloud plan published from the backoffice, or get support from our team."
+  },
+  "hero": {
+    "title": "Clear plans, from open source to tailored support.",
+    "lead": "Start for free with self-hosting, choose a Cloud plan published from the backoffice, or get support from our team."
+  },
+  "kicker": "Pricing",
+  "title": "Clear plans, from open source to tailored support.",
+  "lead": "Start for free with self-hosting, choose a Cloud plan published from the backoffice, or get support from our team.",
+  "selfHosted": {
+    "badge": "Open source",
+    "title": "Self-hosted and self-configured",
+    "price": "0 Ar",
+    "lead": "Install ONIR CMS on your infrastructure, keep control of your data, and configure your instance yourself.",
+    "items": [
+      "Open source code",
+      "Your data on your infrastructure",
+      "Autonomous setup"
+    ],
+    "cta": "View the code on GitHub"
+  },
+  "cloud": {
+    "badge": "ONIR CMS Cloud",
+    "title": "Cloud plans",
+    "lead": "Plans published from the commercial backoffice. Choose the duration that suits you.",
+    "empty": "Cloud plans will be available soon.",
+    "cta": "Request this plan"
+  },
+  "enterprise": {
+    "badge": "Enterprise",
+    "title": "Premium support and ONIR-CMS configuration",
+    "lead": "Our team handles installation, configuration, and support for your instance.",
+    "items": [
+      "Premium technical support",
+      "ONIR-CMS configuration",
+      "Guidance on your project"
+    ],
+    "cta": "Book a call"
+  },
+  "months": "months",
+  "appointment": {
+    "title": "Let’s talk about your project",
+    "lead": "Answer a few questions and we will get back to you with a tailored proposal.",
+    "whatsapp": "Your WhatsApp number",
+    "email": "Your email address",
+    "need": "What do you need?",
+    "budget": "What budget do you have in mind?",
+    "timeline": "What is your estimated timeline?",
+    "submit": "Send my request",
+    "note": "Your request will be prepared in WhatsApp or your email client. No data is stored on this site."
+  },
+  "ctaKicker": "Let’s get started",
+  "ctaTitle": "Ready to choose your plan?",
+  "ctaLead": "Let’s discuss your project and find the right fit.",
+  "ctaButton": "Request a plan"
+}
