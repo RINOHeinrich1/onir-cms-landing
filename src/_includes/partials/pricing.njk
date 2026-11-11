@@ -6,7 +6,9 @@
     <p>{{ t.pricing.lead }}</p>
   </div>
   {% endif %}
-  <div class="pricing-grid">
+  <div class="pricing-carousel" data-pricing-carousel>
+    <button class="carousel-button carousel-prev" data-pricing-prev type="button" aria-label="{{ t.pricing.carouselPrev }}">{{ "←" }}</button>
+    <div class="pricing-grid">
     {% if pageKey == "pricing" %}
     <article class="price-card">
       <span class="price-tag">{{ t.pricing.selfHosted.badge }}</span>
@@ -44,6 +46,8 @@
       <p>{{ t.pricing.partner.lead }}</p>
       <a class="btn btn-ghost" href="{{ locale.routes.participate }}">{{ t.pricing.partner.cta }}</a>
     </article>
+    </div>
+    <button class="carousel-button carousel-next" data-pricing-next type="button" aria-label="{{ t.pricing.carouselNext }}">{{ "→" }}</button>
   </div>
 </section>
 
