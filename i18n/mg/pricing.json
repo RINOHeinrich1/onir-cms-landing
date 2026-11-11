@@ -115,5 +115,12 @@
     "BUSINESS": "Ho an’ny PME mampiasa chatbots maromaro sy habe matihanina.",
     "SCALE": "Ho an’ny fikambanana manana habe lehibe sy tranga maromaro."
   },
-  "storageLabel": "fitahirizana"
+  "storageLabel": "fitahirizana",
+  "market": {
+    "label": "Tsena",
+    "madagascar": "Madagasikara",
+    "international": "Iraisam-pirenena",
+    "cloudTitle": "Ny ONIR CMS Cloud dia misy any Madagasikara ihany aloha",
+    "cloudLead": "Jereo ny tolotra Self-hosted, Enterprise na Partenaire ho an’ny iraisam-pirenena."
+  }
 }

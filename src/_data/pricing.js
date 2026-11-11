@@ -10,12 +10,14 @@ export default async function pricing() {
     const response = await fetch(`${baseUrl}/api/public/offers`, {
       headers: { Accept: "application/json" },
     });
-    if (!response.ok) return { offers: [] };
+    if (!response.ok) return { offers: [], internationalOffers: [] };
     const payload = await response.json();
     const offers = Array.isArray(payload.offers) ? payload.offers : [];
     const order = { STARTER: 0, BUSINESS: 1, SCALE: 2 };
+    const cloudOffers = offers.filter((offer) => (offer.type ?? "cloud_subscription") === "cloud_subscription");
+    const internationalOffers = offers.filter((offer) => (offer.type ?? "cloud_subscription") !== "cloud_subscription");
     return {
-      offers: offers
+      offers: cloudOffers
         .sort((a, b) => (order[a.code] ?? 99) - (order[b.code] ?? 99))
         .map((offer) => ({
         code: offer.code,
@@ -33,8 +35,9 @@ export default async function pricing() {
           priceLabel: formatPrice(duration.priceMga),
         })),
       })),
+      internationalOffers,
     };
   } catch {
-    return { offers: [] };
+    return { offers: [], internationalOffers: [] };
   }
 }

@@ -54,6 +54,8 @@
       contactPhone: String(data.get("contactPhone") || "").trim(),
       offerCode: String(data.get("offerCode") || ""),
       durationMonths: Number(data.get("durationMonths")),
+      countryCode: "MG",
+      billingCountry: "MG",
     };
     if (!payload.organizationName || !payload.contactName || !payload.contactEmail) {
       error.textContent = "Renseignez l'organisation, le contact et l'email.";

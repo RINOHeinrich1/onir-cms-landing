@@ -9,6 +9,7 @@ bodyScripts:
   - /assets/js/appointment-chat.js?v=1
   - /assets/js/subscription.js?v=1
   - /assets/js/pricing-duration.js?v=1
+  - /assets/js/market-switch.js?v=1
 showWidget: true
 pagination:
   data: locales
@@ -21,6 +22,17 @@ permalink: "{{ locale.routes.pricing }}index.html"
   <h1>{{ t.pricing.support.title }}</h1>
   <p class="hero-lead">{{ t.pricing.support.lead }}</p>
 </section>
+
+<div class="wrap market-switch" data-market-switch>
+  <span class="market-switch-label">{{ t.pricing.market.label }}</span>
+  <button class="market-button is-active" data-market="MG" type="button">{{ t.pricing.market.madagascar }}</button>
+  <button class="market-button" data-market="INTL" type="button">{{ t.pricing.market.international }}</button>
+</div>
+
+<div class="wrap market-notice" data-international-only>
+  <strong>{{ t.pricing.market.cloudTitle }}</strong>
+  <p>{{ t.pricing.market.cloudLead }}</p>
+</div>
 
 {% include "partials/pricing.njk" %}
 

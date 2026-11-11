@@ -115,5 +115,12 @@
     "BUSINESS": "Pour les PME qui utilisent plusieurs chatbots et un volume professionnel.",
     "SCALE": "Pour les organisations à fort volume et plusieurs cas d’usage."
   },
-  "storageLabel": "de stockage"
+  "storageLabel": "de stockage",
+  "market": {
+    "label": "Marché",
+    "madagascar": "Madagascar",
+    "international": "International",
+    "cloudTitle": "ONIR CMS Cloud est disponible uniquement à Madagascar",
+    "cloudLead": "Découvrez les offres Self-hosted, Enterprise ou Partenaire pour l’international."
+  }
 }

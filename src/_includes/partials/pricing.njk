@@ -20,7 +20,7 @@
     </article>
     {% endif %}
 
-    <article class="price-card price-card-featured">
+    <article class="price-card price-card-featured" data-cloud-only>
       <span class="price-tag">{{ t.pricing.cloud.badge }}</span>
       <h3>{{ t.pricing.cloud.title }}</h3>
       <p>{{ t.pricing.cloud.lead }}</p>
@@ -38,19 +38,17 @@
       <button class="btn btn-accent" type="button" data-rdv-open>{{ t.pricing.enterprise.cta }}</button>
     </article>
 
-    {% if pageKey != "pricing" %}
     <article class="price-card">
       <span class="price-tag">{{ t.pricing.partner.badge }}</span>
       <h3>{{ t.pricing.partner.title }}</h3>
       <p>{{ t.pricing.partner.lead }}</p>
       <a class="btn btn-ghost" href="{{ locale.routes.participate }}">{{ t.pricing.partner.cta }}</a>
     </article>
-    {% endif %}
   </div>
 </section>
 
 {% if pageKey == "pricing" %}
-<section class="section wrap cloud-offers-section" id="offres-cloud">
+<section class="section wrap cloud-offers-section" id="offres-cloud" data-cloud-only>
   <div class="section-head">
     <p class="kicker">{{ t.pricing.cloud.badge }}</p>
     <h2>{{ t.pricing.cloud.offersTitle }}</h2>
