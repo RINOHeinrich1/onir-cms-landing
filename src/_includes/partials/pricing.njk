@@ -68,11 +68,16 @@
     <article class="cloud-detail-card" data-cloud-card>
       <div class="cloud-offer-head">
         <strong>{{ offer.name }}</strong>
-        {% if offer.description %}<span>{{ offer.description }}</span>{% endif %}
+        {% set offerDescription = t.pricing.offerDescriptions[offer.code] or offer.description %}
+        {% if offerDescription %}<span>{{ offerDescription }}</span>{% endif %}
       </div>
       <div class="cloud-includes">
         {% if offer.maxChatbots != null %}<span>{{ offer.maxChatbots }} {{ t.pricing.includedChatbots }}</span>{% endif %}
         {% if offer.tokensLabel %}<span>{{ offer.tokensLabel }}</span>{% endif %}
+        {% if offer.maxMessages != null %}<span>{{ offer.maxMessages }} {{ t.pricing.includedMessages }}</span>{% endif %}
+        {% if offer.maxStorageMb != null %}
+        <span>{% if offer.maxStorageMb >= 1024 %}{{ offer.maxStorageMb / 1024 }} {{ t.pricing.storageGb }}{% else %}{{ offer.maxStorageMb }} {{ t.pricing.storageMb }}{% endif %}</span>
+        {% endif %}
       </div>
       <select class="cloud-duration" hidden aria-label="{{ t.pricing.subscription.duration }}">
         {% for duration in offer.durations %}

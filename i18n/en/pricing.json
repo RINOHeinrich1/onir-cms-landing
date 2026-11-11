@@ -106,5 +106,13 @@
     "3": "/ 3 months",
     "6": "/ 6 months",
     "12": "/ 12 months"
+  },
+  "includedMessages": "messages / month",
+  "storageGb": "GB",
+  "storageMb": "MB",
+  "offerDescriptions": {
+    "STARTER": "Start with a first chatbot and 1 million tokens per month.",
+    "BUSINESS": "For SMEs using several chatbots and a professional volume.",
+    "SCALE": "For high-volume organizations with multiple use cases."
   }
 }
