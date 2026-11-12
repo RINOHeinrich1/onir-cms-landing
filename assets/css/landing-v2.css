@@ -774,7 +774,7 @@ a { color: inherit; }
 .demo-track::-webkit-scrollbar { display: none; }
 .demo-slide {
   display: flex;
-  flex: 0 0 calc((100% - 1rem) / 2);
+  flex: 0 0 calc((100% - 2rem) / 3);
   scroll-snap-align: start;
 }
 .demo-slide .demo-card { width: 100%; }
@@ -797,6 +797,9 @@ a { color: inherit; }
 .demo-dot:hover { background: var(--ink-soft); transform: scale(1.12); }
 .demo-dot.is-active { width: 1.5rem; background: var(--accent); }
 @media (max-width: 900px) {
+  .demo-slide { flex-basis: calc((100% - 1rem) / 2); }
+}
+@media (max-width: 640px) {
   .demo-slide { flex-basis: 100%; }
 }
 .demo-card {

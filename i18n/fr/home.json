@@ -77,6 +77,14 @@
       "title": "MandamPro",
       "creator": "Onirtech",
       "lead": "Recherchez des fournisseurs, hébergements et formations à Madagascar."
+    },
+    {
+      "key": "hdorbite",
+      "image": "/assets/themes/hd-orbite.png",
+      "tag": "Assistant",
+      "title": "HD-Orbite",
+      "creator": "HD-Orbite",
+      "lead": "Découvrez l’accompagnement HD-Orbite."
     }
   ]
   },
