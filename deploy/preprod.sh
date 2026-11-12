@@ -35,16 +35,13 @@ find "${WEB_ROOT}" -type f \
   -exec sed -i \
     -e "s|https://cms-backoffice.onirtech.com|${PREPROD_APP_URL}|g" \
     -e "s|https://magic-panel.onir-cms.tech|${PREPROD_APP_URL}|g" \
-    -e "s|https://magic-link.onir-cms.tech|${PREPROD_APP_URL}|g" {} +
+    {} +
 
 if ! grep -q "ONIR CMS" "${WEB_ROOT}/index.html"; then
   die "index.html preprod invalide"
 fi
 if grep -Rq "https://cms-backoffice.onirtech.com" "${WEB_ROOT}"; then
   die "des liens de production subsistent dans la landing preprod"
-fi
-if grep -Rq "https://magic-link.onir-cms.tech" "${WEB_ROOT}"; then
-  die "des liens magic-link de production subsistent dans la landing preprod"
 fi
 if grep -Rq "https://partner-api.onir-cms.tech" "${WEB_ROOT}"; then
   die "des liens API partenaire de production subsistent dans la landing preprod"
