@@ -1180,3 +1180,43 @@ a { color: inherit; }
 }
 .foot-contact-icon svg { width: 1.15rem; height: 1.15rem; }
 .foot-contact-icon:hover { border-color: var(--ink-soft); transform: translateY(-1px); }
+
+/* ---------- Menu mobile (header v2) ---------- */
+.menu-toggle {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .site-head.menu-open .nav {
+    display: flex;
+    position: absolute;
+    top: calc(100% + 0.55rem);
+    right: 0.8rem;
+    left: 0.8rem;
+    z-index: 60;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.15rem;
+    margin: 0;
+    padding: 0.45rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--card);
+    box-shadow: var(--shadow);
+  }
+
+  .site-head.menu-open .nav a {
+    padding: 0.8rem 0.9rem;
+    border-radius: 0.55rem;
+    color: var(--ink);
+  }
+
+  .site-head.menu-open .nav a:hover,
+  .site-head.menu-open .nav a[aria-current="page"] {
+    background: color-mix(in srgb, var(--green) 9%, var(--card));
+  }
+}

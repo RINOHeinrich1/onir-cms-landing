@@ -37,6 +37,41 @@
 
   renderTheme();
 
+  var menuToggles = document.querySelectorAll("[data-menu-toggle]");
+  menuToggles.forEach(function (button) {
+    var header = button.closest(".site-head");
+    var nav = document.getElementById(button.getAttribute("aria-controls") || "");
+    if (!header || !nav) return;
+
+    function closeMenu() {
+      header.classList.remove("menu-open");
+      button.setAttribute("aria-expanded", "false");
+    }
+
+    button.addEventListener("click", function () {
+      var open = header.classList.toggle("menu-open");
+      button.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+
+    nav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!header.classList.contains("menu-open")) return;
+      if (header.contains(event.target)) return;
+      closeMenu();
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") closeMenu();
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 900) closeMenu();
+    });
+  });
+
   var dialog = document.querySelector("[data-demo-dialog]");
   if (dialog !== null) {
     document.querySelectorAll("[data-demo-open]").forEach(function (button) {
