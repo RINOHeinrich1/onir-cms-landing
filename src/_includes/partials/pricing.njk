@@ -7,7 +7,7 @@
   </div>
   {% endif %}
   <div class="pricing-carousel" data-pricing-carousel>
-    <button class="carousel-button carousel-prev" data-pricing-prev type="button" aria-label="{{ t.pricing.carouselPrev }}">{{ "←" }}</button>
+    <button class="carousel-button carousel-prev" data-pricing-prev type="button" aria-label="{{ t.pricing.carouselPrev }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg></button>
     <div class="pricing-grid">
     {% if pageKey == "pricing" %}
     <article class="price-card">
@@ -47,7 +47,7 @@
       <a class="btn btn-ghost" href="{{ locale.routes.participate }}">{{ t.pricing.partner.cta }}</a>
     </article>
     </div>
-    <button class="carousel-button carousel-next" data-pricing-next type="button" aria-label="{{ t.pricing.carouselNext }}">{{ "→" }}</button>
+    <button class="carousel-button carousel-next" data-pricing-next type="button" aria-label="{{ t.pricing.carouselNext }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
   </div>
 </section>
 
@@ -66,7 +66,7 @@
     <button class="duration-tab" data-months="12" type="button">{{ t.pricing.durationLabels["12"] }}</button>
   </div>
   <div class="cloud-carousel" data-cloud-carousel>
-    <button class="carousel-button carousel-prev" data-carousel-prev type="button" aria-label="{{ t.pricing.carouselPrev }}">{{ "←" }}</button>
+    <button class="carousel-button carousel-prev" data-carousel-prev type="button" aria-label="{{ t.pricing.carouselPrev }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg></button>
     <div class="cloud-detail-grid">
     {% for offer in pricing.offers %}
     <article class="cloud-detail-card" data-cloud-card>
@@ -96,7 +96,7 @@
     </article>
     {% endfor %}
     </div>
-    <button class="carousel-button carousel-next" data-carousel-next type="button" aria-label="{{ t.pricing.carouselNext }}">{{ "→" }}</button>
+    <button class="carousel-button carousel-next" data-carousel-next type="button" aria-label="{{ t.pricing.carouselNext }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
   </div>
   {% else %}
   <p class="price-empty">{{ t.pricing.cloud.empty }}</p>
