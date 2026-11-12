@@ -53,7 +53,7 @@
 }
 
 .hero-video-modal {
-  width: min(1100px, calc(100vw - 2rem));
+  width: min(1400px, calc(100vw - 2rem));
   max-width: none;
   padding: 0;
   border: 0;
