@@ -69,10 +69,16 @@ permalink: "{{ locale.routes.home }}index.html"
   <div class="demo-cards">
     {% for item in p.demos.items %}
     <a class="demo-card" href="{{ demoLinks[item.key] }}" target="_blank" rel="noreferrer">
-      <span class="demo-tag">{{ item.tag }}</span>
-      <h3>{{ item.title }}</h3>
-      <p>{{ item.lead }}</p>
-      <span class="demo-cta">{{ p.demos.cta }}</span>
+      <span class="demo-card-preview">
+        <img src="{{ item.image }}" alt="" loading="lazy">
+      </span>
+      <span class="demo-card-body">
+        <span class="demo-tag">{{ item.tag }}</span>
+        <h3>{{ item.title }}</h3>
+        <span class="demo-card-creator">{{ item.creator }}</span>
+        <p>{{ item.lead }}</p>
+        <span class="demo-cta">{{ p.demos.cta }}</span>
+      </span>
     </a>
     {% endfor %}
   </div>

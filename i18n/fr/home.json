@@ -53,26 +53,32 @@
     "title": "Essayez.",
     "lead": "Choisissez un chatbot et discutez directement.",
     "cta": "Essayer →",
-    "items": [
-      {
-        "key": "simple",
-        "tag": "Simple",
-        "title": "Assistant — l’essentiel",
-        "lead": "Le chat ONIR CMS, sans 3D."
-      },
-      {
-        "key": "immersive",
-        "tag": "Immersif",
-        "title": "Expérience 3D",
-        "lead": "Une scène 3D avec avatar et discussion guidée."
-      },
-      {
-        "key": "sponsor",
-        "tag": "Collecte",
-        "title": "Parcours sponsoring",
-        "lead": "Un exemple de collecte d’informations."
-      }
-    ]
+  "items": [
+    {
+      "key": "onirtech",
+      "image": "/assets/themes/immersive.png",
+      "tag": "3D immersive",
+      "title": "onirtech.com",
+      "creator": "Onirtech",
+      "lead": "Découvrez Onirtech à travers son assistant immersif."
+    },
+    {
+      "key": "a2dm",
+      "image": "/assets/themes/starter.png",
+      "tag": "Starter",
+      "title": "A2DM Formation",
+      "creator": "A2DM-Formation",
+      "lead": "Un assistant pour découvrir les formations A2DM."
+    },
+    {
+      "key": "mandampro",
+      "image": "/assets/themes/mandampro.png",
+      "tag": "MandamPro · fiches",
+      "title": "MandamPro",
+      "creator": "Onirtech",
+      "lead": "Recherchez des fournisseurs, hébergements et formations à Madagascar."
+    }
+  ]
   },
   "openSource": {
     "kicker": "Libre et open source",

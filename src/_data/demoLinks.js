@@ -1,8 +1,9 @@
 const appBase = process.env.PREPROD_APP_URL ?? "";
-const token = (value) => (appBase ? `${appBase}/l/${value}` : `https://magic-link.onir-cms.tech/l/${value}`);
 
 export default {
-  simple: token("6jz9EpfYfGyh-gwRr6JOoaTcqwc1nQgX"),
-  immersive: token("kp_CX9lKNdHhLOLO-h-W9Fj1G3s1xbiL"),
-  sponsor: token("PRoc__QYCoD6781oNeRruH_LEkZ5wmK7"),
+  onirtech: "https://magic-link.onir-cms.tech/l/RUNc31WnQ_97jptABSwUkiWDFe4uBKsi",
+  a2dm: "https://magic-link.onir-cms.tech/l/UTmz3b3UB2Lia_N8eDj_iUNsMvvugCUE",
+  mandampro:
+    process.env.MANDAMPRO_DEMO_URL ??
+    (appBase ? `${appBase}/l/xDworc7TkeWuw88DZ_kFxopiKWJ6huZ-` : ""),
 };

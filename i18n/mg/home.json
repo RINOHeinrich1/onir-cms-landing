@@ -53,26 +53,32 @@
     "title": "Andramo.",
     "lead": "Misafidiana chatbot ary miresaha mivantana.",
     "cta": "Andramo →",
-    "items": [
-      {
-        "key": "simple",
-        "tag": "Tsotra",
-        "title": "Assistant — fototra",
-        "lead": "Ny chat ONIR CMS, tsy misy 3D."
-      },
-      {
-        "key": "immersive",
-        "tag": "Immersif",
-        "title": "Traikefa 3D",
-        "lead": "Sehatra 3D misy avatar sy resaka tari-dalana."
-      },
-      {
-        "key": "sponsor",
-        "tag": "Fanangonana",
-        "title": "Dalan'ny fanohanana",
-        "lead": "Ohatra amin'ny fanangonana vaovao."
-      }
-    ]
+  "items": [
+    {
+      "key": "onirtech",
+      "image": "/assets/themes/immersive.png",
+      "tag": "3D immersive",
+      "title": "onirtech.com",
+      "creator": "Onirtech",
+      "lead": "Fantaro ny Onirtech amin'ny alàlan'ny mpanampy immersive."
+    },
+    {
+      "key": "a2dm",
+      "image": "/assets/themes/starter.png",
+      "tag": "Starter",
+      "title": "A2DM Formation",
+      "creator": "A2DM-Formation",
+      "lead": "Mpanampy hitady ny fampiofanana A2DM."
+    },
+    {
+      "key": "mandampro",
+      "image": "/assets/themes/mandampro.png",
+      "tag": "MandamPro · fiches",
+      "title": "MandamPro",
+      "creator": "Onirtech",
+      "lead": "Hikaroka mpamatsy, trano fandraisam-bahiny sy fampiofanana eto Madagasikara."
+    }
+  ]
   },
   "openSource": {
     "kicker": "Malalaka sy open source",

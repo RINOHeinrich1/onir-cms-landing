@@ -53,26 +53,32 @@
     "title": "Try it.",
     "lead": "Pick a chatbot and start chatting.",
     "cta": "Try it →",
-    "items": [
-      {
-        "key": "simple",
-        "tag": "Simple",
-        "title": "Assistant — essentials",
-        "lead": "The ONIR CMS chat, without 3D."
-      },
-      {
-        "key": "immersive",
-        "tag": "Immersive",
-        "title": "3D experience",
-        "lead": "A 3D scene with an avatar and a guided conversation."
-      },
-      {
-        "key": "sponsor",
-        "tag": "Collect",
-        "title": "Sponsorship journey",
-        "lead": "An example of information collection."
-      }
-    ]
+  "items": [
+    {
+      "key": "onirtech",
+      "image": "/assets/themes/immersive.png",
+      "tag": "3D immersive",
+      "title": "onirtech.com",
+      "creator": "Onirtech",
+      "lead": "Discover Onirtech through its immersive assistant."
+    },
+    {
+      "key": "a2dm",
+      "image": "/assets/themes/starter.png",
+      "tag": "Starter",
+      "title": "A2DM Training",
+      "creator": "A2DM-Formation",
+      "lead": "An assistant to discover A2DM training programs."
+    },
+    {
+      "key": "mandampro",
+      "image": "/assets/themes/mandampro.png",
+      "tag": "MandamPro · records",
+      "title": "MandamPro",
+      "creator": "Onirtech",
+      "lead": "Find service providers, accommodation and training in Madagascar."
+    }
+  ]
   },
   "openSource": {
     "kicker": "Libre and open source",
