@@ -2,7 +2,7 @@ export default {
   t: (data) => data.i18n?.[data.locale?.code] ?? {},
   p: (data) => data.i18n?.[data.locale?.code]?.[data.pageKey] ?? {},
   currentRoute: (data) => data.locale?.routes?.[data.pageKey] ?? "/",
-  css: (data) => data.css ?? ["/assets/css/landing-v2.css?v=13"],
+  css: (data) => data.css ?? ["/assets/css/landing-v2.css?v=14"],
   headerVariant: (data) => data.headerVariant ?? "v2",
   footerVariant: (data) => data.footerVariant ?? data.headerVariant ?? "v2",
   wrapper: (data) => data.wrapper ?? null,
