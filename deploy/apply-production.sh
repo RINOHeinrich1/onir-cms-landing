@@ -6,7 +6,8 @@ APP_DIR="${APP_DIR:-/opt/onir-cms-landing}"
 WEB_ROOT="${WEB_ROOT:-/var/www/onir-cms-landing}"
 APP_ENV="${APP_ENV:-/opt/onir-cms/.env.release}"
 APP_DEPLOY="${APP_DEPLOY:-/opt/onir-cms/deploy.sh}"
-APP_VERSION="${APP_VERSION:-0.8.0}"
+APP_VERSION="${APP_VERSION:?Définir APP_VERSION avec la version ONIR CMS à déployer}"
+COMMERCIAL_BACK_URL="${COMMERCIAL_BACK_URL:?Définir COMMERCIAL_BACK_URL avec l'URL publique du backoffice commercial}"
 APP_URL="https://cms-backoffice.onirtech.com"
 LANDING_URL="https://onir-cms.tech"
 BACKOFFICE_CERT="/etc/letsencrypt/live/cms-backoffice.onirtech.com/fullchain.pem"
@@ -26,7 +27,7 @@ fi
 
 cd "$APP_DIR"
 npm ci --no-audit --no-fund
-npm run build
+COMMERCIAL_BACK_URL="$COMMERCIAL_BACK_URL" npm run build
 
 install -d -m 0755 "$WEB_ROOT"
 rsync -a --delete "$APP_DIR/dist/" "$WEB_ROOT/"
