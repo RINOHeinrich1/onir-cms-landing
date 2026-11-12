@@ -7,18 +7,24 @@
   if (!openButton || !modal || !video) return;
 
   const mobileQuery = window.matchMedia("(max-width: 700px)");
+  const pageLang = (document.documentElement.lang || "fr").slice(0, 2).toLowerCase();
+  const locale = ["en", "fr", "mg"].includes(pageLang) ? pageLang : "en";
   const isMobile = () => mobileQuery.matches;
+  const key = (name) => name.charAt(0).toUpperCase() + name.slice(1);
   const sourceFor = (mobile) =>
-    mobile ? video.dataset.mobileSrc : video.dataset.desktopSrc;
+    video.dataset[`${mobile ? "mobile" : "desktop"}Src${key(locale)}`] ??
+    video.dataset[`${mobile ? "mobile" : "desktop"}SrcEn`];
   const posterFor = (mobile) =>
-    mobile ? video.dataset.mobilePoster : video.dataset.desktopPoster;
+    video.dataset[`${mobile ? "mobile" : "desktop"}Poster${key(locale)}`] ??
+    video.dataset[`${mobile ? "mobile" : "desktop"}PosterEn`];
 
   const applySource = () => {
     const mobile = isMobile();
     const source = sourceFor(mobile);
+    if (!source) return;
     if (video.getAttribute("src") !== source) {
       video.setAttribute("src", source);
-      video.setAttribute("poster", posterFor(mobile));
+      video.setAttribute("poster", posterFor(mobile) ?? "");
       video.load();
     }
   };
