@@ -68,6 +68,12 @@ permalink: "{{ locale.routes.home }}index.html"
     <p>{{ p.demos.lead }}</p>
   </div>
   <div class="demo-carousel" data-demo-carousel>
+    <button class="demo-arrow demo-arrow--prev" type="button" data-demo-prev aria-label="{{ p.demos.previous }}">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg>
+    </button>
+    <button class="demo-arrow demo-arrow--next" type="button" data-demo-next aria-label="{{ p.demos.next }}">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+    </button>
     <div class="demo-track" data-demo-track>
       {% for item in p.demos.items %}
       <div class="demo-slide">
