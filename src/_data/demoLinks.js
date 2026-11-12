@@ -10,5 +10,5 @@ export default {
     : "https://magic-link.onir-cms.tech/l/UTmz3b3UB2Lia_N8eDj_iUNsMvvugCUE",
   mandampro:
     process.env.MANDAMPRO_DEMO_URL ??
-    (appBase ? `${appBase}/l/xDworc7TkeWuw88DZ_kFxopiKWJ6huZ-` : ""),
+    (appBase ? `${appBase}/l/xDworc7TkeWuw88DZ_kFxopiKWJ6huZ-` : "https://magic-link.onir-cms.tech/l/gw2r5-pLuNx-fEKy1kcijYKxaUq1Sk4baBr5gLfFHEY"),
 };
