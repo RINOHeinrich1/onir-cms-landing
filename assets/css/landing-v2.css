@@ -36,18 +36,18 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #06231b;
-  --bg-soft: #0a2f25;
-  --card: #0b3529;
-  --ink: #eef7f1;
-  --ink-soft: #a7c6ba;
-  --green: #cdeee0;
-  --green-2: #8fd8bd;
-  --accent: #ff9a2e;
-  --accent-soft: #5a3a12;
-  --btn-ink: #06231b;
-  --line: rgba(238, 247, 241, 0.16);
-  --shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.8);
+  --bg: #111411;
+  --bg-soft: #171b16;
+  --card: #1d221c;
+  --ink: #f4f1e7;
+  --ink-soft: #a8b0a5;
+  --green: #8db7a4;
+  --green-2: #a6cbb8;
+  --accent: #e98a2e;
+  --accent-soft: #3a2712;
+  --btn-ink: #111411;
+  --line: rgba(244, 241, 231, 0.12);
+  --shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.75);
 }
 
 *,
@@ -1048,6 +1048,122 @@ a { color: inherit; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-soft);
+}
+
+/* ---------- Dark — Graphite & Sage ---------- */
+:root[data-theme="dark"] body {
+  background-image: none;
+}
+
+:root[data-theme="dark"] .site-head {
+  background: rgba(17, 20, 17, 0.88);
+  border-bottom-color: var(--line);
+  backdrop-filter: blur(16px);
+}
+
+:root[data-theme="dark"] .nav a {
+  color: var(--ink-soft);
+}
+
+:root[data-theme="dark"] .nav a:hover,
+:root[data-theme="dark"] .nav a[aria-current="page"] {
+  color: var(--ink);
+}
+
+:root[data-theme="dark"] .btn-ghost,
+:root[data-theme="dark"] .icon-btn,
+:root[data-theme="dark"] .lang-switch {
+  background: var(--card);
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .mock {
+  background: var(--card);
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .mock::before {
+  display: none;
+}
+
+:root[data-theme="dark"] .mock-inner {
+  background: #151915;
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .mock-bar {
+  background: #191d18;
+  border-bottom-color: var(--line);
+}
+
+:root[data-theme="dark"] .mock-rail {
+  background: #151915;
+  border-right-color: var(--line);
+}
+
+:root[data-theme="dark"] .mock-rail .on,
+:root[data-theme="dark"] .mock-step {
+  background: var(--bg-soft);
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .mock-channels b {
+  background: var(--bg-soft);
+  border-color: var(--line);
+  color: var(--ink-soft);
+}
+
+:root[data-theme="dark"] .aud {
+  background: var(--card);
+  background-image: none;
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .band {
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+:root[data-theme="dark"] .band .kicker,
+:root[data-theme="dark"] .band-item span {
+  color: var(--ink-soft);
+}
+
+:root[data-theme="dark"] .band h2,
+:root[data-theme="dark"] .band p,
+:root[data-theme="dark"] .band-item b {
+  color: var(--ink);
+}
+
+:root[data-theme="dark"] .band-item {
+  background: var(--bg-soft);
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .band-item i {
+  background: var(--bg);
+  color: var(--green-2);
+}
+
+:root[data-theme="dark"] .site-foot {
+  background: var(--bg-soft);
+  border-top-color: var(--line);
+}
+
+:root[data-theme="dark"] .hero-play-icon {
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+  border-color: var(--line);
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.35);
+}
+
+:root[data-theme="dark"] .hero-play-icon svg {
+  fill: var(--ink);
+}
+
+:root[data-theme="dark"] ::selection {
+  background: var(--green);
+  color: #111411;
 }
 
 /* ---------- Responsive ---------- */

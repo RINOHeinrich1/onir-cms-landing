@@ -678,3 +678,12 @@ body[data-market="INTL"] [data-international-only] {
     margin-inline: -0.15rem;
   }
 }
+
+:root[data-theme="dark"] .price-card-featured {
+  background: var(--card);
+  border-color: var(--green);
+}
+
+:root[data-theme="dark"] .price-card-featured .price-tag {
+  color: var(--green-2);
+}

@@ -40,27 +40,27 @@
 }
 
 :root[data-theme="dark"] .site {
-  --site-bg: #061f18;
-  --site-surface: #0b2b21;
-  --site-ink: #f2f8ef;
-  --site-muted: #b8cfc2;
-  --site-line: #214736;
-  --site-green: #a6d3a7;
-  --site-green-deep: #002b21;
-  --site-mint: #173d2d;
-  --site-pill-bg: #173d2d;
-  --site-pill-ink: #cbe7c5;
-  --site-orange: #ff9a1f;
-  --site-orange-light: #ffc46b;
-  --site-red: #ff5b3a;
-  --site-btn: #a6d3a7;
-  --site-btn-ink: #06281f;
-  --site-btn-ghost-line: #2b5543;
+  --site-bg: #111411;
+  --site-surface: #1d221c;
+  --site-ink: #f4f1e7;
+  --site-muted: #a8b0a5;
+  --site-line: #333a31;
+  --site-green: #8db7a4;
+  --site-green-deep: #171b16;
+  --site-mint: #242a23;
+  --site-pill-bg: #242a23;
+  --site-pill-ink: #dce9df;
+  --site-orange: #e98a2e;
+  --site-orange-light: #f3b36c;
+  --site-red: #ef6b52;
+  --site-btn: #8db7a4;
+  --site-btn-ink: #111411;
+  --site-btn-ghost-line: #3a4238;
   --site-shadow: 0 24px 60px -38px rgb(0 0 0 / 0.75);
-  --site-bubble-user: #a6d3a7;
-  --site-bubble-user-ink: #06281f;
-  --site-bubble-ai: #173d2d;
-  --site-bubble-ai-ink: #e4f3e1;
+  --site-bubble-user: #8db7a4;
+  --site-bubble-user-ink: #111411;
+  --site-bubble-ai: #242a23;
+  --site-bubble-ai-ink: #f4f1e7;
   --site-plugin-immersive: radial-gradient(circle at 30% 20%, #145e46 0%, #002b21 68%);
   --site-plugin-starter: linear-gradient(135deg, #173d2d 0%, #0b2b21 100%);
   --site-plugin-starter-ink: #cbe7c5;
