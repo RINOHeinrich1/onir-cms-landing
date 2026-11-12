@@ -31,6 +31,11 @@ permalink: "{{ locale.routes.pricing }}index.html"
   <button class="market-button" data-market="INTL" type="button">{{ t.pricing.market.international }}</button>
 </div>
 
+<div class="wrap market-notice" data-madagascar-only>
+  <strong>{{ t.pricing.market.cloudTitle }}</strong>
+  <p>{{ t.pricing.market.cloudLead }} <a href="?market=international">{{ t.pricing.market.internationalLink }}</a></p>
+</div>
+
 <div class="wrap market-notice" data-international-only>
   <strong>{{ t.pricing.market.cloudTitle }}</strong>
   <p>{{ t.pricing.market.cloudLead }}</p>

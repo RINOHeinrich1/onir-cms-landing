@@ -539,6 +539,21 @@
   font-size: 0.9rem;
 }
 
+.market-notice a {
+  color: var(--green);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+body[data-market="MG"] [data-madagascar-only] {
+  display: block;
+}
+
+body[data-market="INTL"] [data-madagascar-only] {
+  display: none;
+}
+
 body[data-market="INTL"] [data-cloud-only] {
   display: none !important;
 }
