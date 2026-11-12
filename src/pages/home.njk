@@ -9,6 +9,7 @@ bodyScripts:
   - /assets/js/appointment-chat.js?v=1
   - /assets/js/subscription.js?v=1
   - /assets/js/pricing-duration.js?v=1
+  - /assets/js/demo-carousel.js?v=1
 showWidget: true
 pagination:
   data: locales
@@ -66,21 +67,26 @@ permalink: "{{ locale.routes.home }}index.html"
     <h2>{{ p.demos.title }}</h2>
     <p>{{ p.demos.lead }}</p>
   </div>
-  <div class="demo-cards">
-    {% for item in p.demos.items %}
-    <a class="demo-card" href="{{ demoLinks[item.key] }}" target="_blank" rel="noreferrer">
-      <span class="demo-card-preview">
-        <img src="{{ item.image }}" alt="" loading="lazy">
-      </span>
-      <span class="demo-card-body">
-        <span class="demo-tag">{{ item.tag }}</span>
-        <h3>{{ item.title }}</h3>
-        <span class="demo-card-creator">{{ item.creator }}</span>
-        <p>{{ item.lead }}</p>
-        <span class="demo-cta">{{ p.demos.cta }}</span>
-      </span>
-    </a>
-    {% endfor %}
+  <div class="demo-carousel" data-demo-carousel>
+    <div class="demo-track" data-demo-track>
+      {% for item in p.demos.items %}
+      <div class="demo-slide">
+        <a class="demo-card" href="{{ demoLinks[item.key] }}" target="_blank" rel="noreferrer">
+          <span class="demo-card-preview">
+            <img src="{{ item.image }}" alt="" loading="lazy">
+          </span>
+          <span class="demo-card-body">
+            <span class="demo-tag">{{ item.tag }}</span>
+            <h3>{{ item.title }}</h3>
+            <span class="demo-card-creator">{{ item.creator }}</span>
+            <p>{{ item.lead }}</p>
+            <span class="demo-cta">{{ p.demos.cta }}</span>
+          </span>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="demo-dots" data-demo-dots aria-label="{{ p.demos.title }}"></div>
   </div>
 </section>
 
