@@ -917,18 +917,20 @@
 
 .zone-nav-btn {
   position: absolute;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  min-height: 2rem;
-  padding: 0 0.65rem;
+  display: inline-grid;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  min-height: 0;
+  padding: 0;
   border: 1px solid var(--site-line);
-  border-radius: var(--r-pill);
-  background: rgb(255 253 246 / 0.92);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--site-surface) 92%, transparent);
   color: var(--site-ink);
   box-shadow: 0 4px 14px rgb(49 45 36 / 0.12);
-  font-size: 0.7rem;
+  font-size: 1.05rem;
   font-weight: 800;
+  line-height: 1;
   cursor: pointer;
   pointer-events: auto;
   backdrop-filter: blur(5px);
@@ -936,14 +938,8 @@
 
 .zone-nav-btn span {
   color: var(--site-green);
-  font-size: 1rem;
+  font-size: 1.15rem;
   line-height: 1;
-}
-
-.zone-nav-btn em {
-  font-style: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
 }
 
 .zone-nav-btn:hover,
@@ -1849,4 +1845,21 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+@media (max-width: 720px) {
+  .zone-nav-btn {
+    width: 2.05rem;
+    height: 2.05rem;
+    font-size: 0.95rem;
+  }
+
+  .zone-nav-btn span {
+    font-size: 1rem;
+  }
+
+  .zone-nav-nord { top: 0.5rem; }
+  .zone-nav-sud { bottom: 0.5rem; }
+  .zone-nav-est { right: 0.5rem; }
+  .zone-nav-ouest { left: 0.5rem; }
 }

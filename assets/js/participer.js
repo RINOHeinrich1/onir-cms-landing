@@ -313,7 +313,7 @@
       var target = targetId ? zoneById[targetId] : null;
       if (!target) return "";
       return '<button type="button" class="zone-nav-btn zone-nav-' + direction + '" data-zone-go="' + esc(target.id) + '" aria-label="Aller vers ' + esc(target.title) + '">' +
-        "<span>" + entry[1] + "</span><em>" + esc(target.navTitle || target.title) + "</em></button>";
+        "<span>" + entry[1] + "</span></button>";
     }).join("");
   }
 
