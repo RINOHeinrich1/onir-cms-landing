@@ -34,14 +34,14 @@
     },
     {
       "id": "starter",
-      "version": "v1.4.1",
+      "version": "v1.6.14",
       "name": "Starter",
       "description": "Ny modely fototra: taratasy fanamarinana, resaka ary media.",
       "meta": [
         "Taratasy",
         "Chat",
         "Media",
-        "2,8 Ko"
+        "80 Ko"
       ],
       "detailsText": "Ny fiandohana kely indrindra hahatakarana ny fifanarahana mpampiantrano sy hamoronana ny modely hita maso anao."
     },

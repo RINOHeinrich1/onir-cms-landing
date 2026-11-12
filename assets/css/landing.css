@@ -1215,3 +1215,21 @@
   .contact-inner { grid-template-columns: minmax(0, 1fr); }
   .contact-band { padding-block: 2.5rem; }
 }
+
+.plugin-preview {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 16 / 10;
+}
+
+.plugin-visual {
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+  background: var(--site-surface-raised, var(--site-surface));
+}
+
+.plugin-visual::after {
+  inset: 0.8rem;
+}

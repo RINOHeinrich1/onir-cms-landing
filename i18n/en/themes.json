@@ -34,14 +34,14 @@
     },
     {
       "id": "starter",
-      "version": "v1.4.1",
+      "version": "v1.6.14",
       "name": "Starter",
       "description": "The reference template: identification form, conversation and media.",
       "meta": [
         "Form",
         "Chat",
         "Media",
-        "2.8 KB"
+        "80 KB"
       ],
       "detailsText": "The minimal starting point to understand the host contract and build your own visual template."
     },

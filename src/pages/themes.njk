@@ -25,8 +25,8 @@ permalink: "{{ locale.routes.themes }}index.html"
   <div class="plugin-grid">
     {% for item in p.items %}
     <article class="plugin-card plugin-card-{{ item.id }}">
-      <div class="plugin-visual plugin-visual-{{ item.id }}" aria-hidden="true">
-        {% include "components/theme-icon.njk" %}
+      <div class="plugin-visual plugin-visual-{{ item.id }}">
+        <img class="plugin-preview" src="/assets/themes/{{ item.id }}.png" alt="" loading="lazy">
       </div>
 
       <div class="plugin-body">
