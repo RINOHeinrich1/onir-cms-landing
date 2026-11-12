@@ -11,7 +11,5 @@ export default {
   mandampro:
     process.env.MANDAMPRO_DEMO_URL ??
     (appBase ? `${appBase}/l/xDworc7TkeWuw88DZ_kFxopiKWJ6huZ-` : "https://magic-link.onir-cms.tech/l/gw2r5-pLuNx-fEKy1kcijYKxaUq1Sk4baBr5gLfFHEY"),
-  hdorbite: appBase
-    ? "https://preprod-cms.onirtech.com/l/frbOHTG0r3rnjQb_-OKGxY4PZh1iR2GDEaMkYq9xauw"
-    : "https://magic-link.onir-cms.tech/l/Zl0sSI2vyyXG-0ewfpEnSqvpeYHgFvYZDDttNzMWjV4",
+  hdorbite: "https://magic-link.onir-cms.tech/l/Zl0sSI2vyyXG-0ewfpEnSqvpeYHgFvYZDDttNzMWjV4",
 };
