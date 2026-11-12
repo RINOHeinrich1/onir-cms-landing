@@ -1,0 +1,163 @@
+.hero-visual {
+  position: relative;
+}
+
+.hero-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  display: grid;
+  justify-items: center;
+  gap: 0.55rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.hero-play-icon {
+  display: grid;
+  place-items: center;
+  width: 4.2rem;
+  height: 4.2rem;
+  border: 1px solid color-mix(in srgb, var(--green) 22%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--card) 82%, transparent);
+  box-shadow:
+    0 1rem 2.5rem color-mix(in srgb, var(--green) 24%, transparent),
+    inset 0 1px 0 color-mix(in srgb, #fff 70%, transparent);
+  backdrop-filter: blur(10px);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hero-play-icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  margin-left: 0.18rem;
+  fill: var(--green);
+}
+
+.hero-play-label {
+  padding: 0.38rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+  box-shadow: 0 0.4rem 1.4rem color-mix(in srgb, var(--ink) 12%, transparent);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+}
+
+.hero-play:hover .hero-play-icon,
+.hero-play:focus-visible .hero-play-icon {
+  transform: scale(1.07);
+  background: var(--card);
+}
+
+.hero-play:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: var(--r-lg);
+}
+
+.hero-video-modal {
+  width: min(1100px, calc(100vw - 2rem));
+  max-width: none;
+  padding: 0;
+  border: 0;
+  border-radius: 1rem;
+  background: transparent;
+  color: #fff;
+}
+
+.hero-video-modal::backdrop {
+  background: rgba(6, 23, 18, 0.8);
+  backdrop-filter: blur(6px);
+}
+
+.hero-video-shell {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, #fff 18%, transparent);
+  border-radius: 1rem;
+  background: #000;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.45);
+}
+
+.hero-video-player {
+  display: block;
+  width: 100%;
+  max-height: 86dvh;
+  background: #000;
+}
+
+.hero-video-close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.48);
+  color: #fff;
+  font-size: 1.55rem;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+.hero-video-close:hover,
+.hero-video-close:focus-visible {
+  background: rgba(0, 0, 0, 0.72);
+}
+
+body:has(.hero-video-modal[open]) {
+  overflow: hidden;
+}
+
+@media (max-width: 700px) {
+  .hero-play {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .hero-play-icon {
+    width: 3.4rem;
+    height: 3.4rem;
+  }
+
+  .hero-play-icon svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .hero-play-label {
+    max-width: 14rem;
+    overflow: hidden;
+    font-size: 0.62rem;
+    text-overflow: ellipsis;
+  }
+
+  .hero-video-modal {
+    width: calc(100vw - 0.75rem);
+  }
+
+  .hero-video-shell {
+    border-radius: 0.75rem;
+  }
+
+  .hero-video-player {
+    max-height: 92dvh;
+  }
+}

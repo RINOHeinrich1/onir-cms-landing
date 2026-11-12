@@ -3,13 +3,15 @@ layout: layouts/base.njk
 pageKey: home
 headerVariant: v2
 css:
-  - /assets/css/landing-v2.css?v=11
+  - /assets/css/landing-v2.css?v=12
   - /assets/css/pricing.css?v=2
+  - /assets/css/hero-video.css?v=1
 bodyScripts:
   - /assets/js/appointment-chat.js?v=1
   - /assets/js/subscription.js?v=1
   - /assets/js/pricing-duration.js?v=1
   - /assets/js/demo-carousel.js?v=1
+  - /assets/js/hero-video.js?v=1
 showWidget: true
 pagination:
   data: locales
@@ -28,8 +30,8 @@ permalink: "{{ locale.routes.home }}index.html"
       </div>
     </div>
 
-    <div class="hero-visual" aria-hidden="true">
-      <div class="mock">
+    <div class="hero-visual">
+      <div class="mock" aria-hidden="true">
         <div class="mock-inner">
           <div class="mock-bar">
             <span class="dot"></span><span class="dot"></span><span class="dot"></span>
@@ -57,9 +59,32 @@ permalink: "{{ locale.routes.home }}index.html"
           </div>
         </div>
       </div>
+      <button class="hero-play" type="button" data-hero-video-open aria-label="Play the A2DM Formation contact demo">
+        <span class="hero-play-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>
+        </span>
+        <span class="hero-play-label">Watch A2DM Formation</span>
+      </button>
     </div>
   </div>
 </section>
+
+<dialog class="hero-video-modal" data-hero-video-modal aria-label="A2DM Formation contact demo">
+  <div class="hero-video-shell">
+    <button class="hero-video-close" type="button" data-hero-video-close aria-label="Close video">×</button>
+    <video
+      class="hero-video-player"
+      data-hero-video
+      data-desktop-src="/assets/videos/a2dm-formation-desktop.mp4"
+      data-mobile-src="/assets/videos/a2dm-formation-mobile.mp4"
+      data-desktop-poster="/assets/videos/a2dm-formation-desktop-poster.jpg"
+      data-mobile-poster="/assets/videos/a2dm-formation-mobile-poster.jpg"
+      controls
+      playsinline
+      preload="metadata"
+    ></video>
+  </div>
+</dialog>
 
 <section class="section wrap" id="demos">
   <div class="section-head">
