@@ -52,43 +52,43 @@
     "kicker": "Fanandramana",
     "title": "Andramo.",
     "lead": "Andramo mivantana ny chatbots-n'ny mpiara-miombon'antoka aminay.",
-    "cta": "Andramo →",
+    "cta": "Miresaka →",
     "previous": "Mialoha",
     "next": "Manaraka",
-  "items": [
-    {
-      "key": "onirtech",
-      "image": "/assets/themes/immersive.png",
-      "tag": "3D immersive",
-      "title": "onirtech.com",
-      "creator": "Onirtech",
-      "lead": "Fantaro ny Onirtech amin'ny alàlan'ny mpanampy immersive."
-    },
-    {
-      "key": "a2dm",
-      "image": "/assets/themes/a2dm.png",
-      "tag": "Starter",
-      "title": "A2DM Formation",
-      "creator": "A2DM-Formation",
-      "lead": "Mpanampy hitady ny fampiofanana A2DM."
-    },
-    {
-      "key": "mandampro",
-      "image": "/assets/themes/mandampro.png",
-      "tag": "MandamPro · fiches",
-      "title": "MandamPro",
-      "creator": "Onirtech",
-      "lead": "Hikaroka mpamatsy, trano fandraisam-bahiny sy fampiofanana eto Madagasikara."
-    },
-    {
-      "key": "hdorbite",
-      "image": "/assets/themes/hd-orbite.png",
-      "tag": "Mpanampy",
-      "title": "HD-Orbite",
-      "creator": "HD-Orbite",
-      "lead": "Fantaro ny fanampiana omen'ny HD-Orbite."
-    }
-  ]
+    "items": [
+      {
+        "key": "onirtech",
+        "image": "/assets/themes/immersive.png",
+        "tag": "3D immersive",
+        "title": "onirtech.com",
+        "creator": "Onirtech",
+        "lead": "Fantaro ny Onirtech amin'ny alàlan'ny mpanampy immersive."
+      },
+      {
+        "key": "a2dm",
+        "image": "/assets/themes/a2dm.png",
+        "tag": "Starter",
+        "title": "A2DM Formation",
+        "creator": "A2DM-Formation",
+        "lead": "Mpanampy hitady ny fampiofanana A2DM."
+      },
+      {
+        "key": "mandampro",
+        "image": "/assets/themes/mandampro.png",
+        "tag": "MandamPro · fiches",
+        "title": "MandamPro",
+        "creator": "Onirtech",
+        "lead": "Hikaroka mpamatsy, trano fandraisam-bahiny sy fampiofanana eto Madagasikara."
+      },
+      {
+        "key": "hdorbite",
+        "image": "/assets/themes/hd-orbite.png",
+        "tag": "Mpanampy",
+        "title": "HD-Orbite",
+        "creator": "HD-Orbite",
+        "lead": "Fantaro ny fanampiana omen'ny HD-Orbite."
+      }
+    ]
   },
   "openSource": {
     "kicker": "Malalaka sy open source",

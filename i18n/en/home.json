@@ -52,43 +52,43 @@
     "kicker": "Demos",
     "title": "Try it.",
     "lead": "Try our partners' chatbots directly.",
-    "cta": "Try it →",
+    "cta": "Chat →",
     "previous": "Previous",
     "next": "Next",
-  "items": [
-    {
-      "key": "onirtech",
-      "image": "/assets/themes/immersive.png",
-      "tag": "3D immersive",
-      "title": "onirtech.com",
-      "creator": "Onirtech",
-      "lead": "Discover Onirtech through its immersive assistant."
-    },
-    {
-      "key": "a2dm",
-      "image": "/assets/themes/a2dm.png",
-      "tag": "Starter",
-      "title": "A2DM Training",
-      "creator": "A2DM-Formation",
-      "lead": "An assistant to discover A2DM training programs."
-    },
-    {
-      "key": "mandampro",
-      "image": "/assets/themes/mandampro.png",
-      "tag": "MandamPro · records",
-      "title": "MandamPro",
-      "creator": "Onirtech",
-      "lead": "Find service providers, accommodation and training in Madagascar."
-    },
-    {
-      "key": "hdorbite",
-      "image": "/assets/themes/hd-orbite.png",
-      "tag": "Assistant",
-      "title": "HD-Orbite",
-      "creator": "HD-Orbite",
-      "lead": "Discover HD-Orbite’s support."
-    }
-  ]
+    "items": [
+      {
+        "key": "onirtech",
+        "image": "/assets/themes/immersive.png",
+        "tag": "3D immersive",
+        "title": "onirtech.com",
+        "creator": "Onirtech",
+        "lead": "Discover Onirtech through its immersive assistant."
+      },
+      {
+        "key": "a2dm",
+        "image": "/assets/themes/a2dm.png",
+        "tag": "Starter",
+        "title": "A2DM Training",
+        "creator": "A2DM-Formation",
+        "lead": "An assistant to discover A2DM training programs."
+      },
+      {
+        "key": "mandampro",
+        "image": "/assets/themes/mandampro.png",
+        "tag": "MandamPro · records",
+        "title": "MandamPro",
+        "creator": "Onirtech",
+        "lead": "Find service providers, accommodation and training in Madagascar."
+      },
+      {
+        "key": "hdorbite",
+        "image": "/assets/themes/hd-orbite.png",
+        "tag": "Assistant",
+        "title": "HD-Orbite",
+        "creator": "HD-Orbite",
+        "lead": "Discover HD-Orbite’s support."
+      }
+    ]
   },
   "openSource": {
     "kicker": "Libre and open source",
