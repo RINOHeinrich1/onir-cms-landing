@@ -16,6 +16,11 @@ const routes = {
     en: "/en/participate/",
     mg: "/mg/handray-anjara/",
   },
+  articles: {
+    fr: "/articles/",
+    en: "/en/articles/",
+    mg: "/mg/articles/",
+  },
   legal: {
     fr: "/mentions-legales/",
     en: "/en/legal-notice/",

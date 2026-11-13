@@ -5,6 +5,25 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "participer/developpeur": "participer/developpeur" });
   eleventyConfig.addPassthroughCopy({ "participer/sponsoring": "participer/sponsoring" });
 
+  eleventyConfig.addCollection("articles", (collectionApi) =>
+    collectionApi
+      .getFilteredByGlob("src/articles/**/*.md")
+      .filter((item) => item.data.draft !== true)
+      .filter((item) =>
+        item.data.publishedAt === undefined ||
+        new Date(item.data.publishedAt).getTime() <= Date.now(),
+      )
+      .sort(
+        (left, right) =>
+          new Date(right.data.publishedAt ?? 0).getTime() -
+          new Date(left.data.publishedAt ?? 0).getTime(),
+      ),
+  );
+
+  eleventyConfig.addFilter("articlesForLocale", (items, code) =>
+    (items ?? []).filter((item) => item.data.articleLocale === code),
+  );
+
   eleventyConfig.addFilter("absoluteUrl", (path, baseUrl) => {
     if (!path) return baseUrl;
     if (/^https?:\/\//.test(path)) return path;

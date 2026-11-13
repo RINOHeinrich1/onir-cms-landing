@@ -1,0 +1,63 @@
+---
+layout: layouts/base.njk
+pageKey: articles
+headerVariant: v2
+showWidget: true
+css:
+  - /assets/css/landing-v2.css?v=15
+  - /assets/css/articles.css?v=1
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "{{ locale.routes.articles }}index.html"
+---
+{% set currentArticles = collections.articles | articlesForLocale(locale.code) %}
+<section class="page-hero wrap">
+  <p class="kicker">{{ p.kicker }}</p>
+  <h1>{{ p.title }}</h1>
+  <p class="hero-lead">{{ p.lead }}</p>
+</section>
+
+<section class="section wrap article-index">
+  {% if currentArticles.length === 0 %}
+    <p class="article-empty">{{ p.empty }}</p>
+  {% else %}
+    <div class="article-grid article-grid--index">
+      {% for article in currentArticles %}
+      <article class="article-card">
+        <a class="article-card-link" href="#{{ article.data.slug }}">
+          <div class="article-cover article-cover--{{ article.data.accent }}">
+            <span>{{ article.data.category }}</span>
+            <strong>{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</strong>
+          </div>
+          <div class="article-card-body">
+            <p class="article-kicker">{{ article.data.category }}</p>
+            <h2>{{ article.data.title }}</h2>
+            <p>{{ article.data.excerpt }}</p>
+            <div class="article-meta">
+              <time datetime="{{ article.data.publishedAt }}">{{ article.data.publishedAt }}</time>
+              <span>{{ article.data.reading }} {{ p.reading }}</span>
+            </div>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div class="article-full-list">
+      {% for article in currentArticles %}
+      <article class="article-full" id="{{ article.data.slug }}">
+        <p class="kicker">{{ article.data.category }}</p>
+        <h2>{{ article.data.title }}</h2>
+        <div class="article-meta">
+          <time datetime="{{ article.data.publishedAt }}">{{ article.data.publishedAt }}</time>
+          <span>{{ article.data.reading }} {{ p.reading }}</span>
+        </div>
+        <div class="article-body">{{ article.templateContent | safe }}</div>
+        <a class="article-back" href="#">{{ p.back }} ↑</a>
+      </article>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>
