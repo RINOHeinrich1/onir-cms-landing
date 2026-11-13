@@ -5,9 +5,9 @@ export default {
     sha: "sha256:2b6e0f2c186b04f5a04c642c8e213625ab4112ec4221367bb1d5c41f76b0c9d3",
   },
   starter: {
-    download: "/assets/plugins/starter-1.6.14.onirtech-template",
-    downloadName: "starter-1.6.14.onirtech-template",
-    sha: "sha256:1d6595abc1f10d7fda6117306519a981bdfe86f583c6affd4f0aaac1a236e890",
+    download: "/assets/plugins/starter-1.6.15.onirtech-template",
+    downloadName: "starter-1.6.15.onirtech-template",
+    sha: "sha256:6ad010d22774c22553c0a39ce245697c9d0116b6b02a24f686da570233ca006c",
   },
   mandampro: {
     download: "/assets/plugins/mandampro-1.0.1.onirtech-template",
