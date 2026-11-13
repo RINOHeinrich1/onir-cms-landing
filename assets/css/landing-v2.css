@@ -15,18 +15,18 @@
 
 :root {
   color-scheme: light;
-  --bg: #f4f1e5;
-  --bg-soft: #ece7d6;
-  --card: #fffdf6;
-  --ink: #063d2e;
-  --ink-soft: #3d6357;
+  --bg: #fafaf8;
+  --bg-soft: #f5f5f2;
+  --card: #ffffff;
+  --ink: #202124;
+  --ink-soft: #686b70;
   --green: #004a38;
   --green-2: #0a6a51;
-  --accent: #f08000;
-  --accent-soft: #ffe3bd;
+  --accent: #ed861f;
+  --accent-soft: #faf0e6;
   --btn-ink: #ffffff;
-  --line: rgba(6, 61, 46, 0.14);
-  --shadow: 0 24px 60px -30px rgba(6, 61, 46, 0.45);
+  --line: #e7e7e3;
+  --shadow: 0 2px 12px rgba(20, 24, 28, 0.035);
   --r-sm: 0.6rem;
   --r-md: 1rem;
   --r-lg: 1.5rem;
@@ -1608,4 +1608,172 @@ a { color: inherit; }
   border-left: 1px solid var(--line);
   border-radius: 0;
   background: transparent;
+}
+
+/* ---------- Mode clair — finition SaaS éditoriale ---------- */
+:root:not([data-theme="dark"]) {
+  --r-sm: 0.45rem;
+  --r-md: 0.625rem;
+  --r-lg: 0.75rem;
+  --r-xl: 1rem;
+}
+
+:root:not([data-theme="dark"]) body {
+  background: var(--bg);
+}
+
+:root:not([data-theme="dark"]) .site-head {
+  background: rgb(250 250 248 / 0.88);
+  border-bottom-color: var(--line);
+  backdrop-filter: blur(12px);
+}
+
+:root:not([data-theme="dark"]) .mock {
+  box-shadow: 0 14px 44px -34px rgb(20 24 28 / 0.22);
+}
+
+.mock::before {
+  display: none;
+}
+
+:root:not([data-theme="dark"]) .mock-inner {
+  border-radius: 0.75rem;
+}
+
+:root:not([data-theme="dark"]) .chip,
+:root:not([data-theme="dark"]) .tech span,
+:root:not([data-theme="dark"]) .model-chips span {
+  background: #fbfbf9;
+}
+
+:root:not([data-theme="dark"]) .band {
+  border-radius: var(--r-xl);
+  background: #0b4a3a;
+}
+
+:root:not([data-theme="dark"]) .band-solo {
+  padding: 3.4rem;
+}
+
+:root:not([data-theme="dark"]) .demo-card {
+  box-shadow: var(--shadow);
+}
+
+:root:not([data-theme="dark"]) .demo-card:hover {
+  border-color: #d6ddd8;
+  box-shadow: 0 8px 24px -20px rgb(20 24 28 / 0.16);
+  transform: translateY(-1px);
+}
+
+:root:not([data-theme="dark"]) .demo-card .demo-tag {
+  background: #f6f2ec;
+  color: #4a3a2c;
+}
+
+:root:not([data-theme="dark"]) .demo-arrow {
+  border-color: var(--line);
+  background: rgb(255 255 255 / 0.94);
+  box-shadow: 0 4px 16px rgb(20 24 28 / 0.08);
+}
+
+:root:not([data-theme="dark"]) .demo-arrow:hover:not(:disabled) {
+  border-color: #d6ddd8;
+  background: #fff;
+  color: var(--green);
+}
+
+:root:not([data-theme="dark"]) .simple {
+  background: #fff;
+  border-color: var(--line);
+  box-shadow: var(--shadow);
+}
+
+:root:not([data-theme="dark"]) .provider {
+  background: #fff;
+  border-color: var(--line);
+}
+
+:root:not([data-theme="dark"]) .provider:hover {
+  background: #fbfbf9;
+}
+
+:root:not([data-theme="dark"]) .article-card {
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+:root:not([data-theme="dark"]) .article-cover,
+:root:not([data-theme="dark"]) .article-cover--mint {
+  background: #edf3ef;
+  color: #173b2f;
+}
+
+:root:not([data-theme="dark"]) .article-cover--orange {
+  background: #f7eee3;
+  color: #43301c;
+}
+
+:root:not([data-theme="dark"]) .article-cover::after {
+  border-color: rgb(23 59 47 / 0.12);
+}
+
+:root:not([data-theme="dark"]) .article-meta {
+  border-top-color: var(--line);
+}
+
+:root:not([data-theme="dark"]) .price-card,
+:root:not([data-theme="dark"]) .cloud-detail-card {
+  box-shadow: var(--shadow);
+}
+
+:root:not([data-theme="dark"]) .site-foot {
+  background: #f5f5f2;
+  border-top: 1px solid var(--line);
+}
+
+:root:not([data-theme="dark"]) .contact-band {
+  background: #f5f5f2;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+:root:not([data-theme="dark"]) .contact-action {
+  background: #fff;
+  border-color: var(--line);
+}
+
+:root:not([data-theme="dark"]) .contact-action:hover {
+  background: #fbfbf9;
+  border-color: #d6ddd8;
+}
+
+:root:not([data-theme="dark"]) .contact-social-icon {
+  background: #fff;
+  border-color: var(--line);
+}
+
+:root:not([data-theme="dark"]) .aud {
+  background: #fff;
+}
+
+:root:not([data-theme="dark"]) .demo-card .demo-tag {
+  align-self: flex-start;
+}
+
+:root:not([data-theme="dark"]) .contact-action-primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+:root:not([data-theme="dark"]) .contact-action-primary:hover {
+  background: #2b2e31;
+  border-color: #2b2e31;
+}
+
+:root:not([data-theme="dark"]) .hero-play-icon {
+  border-color: var(--line);
+  background: rgb(255 255 255 / 0.9);
+  box-shadow: 0 6px 22px rgb(20 24 28 / 0.12);
+  backdrop-filter: blur(8px);
 }

@@ -797,3 +797,29 @@ body[data-market="INTL"] [data-international-only] {
 :root[data-theme="dark"] .market-notice a {
   color: var(--green-2);
 }
+
+/* Mode clair — offres sobres et bordures fines */
+:root:not([data-theme="dark"]) .price-card-featured {
+  background: var(--card);
+  border: 1px solid #cfded7;
+}
+
+:root:not([data-theme="dark"]) .price-empty {
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: #fbfbf9;
+}
+
+:root:not([data-theme="dark"]) .price-card .price-empty {
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+:root:not([data-theme="dark"]) .carousel-button {
+  border-color: var(--line);
+  background: rgb(255 255 255 / 0.94);
+  box-shadow: 0 4px 16px rgb(20 24 28 / 0.08);
+}
