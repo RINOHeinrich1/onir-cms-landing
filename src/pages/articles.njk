@@ -16,7 +16,7 @@ permalink: "{{ locale.routes.articles }}index.html"
 <section class="page-hero wrap">
   <p class="kicker">{{ p.kicker }}</p>
   <h1>{{ p.title }}</h1>
-  <p class="hero-lead">{{ p.lead }}</p>
+  {% if p.lead %}<p class="hero-lead">{{ p.lead }}</p>{% endif %}
 </section>
 
 <section class="section wrap article-index">

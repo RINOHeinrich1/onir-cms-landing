@@ -190,7 +190,7 @@ permalink: "{{ locale.routes.home }}index.html"
   <div class="section-head">
     <p class="kicker">{{ t.articles.kicker }}</p>
     <h2>{{ t.articles.title }}</h2>
-    <p>{{ t.articles.lead }}</p>
+    {% if t.articles.lead %}<p>{{ t.articles.lead }}</p>{% endif %}
   </div>
   <div class="article-grid">
     {% for article in homeArticles.slice(0, 3) %}
