@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Thèmes libres · ONIR CMS",
-    "description": "Téléchargez les templates visuels Immersive et Starter pour ONIR CMS. Libres, prêts à importer.",
+    "description": "Téléchargez les templates visuels ONIR CMS : Immersive, Starter, MandamPro, Nuit & Jade et Atelier Paper. Libres, prêts à importer.",
     "ogTitle": "Thèmes libres · ONIR CMS",
-    "ogDescription": "Téléchargez les templates visuels Immersive et Starter pour ONIR CMS."
+    "ogDescription": "Téléchargez les templates visuels ONIR CMS."
   },
   "hero": {
     "kicker": "Marketplace",
@@ -30,7 +30,8 @@
         "Pièces jointes",
         "3,8 Mo"
       ],
-      "detailsText": "Template officiel avec assets CC0 inclus. Scène 3D, avatar TalkingHead, album, connaissances, médias, paramètres de lien et pièces jointes (CV, documents)."
+      "detailsText": "Template officiel avec assets CC0 inclus. Scène 3D, avatar TalkingHead, album, connaissances, médias, paramètres de lien et pièces jointes (CV, documents).",
+      "author": "Rinoheinrich"
     },
     {
       "id": "starter",
@@ -43,7 +44,8 @@
         "Médias",
         "80 Ko"
       ],
-      "detailsText": "Le point de départ minimal pour comprendre le contrat hôte et créer votre propre template visuel."
+      "detailsText": "Le point de départ minimal pour comprendre le contrat hôte et créer votre propre template visuel.",
+      "author": "Rinoheinrich"
     },
     {
       "id": "mandampro",
@@ -57,7 +59,38 @@
         "Formulaire",
         "23 Ko"
       ],
-      "detailsText": "Template public MandamPro, UI-only, avec rendu des blocs de recherche, des médias et des champs typés."
+      "detailsText": "Template public MandamPro, UI-only, avec rendu des blocs de recherche, des médias et des champs typés.",
+      "author": "Rinoheinrich"
+    },
+    {
+      "id": "nuit-jade",
+      "version": "v1.3.2",
+      "name": "Nuit & Jade",
+      "author": "Anjary",
+      "description": "Une conversation élégante aux tons bleu nuit, jade et cobalt : cartes arrondies, avatar et surfaces page + widget.",
+      "meta": [
+        "Nuit & jade",
+        "Page + widget",
+        "Avatar",
+        "35 variables",
+        "329 Ko"
+      ],
+      "detailsText": "Template ONIR CMS créé par Anjary. Charte Man-Dam Pro : bleu nuit, jade et cobalt, cartes blanches, boutons pilule, avatar et rendu générique des messages, médias et résultats de recherche."
+    },
+    {
+      "id": "atelier",
+      "version": "v2.5.0",
+      "name": "Atelier Paper",
+      "author": "Anjary",
+      "description": "Un template papier noir et blanc, à encoches et typographie monospace, pour une conversation éditoriale et sobre.",
+      "meta": [
+        "Noir & blanc",
+        "Papier à encoches",
+        "Page + widget",
+        "40 variables",
+        "186 Ko"
+      ],
+      "detailsText": "Template ONIR CMS créé par Anjary. Design « Spin Product » : cartes blanches à encoches, accent noir, typographie monospace, surfaces page et widget."
     }
   ],
   "install": {
@@ -82,5 +115,6 @@
     ],
     "detail": "Besoin du détail ?",
     "link": "Lire la documentation des templates"
-  }
+  },
+  "authorLabel": "Auteur"
 }

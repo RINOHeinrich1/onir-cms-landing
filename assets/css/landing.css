@@ -585,6 +585,19 @@
   line-height: 1.56;
 }
 
+.plugin-body .plugin-author {
+  margin: 0.5rem 0 0;
+  color: var(--site-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.plugin-author strong {
+  color: var(--site-ink);
+  font-weight: 700;
+}
+
 .plugin-meta {
   display: flex;
   flex-wrap: wrap;

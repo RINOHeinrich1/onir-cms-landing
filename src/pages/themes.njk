@@ -7,7 +7,7 @@ mainClass: site-main
 showWidget: true
 css:
   - /assets/css/base.css
-  - /assets/css/landing.css?v=20261112
+  - /assets/css/landing.css?v=20261113
 pagination:
   data: locales
   size: 1
@@ -36,6 +36,7 @@ permalink: "{{ locale.routes.themes }}index.html"
         </div>
 
         <h2>{{ item.name }}</h2>
+        <p class="plugin-author">{{ p.authorLabel }} <strong>{{ item.author }}</strong></p>
         <p>{{ item.description }}</p>
 
         <ul class="plugin-meta" aria-label="{{ p.metaAria }}">

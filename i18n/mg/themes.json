@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Endrika azonao ampiasaina · ONIR CMS",
-    "description": "Alaivo ny modely hita maso Immersive sy Starter ho an'ny ONIR CMS. Malalaka, vonona ampidirina.",
+    "description": "Alaivo ny modely hita maso ONIR CMS: Immersive, Starter, MandamPro, Nuit & Jade ary Atelier Paper. Malalaka, vonona ampidirina.",
     "ogTitle": "Endrika azonao ampiasaina · ONIR CMS",
-    "ogDescription": "Alaivo ny modely hita maso Immersive sy Starter ho an'ny ONIR CMS."
+    "ogDescription": "Alaivo ny modely hita maso ONIR CMS."
   },
   "hero": {
     "kicker": "Marketplace",
@@ -30,7 +30,8 @@
         "Rakitra",
         "3,8 Mo"
       ],
-      "detailsText": "Modely ofisialy misy assets CC0. Sehatra 3D, avatar TalkingHead, album, fahalalana, media, fandrindrana rohy ary rakitra (CV, antontan-taratasy)."
+      "detailsText": "Modely ofisialy misy assets CC0. Sehatra 3D, avatar TalkingHead, album, fahalalana, media, fandrindrana rohy ary rakitra (CV, antontan-taratasy).",
+      "author": "Rinoheinrich"
     },
     {
       "id": "starter",
@@ -43,7 +44,8 @@
         "Media",
         "80 Ko"
       ],
-      "detailsText": "Ny fiandohana kely indrindra hahatakarana ny fifanarahana mpampiantrano sy hamoronana ny modely hita maso anao."
+      "detailsText": "Ny fiandohana kely indrindra hahatakarana ny fifanarahana mpampiantrano sy hamoronana ny modely hita maso anao.",
+      "author": "Rinoheinrich"
     },
     {
       "id": "mandampro",
@@ -57,7 +59,38 @@
         "Taratasy",
         "23 Ko"
       ],
-      "detailsText": "Modely ho an’ny besinimaro MandamPro, UI-only, maneho blocs fikarohana, media ary saha voafaritra."
+      "detailsText": "Modely ho an’ny besinimaro MandamPro, UI-only, maneho blocs fikarohana, media ary saha voafaritra.",
+      "author": "Rinoheinrich"
+    },
+    {
+      "id": "nuit-jade",
+      "version": "v1.3.2",
+      "name": "Nuit & Jade",
+      "author": "Anjary",
+      "description": "Resaka tsara tarehy miloko alina, jade sy cobalt: karatra boribory, avatar ary sehatra pejy + widget.",
+      "meta": [
+        "Alina & jade",
+        "Pejy + widget",
+        "Avatar",
+        "35 variables",
+        "329 Ko"
+      ],
+      "detailsText": "Modely ONIR CMS noforonin’i Anjary. Charte Man-Dam Pro: alina, jade sy cobalt, karatra fotsy, bokotra pill, avatar ary fampisehoana hafatra, media sy valin’ny fikarohana."
+    },
+    {
+      "id": "atelier",
+      "version": "v2.5.0",
+      "name": "Atelier Paper",
+      "author": "Anjary",
+      "description": "Modely taratasy mainty sy fotsy, misy encoches sy soratra monospace, ho an’ny resaka editorial tsotra.",
+      "meta": [
+        "Mainty & fotsy",
+        "Taratasy encoches",
+        "Pejy + widget",
+        "40 variables",
+        "186 Ko"
+      ],
+      "detailsText": "Modely ONIR CMS noforonin’i Anjary. Design « Spin Product »: karatra fotsy misy encoches, accent mainty, soratra monospace, sehatra pejy sy widget."
     }
   ],
   "install": {
@@ -82,5 +115,6 @@
     ],
     "detail": "Mila antsipiriany?",
     "link": "Vakio ny torolalana momba ny modely"
-  }
+  },
+  "authorLabel": "Mpamorona"
 }

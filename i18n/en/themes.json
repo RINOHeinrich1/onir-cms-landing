@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Open themes · ONIR CMS",
-    "description": "Download the Immersive and Starter visual templates for ONIR CMS. Open, ready to import.",
+    "description": "Download the ONIR CMS visual templates: Immersive, Starter, MandamPro, Nuit & Jade and Atelier Paper. Open, ready to import.",
     "ogTitle": "Open themes · ONIR CMS",
-    "ogDescription": "Download the Immersive and Starter visual templates for ONIR CMS."
+    "ogDescription": "Download the ONIR CMS visual templates."
   },
   "hero": {
     "kicker": "Marketplace",
@@ -30,7 +30,8 @@
         "Attachments",
         "3.8 MB"
       ],
-      "detailsText": "Official template with CC0 assets included. 3D scene, TalkingHead avatar, album, knowledge, media, link settings and attachments (CV, documents)."
+      "detailsText": "Official template with CC0 assets included. 3D scene, TalkingHead avatar, album, knowledge, media, link settings and attachments (CV, documents).",
+      "author": "Rinoheinrich"
     },
     {
       "id": "starter",
@@ -43,7 +44,8 @@
         "Media",
         "80 KB"
       ],
-      "detailsText": "The minimal starting point to understand the host contract and build your own visual template."
+      "detailsText": "The minimal starting point to understand the host contract and build your own visual template.",
+      "author": "Rinoheinrich"
     },
     {
       "id": "mandampro",
@@ -57,7 +59,38 @@
         "Form",
         "23 KB"
       ],
-      "detailsText": "MandamPro public template, UI-only, rendering search blocks, media and typed fields."
+      "detailsText": "MandamPro public template, UI-only, rendering search blocks, media and typed fields.",
+      "author": "Rinoheinrich"
+    },
+    {
+      "id": "nuit-jade",
+      "version": "v1.3.2",
+      "name": "Nuit & Jade",
+      "author": "Anjary",
+      "description": "An elegant conversation in midnight blue, jade and cobalt: rounded cards, avatar and page + widget surfaces.",
+      "meta": [
+        "Midnight & jade",
+        "Page + widget",
+        "Avatar",
+        "35 variables",
+        "329 KB"
+      ],
+      "detailsText": "ONIR CMS template created by Anjary. Man-Dam Pro styling: midnight blue, jade and cobalt, white cards, pill buttons, avatar and generic rendering of messages, media and search results."
+    },
+    {
+      "id": "atelier",
+      "version": "v2.5.0",
+      "name": "Atelier Paper",
+      "author": "Anjary",
+      "description": "A black-and-white paper template with notched cards and monospace type, for a sober editorial conversation.",
+      "meta": [
+        "Black & white",
+        "Notched paper",
+        "Page + widget",
+        "40 variables",
+        "186 KB"
+      ],
+      "detailsText": "ONIR CMS template created by Anjary. “Spin Product” design: white notched cards, black accent, monospace type, page and widget surfaces."
     }
   ],
   "install": {
@@ -82,5 +115,6 @@
     ],
     "detail": "Need the details?",
     "link": "Read the template documentation"
-  }
+  },
+  "authorLabel": "Author"
 }
