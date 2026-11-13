@@ -28,7 +28,7 @@ permalink: "{{ locale.routes.themes }}index.html"
     {% for item in p.items %}
     <article class="plugin-card plugin-card-{{ item.id }}">
       <div class="plugin-visual plugin-visual-{{ item.id }}">
-        <img class="plugin-preview" src="/assets/themes/{{ item.id }}.png" alt="" loading="lazy">
+        <img class="plugin-preview" src="/assets/themes/{{ item.id }}.png?v={{ item.version }}" alt="" loading="lazy">
         <div class="plugin-visual-actions">
           <a class="plugin-download" href="{{ themeDownloads[item.id].download }}" download="{{ themeDownloads[item.id].downloadName }}">{{ p.download }}</a>
           <button class="plugin-detail-open" type="button" data-theme-dialog-open="{{ item.id }}">{{ p.detailButton }}</button>
@@ -44,7 +44,7 @@ permalink: "{{ locale.routes.themes }}index.html"
     <dialog class="theme-dialog" id="theme-dialog-{{ item.id }}" data-theme-dialog aria-labelledby="theme-dialog-title-{{ item.id }}">
       <div class="theme-dialog-card">
         <button class="theme-dialog-close" type="button" data-theme-dialog-close aria-label="{{ p.closeLabel }}">×</button>
-        <img class="theme-dialog-preview" src="/assets/themes/{{ item.id }}.png" alt="" loading="lazy">
+        <img class="theme-dialog-preview" src="/assets/themes/{{ item.id }}.png?v={{ item.version }}" alt="" loading="lazy">
         <div class="theme-dialog-body">
           <div class="plugin-top">
             <span class="site-pill site-pill-free">{{ p.freeLabel }}</span>
