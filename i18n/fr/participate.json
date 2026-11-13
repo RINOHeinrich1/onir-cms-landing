@@ -12,7 +12,7 @@
   },
   "sponsor": {
     "title": "Construisons ensemble l’avenir libre de l’IA",
-    "cta": "Devenir sponsor",
+    "cta": "Devenir Partenaire",
     "viewToggle": "Vue 3D",
     "mapLabel": "Carte interactive de la Ville ONIR",
     "loading": "Construction de la ville 3D…",
@@ -54,7 +54,7 @@
     ]
   },
   "chat": {
-    "title": "Devenir sponsor",
+    "title": "Devenir Partenaire",
     "subtitle": "Ville ONIR · échange guidé",
     "close": "Fermer",
     "progress": "Étape 1 sur 4",

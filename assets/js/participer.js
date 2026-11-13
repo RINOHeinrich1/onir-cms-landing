@@ -778,7 +778,7 @@
     var iconColor = premium ? "#c8102e" : accent;
     var textColor = "#fff8e8";
     return (
-      '<g class="empty-plot available-plot' + (premium ? " premium-plot" : "") + '" data-empty-plot data-slot-id="' + esc(slot.id) + '" tabindex="0" role="button" aria-label="' + label + ' — devenir sponsor" transform="translate(' + slot.x + " " + slot.y + ')">' +
+      '<g class="empty-plot available-plot' + (premium ? " premium-plot" : "") + '" data-empty-plot data-slot-id="' + esc(slot.id) + '" tabindex="0" role="button" aria-label="' + label + ' — devenir partenaire" transform="translate(' + slot.x + " " + slot.y + ')">' +
       "<title>" + label + "</title>" +
       '<ellipse cx="0" cy="4" rx="48" ry="11" fill="var(--map-shadow)" opacity=".28"/>' +
       '<rect class="plot-outline" x="-40" y="-29" width="80" height="58" rx="10" style="fill:rgb(255 253 246 / 0.28);stroke:' + accent + ';stroke-width:1.8;stroke-dasharray:7 6;opacity:.95"/>' +
@@ -1021,7 +1021,7 @@
       (sponsor.demo ? '<p class="sponsor-empty-note">Partenaire de démonstration. Son site ou son chatbot réel sera relié à la validation.</p>' : "") +
       '<div class="sponsor-sheet-actions">' +
       '<button type="button" class="site-button site-button-sm" data-sheet-close>Fermer</button>' +
-      '<button type="button" class="site-button site-button-sm site-button-ghost" data-open-chat>Devenir sponsor</button>' +
+      '<button type="button" class="site-button site-button-sm site-button-ghost" data-open-chat>Devenir Partenaire</button>' +
       "</div>";
 
     if (typeof sheet.showModal === "function") {
@@ -1045,7 +1045,7 @@
     if (!hover) return;
     hover.innerHTML =
       '<span class="map-hover-avatar" style="background:#2f7d6322;color:#2f7d63">+</span>' +
-      "<span><strong>" + (slot.premium ? "Place premium" : "Place disponible") + "</strong><span>" + esc(zoneTitle(slot.zoneId)) + "</span><em>Devenir sponsor →</em></span>";
+      "<span><strong>" + (slot.premium ? "Place premium" : "Place disponible") + "</strong><span>" + esc(zoneTitle(slot.zoneId)) + "</span><em>Devenir Partenaire →</em></span>";
     hover.classList.add("is-visible");
   }
 
