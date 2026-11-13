@@ -687,3 +687,85 @@ body[data-market="INTL"] [data-international-only] {
 :root[data-theme="dark"] .price-card-featured .price-tag {
   color: var(--green-2);
 }
+
+/* Carrousels alignés sur le design des démos */
+.pricing-carousel,
+.cloud-carousel {
+  padding: 0 2.8rem;
+}
+
+.pricing-grid,
+.cloud-detail-grid {
+  padding: 0.2rem 0.15rem 0.25rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.pricing-grid::-webkit-scrollbar,
+.cloud-detail-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.pricing-carousel .carousel-button,
+.cloud-carousel .carousel-button {
+  left: 0;
+  right: auto;
+}
+
+.pricing-carousel .carousel-prev,
+.cloud-carousel .carousel-prev {
+  left: 0;
+}
+
+.pricing-carousel .carousel-next,
+.cloud-carousel .carousel-next {
+  right: 0;
+  left: auto;
+}
+
+.pricing-carousel .carousel-button:hover:not(:disabled),
+.cloud-carousel .carousel-button:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .pricing-carousel,
+  .cloud-carousel {
+    padding: 0 2.2rem;
+  }
+
+  .pricing-carousel .carousel-button,
+  .cloud-carousel .carousel-button {
+    width: 2.15rem;
+    height: 2.15rem;
+  }
+}
+
+@media (min-width: 901px) {
+  .pricing-grid .price-card,
+  .cloud-detail-grid .cloud-detail-card {
+    flex-basis: calc((100% - 2rem) / 3);
+    width: auto;
+    max-width: none;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+  .pricing-grid .price-card,
+  .cloud-detail-grid .cloud-detail-card {
+    flex-basis: calc((100% - 1rem) / 2);
+    width: auto;
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .pricing-grid .price-card,
+  .cloud-detail-grid .cloud-detail-card {
+    flex-basis: 100%;
+    width: auto;
+    max-width: none;
+  }
+}

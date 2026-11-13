@@ -48,6 +48,7 @@
     </article>
     </div>
     <button class="carousel-button carousel-next" data-pricing-next type="button" aria-label="{{ t.pricing.carouselNext }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+    <div class="demo-dots" data-carousel-dots aria-label="Pagination des offres"></div>
   </div>
 </section>
 
@@ -97,6 +98,7 @@
     {% endfor %}
     </div>
     <button class="carousel-button carousel-next" data-carousel-next type="button" aria-label="{{ t.pricing.carouselNext }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+    <div class="demo-dots" data-carousel-dots aria-label="Pagination des offres Cloud"></div>
   </div>
   {% else %}
   <p class="price-empty">{{ t.pricing.cloud.empty }}</p>
