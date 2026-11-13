@@ -116,5 +116,7 @@
     "detail": "Need the details?",
     "link": "Read the template documentation"
   },
-  "authorLabel": "Author"
+  "authorLabel": "Author",
+  "detailButton": "Details",
+  "closeLabel": "Close details"
 }

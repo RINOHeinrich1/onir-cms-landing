@@ -116,5 +116,7 @@
     "detail": "Besoin du détail ?",
     "link": "Lire la documentation des templates"
   },
-  "authorLabel": "Auteur"
+  "authorLabel": "Auteur",
+  "detailButton": "Détails",
+  "closeLabel": "Fermer le détail"
 }

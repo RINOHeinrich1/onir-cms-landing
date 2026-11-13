@@ -116,5 +116,7 @@
     "detail": "Mila antsipiriany?",
     "link": "Vakio ny torolalana momba ny modely"
   },
-  "authorLabel": "Mpamorona"
+  "authorLabel": "Mpamorona",
+  "detailButton": "Antsipiriany",
+  "closeLabel": "Hidio ny antsipiriany"
 }

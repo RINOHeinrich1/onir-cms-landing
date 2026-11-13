@@ -7,7 +7,9 @@ mainClass: site-main
 showWidget: true
 css:
   - /assets/css/base.css
-  - /assets/css/landing.css?v=20261113
+  - /assets/css/landing.css?v=20261114
+bodyScripts:
+  - /assets/js/theme-modal.js?v=1
 pagination:
   data: locales
   size: 1
@@ -27,34 +29,41 @@ permalink: "{{ locale.routes.themes }}index.html"
     <article class="plugin-card plugin-card-{{ item.id }}">
       <div class="plugin-visual plugin-visual-{{ item.id }}">
         <img class="plugin-preview" src="/assets/themes/{{ item.id }}.png" alt="" loading="lazy">
+        <div class="plugin-visual-actions">
+          <a class="plugin-download" href="{{ themeDownloads[item.id].download }}" download="{{ themeDownloads[item.id].downloadName }}">{{ p.download }}</a>
+          <button class="plugin-detail-open" type="button" data-theme-dialog-open="{{ item.id }}">{{ p.detailButton }}</button>
+        </div>
       </div>
 
       <div class="plugin-body">
-        <div class="plugin-top">
-          <span class="site-pill site-pill-free">{{ p.freeLabel }}</span>
-          <span class="plugin-version">{{ item.version }}</span>
-        </div>
-
         <h2>{{ item.name }}</h2>
         <p class="plugin-author">{{ p.authorLabel }} <strong>{{ item.author }}</strong></p>
-        <p>{{ item.description }}</p>
-
-        <ul class="plugin-meta" aria-label="{{ p.metaAria }}">
-          {% for value in item.meta %}<li>{{ value }}</li>{% endfor %}
-        </ul>
-
-        <div class="plugin-actions">
-          <a class="site-button" href="{{ themeDownloads[item.id].download }}" download="{{ themeDownloads[item.id].downloadName }}">{{ p.download }}</a>
-          <a class="site-button site-button-ghost" href="{{ site.templatesGuide }}">{{ p.guide }}</a>
-        </div>
-
-        <details class="plugin-details">
-          <summary>{{ p.details }}</summary>
-          <p>{{ item.detailsText }}</p>
-          <code>{{ themeDownloads[item.id].sha }}</code>
-        </details>
       </div>
     </article>
+
+    <dialog class="theme-dialog" id="theme-dialog-{{ item.id }}" data-theme-dialog aria-labelledby="theme-dialog-title-{{ item.id }}">
+      <div class="theme-dialog-card">
+        <button class="theme-dialog-close" type="button" data-theme-dialog-close aria-label="{{ p.closeLabel }}">×</button>
+        <img class="theme-dialog-preview" src="/assets/themes/{{ item.id }}.png" alt="" loading="lazy">
+        <div class="theme-dialog-body">
+          <div class="plugin-top">
+            <span class="site-pill site-pill-free">{{ p.freeLabel }}</span>
+            <span class="plugin-version">{{ item.version }}</span>
+          </div>
+          <h2 id="theme-dialog-title-{{ item.id }}">{{ item.name }}</h2>
+          <p class="plugin-author">{{ p.authorLabel }} <strong>{{ item.author }}</strong></p>
+          <p class="theme-dialog-description">{{ item.description }}</p>
+          <ul class="plugin-meta" aria-label="{{ p.metaAria }}">
+            {% for value in item.meta %}<li>{{ value }}</li>{% endfor %}
+          </ul>
+          <p class="theme-dialog-details">{{ item.detailsText }}</p>
+          <p class="theme-dialog-sha"><code>{{ themeDownloads[item.id].sha }}</code></p>
+          <div class="theme-dialog-actions">
+            <a class="site-button" href="{{ themeDownloads[item.id].download }}" download="{{ themeDownloads[item.id].downloadName }}">{{ p.download }}</a>
+          </div>
+        </div>
+      </div>
+    </dialog>
     {% endfor %}
   </div>
 </section>
