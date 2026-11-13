@@ -505,6 +505,11 @@
   color: #ffffff;
 }
 
+.town-map-frame {
+  position: relative;
+  min-width: 0;
+}
+
 .town-viewport {
   position: relative;
   overflow: auto;
@@ -1784,15 +1789,28 @@
   }
 
   .town-viewport {
-    padding: 0.7rem;
+    height: min(30rem, 58vh);
+    padding: 0.5rem;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .map-perspective {
+    width: max-content;
+    min-width: 60rem;
+    min-height: 100%;
+    padding: 0.75rem;
   }
 
   .town-map {
-    min-width: 0;
-    width: 100%;
+    width: 60rem;
+    min-width: 60rem;
+    max-width: none;
   }
 
   .town-stage.is-3d .map-perspective {
+    width: 100%;
+    min-width: 0;
     min-height: 26rem;
   }
 

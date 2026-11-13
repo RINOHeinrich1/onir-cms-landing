@@ -10,7 +10,7 @@ viewport: "width=device-width, initial-scale=1, interactive-widget=resizes-conte
 css:
   - /assets/css/base.css
   - /assets/css/landing.css?v=20261112
-  - /assets/css/participer.css?v=20261112
+  - /assets/css/participer.css?v=20261113c
 headExtra: |
   <script type="importmap">
     {
@@ -23,7 +23,7 @@ headExtra: |
 bodyScripts:
   - /assets/data/town-layout.js?v=20261110a
   - /assets/data/sponsors.js?v=20261026i
-  - /assets/js/participer.js?v=20261112
+  - /assets/js/participer.js?v=20261113c
 pagination:
   data: locales
   size: 1
@@ -65,15 +65,17 @@ permalink: "{{ locale.routes.participate }}index.html"
         </div>
       </div>
 
-      <div class="town-viewport">
-        <div class="zone-nav" data-zone-nav aria-label="Navigation des quartiers"></div>
-        <div class="map-perspective">
-          <svg id="town-map" class="town-map" data-town-map viewBox="0 0 1200 760" role="group" aria-label="{{ p.sponsor.mapLabel }}"></svg>
-          <div class="town-3d" data-town-3d hidden>
-            <span class="town-3d-loading">{{ p.sponsor.loading }}</span>
+      <div class="town-map-frame">
+        <div class="town-viewport">
+          <div class="map-perspective">
+            <svg id="town-map" class="town-map" data-town-map viewBox="0 0 1200 760" role="group" aria-label="{{ p.sponsor.mapLabel }}"></svg>
+            <div class="town-3d" data-town-3d hidden>
+              <span class="town-3d-loading">{{ p.sponsor.loading }}</span>
+            </div>
           </div>
+          <div class="map-hover" data-map-hover aria-hidden="true"></div>
         </div>
-        <div class="map-hover" data-map-hover aria-hidden="true"></div>
+        <div class="zone-nav" data-zone-nav aria-label="Navigation des quartiers"></div>
       </div>
 
       <p class="town-status" data-town-status hidden></p>
