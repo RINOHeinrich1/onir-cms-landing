@@ -118,3 +118,17 @@ h2,
 h3 {
   overflow-wrap: anywhere;
 }
+
+/* Le sélecteur de langue doit rester transparent dans les deux thèmes. */
+.lang-switch summary {
+  background: transparent;
+  box-shadow: none;
+  appearance: none;
+}
+
+:root[data-theme="dark"] .lang-switch,
+:root[data-theme="dark"] .lang-switch summary {
+  background: transparent;
+  border-color: var(--line, var(--site-line, #333a31));
+  box-shadow: none;
+}
