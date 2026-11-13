@@ -49,11 +49,13 @@ Cliquez sur **Générer le chatbot**, puis sur **Créer le chatbot**. ONIR-CMS a
 
 ![Validation de la configuration du chatbot](/assets/articles/chatbot-reception-step-5.png)
 
-## Étape 6 — Le chatbot est prêt
+## Étape 6 — Tester le chatbot
 
-Après validation, le chatbot apparaît dans la liste avec son URL et son aperçu. Il ne reste plus qu’à le tester, l’ouvrir ou copier son lien.
+Une fois le chatbot créé, ouvrez-le et posez une question métier. Ici, le visiteur demande les horaires d’ouverture : le chatbot répond correctement à partir des informations enregistrées.
 
-![Carte du chatbot Assistant Réception créé](/assets/articles/chatbot-reception-step-6.png)
+> Quels sont vos horaires d’ouverture ?
+
+![Le chatbot Assistant Réception répond avec les horaires enregistrés](/assets/articles/chatbot-reception-step-6.png)
 
 ## Résultat
 
