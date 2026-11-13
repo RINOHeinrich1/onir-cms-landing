@@ -36,18 +36,18 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #111411;
-  --bg-soft: #171b16;
-  --card: #1d221c;
-  --ink: #f4f1e7;
-  --ink-soft: #a8b0a5;
-  --green: #8db7a4;
-  --green-2: #a6cbb8;
-  --accent: #e98a2e;
-  --accent-soft: #3a2712;
-  --btn-ink: #111411;
-  --line: rgba(244, 241, 231, 0.12);
-  --shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.75);
+  --bg: #111315;
+  --bg-soft: #171a1d;
+  --card: #1a1d20;
+  --ink: #f2f1ed;
+  --ink-soft: #a1a5aa;
+  --green: #246d58;
+  --green-2: #9dbfae;
+  --accent: #d99a57;
+  --accent-soft: #30251a;
+  --btn-ink: #f8fbf8;
+  --line: rgba(242, 241, 237, 0.11);
+  --shadow: 0 20px 48px -34px rgba(0, 0, 0, 0.72);
 }
 
 *,
@@ -1354,4 +1354,258 @@ a { color: inherit; }
     color: var(--green);
     font-weight: 700;
   }
+}
+
+/* ---------- Mode nuit — graphite éditorial ---------- */
+:root[data-theme="dark"] body {
+  background-image: none;
+}
+
+:root[data-theme="dark"] h1,
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] h3,
+:root[data-theme="dark"] h4 {
+  letter-spacing: -0.03em;
+}
+
+:root[data-theme="dark"] .site-head {
+  background: rgb(17 19 21 / 0.9);
+  border-bottom-color: rgb(242 241 237 / 0.08);
+  backdrop-filter: blur(12px);
+}
+
+:root[data-theme="dark"] .btn {
+  border-color: rgb(255 255 255 / 0.05);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1);
+}
+
+:root[data-theme="dark"] .btn:hover {
+  background: #2d7e66;
+}
+
+:root[data-theme="dark"] .btn-ghost,
+:root[data-theme="dark"] .icon-btn,
+:root[data-theme="dark"] .lang-switch {
+  background: transparent;
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .btn-ghost:hover,
+:root[data-theme="dark"] .icon-btn:hover {
+  background: #24282c;
+}
+
+:root[data-theme="dark"] .mock {
+  background: var(--card);
+  border-color: rgb(242 241 237 / 0.1);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.04),
+    0 28px 60px -42px rgb(0 0 0 / 0.9);
+}
+
+:root[data-theme="dark"] .mock::before {
+  display: none;
+}
+
+:root[data-theme="dark"] .mock-inner {
+  background: #15181b;
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .mock-bar,
+:root[data-theme="dark"] .mock-rail {
+  background: #171a1d;
+}
+
+:root[data-theme="dark"] .mock-rail .on,
+:root[data-theme="dark"] .mock-step,
+:root[data-theme="dark"] .mock-channels b {
+  background: #1e2226;
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .chip,
+:root[data-theme="dark"] .tech span,
+:root[data-theme="dark"] .model-chips span {
+  background: transparent;
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .band {
+  background: #171a1d;
+  border-color: rgb(242 241 237 / 0.1);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.035);
+}
+
+:root[data-theme="dark"] .band-item {
+  background: #1d2125;
+  border-color: rgb(242 241 237 / 0.09);
+}
+
+:root[data-theme="dark"] .band-item i {
+  background: #111315;
+  color: var(--green-2);
+}
+
+:root[data-theme="dark"] .demo-card {
+  background: #191c1f;
+  border-color: rgb(242 241 237 / 0.1);
+  box-shadow: 0 18px 44px -36px rgb(0 0 0 / 0.95);
+}
+
+:root[data-theme="dark"] .demo-card-preview {
+  background: #101214;
+}
+
+:root[data-theme="dark"] .demo-card:hover {
+  border-color: rgb(157 191 174 / 0.35);
+  box-shadow: 0 24px 52px -36px rgb(0 0 0 / 1);
+}
+
+:root[data-theme="dark"] .demo-card .demo-tag {
+  background: #2b2419;
+  color: #e8c79e;
+}
+
+:root[data-theme="dark"] .demo-card .demo-cta {
+  color: var(--accent);
+}
+
+:root[data-theme="dark"] .demo-arrow {
+  border-color: rgb(242 241 237 / 0.1);
+  background: rgb(26 29 32 / 0.92);
+  box-shadow: 0 12px 28px -20px rgb(0 0 0 / 0.95);
+}
+
+:root[data-theme="dark"] .demo-arrow:hover:not(:disabled) {
+  border-color: var(--green-2);
+  background: var(--green);
+}
+
+:root[data-theme="dark"] .simple {
+  padding: 1.35rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+
+:root[data-theme="dark"] .simple h3 {
+  letter-spacing: -0.02em;
+}
+
+:root[data-theme="dark"] .providers {
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+:root[data-theme="dark"] .provider {
+  padding: 1rem 0.85rem;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+
+:root[data-theme="dark"] .provider:hover {
+  background: #181c1f;
+}
+
+:root[data-theme="dark"] .provider-icon {
+  color: var(--green-2);
+}
+
+:root[data-theme="dark"] .flag-map {
+  filter: drop-shadow(0 28px 44px rgb(0 0 0 / 0.55));
+}
+
+:root[data-theme="dark"] .article-card {
+  background: #181b1e;
+  border-color: rgb(242 241 237 / 0.1);
+  box-shadow: 0 18px 44px -36px rgb(0 0 0 / 0.95);
+}
+
+:root[data-theme="dark"] .article-cover,
+:root[data-theme="dark"] .article-cover--mint {
+  background: #1e342b;
+  color: #e7f0e9;
+}
+
+:root[data-theme="dark"] .article-cover--orange {
+  background: #3a2b1d;
+  color: #f0cfaa;
+}
+
+:root[data-theme="dark"] .article-cover::after {
+  border-color: rgb(242 241 237 / 0.14);
+}
+
+:root[data-theme="dark"] .article-kicker {
+  color: var(--accent);
+}
+
+:root[data-theme="dark"] .article-meta {
+  border-top-color: rgb(242 241 237 / 0.08);
+}
+
+:root[data-theme="dark"] .price-card,
+:root[data-theme="dark"] .cloud-detail-card {
+  background: #191c1f;
+  border-color: rgb(242 241 237 / 0.1);
+  box-shadow: 0 18px 44px -36px rgb(0 0 0 / 0.95);
+}
+
+:root[data-theme="dark"] .price-card-featured {
+  background: #1b201f;
+  border-color: rgb(157 191 174 / 0.42);
+}
+
+:root[data-theme="dark"] .site-foot {
+  background: #15181b;
+  border-top-color: rgb(242 241 237 / 0.08);
+}
+
+:root[data-theme="dark"] .contact-band {
+  background: #15181b;
+  border-top: 1px solid rgb(242 241 237 / 0.08);
+  border-bottom: 1px solid rgb(242 241 237 / 0.08);
+}
+
+:root[data-theme="dark"] .contact-action {
+  background: #1a1d20;
+  border-color: rgb(242 241 237 / 0.1);
+}
+
+:root[data-theme="dark"] .contact-action:hover {
+  background: #1f2327;
+  border-color: rgb(157 191 174 / 0.35);
+}
+
+:root[data-theme="dark"] .contact-social-icon {
+  background: transparent;
+}
+
+:root[data-theme="dark"] ::selection {
+  background: var(--green-2);
+  color: #101315;
+}
+
+:root[data-theme="dark"] .feature {
+  padding: 0.3rem 0 0.3rem 1.25rem;
+  border: 0;
+  border-left: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+
+:root[data-theme="dark"] .feature h3 {
+  letter-spacing: -0.02em;
+}
+
+:root[data-theme="dark"] .feature-section .split-visual {
+  padding: 0.35rem 0 0.35rem 1.25rem;
+  border: 0;
+  border-left: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
 }

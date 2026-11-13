@@ -769,3 +769,31 @@ body[data-market="INTL"] [data-international-only] {
     max-width: none;
   }
 }
+
+/* Mode nuit — accents lisibles sur surfaces graphite */
+:root[data-theme="dark"] .price {
+  color: var(--green-2) !important;
+}
+
+:root[data-theme="dark"] .price-tag {
+  background: #2f281e;
+  color: #e4bb8b;
+}
+
+:root[data-theme="dark"] .price-card-featured .price-tag {
+  color: #e4bb8b;
+}
+
+:root[data-theme="dark"] .cloud-offer-head strong,
+:root[data-theme="dark"] .cloud-price strong {
+  color: var(--green-2);
+}
+
+:root[data-theme="dark"] .cloud-includes span {
+  background: #2f281e;
+  color: #e4bb8b;
+}
+
+:root[data-theme="dark"] .market-notice a {
+  color: var(--green-2);
+}
