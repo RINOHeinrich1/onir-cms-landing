@@ -9,5 +9,6 @@
   "cta": "Vakio ny lahatsoratra",
   "back": "Hiverina amin'ny articles",
   "empty": "Tsy mbola misy lahatsoratra navoaka amin'ity fiteny ity.",
-  "reading": "vakiana"
+  "reading": "vakiana",
+  "fallback": "Lahatsoratra amin'ny teny frantsay"
 }

@@ -33,6 +33,7 @@ permalink: "{{ locale.routes.articles }}index.html"
           </div>
           <div class="article-card-body">
             <p class="article-kicker">{{ article.data.category }}</p>
+            {% if article.data.articleLocale != locale.code %}<p class="article-language-note">{{ p.fallback }}</p>{% endif %}
             <h2>{{ article.data.title }}</h2>
             <p>{{ article.data.excerpt }}</p>
             <div class="article-meta">
@@ -54,7 +55,8 @@ permalink: "{{ locale.routes.articles }}index.html"
           <time datetime="{{ article.data.publishedAt }}">{{ article.data.publishedAt }}</time>
           <span>{{ article.data.reading }} {{ p.reading }}</span>
         </div>
-        <div class="article-body">{{ article.templateContent | safe }}</div>
+        {% if article.data.articleLocale != locale.code %}<p class="article-language-note">{{ p.fallback }}</p>{% endif %}
+        <div class="article-body" lang="{{ article.data.articleLocale }}">{{ article.templateContent | safe }}</div>
         <a class="article-back" href="#">{{ p.back }} ↑</a>
       </article>
       {% endfor %}

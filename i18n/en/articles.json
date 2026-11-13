@@ -9,5 +9,6 @@
   "cta": "Read article",
   "back": "Back to articles",
   "empty": "No article has been published in this language yet.",
-  "reading": "read"
+  "reading": "read",
+  "fallback": "Article available in French"
 }

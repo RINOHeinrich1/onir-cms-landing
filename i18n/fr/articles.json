@@ -9,5 +9,6 @@
   "cta": "Lire l’article",
   "back": "Retour aux articles",
   "empty": "Aucun article publié dans cette langue pour le moment.",
-  "reading": "de lecture"
+  "reading": "de lecture",
+  "fallback": "Article en français"
 }

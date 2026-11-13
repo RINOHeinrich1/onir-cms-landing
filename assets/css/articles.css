@@ -247,3 +247,10 @@
 .article-body li {
   margin: 0.3rem 0;
 }
+
+.article-language-note {
+  margin: 0.2rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.7rem;
+  font-style: italic;
+}

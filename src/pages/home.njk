@@ -202,6 +202,7 @@ permalink: "{{ locale.routes.home }}index.html"
         </div>
         <div class="article-card-body">
           <p class="article-kicker">{{ article.data.category }}</p>
+          {% if article.data.articleLocale != locale.code %}<p class="article-language-note">{{ t.articles.fallback }}</p>{% endif %}
           <h3>{{ article.data.title }}</h3>
           <p>{{ article.data.excerpt }}</p>
           <div class="article-meta">

@@ -20,9 +20,27 @@ export default function (eleventyConfig) {
       ),
   );
 
-  eleventyConfig.addFilter("articlesForLocale", (items, code) =>
-    (items ?? []).filter((item) => item.data.articleLocale === code),
-  );
+  eleventyConfig.addFilter("articlesForLocale", (items, code) => {
+    const byKey = new Map();
+    for (const item of items ?? []) {
+      const key = item.data.translationKey ?? item.data.slug;
+      const existing = byKey.get(key);
+      if (existing === undefined) {
+        byKey.set(key, item);
+        continue;
+      }
+      const current = item.data.articleLocale;
+      const previous = existing.data.articleLocale;
+      if (current === code || (previous !== code && current === "fr")) {
+        byKey.set(key, item);
+      }
+    }
+    return [...byKey.values()].sort(
+      (left, right) =>
+        new Date(right.data.publishedAt ?? 0).getTime() -
+        new Date(left.data.publishedAt ?? 0).getTime(),
+    );
+  });
 
   eleventyConfig.addFilter("absoluteUrl", (path, baseUrl) => {
     if (!path) return baseUrl;
