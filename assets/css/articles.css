@@ -205,3 +205,45 @@
     min-height: 7.5rem;
   }
 }
+
+.article-body h2 {
+  margin: 2rem 0 0.7rem;
+  font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+}
+
+.article-body h3 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.article-body img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1.2rem 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--card);
+}
+
+.article-body blockquote {
+  margin: 1.2rem 0;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid var(--accent);
+  background: var(--bg-soft);
+  color: var(--ink);
+}
+
+.article-body blockquote p {
+  margin: 0;
+}
+
+.article-body ul {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
+  list-style: disc;
+}
+
+.article-body li {
+  margin: 0.3rem 0;
+}
