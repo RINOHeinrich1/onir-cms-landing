@@ -188,9 +188,9 @@ permalink: "{{ locale.routes.home }}index.html"
   {% set homeArticles = collections.articles | articlesForLocale(locale.code) %}
   {% if homeArticles.length > 0 %}
   <div class="section-head">
-    <p class="kicker">{{ p.articles.kicker }}</p>
-    <h2>{{ p.articles.title }}</h2>
-    <p>{{ p.articles.lead }}</p>
+    <p class="kicker">{{ t.articles.kicker }}</p>
+    <h2>{{ t.articles.title }}</h2>
+    <p>{{ t.articles.lead }}</p>
   </div>
   <div class="article-grid">
     {% for article in homeArticles.slice(0, 3) %}
@@ -206,7 +206,7 @@ permalink: "{{ locale.routes.home }}index.html"
           <p>{{ article.data.excerpt }}</p>
           <div class="article-meta">
             <time datetime="{{ article.data.publishedAt }}">{{ article.data.publishedAt }}</time>
-            <span>{{ article.data.reading }} {{ p.articles.reading }}</span>
+            <span>{{ article.data.reading }} {{ t.articles.reading }}</span>
           </div>
         </div>
       </a>
