@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+pageKey: article
+headerVariant: v2
+showWidget: true
+css:
+  - /assets/css/landing-v2.css?v=15
+  - /assets/css/articles.css?v=1
+---
+<article class="article-page wrap">
+  <p class="kicker">{{ category }}</p>
+  <h1>{{ title }}</h1>
+  <div class="article-meta">
+    <time datetime="{{ publishedAt }}">{{ publishedAt }}</time>
+    <span>{{ reading }} {{ t.articles.reading }}</span>
+  </div>
+  <div class="article-body" lang="{{ articleLocale }}">{{ content | safe }}</div>
+  <a class="article-back" href="{{ locale.routes.articles }}">{{ t.articles.back }} ←</a>
+</article>

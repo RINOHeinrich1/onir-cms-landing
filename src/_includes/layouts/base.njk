@@ -18,7 +18,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#f4f1e5" />
   {% for alt in alternates %}<link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ alt.href }}" />{% endfor %}
-  {% if pageKey != "notFound" %}<link rel="alternate" hreflang="x-default" href="{{ site.baseUrl }}{{ allLocales[0].routes[pageKey] }}" />{% endif %}
+  {% if pageKey != "notFound" and pageKey != "article" %}<link rel="alternate" hreflang="x-default" href="{{ site.baseUrl }}{{ allLocales[0].routes[pageKey] }}" />{% endif %}
   {% for href in css %}<link rel="stylesheet" href="{{ href }}" />{% endfor %}
   <link rel="stylesheet" href="/assets/css/i18n.css?v=1" />
   <link rel="icon" href="{{ site.logoLight }}" type="image/webp" />

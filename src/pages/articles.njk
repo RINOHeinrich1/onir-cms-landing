@@ -26,7 +26,7 @@ permalink: "{{ locale.routes.articles }}index.html"
     <div class="article-grid article-grid--index">
       {% for article in currentArticles %}
       <article class="article-card">
-        <a class="article-card-link" href="#{{ article.data.slug }}">
+        <a class="article-card-link" href="{{ article.url }}">
           <div class="article-cover article-cover--{{ article.data.accent }}">
             <span>{{ article.data.category }}</span>
             <strong>{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</strong>
@@ -46,20 +46,5 @@ permalink: "{{ locale.routes.articles }}index.html"
       {% endfor %}
     </div>
 
-    <div class="article-full-list">
-      {% for article in currentArticles %}
-      <article class="article-full" id="{{ article.data.slug }}">
-        <p class="kicker">{{ article.data.category }}</p>
-        <h2>{{ article.data.title }}</h2>
-        <div class="article-meta">
-          <time datetime="{{ article.data.publishedAt }}">{{ article.data.publishedAt }}</time>
-          <span>{{ article.data.reading }} {{ p.reading }}</span>
-        </div>
-        {% if article.data.articleLocale != locale.code %}<p class="article-language-note">{{ p.fallback }}</p>{% endif %}
-        <div class="article-body" lang="{{ article.data.articleLocale }}">{{ article.templateContent | safe }}</div>
-        <a class="article-back" href="#">{{ p.back }} ↑</a>
-      </article>
-      {% endfor %}
-    </div>
   {% endif %}
 </section>

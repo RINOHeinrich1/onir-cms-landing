@@ -9,7 +9,9 @@ reading: "4 min"
 publishedAt: "2026-11-13"
 draft: false
 accent: "orange"
-permalink: false
+layout: layouts/article.njk
+pageKey: article
+permalink: /articles/alimenter-chatbot-connaissances/index.html
 ---
 Un chatbot devient réellement utile lorsqu’il dispose d’informations fiables sur votre activité. ONIR-CMS permet d’ajouter ces informations sous forme de connaissances, puis de choisir les chatbots qui peuvent les utiliser.
 
@@ -64,5 +66,15 @@ Après **Enregistrer**, la connaissance apparaît dans la liste avec :
 - Évitez de mélanger plusieurs sujets dans une même entrée.
 - Rattachez la connaissance au bon chatbot lorsque l’information est spécifique.
 - Vérifiez toujours le badge **ACTIVE** et la portée après l’enregistrement.
+
+## Étape 6 — Tester dans le chatbot
+
+Ouvrez le chatbot et posez une question correspondant à la connaissance ajoutée. Ici, le visiteur demande simplement :
+
+> Quels sont vos horaires d’ouverture ?
+
+Le chatbot répond avec les horaires enregistrés et rappelle le traitement des demandes hors horaires. La connaissance est donc bien prise en compte.
+
+![Le chatbot répond avec la connaissance ajoutée](/assets/articles/knowledge-step-6.png)
 
 Le chatbot peut maintenant s’appuyer sur cette connaissance pour répondre aux questions correspondantes.

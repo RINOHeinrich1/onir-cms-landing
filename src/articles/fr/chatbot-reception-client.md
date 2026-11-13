@@ -9,7 +9,9 @@ reading: "5 min"
 publishedAt: "2026-11-13"
 draft: false
 accent: "green"
-permalink: false
+layout: layouts/article.njk
+pageKey: article
+permalink: /articles/chatbot-reception-client/index.html
 ---
 Créer un chatbot utile ne demande pas forcément de commencer par la configuration technique. Avec l’assistant IA d’ONIR-CMS, vous décrivez votre besoin en langage naturel, puis l’IA prépare une première version du chatbot : rôle, objectif, sources, champs de collecte et template.
 

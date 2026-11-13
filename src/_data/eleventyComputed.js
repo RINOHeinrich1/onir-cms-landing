@@ -1,6 +1,23 @@
 export default {
+  locale: (data) => {
+    if (data.locale) return data.locale;
+    if (!data.articleLocale) return undefined;
+    return data.allLocales?.find((locale) => locale.code === data.articleLocale);
+  },
   t: (data) => data.i18n?.[data.locale?.code] ?? {},
-  p: (data) => data.i18n?.[data.locale?.code]?.[data.pageKey] ?? {},
+  p: (data) => {
+    if (data.pageKey === "article") {
+      return {
+        meta: {
+          title: data.title,
+          description: data.excerpt,
+          ogTitle: data.title,
+          ogDescription: data.excerpt,
+        },
+      };
+    }
+    return data.i18n?.[data.locale?.code]?.[data.pageKey] ?? {};
+  },
   currentRoute: (data) => data.locale?.routes?.[data.pageKey] ?? "/",
   css: (data) => data.css ?? ["/assets/css/landing-v2.css?v=15"],
   headerVariant: (data) => data.headerVariant ?? "v2",
@@ -18,10 +35,11 @@ export default {
   showWidget: (data) => data.showWidget ?? true,
   canonical: (data) => {
     if (!data.pageKey || data.pageKey === "notFound") return null;
+    if (data.pageKey === "article") return `${data.site.baseUrl}${data.page.url}`;
     return `${data.site.baseUrl}${data.locale?.routes?.[data.pageKey] ?? "/"}`;
   },
   alternates: (data) => {
-    if (!data.pageKey || data.pageKey === "notFound") return [];
+    if (!data.pageKey || data.pageKey === "notFound" || data.pageKey === "article") return [];
     return data.allLocales
       .filter((locale) => locale.available)
       .map((locale) => ({

@@ -195,7 +195,7 @@ permalink: "{{ locale.routes.home }}index.html"
   <div class="article-grid">
     {% for article in homeArticles.slice(0, 3) %}
     <article class="article-card">
-      <a class="article-card-link" href="{{ locale.routes.articles }}#{{ article.data.slug }}">
+      <a class="article-card-link" href="{{ article.url }}">
         <div class="article-cover article-cover--{{ article.data.accent }}">
           <span>{{ article.data.category }}</span>
           <strong>{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</strong>
