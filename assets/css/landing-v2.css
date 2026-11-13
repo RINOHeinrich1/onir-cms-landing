@@ -1763,7 +1763,7 @@ a { color: inherit; }
 :root:not([data-theme="dark"]) .contact-action-primary {
   background: var(--ink);
   border-color: var(--ink);
-  color: var(--bg);
+  color: #fff;
 }
 
 :root:not([data-theme="dark"]) .contact-action-primary:hover {
@@ -1776,4 +1776,16 @@ a { color: inherit; }
   background: rgb(255 255 255 / 0.9);
   box-shadow: 0 6px 22px rgb(20 24 28 / 0.12);
   backdrop-filter: blur(8px);
+}
+
+.contact-action-primary {
+  color: #fff;
+}
+
+.contact-action-primary span {
+  color: rgb(255 255 255 / 0.74);
+}
+
+.contact-action-primary .contact-icon {
+  color: #fff;
 }

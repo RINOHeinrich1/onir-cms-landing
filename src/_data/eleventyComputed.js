@@ -19,7 +19,7 @@ export default {
     return data.i18n?.[data.locale?.code]?.[data.pageKey] ?? {};
   },
   currentRoute: (data) => data.locale?.routes?.[data.pageKey] ?? "/",
-  css: (data) => data.css ?? ["/assets/css/landing-v2.css?v=19"],
+  css: (data) => data.css ?? ["/assets/css/landing-v2.css?v=21"],
   headerVariant: (data) => data.headerVariant ?? "v2",
   footerVariant: (data) => data.footerVariant ?? data.headerVariant ?? "v2",
   wrapper: (data) => data.wrapper ?? null,
