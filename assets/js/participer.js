@@ -1202,7 +1202,7 @@
 
       try {
         if (!town3d) {
-          var module = await import("/assets/js/town-3d.js?v=20261026i");
+          var module = await import("/assets/js/town-3d.js?v=20261113e");
           town3d = module.createTown3D({
             container: view3d,
             sponsors: town.zoneById[activeZoneId].sponsors,
@@ -1210,18 +1210,29 @@
             zoneTitle: zoneTitle(activeZoneId),
             zoneId: activeZoneId,
             onOpen: function (id) {
+              if (id && id.indexOf("slot:") === 0) {
+                openChat();
+                return;
+              }
               openSponsor(byId[id]);
             },
             onHover: function (id) {
-              if (id) showHover(byId[id]);
-              else hideHover();
+              if (id && id.indexOf("slot:") === 0) {
+                var slot = slotById[id.slice(5)];
+                if (slot) showAvailableHover(slot);
+                else hideHover();
+              } else if (id) {
+                showHover(byId[id]);
+              } else {
+                hideHover();
+              }
             }
           });
         }
         stage.classList.add("is-3d");
         toggle.setAttribute("aria-pressed", "true");
         setViewLabel("Vue 2D");
-        if (viewStatus) viewStatus.textContent = "Vue 3D activée. Faites glisser pour tourner, cliquez sur un bâtiment pour ouvrir son sponsor.";
+        if (viewStatus) viewStatus.textContent = "Vue 3D activée. Faites glisser pour tourner, cliquez sur un bâtiment pour ouvrir son sponsor ou sur une pancarte pour devenir partenaire.";
         town3d.start();
       } catch (error) {
         view3d.hidden = true;

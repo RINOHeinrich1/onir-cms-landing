@@ -1049,8 +1049,16 @@ export function createTown3D({ container, sponsors, availableSlots, zoneTitle, z
     const pad = new THREE.Mesh(new THREE.PlaneGeometry(6.4, 4.8), emptyMat);
     pad.rotation.x = -Math.PI / 2;
     pad.position.set(scaleX(slot.x), 0.055, scaleZ(slot.y));
+    pad.userData.availableSlotId = slot.id;
+    interactive.push(pad);
     scene.add(pad);
-    scene.add(createAvailableSign(slot));
+    const sign = createAvailableSign(slot);
+    sign.traverse((object) => {
+      if (!object.isMesh) return;
+      object.userData.availableSlotId = slot.id;
+      interactive.push(object);
+    });
+    scene.add(sign);
   }
 
   const treePositions = [
@@ -1120,7 +1128,9 @@ export function createTown3D({ container, sponsors, availableSlots, zoneTitle, z
     pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
     raycaster.setFromCamera(pointer, camera);
     const hits = raycaster.intersectObjects(interactive, false);
-    return hits.length ? hits[0].object.userData.sponsorId : null;
+    if (!hits.length) return null;
+    const target = hits[0].object.userData;
+    return target.availableSlotId ? "slot:" + target.availableSlotId : target.sponsorId || null;
   }
 
   function setHovered(id) {

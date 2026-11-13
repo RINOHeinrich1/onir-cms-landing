@@ -23,7 +23,7 @@ headExtra: |
 bodyScripts:
   - /assets/data/town-layout.js?v=20261110a
   - /assets/data/sponsors.js?v=20261026i
-  - /assets/js/participer.js?v=20261113d
+  - /assets/js/participer.js?v=20261113e
 pagination:
   data: locales
   size: 1
@@ -52,7 +52,7 @@ permalink: "{{ locale.routes.participate }}index.html"
       <a class="site-button site-button-light" href="{{ site.partnerChat }}" target="_blank" rel="noopener">{{ p.sponsor.cta }}</a>
     </div>
 
-    <div class="town-stage" data-town-stage data-town-api-url="{{ site.partnerApi }}">
+    <div class="town-stage" data-town-stage data-town-api-url="{{ site.partnerApi }}" data-partner-chat-url="{{ site.partnerChat }}">
       <div class="town-toolbar">
         <span class="town-summary" data-town-summary aria-live="polite"></span>
         <div class="town-tools">
