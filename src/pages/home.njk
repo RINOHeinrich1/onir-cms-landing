@@ -73,25 +73,39 @@ permalink: "{{ locale.routes.home }}index.html"
 <dialog class="hero-video-modal" data-hero-video-modal aria-label="A2DM Formation contact demo">
   <div class="hero-video-shell">
     <button class="hero-video-close" type="button" data-hero-video-close aria-label="Close video">×</button>
-    <video
-      class="hero-video-player"
-      data-hero-video
-      data-desktop-src-en="/assets/videos/onir-motion-en-desktop.mp4?v=5"
-      data-mobile-src-en="/assets/videos/onir-motion-en-mobile.mp4?v=5"
-      data-desktop-poster-en="/assets/videos/onir-motion-en-desktop-poster.jpg?v=5"
-      data-mobile-poster-en="/assets/videos/onir-motion-en-mobile-poster.jpg?v=5"
-      data-desktop-src-fr="/assets/videos/onir-motion-fr-desktop.mp4?v=5"
-      data-mobile-src-fr="/assets/videos/onir-motion-fr-mobile.mp4?v=5"
-      data-desktop-poster-fr="/assets/videos/onir-motion-fr-desktop-poster.jpg?v=5"
-      data-mobile-poster-fr="/assets/videos/onir-motion-fr-mobile-poster.jpg?v=5"
-      data-desktop-src-mg="/assets/videos/onir-motion-mg-desktop.mp4?v=8"
-      data-mobile-src-mg="/assets/videos/onir-motion-mg-mobile.mp4?v=8"
-      data-desktop-poster-mg="/assets/videos/onir-motion-mg-desktop-poster.jpg?v=8"
-      data-mobile-poster-mg="/assets/videos/onir-motion-mg-mobile-poster.jpg?v=8"
-      controls
-      playsinline
-      preload="metadata"
-    ></video>
+    <div class="hero-video-slider">
+      <button class="hero-video-arrow hero-video-prev" type="button" data-hero-video-prev aria-label="Previous video">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg>
+      </button>
+      <div class="hero-video-stage">
+        <video
+          class="hero-video-player"
+          data-hero-video
+          data-demo-src-en="/assets/videos/onir-cms-chatbot-demo-en.mp4?v=1"
+          data-demo-src-fr="/assets/videos/onir-cms-chatbot-demo-fr.mp4?v=1"
+          data-demo-src-mg="/assets/videos/onir-cms-chatbot-demo-mg.mp4?v=1"
+          data-desktop-src-en="/assets/videos/onir-motion-en-desktop.mp4?v=5"
+          data-mobile-src-en="/assets/videos/onir-motion-en-mobile.mp4?v=5"
+          data-desktop-poster-en="/assets/videos/onir-motion-en-desktop-poster.jpg?v=5"
+          data-mobile-poster-en="/assets/videos/onir-motion-en-mobile-poster.jpg?v=5"
+          data-desktop-src-fr="/assets/videos/onir-motion-fr-desktop.mp4?v=5"
+          data-mobile-src-fr="/assets/videos/onir-motion-fr-mobile.mp4?v=5"
+          data-desktop-poster-fr="/assets/videos/onir-motion-fr-desktop-poster.jpg?v=5"
+          data-mobile-poster-fr="/assets/videos/onir-motion-fr-mobile-poster.jpg?v=5"
+          data-desktop-src-mg="/assets/videos/onir-motion-mg-desktop.mp4?v=8"
+          data-mobile-src-mg="/assets/videos/onir-motion-mg-mobile.mp4?v=8"
+          data-desktop-poster-mg="/assets/videos/onir-motion-mg-desktop-poster.jpg?v=8"
+          data-mobile-poster-mg="/assets/videos/onir-motion-mg-mobile-poster.jpg?v=8"
+          controls
+          playsinline
+          preload="metadata"
+        ></video>
+      </div>
+      <button class="hero-video-arrow hero-video-next" type="button" data-hero-video-next aria-label="Next video">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+      </button>
+    </div>
+    <div class="hero-video-dots" data-hero-video-dots></div>
   </div>
 </dialog>
 

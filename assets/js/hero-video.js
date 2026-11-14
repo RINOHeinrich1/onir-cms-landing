@@ -3,46 +3,109 @@
   const modal = document.querySelector("[data-hero-video-modal]");
   const video = document.querySelector("[data-hero-video]");
   const closeButton = document.querySelector("[data-hero-video-close]");
+  const previous = document.querySelector("[data-hero-video-prev]");
+  const next = document.querySelector("[data-hero-video-next]");
+  const dots = document.querySelector("[data-hero-video-dots]");
 
-  if (!openButton || !modal || !video) return;
+  if (!openButton || !modal || !video || !dots) return;
 
   const mobileQuery = window.matchMedia("(max-width: 700px)");
   const pageLang = (document.documentElement.lang || "fr").slice(0, 2).toLowerCase();
   const locale = ["en", "fr", "mg"].includes(pageLang) ? pageLang : "en";
   const isMobile = () => mobileQuery.matches;
   const key = (name) => name.charAt(0).toUpperCase() + name.slice(1);
-  const sourceFor = (mobile) =>
-    video.dataset[`${mobile ? "mobile" : "desktop"}Src${key(locale)}`] ??
-    video.dataset[`${mobile ? "mobile" : "desktop"}SrcEn`];
-  const posterFor = (mobile) =>
-    video.dataset[`${mobile ? "mobile" : "desktop"}Poster${key(locale)}`] ??
-    video.dataset[`${mobile ? "mobile" : "desktop"}PosterEn`];
-
-  const applySource = () => {
-    const mobile = isMobile();
-    const source = sourceFor(mobile);
-    if (!source) return;
-    if (video.getAttribute("src") !== source) {
-      video.setAttribute("src", source);
-      video.setAttribute("poster", posterFor(mobile) ?? "");
-      video.load();
-    }
+  const labels = {
+    fr: { demo: "Démo du chatbot", motion: "Présentation ONIR CMS" },
+    en: { demo: "Chatbot demo", motion: "ONIR CMS overview" },
+    mg: { demo: "Fanandramana chatbot", motion: "Fampahafantarana ONIR CMS" },
   };
 
-  const close = () => {
+  let slides = [];
+  let index = 0;
+
+  function sourceFor(slide, mobile) {
+    return mobile ? slide.mobile : slide.desktop;
+  }
+
+  function buildSlides() {
+    const demo = video.dataset[`demoSrc${key(locale)}`] ?? video.dataset.demoSrcFr;
+    const motionDesktop = video.dataset[`desktopSrc${key(locale)}`] ?? video.dataset.desktopSrcEn;
+    const motionMobile = video.dataset[`mobileSrc${key(locale)}`] ?? video.dataset.mobileSrcEn;
+    const motionPosterDesktop = video.dataset[`desktopPoster${key(locale)}`] ?? "";
+    const motionPosterMobile = video.dataset[`mobilePoster${key(locale)}`] ?? "";
+    slides = [
+      { desktop: demo, mobile: demo, label: labels[locale].demo },
+      {
+        desktop: motionDesktop,
+        mobile: motionMobile,
+        posterDesktop: motionPosterDesktop,
+        posterMobile: motionPosterMobile,
+        label: labels[locale].motion,
+      },
+    ];
+  }
+
+  function applySlide(autoplay = false) {
+    const slide = slides[index];
+    if (!slide) return;
+    const mobile = isMobile();
+    const source = sourceFor(slide, mobile);
+    if (!source) return;
+    video.setAttribute("src", source);
+    video.setAttribute("poster", mobile ? slide.posterMobile ?? "" : slide.posterDesktop ?? "");
+    video.load();
+    updateControls();
+    if (autoplay) video.play().catch(() => {});
+  }
+
+  function updateControls() {
+    if (previous) previous.disabled = index <= 0;
+    if (next) next.disabled = index >= slides.length - 1;
+    Array.from(dots.children).forEach((dot, dotIndex) => {
+      const active = dotIndex === index;
+      dot.classList.toggle("is-active", active);
+      if (active) dot.setAttribute("aria-current", "true");
+      else dot.removeAttribute("aria-current");
+    });
+  }
+
+  function renderDots() {
+    dots.replaceChildren();
+    slides.forEach((slide, slideIndex) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "hero-video-dot";
+      dot.setAttribute("aria-label", slide.label);
+      dot.addEventListener("click", () => goTo(slideIndex));
+      dots.append(dot);
+    });
+    updateControls();
+  }
+
+  function goTo(nextIndex) {
+    index = Math.max(0, Math.min(slides.length - 1, nextIndex));
+    applySlide(modal.open);
+  }
+
+  function close() {
     video.pause();
     video.currentTime = 0;
     if (modal.open) modal.close();
-  };
+  }
 
-  const open = () => {
-    applySource();
+  function open() {
+    buildSlides();
+    index = 0;
+    renderDots();
+    applySlide(false);
     if (!modal.open) modal.showModal();
     video.play().catch(() => {});
-  };
+  }
 
   openButton.addEventListener("click", open);
   closeButton?.addEventListener("click", close);
+  previous?.addEventListener("click", () => goTo(index - 1));
+  next?.addEventListener("click", () => goTo(index + 1));
 
   modal.addEventListener("close", () => {
     video.pause();
@@ -54,13 +117,11 @@
   });
 
   mobileQuery.addEventListener("change", () => {
-    if (!modal.open) {
-      applySource();
-      return;
-    }
-    applySource();
-    video.play().catch(() => {});
+    if (!modal.open) return;
+    applySlide(true);
   });
 
-  applySource();
+  buildSlides();
+  renderDots();
+  applySlide(false);
 })();

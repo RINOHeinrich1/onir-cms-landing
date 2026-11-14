@@ -135,3 +135,102 @@ body:has(.hero-video-modal[open]) {
     max-height: 92dvh;
   }
 }
+
+.hero-video-slider {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem;
+}
+
+.hero-video-stage {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  justify-content: center;
+}
+
+.hero-video-player {
+  width: auto;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.hero-video-arrow {
+  display: grid;
+  flex: 0 0 auto;
+  width: 2.4rem;
+  height: 2.4rem;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgb(255 255 255 / 0.22);
+  border-radius: 999px;
+  background: rgb(0 0 0 / 0.42);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+.hero-video-arrow:hover:not(:disabled) {
+  border-color: rgb(255 255 255 / 0.5);
+  background: rgb(0 0 0 / 0.72);
+}
+
+.hero-video-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.hero-video-arrow svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.2;
+}
+
+.hero-video-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.1rem 0 0.7rem;
+}
+
+.hero-video-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.3);
+  cursor: pointer;
+  transition: width 160ms ease, background 160ms ease;
+}
+
+.hero-video-dot:hover {
+  background: rgb(255 255 255 / 0.55);
+}
+
+.hero-video-dot.is-active {
+  width: 1.4rem;
+  background: #fff;
+}
+
+@media (max-width: 700px) {
+  .hero-video-slider {
+    gap: 0.3rem;
+    padding: 0.35rem;
+  }
+
+  .hero-video-arrow {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .hero-video-arrow svg {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+}
