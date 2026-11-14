@@ -823,3 +823,28 @@ body[data-market="INTL"] [data-international-only] {
   background: rgb(255 255 255 / 0.94);
   box-shadow: 0 4px 16px rgb(20 24 28 / 0.08);
 }
+
+/* Mode nuit — champs des modales demande d'offre / rendez-vous */
+:root[data-theme="dark"] .rdv-field input,
+:root[data-theme="dark"] .rdv-field textarea,
+:root[data-theme="dark"] .rdv-field select,
+:root[data-theme="dark"] .cloud-duration {
+  border-color: var(--line);
+  background: #171a1d;
+  color: var(--ink);
+  caret-color: var(--green-2);
+}
+
+:root[data-theme="dark"] .rdv-field input::placeholder,
+:root[data-theme="dark"] .rdv-field textarea::placeholder {
+  color: var(--ink-soft);
+  opacity: 0.85;
+}
+
+:root[data-theme="dark"] .rdv-field input:focus,
+:root[data-theme="dark"] .rdv-field textarea:focus,
+:root[data-theme="dark"] .rdv-field select:focus {
+  border-color: var(--green-2);
+  outline: 2px solid rgb(157 191 174 / 0.22);
+  outline-offset: 1px;
+}
