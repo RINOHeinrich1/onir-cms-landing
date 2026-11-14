@@ -24,6 +24,9 @@
   activeZoneId = resolveInitialZone();
 
   var partnerChatUrl = document.querySelector("[data-partner-chat-url]")?.getAttribute("data-partner-chat-url") || "";
+  var partnerTermsDialog = document.querySelector("[data-partner-terms]");
+  var partnerTermsCheck = partnerTermsDialog?.querySelector("[data-partner-terms-check]");
+  var partnerTermsAccept = partnerTermsDialog?.querySelector("[data-partner-terms-accept]");
   var privacyUrl = document.querySelector("[data-privacy-url]")?.getAttribute("data-privacy-url") || "/confidentialite-site/";
 
   function esc(value) {
@@ -1486,9 +1489,58 @@
     }
   }
 
+  function closePartnerTerms() {
+    if (!partnerTermsDialog) return;
+    if (typeof partnerTermsDialog.close === "function") partnerTermsDialog.close();
+    else partnerTermsDialog.removeAttribute("open");
+    document.documentElement.classList.remove("partner-terms-open");
+  }
+
+  function launchPartnerChat() {
+    if (!partnerChatUrl) return;
+    closePartnerTerms();
+    window.open(partnerChatUrl, "_blank", "noopener");
+  }
+
+  function openPartnerTerms() {
+    if (!partnerTermsDialog) {
+      launchPartnerChat();
+      return;
+    }
+    if (partnerTermsCheck) partnerTermsCheck.checked = false;
+    if (partnerTermsAccept) partnerTermsAccept.disabled = true;
+    document.documentElement.classList.add("partner-terms-open");
+    if (typeof partnerTermsDialog.showModal === "function") {
+      if (!partnerTermsDialog.open) partnerTermsDialog.showModal();
+    } else {
+      partnerTermsDialog.setAttribute("open", "");
+    }
+  }
+
+  partnerTermsCheck?.addEventListener("change", function () {
+    if (partnerTermsAccept) partnerTermsAccept.disabled = !partnerTermsCheck.checked;
+  });
+  partnerTermsAccept?.addEventListener("click", launchPartnerChat);
+  partnerTermsDialog?.querySelectorAll("[data-partner-terms-close]").forEach(function (button) {
+    button.addEventListener("click", closePartnerTerms);
+  });
+  partnerTermsDialog?.addEventListener("click", function (event) {
+    if (event.target === partnerTermsDialog) closePartnerTerms();
+  });
+  partnerTermsDialog?.addEventListener("close", function () {
+    document.documentElement.classList.remove("partner-terms-open");
+  });
+  document.querySelectorAll("[data-partner-terms-open]").forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      if (!partnerChatUrl) return;
+      event.preventDefault();
+      openPartnerTerms();
+    });
+  });
+
   function openChat() {
     if (partnerChatUrl) {
-      window.open(partnerChatUrl, "_blank", "noopener");
+      openPartnerTerms();
       return;
     }
     var dialog = document.querySelector("[data-sponsor-chat]");

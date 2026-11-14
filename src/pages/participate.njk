@@ -10,7 +10,7 @@ viewport: "width=device-width, initial-scale=1, interactive-widget=resizes-conte
 css:
   - /assets/css/base.css
   - /assets/css/landing.css?v=20261112
-  - /assets/css/participer.css?v=20261113c
+  - /assets/css/participer.css?v=20261113d
 headExtra: |
   <script type="importmap">
     {
@@ -23,7 +23,7 @@ headExtra: |
 bodyScripts:
   - /assets/data/town-layout.js?v=20261110a
   - /assets/data/sponsors.js?v=20261026i
-  - /assets/js/participer.js?v=20261113e
+  - /assets/js/participer.js?v=20261113f
 pagination:
   data: locales
   size: 1
@@ -49,7 +49,7 @@ permalink: "{{ locale.routes.participate }}index.html"
   <section id="panel-sponsor" role="tabpanel" aria-labelledby="tab-sponsor" data-panel="sponsor">
     <div class="sponsor-intro">
       <h1>{{ p.sponsor.title }}</h1>
-      <a class="site-button site-button-light" href="{{ site.partnerChat }}" target="_blank" rel="noopener">{{ p.sponsor.cta }}</a>
+      <a class="site-button site-button-light" href="{{ site.partnerChat }}" target="_blank" rel="noopener" data-partner-terms-open>{{ p.sponsor.cta }}</a>
     </div>
 
     <div class="town-stage" data-town-stage data-town-api-url="{{ site.partnerApi }}" data-partner-chat-url="{{ site.partnerChat }}">
@@ -119,6 +119,8 @@ permalink: "{{ locale.routes.participate }}index.html"
     </div>
   </section>
 </div>
+
+{% include "partials/partner-terms.njk" %}
 
 <dialog class="sponsor-chat" data-sponsor-chat aria-labelledby="sponsor-chat-title">
   <div class="chat-panel">
