@@ -138,8 +138,16 @@
       <span class="rdv-bubble">{{ t.pricing.subscription.phone }}</span>
       <input name="contactPhone" type="tel" autocomplete="tel" placeholder="+261 ...">
     </label>
+    <label class="subscribe-terms">
+      <input type="checkbox" name="termsAccepted" required data-subscribe-terms-check disabled>
+      <span>
+        {{ t.pricing.subscription.termsPrefix }}
+        <a href="#" target="_blank" rel="noopener noreferrer" data-subscribe-terms-link hidden>{{ t.pricing.subscription.termsLink }}</a>.
+      </span>
+    </label>
+    <p class="subscribe-terms-status" data-subscribe-terms-status></p>
     <p class="rdv-error" data-subscribe-error hidden></p>
-    <button class="btn btn-accent" type="submit">{{ t.pricing.subscription.submit }}</button>
+    <button class="btn btn-accent" type="submit" data-subscribe-submit disabled>{{ t.pricing.subscription.submit }}</button>
   </form>
   <div class="subscribe-result" data-subscribe-result hidden>
     <h3>{{ t.pricing.subscription.successTitle }}</h3>

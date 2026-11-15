@@ -79,7 +79,12 @@
     "instructionsLabel": "Torolalana momba ny fandoavam-bola",
     "close": "Hidio",
     "error": "Tsy afaka nandefa ny fangatahana.",
-    "noInstructions": "Mifandraisa amin’ONIR hahazoana ny antsipirian’ny fandoavam-bola."
+    "noInstructions": "Mifandraisa amin’ONIR hahazoana ny antsipirian’ny fandoavam-bola.",
+    "termsPrefix": "Efa novakiako ary ekena ny",
+    "termsLink": "Fepetra ankapobeny",
+    "termsUnavailable": "Tsy misy ny Fepetra ankapobeny. Mifandraisa amin’ny ONIR-CMS.",
+    "termsRequired": "Tsy maintsy ekena ny Fepetra ankapobeny.",
+    "termsChanged": "Niova ny Fepetra ankapobeny. Avereno jerena ny pejy."
   },
   "support": {
     "kicker": "Ny iraka ataonay",

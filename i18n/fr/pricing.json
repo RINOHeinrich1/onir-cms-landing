@@ -79,7 +79,12 @@
     "instructionsLabel": "Instructions de paiement",
     "close": "Fermer",
     "error": "Impossible d’envoyer la demande.",
-    "noInstructions": "Contactez ONIR pour obtenir les coordonnées de paiement."
+    "noInstructions": "Contactez ONIR pour obtenir les coordonnées de paiement.",
+    "termsPrefix": "J’ai lu et j’accepte les",
+    "termsLink": "Conditions Générales",
+    "termsUnavailable": "Conditions Générales indisponibles. Contactez ONIR-CMS.",
+    "termsRequired": "Vous devez accepter les Conditions Générales.",
+    "termsChanged": "Les Conditions Générales ont changé. Rechargez la page."
   },
   "support": {
     "kicker": "Notre mission",

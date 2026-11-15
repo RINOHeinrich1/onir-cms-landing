@@ -848,3 +848,36 @@ body[data-market="INTL"] [data-international-only] {
   outline: 2px solid rgb(157 191 174 / 0.22);
   outline-offset: 1px;
 }
+
+.subscribe-terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.subscribe-terms input {
+  flex: 0 0 auto;
+  margin-top: 0.15rem;
+}
+
+.subscribe-terms a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+.subscribe-terms-status {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.subscribe-terms-status[hidden] {
+  display: none;
+}
