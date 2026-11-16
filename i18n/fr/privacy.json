@@ -9,7 +9,7 @@
     "kicker": "Données personnelles",
     "title": "Politique de confidentialité.",
     "lead": "Cette politique couvre le site ONIR CMS et ses démonstrations. Elle ne couvre pas les instances ONIR CMS auto-hébergées par des tiers.",
-    "updated": "Dernière mise à jour : octobre 2026"
+    "updated": "Dernière mise à jour : novembre 2026"
   },
   "sections": [
     {
@@ -69,7 +69,7 @@
           "type": "ul",
           "items": [
             "OVH, pour l’hébergement du site et de la base de données.",
-            "Infomaniak, pour l’exécution des réponses générées par l’intelligence artificielle."
+            "Les fournisseurs d’intelligence artificielle configurés pour la démonstration, notamment Infomaniak, OpenAI, DeepSeek, DeepInfra, OpenRouter et Google Gemini, ou tout autre fournisseur compatible OpenAI configuré, pour l’exécution des réponses générées par l’intelligence artificielle."
           ]
         },
         {
