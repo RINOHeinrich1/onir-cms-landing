@@ -9,7 +9,7 @@
     "kicker": "Angona manokana",
     "title": "Fepetra mifehy ny tsiambaratelo.",
     "lead": "Mandrakotra ny tranokala ONIR CMS sy ny demo ao aminy ireto fepetra ireto. Tsy mandrakotra ny instance ONIR CMS auto-hébergé ataon'ny hafa izy.",
-    "updated": "Fanavaozana farany: Oktobra 2026"
+    "updated": "Fanavaozana farany: Novambra 2026"
   },
   "legalNotice": "Fandikan-teny ho fanazavana ihany ity. Ny dika frantsay no manan-kery ara-dalàna.",
   "sections": [
@@ -70,7 +70,7 @@
           "type": "ul",
           "items": [
             "OVH, ho an'ny fampiantranoana ny tranokala sy ny tahiry angona.",
-            "Infomaniak, ho an'ny fanatanterahana ny valiny noforonin'ny fahaiza-misaina artifisialy."
+            "Ny mpamatsy fahaiza-misaina artifisialy voarindra ho an'ny demo, anisan'izany i Infomaniak, OpenAI, DeepSeek, DeepInfra, OpenRouter ary Google Gemini, na mpamatsy hafa mifanaraka amin'ny OpenAI voarindra, ho an'ny fanatanterahana ny valiny noforonin'ny fahaiza-misaina artifisialy."
           ]
         },
         {
