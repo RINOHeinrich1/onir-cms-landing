@@ -8,6 +8,7 @@ export default {
   logoDark: "/assets/logo/onir-cms-dark.webp",
   github: "https://github.com/RINOHeinrich1/onir-cms",
   documentation: "https://cms-backoffice.onirtech.com/documentation",
+  adr: "https://github.com/RINOHeinrich1/onir-cms/tree/main/docs/adr",
   templatesGuide: "https://cms-backoffice.onirtech.com/documentation/templates-visuels",
   installationGuide: "https://cms-backoffice.onirtech.com/documentation/installation",
   login: "https://magic-panel.onir-cms.tech/login",

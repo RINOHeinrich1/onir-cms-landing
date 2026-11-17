@@ -31,6 +31,7 @@
     "lead": "Open source ny ONIR CMS. Afaka manitsy, manitatra, manoratra na mitatitra izay manakana ianao. Ny anjara dia dinihina ary ampidirina tsikelikely.",
     "github": "Hanokatra GitHub",
     "docs": "Hamaky ny torolalana",
+    "adr": "Hamaky ny ADR",
     "note": "Stack: Next.js, TypeScript, PostgreSQL, modely web-components.",
     "cards": [
       {
