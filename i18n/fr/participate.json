@@ -31,6 +31,7 @@
     "lead": "ONIR CMS est open source. Vous pouvez corriger, étendre, documenter ou simplement signaler ce qui bloque. Les contributions sont relues et intégrées par petites étapes.",
     "github": "Ouvrir GitHub",
     "docs": "Lire la documentation",
+    "adr": "Lire les ADR",
     "note": "Stack : Next.js, TypeScript, PostgreSQL, templates web-components.",
     "cards": [
       {
