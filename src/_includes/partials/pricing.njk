@@ -106,7 +106,7 @@
 </section>
 {% endif %}
 
-<dialog class="rdv-dialog subscribe-dialog" id="subscribe-dialog" data-api="{{ site.commercialApi }}" aria-labelledby="subscribe-title">
+<dialog class="rdv-dialog subscribe-dialog" id="subscribe-dialog" data-api="{{ site.commercialApi }}" data-free-lead="{{ t.pricing.subscription.freeSuccessLead }}" data-free-instructions="{{ t.pricing.subscription.freeInstructions }}" aria-labelledby="subscribe-title">
   <div class="rdv-head">
     <div>
       <span class="rdv-status"><i></i>ONIR CLOUD</span>
@@ -155,7 +155,7 @@
   </form>
   <div class="subscribe-result" data-subscribe-result hidden>
     <h3>{{ t.pricing.subscription.successTitle }}</h3>
-    <p>{{ t.pricing.subscription.successLead }}</p>
+    <p data-subscribe-success-lead>{{ t.pricing.subscription.successLead }}</p>
     <div class="subscribe-code" data-subscribe-code></div>
     <dl>
       <dt>{{ t.pricing.subscription.offerLabel }}</dt><dd data-subscribe-offer></dd>
