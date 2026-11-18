@@ -28,6 +28,8 @@
     "badge": "ONIR CMS Cloud",
     "title": "Cloud plans",
     "lead": "Scalable cloud plans for your needs, designed for small and medium businesses.",
+    "supportLead": "If you have any trouble with your subscription: call us directly on:",
+    "supportNote": "We will answer if the line is not busy.",
     "empty": "Cloud plans will be available soon.",
     "cta": "View Cloud plans",
     "detail": "Several plans and durations are available below.",

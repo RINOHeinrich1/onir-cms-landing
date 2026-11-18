@@ -28,6 +28,8 @@
     "badge": "ONIR CMS Cloud",
     "title": "Les offres Cloud",
     "lead": "Des offres cloud scalables selon vos besoins, pensées pour les petites et moyennes entreprises.",
+    "supportLead": "Si vous avez des difficultés avec l’abonnement : appelez directement les numéros :",
+    "supportNote": "On vous recevra si la ligne n’est pas occupée.",
     "empty": "Les offres Cloud seront bientôt disponibles.",
     "cta": "Voir les offres Cloud",
     "detail": "Plusieurs offres et durées sont disponibles ci-dessous.",
