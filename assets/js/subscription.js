@@ -182,7 +182,7 @@
             showUnavailable(out.body.message || defaultFullMessage);
             return;
           }
-          throw new Error(out.body.error || "Demande refusée");
+          throw new Error(out.body.message || out.body.error || "Demande refusée");
         }
         form.hidden = true;
         result.hidden = false;
