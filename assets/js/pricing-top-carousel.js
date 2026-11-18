@@ -92,6 +92,11 @@
     next.addEventListener("click", function () { goToPage(page + 1); });
     track.addEventListener("scroll", syncFromScroll, { passive: true });
     window.addEventListener("resize", renderDots);
+    document.addEventListener("onir:pricing-rendered", function () {
+      slides = Array.from(track.children);
+      page = 0;
+      renderDots();
+    });
     renderDots();
   });
 })();

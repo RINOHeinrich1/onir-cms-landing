@@ -53,7 +53,8 @@
 </section>
 
 {% if pageKey == "pricing" %}
-<section class="section wrap cloud-offers-section" id="offres-cloud" data-cloud-only>
+<section class="section wrap cloud-offers-section" id="offres-cloud" data-cloud-only data-pricing-live data-locale="{{ locale.code }}">
+  <script type="application/json" data-pricing-i18n>{{ t.pricing | dump | safe }}</script>
   <div class="section-head">
     <p class="kicker">{{ t.pricing.cloud.badge }}</p>
     <h2>{{ t.pricing.cloud.offersTitle }}</h2>
@@ -78,7 +79,7 @@
       </div>
       <ul class="price-list cloud-benefits">
         {% if offer.maxChatbots != null %}<li>{{ offer.maxChatbots }} {{ t.pricing.includedChatbots }}</li>{% endif %}
-        {% if offer.tokensLabel %}<li>{{ offer.tokensLabel }}</li>{% endif %}
+        {% if offer.maxTokensFormatted %}<li>{{ offer.maxTokensFormatted }} {{ t.pricing.includedTokens }}</li>{% endif %}
         {% if offer.maxMessages != null %}<li>{{ offer.maxMessagesFormatted }} {{ t.pricing.includedMessages }}</li>{% endif %}
         {% if offer.maxStorageMb != null %}
         <li>{% if offer.maxStorageMb >= 1024 %}{{ offer.maxStorageMb / 1024 }} {{ t.pricing.storageGb }}{% else %}{{ offer.maxStorageMb }} {{ t.pricing.storageMb }}{% endif %} {{ t.pricing.storageLabel }}</li>

@@ -120,6 +120,7 @@
   "storageGb": "GB",
   "storageMb": "MB",
   "offerDescriptions": {
+"FREE": "Discover ONIR CMS with one chatbot and monthly quotas.",
     "STARTER": "Start with a first chatbot and 1 million tokens per month.",
     "BUSINESS": "For SMEs using several chatbots and a professional volume.",
     "SCALE": "For high-volume organizations with multiple use cases."
