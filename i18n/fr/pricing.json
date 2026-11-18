@@ -79,6 +79,8 @@
     "instructionsLabel": "Instructions de paiement",
     "close": "Fermer",
     "error": "Impossible d’envoyer la demande.",
+    "fullTitle": "Offre complète",
+    "fullDefaultMessage": "Cette offre est momentanément complète. Contactez-nous pour être informé de la prochaine ouverture.",
     "noInstructions": "Contactez ONIR pour obtenir les coordonnées de paiement.",
     "termsPrefix": "J’ai lu et j’accepte les",
     "termsLink": "Conditions Générales",
