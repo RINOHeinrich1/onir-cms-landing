@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Endrika azonao ampiasaina · ONIR CMS",
-    "description": "Alaivo ny modely hita maso ONIR CMS: Immersive, Starter, MandamPro, Nuit & Jade ary Atelier Paper. Malalaka, vonona ampidirina.",
+    "description": "Alaivo ny modely hita maso ONIR CMS: Immersive, Starter, MandamPro, Nuit & Jade Atelier Paper ary Pop Design. Malalaka, vonona ampidirina.",
     "ogTitle": "Endrika azonao ampiasaina · ONIR CMS",
     "ogDescription": "Alaivo ny modely hita maso ONIR CMS."
   },
@@ -91,6 +91,21 @@
         "186 Ko"
       ],
       "detailsText": "Modely ONIR CMS noforonin’i Anjary. Design « Spin Product »: karatra fotsy misy encoches, accent mainty, soratra monospace, sehatra pejy sy widget."
+    },
+    {
+      "id": "pop-design",
+      "version": "v2.6.6",
+      "name": "Pop Design",
+      "author": "Anjary",
+      "description": "Modely pop immersive: lohape misy sary, fizarana voarindra, galerie media ary karatra mpikambana.",
+      "meta": [
+        "Pejy + widget",
+        "Fizarana voarindra",
+        "Karatra mpikambana",
+        "Photothèque",
+        "2,7 Mo"
+      ],
+      "detailsText": "Modely ONIR CMS noforonin’i Anjary. Fizarana voasokajy (card, text, image, grid, form), andraikitra malalaka, karatra mpikambana, galerie photothèque ary fampisehoana hafatra."
     }
   ],
   "install": {

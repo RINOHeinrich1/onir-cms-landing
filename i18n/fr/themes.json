@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Thèmes libres · ONIR CMS",
-    "description": "Téléchargez les templates visuels ONIR CMS : Immersive, Starter, MandamPro, Nuit & Jade et Atelier Paper. Libres, prêts à importer.",
+    "description": "Téléchargez les templates visuels ONIR CMS : Immersive, Starter, MandamPro, Nuit & Jade Atelier Paper et Pop Design. Libres, prêts à importer.",
     "ogTitle": "Thèmes libres · ONIR CMS",
     "ogDescription": "Téléchargez les templates visuels ONIR CMS."
   },
@@ -91,6 +91,21 @@
         "186 Ko"
       ],
       "detailsText": "Template ONIR CMS créé par Anjary. Design « Spin Product » : cartes blanches à encoches, accent noir, typographie monospace, surfaces page et widget."
+    },
+    {
+      "id": "pop-design",
+      "version": "v2.6.6",
+      "name": "Pop Design",
+      "author": "Anjary",
+      "description": "Un template pop immersif : en-tête photo, sections structurées, galerie photothèque et cartes membres.",
+      "meta": [
+        "Page + widget",
+        "Sections structurées",
+        "Cartes membres",
+        "Photothèque",
+        "2,7 Mo"
+      ],
+      "detailsText": "Template ONIR CMS créé par Anjary. Sections typées (card, text, image, grid, form), rôles métier libres, cartes membres, galerie photothèque et rendu des messages."
     }
   ],
   "install": {

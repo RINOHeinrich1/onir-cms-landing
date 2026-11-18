@@ -19,6 +19,11 @@ export default {
     downloadName: "nuit-jade-1.3.2.onirtech-template",
     sha: "sha256:119204dd1ccb1969ec4d034e4209d74974b65f2e6171286c6f08e655bb77ceca",
   },
+  "pop-design": {
+    download: "/assets/plugins/pop-design-2.6.6.onirtech-template",
+    downloadName: "pop-design-2.6.6.onirtech-template",
+    sha: "sha256:637714d481282bf03b944d649d61722a02bafc1339e0fdf6ad08d9377669b99d",
+  },
   atelier: {
     download: "/assets/plugins/atelier-2.5.0.onirtech-template",
     downloadName: "atelier-2.5.0.onirtech-template",
