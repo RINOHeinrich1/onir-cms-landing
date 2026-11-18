@@ -13,7 +13,7 @@ export default async function pricing() {
     if (!response.ok) return { offers: [], internationalOffers: [] };
     const payload = await response.json();
     const offers = Array.isArray(payload.offers) ? payload.offers : [];
-    const order = { STARTER: 0, BUSINESS: 1, SCALE: 2 };
+    const order = { FREE: 0, STARTER: 1, BUSINESS: 2, SCALE: 3 };
     const cloudOffers = offers.filter((offer) => (offer.type ?? "cloud_subscription") === "cloud_subscription");
     const internationalOffers = offers.filter((offer) => (offer.type ?? "cloud_subscription") !== "cloud_subscription");
     return {
