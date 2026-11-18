@@ -73,6 +73,8 @@
     "submit": "Envoyer la demande",
     "successTitle": "Demande enregistrée",
     "successLead": "Effectuez le paiement Mobile Money avec ce code dans la description. Un opérateur vérifiera votre paiement.",
+    "freeSuccessLead": "Votre demande gratuite est enregistrée. Un administrateur va la valider.",
+    "freeInstructions": "Aucun paiement. Votre accès sera activé après validation.",
     "offerLabel": "Offre",
     "amountLabel": "Montant attendu",
     "expiresLabel": "Valable jusqu’au",

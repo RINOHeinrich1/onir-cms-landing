@@ -73,6 +73,8 @@
     "submit": "Send request",
     "successTitle": "Request saved",
     "successLead": "Make the Mobile Money payment with this code in the description. An operator will verify your payment.",
+    "freeSuccessLead": "Your free request has been saved. An administrator will review it.",
+    "freeInstructions": "No payment required. Your access will be activated after review.",
     "offerLabel": "Plan",
     "amountLabel": "Amount",
     "expiresLabel": "Valid until",

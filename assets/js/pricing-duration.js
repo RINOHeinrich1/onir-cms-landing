@@ -11,6 +11,10 @@
     cards.forEach(function (card) {
       var select = card.querySelector(".cloud-duration");
       if (!select) return;
+      var hasDuration = Array.prototype.some.call(select.options, function (option) {
+        return option.value === months;
+      });
+      if (!hasDuration) return;
       select.value = months;
       var option = select.selectedOptions[0];
       if (!option) return;

@@ -13,6 +13,9 @@
   var amountEl = dialog.querySelector("[data-subscribe-amount]");
   var expiresEl = dialog.querySelector("[data-subscribe-expires]");
   var instructionsEl = dialog.querySelector("[data-subscribe-instructions]");
+  var successLeadEl = dialog.querySelector("[data-subscribe-success-lead]");
+  var freeLead = dialog.getAttribute("data-free-lead") || "";
+  var freeInstructions = dialog.getAttribute("data-free-instructions") || "";
   var termsCheck = dialog.querySelector("[data-subscribe-terms-check]");
   var termsLink = dialog.querySelector("[data-subscribe-terms-link]");
   var termsStatus = dialog.querySelector("[data-subscribe-terms-status]");
@@ -184,9 +187,14 @@
         result.hidden = false;
         codeEl.textContent = out.body.code;
         offerEl.textContent = out.body.offerName;
-        amountEl.textContent = new Intl.NumberFormat("fr-FR").format(out.body.priceMga) + " Ar";
+        amountEl.textContent = out.body.free
+          ? "Gratuit"
+          : new Intl.NumberFormat("fr-FR").format(out.body.priceMga) + " Ar";
         expiresEl.textContent = new Date(out.body.expiresAt).toLocaleDateString("fr-FR");
-        instructionsEl.textContent = out.body.paymentInstructions || "Contactez ONIR pour obtenir les coordonnées de paiement.";
+        if (successLeadEl && out.body.free && freeLead) successLeadEl.textContent = freeLead;
+        instructionsEl.textContent = out.body.free
+          ? freeInstructions
+          : out.body.paymentInstructions || "Contactez ONIR pour obtenir les coordonnées de paiement.";
       })
       .catch(function (err) {
         error.textContent = err.message === "TERMS_CHANGED"
