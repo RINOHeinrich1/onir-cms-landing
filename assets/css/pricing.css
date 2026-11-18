@@ -76,6 +76,23 @@
   flex: 1;
 }
 
+.pricing-support {
+  margin: 1.5rem auto 0;
+  max-width: 52rem;
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.7;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.pricing-support a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
 .cloud-offers-section {
   padding-top: 1rem;
 }
