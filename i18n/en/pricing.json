@@ -79,6 +79,8 @@
     "instructionsLabel": "Payment instructions",
     "close": "Close",
     "error": "Unable to send the request.",
+    "fullTitle": "Plan full",
+    "fullDefaultMessage": "This plan is currently full. Contact us to be notified when it reopens.",
     "noInstructions": "Contact ONIR for payment details.",
     "termsPrefix": "I have read and accept the",
     "termsLink": "Terms and Conditions",

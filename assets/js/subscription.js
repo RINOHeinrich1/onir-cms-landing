@@ -5,6 +5,9 @@
   var error = dialog.querySelector("[data-subscribe-error]");
   var result = dialog.querySelector("[data-subscribe-result]");
   var summary = dialog.querySelector("[data-subscribe-summary]");
+  var unavailable = dialog.querySelector("[data-subscribe-unavailable]");
+  var unavailableMessage = dialog.querySelector("[data-subscribe-unavailable-message]");
+  var defaultFullMessage = unavailableMessage ? unavailableMessage.textContent : "";
   var codeEl = dialog.querySelector("[data-subscribe-code]");
   var offerEl = dialog.querySelector("[data-subscribe-offer]");
   var amountEl = dialog.querySelector("[data-subscribe-amount]");
@@ -17,6 +20,25 @@
   var closeButtons = dialog.querySelectorAll("[data-subscribe-close]");
   var api = dialog.getAttribute("data-api") || "https://preprod-backoffice.onir-cms.tech";
   var terms = null;
+  var offersPromise = null;
+
+  function loadOffers() {
+    if (offersPromise === null) {
+      offersPromise = fetch(api.replace(/\/+$/, "") + "/api/public/offers?country=MG")
+        .then(function (response) {
+          if (!response.ok) throw new Error();
+          return response.json();
+        })
+        .then(function (data) {
+          var byCode = {};
+          (data.offers || []).forEach(function (offer) { byCode[offer.code] = offer; });
+          return byCode;
+        })
+        .catch(function () { return {}; })
+        .finally(function () { offersPromise = null; });
+    }
+    return offersPromise;
+  }
 
   function setTermsUnavailable(message) {
     terms = null;
@@ -57,21 +79,38 @@
   function reset() {
     form.hidden = false;
     result.hidden = true;
+    if (unavailable) unavailable.hidden = true;
     error.hidden = true;
     form.reset();
+  }
+
+  function showUnavailable(message) {
+    form.hidden = true;
+    result.hidden = true;
+    error.hidden = true;
+    if (unavailableMessage) unavailableMessage.textContent = message || defaultFullMessage;
+    if (unavailable) unavailable.hidden = false;
   }
 
   function open(button) {
     var card = button.closest(".cloud-detail-card");
     var duration = card ? card.querySelector(".cloud-duration") : null;
-    form.elements.offerCode.value = button.getAttribute("data-offer-code") || "";
-    form.elements.durationMonths.innerHTML = duration ? duration.innerHTML : "";
-    if (duration) form.elements.durationMonths.value = duration.value;
-    summary.textContent = button.getAttribute("data-offer-name") || "";
+    var code = button.getAttribute("data-offer-code") || "";
     reset();
-    loadTerms();
-    if (typeof dialog.showModal === "function") dialog.showModal();
-    else dialog.setAttribute("open", "");
+    loadOffers().then(function (offers) {
+      var offer = offers[code];
+      if (offer && offer.available === false) {
+        showUnavailable(offer.fullMessage || defaultFullMessage);
+      } else {
+        form.elements.offerCode.value = code;
+        form.elements.durationMonths.innerHTML = duration ? duration.innerHTML : "";
+        if (duration) form.elements.durationMonths.value = duration.value;
+        summary.textContent = button.getAttribute("data-offer-name") || "";
+        loadTerms();
+      }
+      if (typeof dialog.showModal === "function") dialog.showModal();
+      else dialog.setAttribute("open", "");
+    });
   }
 
   function close() {
@@ -134,7 +173,13 @@
         return response.json().then(function (body) { return { ok: response.ok, body: body }; });
       })
       .then(function (out) {
-        if (!out.ok) throw new Error(out.body.error || "Demande refusée");
+        if (!out.ok) {
+          if (out.body.error === "OFFER_FULL") {
+            showUnavailable(out.body.message || defaultFullMessage);
+            return;
+          }
+          throw new Error(out.body.error || "Demande refusée");
+        }
         form.hidden = true;
         result.hidden = false;
         codeEl.textContent = out.body.code;

@@ -138,6 +138,22 @@
   width: min(36rem, calc(100% - 2rem));
 }
 
+.subscribe-unavailable {
+  padding: 1.1rem;
+  color: var(--ink);
+}
+
+.subscribe-unavailable h3 {
+  margin: 0 0 0.5rem;
+}
+
+.subscribe-unavailable p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
 .subscribe-summary {
   border: 1px solid var(--line);
   border-radius: var(--r-md);

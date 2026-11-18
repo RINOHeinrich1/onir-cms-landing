@@ -114,6 +114,10 @@
     </div>
     <button class="rdv-close" type="button" data-subscribe-close aria-label="{{ t.pricing.subscription.close }}">×</button>
   </div>
+  <div class="subscribe-unavailable" data-subscribe-unavailable hidden>
+    <h3>{{ t.pricing.subscription.fullTitle }}</h3>
+    <p data-subscribe-unavailable-message>{{ t.pricing.subscription.fullDefaultMessage }}</p>
+  </div>
   <form class="rdv-form" data-subscribe-form>
     <p class="rdv-lead">{{ t.pricing.subscription.lead }}</p>
     <div class="subscribe-summary" data-subscribe-summary></div>
