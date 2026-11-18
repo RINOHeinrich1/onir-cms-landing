@@ -2,13 +2,14 @@
   var switcher = document.querySelector("[data-duration-switch]");
   if (!switcher) return;
   var tabs = switcher.querySelectorAll(".duration-tab");
-  var cards = document.querySelectorAll("[data-cloud-card]");
+  var currentMonths = "1";
 
   function apply(months) {
+    currentMonths = months;
     tabs.forEach(function (tab) {
       tab.classList.toggle("is-active", tab.getAttribute("data-months") === months);
     });
-    cards.forEach(function (card) {
+    document.querySelectorAll("[data-cloud-card]").forEach(function (card) {
       var select = card.querySelector(".cloud-duration");
       if (!select) return;
       var hasDuration = Array.prototype.some.call(select.options, function (option) {
@@ -29,5 +30,9 @@
     tab.addEventListener("click", function () {
       apply(tab.getAttribute("data-months"));
     });
+  });
+
+  document.addEventListener("onir:pricing-rendered", function () {
+    apply(currentMonths);
   });
 })();

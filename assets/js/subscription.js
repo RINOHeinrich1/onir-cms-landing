@@ -122,8 +122,9 @@
     setTimeout(reset, 200);
   }
 
-  document.querySelectorAll(".js-subscribe").forEach(function (button) {
-    button.addEventListener("click", function () { open(button); });
+  document.addEventListener("click", function (event) {
+    var button = event.target.closest(".js-subscribe");
+    if (button) open(button);
   });
   closeButtons.forEach(function (button) { button.addEventListener("click", close); });
   dialog.addEventListener("click", function (event) { if (event.target === dialog) close(); });

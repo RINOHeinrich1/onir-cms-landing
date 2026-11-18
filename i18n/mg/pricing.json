@@ -120,6 +120,7 @@
   "storageGb": "Go",
   "storageMb": "Mo",
   "offerDescriptions": {
+"FREE": "Hahafantaro an’i ONIR CMS miaraka amin’ny chatbot iray sy fetra isam-bolana.",
     "STARTER": "Hanombohana amin’ny chatbot voalohany sy tokens 1 tapitrisa isam-bolana.",
     "BUSINESS": "Ho an’ny PME mampiasa chatbots maromaro sy habe matihanina.",
     "SCALE": "Ho an’ny fikambanana manana habe lehibe sy tranga maromaro."

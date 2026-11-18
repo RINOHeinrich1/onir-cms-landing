@@ -29,7 +29,10 @@ export default async function pricing() {
           ? new Intl.NumberFormat("fr-FR").format(offer.maxMessages)
           : null,
         maxStorageMb: offer.maxStorageMb ?? null,
-        tokensLabel: offer.maxTokens ? `${new Intl.NumberFormat("fr-FR").format(offer.maxTokens)} tokens / mois` : null,
+        maxTokens: offer.maxTokens ?? null,
+        maxTokensFormatted: offer.maxTokens
+          ? new Intl.NumberFormat("fr-FR").format(offer.maxTokens)
+          : null,
         durations: (offer.durations || []).map((duration) => ({
           months: duration.months,
           priceLabel: formatPrice(duration.priceMga),
