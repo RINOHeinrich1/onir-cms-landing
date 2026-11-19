@@ -14,11 +14,13 @@ layout: layouts/article.njk
 pageKey: article
 permalink: /articles/webhooks-automatiser-fiches/index.html
 ---
-Un webhook transforme une fiche en **signal exploitable par n’importe quel système extérieur**. Une demande de devis peut réserver un créneau, une déclaration d’incident peut ouvrir une intervention, une candidature peut créer un dossier RH, une commande peut réserver du stock, une visite peut préparer un badge d’accès.
+Un webhook transforme une simple fiche en un déclencheur pour vos outils externes. Concrètement, une demande de devis peut bloquer un créneau dans votre agenda, un incident peut ouvrir un ticket d’intervention, une candidature créer un dossier RH, une commande réserver du stock ou encore une visite préparer un badge d’accès.
 
-Le principe est toujours le même : une fiche atteint un état métier, ONIR-CMS envoie une requête à une API, et cette API déclenche l’action correspondante.
+Le mécanisme est toujours le même : dès qu’une fiche passe à un statut précis, ONIR-CMS notifie une API externe qui se charge d’exécuter l’action.
 
-Ce tutoriel explique le mécanisme général. La démonstration finale utilise une destination réelle, mais le principe reste indépendant du service choisi.
+Les chatbots ONIR-CMS étant capables de remplir des fiches, cela enrichit énormément les possibilités.
+
+Dans ce tutoriel, nous allons voir comment fonctionne cette logique. Nous utiliserons un outil concret pour la démonstration finale, mais vous pourrez ensuite appliquer ce principe à n’importe quel autre service.
 
 > Les webhooks sont actuellement en **Beta**. Le parcours est fonctionnel, mais l’interface et les options peuvent encore évoluer.
 
