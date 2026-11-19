@@ -35,7 +35,7 @@
     },
     {
       "id": "starter",
-      "version": "v1.6.15",
+      "version": "v1.6.16",
       "name": "Starter",
       "description": "Le template de référence : formulaire d’identification, conversation et médias.",
       "meta": [

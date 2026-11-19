@@ -35,7 +35,7 @@
     },
     {
       "id": "starter",
-      "version": "v1.6.15",
+      "version": "v1.6.16",
       "name": "Starter",
       "description": "The reference template: identification form, conversation and media.",
       "meta": [

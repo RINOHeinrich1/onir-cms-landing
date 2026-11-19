@@ -1,0 +1,15 @@
+{
+  "id": "starter",
+  "version": "1.6.16",
+  "hostProtocol": "onirtech.template-host.v1",
+  "sha256": "b3fc278069bb57b6495babe9b71cc75b5f89f2e184d912028fd20acabb226524",
+  "files": [
+    "onirtech.template.json",
+    "preview.png",
+    "src/blocks.js",
+    "src/index.js",
+    "src/rich-content.js",
+    "src/widget.js",
+    "tests/blocks.test.mjs"
+  ]
+}
