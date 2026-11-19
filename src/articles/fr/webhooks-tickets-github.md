@@ -1,30 +1,55 @@
 ---
-title: "Webhooks : créez un ticket GitHub depuis une fiche"
-slug: "webhooks-tickets-github"
-translationKey: "webhooks-tickets-github"
+title: "Webhooks : automatiser une action depuis une fiche"
+slug: "webhooks-automatiser-fiches"
+translationKey: "webhooks-automatiser-fiches"
 articleLocale: "fr"
-excerpt: "Reliez une fiche de collecte à GitHub : quand une demande est validée, ONIR-CMS peut créer automatiquement une issue avec les bonnes informations."
+excerpt: "Découvrez comment déclencher une action extérieure lorsqu’une fiche atteint un état métier précis : périmètre, événement, payload, authentification et tests."
 category: "Tutoriel"
-reading: "6 min"
+reading: "7 min"
 publishedAt: "2026-11-19"
 draft: false
 cover: "/assets/articles/article-cover-webhooks.png"
 accent: "orange"
 layout: layouts/article.njk
 pageKey: article
-permalink: /articles/webhooks-tickets-github/index.html
+permalink: /articles/webhooks-automatiser-fiches/index.html
 ---
-Les webhooks permettent à ONIR-CMS de prévenir un service extérieur lorsqu’une fiche atteint un état métier précis. Dans ce tutoriel, nous utilisons ce mécanisme pour **créer automatiquement une issue GitHub** à partir d’une demande de support.
+Un webhook permet à ONIR-CMS de prévenir un service extérieur lorsqu’une fiche atteint un état métier précis. Il ne s’agit pas seulement de créer un ticket GitHub : le même mécanisme peut alimenter un CRM, un helpdesk, une API interne, un outil de facturation ou une messagerie d’équipe.
 
-Le scénario reprend le chatbot **Support ONIR-CMS** : le visiteur décrit son problème, l’IA organise les informations dans une fiche, puis la validation de cette fiche déclenche le webhook.
+Ce tutoriel explique le fonctionnement général des webhooks, puis montre GitHub comme **exemple d’intégration parmi d’autres**.
 
 > Les webhooks sont actuellement en **Beta**. Le parcours est fonctionnel, mais l’interface et les options peuvent encore évoluer.
 
 ![Liste des webhooks avec le badge Beta](/assets/articles/webhooks-list.png)
 
+## Comprendre le mécanisme
+
+Un webhook repose sur quatre éléments :
+
+1. **une fiche** : les données collectées pendant la conversation ;
+2. **un événement** : la transition qui doit déclencher l’action ;
+3. **une destination** : l’API qui recevra la requête ;
+4. **un payload** : les données envoyées à cette API.
+
+Le webhook est rattaché à une fiche, pas directement à un chatbot. Cela permet de déclencher l’intégration uniquement pour les fiches concernées.
+
+```text
+Conversation
+  → fiche enrichie
+  → événement métier
+  → outbox
+  → dispatcher
+  → livraison HTTP
+  → service extérieur
+```
+
+L’appel HTTP n’est jamais exécuté dans le tour de chat. La réponse au visiteur n’attend donc pas le service extérieur, et les tentatives peuvent être rejouées.
+
 ## 1. Préparer la fiche
 
-La fiche doit contenir les informations utiles au ticket :
+La fiche doit contenir les informations dont votre destination a besoin.
+
+Prenons une fiche de support :
 
 - sujet ;
 - description détaillée ;
@@ -32,7 +57,7 @@ La fiche doit contenir les informations utiles au ticket :
 - email de contact ;
 - nom, facultatif.
 
-Le webhook sera rattaché à cette fiche, pas directement au chatbot. Cela permet de déclencher l’intégration uniquement pour les demandes de support concernées.
+Une fiche trop pauvre produira un webhook inutilisable. Une fiche bien structurée permettra de construire un payload clair.
 
 ## 2. Créer le webhook
 
@@ -40,34 +65,97 @@ Dans **Paramètres → Webhooks**, cliquez sur **Créer un webhook**.
 
 Renseignez :
 
-- un nom interne, par exemple `GitHub — Support ONIR-CMS` ;
-- le périmètre : le chatbot Support ONIR-CMS et la fiche `support` ;
+- un nom interne ;
+- le périmètre : chatbot entier ou fiche précise ;
 - une description facultative.
 
 ![Création d’un webhook dans ONIR-CMS](/assets/articles/webhooks-create.png)
 
+Le nom sert uniquement à retrouver l’intégration. Le périmètre détermine les fiches qui pourront déclencher ce webhook.
+
 ## 3. Choisir le déclencheur
 
-Les déclencheurs disponibles sont :
+Un déclencheur décrit une **transition**, pas un état permanent.
 
-- **Champs obligatoires remplis** ;
-- **Tous les champs remplis** ;
-- **Un champ précis est rempli** ;
-- **Tous ces champs sont remplis** — condition ET sur un groupe ;
-- **Fiche validée**.
+Les événements disponibles sont :
 
-Pour notre scénario, nous choisissons **Fiche validée** : l’issue ne doit être créée qu’après la validation finale de la demande.
+| Déclencheur | Quand se déclenche-t-il ? |
+| --- | --- |
+| Champs obligatoires remplis | Tous les champs obligatoires de la fiche sont renseignés |
+| Tous les champs remplis | Tous les champs, facultatifs inclus, sont renseignés |
+| Un champ précis est rempli | Un champ choisi passe de vide à rempli |
+| Tous ces champs sont remplis | Tous les champs d’un groupe choisi sont remplis |
+| Fiche validée | La fiche finale est créée après validation |
+
+`Un champ précis` se comporte comme un **OU** si plusieurs champs sont surveillés séparément. `Tous ces champs` se comporte comme un **ET** sur un groupe.
 
 ![Déclencheurs automatiques d’un webhook](/assets/articles/webhooks-triggers.png)
 
-> Un webhook sans déclencheur reste manuel. Il peut toujours être lancé depuis sa fiche.
+Sans déclencheur, le webhook reste **manuel** et peut toujours être lancé depuis une fiche.
 
-## 4. Configurer GitHub
+## 4. Configurer la destination
 
-Destination :
+Indiquez :
+
+- l’URL de l’API ;
+- la méthode HTTP ;
+- le format du corps ;
+- les éventuels paramètres de query et en-têtes.
+
+Exemple de destination :
 
 ```text
-POST https://api.github.com/repos/RINOHeinrich1/onir-cms/issues
+POST https://api.exemple.com/evenements/support
+```
+
+Pour les services qui le demandent, choisissez une authentification :
+
+- Bearer token ;
+- Basic auth ;
+- clé API dans un en-tête ou la query ;
+- signature HMAC ;
+- OAuth2 client credentials.
+
+Les secrets sont chiffrés et ne sont jamais réaffichés après enregistrement.
+
+## 5. Construire le payload
+
+Deux approches sont possibles :
+
+- **mappings de champs** : vous associez des champs de la fiche à des clés cibles ;
+- **template JSON personnalisé** : vous composez le corps avec des placeholders.
+
+Exemple générique :
+
+```json
+{
+  "subject": {{sujet}},
+  "message": {{description}},
+  "category": {{categorie}}
+}
+```
+
+Avec le mode JSON, les valeurs sont sérialisées par ONIR-CMS. Un texte contenant des guillemets ou des retours à la ligne ne casse pas le JSON.
+
+Avant d’activer un webhook automatique, vérifiez que tous les mappings marqués requis sont garantis par le déclencheur choisi.
+
+## 6. Tester et surveiller
+
+L’écran de configuration permet de tester l’endpoint. Le journal des webhooks conserve :
+
+- le statut de la livraison ;
+- le code HTTP ;
+- les tentatives ;
+- les erreurs éventuelles.
+
+Un webhook peut être actif mais échouer côté destination. Le journal reste la source de vérité pour diagnostiquer l’intégration.
+
+## Exemple : créer une issue GitHub
+
+GitHub n’est qu’une destination possible. Pour l’utiliser :
+
+```text
+POST https://api.github.com/repos/{owner}/{repo}/issues
 ```
 
 Authentification : **Bearer token** GitHub.
@@ -79,11 +167,7 @@ Accept: application/vnd.github+json
 X-GitHub-Api-Version: 2022-11-28
 ```
 
-Le token est chiffré en base et n’est jamais réaffiché après enregistrement.
-
-## 5. Construire le corps de l’issue
-
-Avec le format **JSON**, le template peut utiliser les champs de la fiche :
+Template JSON :
 
 ```json
 {
@@ -93,39 +177,48 @@ Avec le format **JSON**, le template peut utiliser les champs de la fiche :
 }
 ```
 
-Les valeurs sont sérialisées par ONIR-CMS : un sujet ou une description contenant des guillemets ne casse pas le JSON.
+Le sujet devient le titre de l’issue, la description son contenu, et le label permet de retrouver les demandes.
 
-Le sujet devient le titre de l’issue, la description devient son contenu, et le label `support` permet de retrouver les demandes.
+Lors du test préprod, la validation d’une fiche de support a créé une issue réelle avec le label `support`.
 
-## 6. Tester avant de valider
+![Exemple d’issue GitHub créée depuis une fiche ONIR-CMS](/assets/articles/webhooks-github-issue.png)
 
-L’écran de configuration permet de tester l’endpoint avant de compter sur le déclenchement automatique. Le journal des webhooks conserve les tentatives, les statuts HTTP et les erreurs.
+## Autres usages
 
-Une fois le webhook actif, le parcours est le suivant :
+Le même webhook peut alimenter :
 
-```text
-Conversation
-  → fiche enrichie
-  → validation finale
-  → événement fiche.validated
-  → outbox
-  → dispatcher
-  → livraison HTTP
-  → issue GitHub
-```
+- un CRM ou un outil de prospection ;
+- un helpdesk ;
+- une API métier interne ;
+- un outil de facturation ;
+- Slack, Teams ou un autre canal d’alerte ;
+- un entrepôt de données.
 
-L’appel HTTP n’est pas exécuté dans le tour de chat : la réponse au visiteur n’attend pas GitHub.
+Ce qui change à chaque fois :
 
-## 7. Résultat
+- la destination ;
+- l’authentification ;
+- le format du payload ;
+- les champs réellement nécessaires.
 
-Lors du test préprod, la validation de la fiche a créé une issue réelle avec le label `support`.
+## Bonnes pratiques
 
-![Issue GitHub créée depuis une fiche ONIR-CMS](/assets/articles/webhooks-github-issue.png)
+- choisir le déclencheur le plus proche du besoin métier ;
+- ne pas déclencher sur un état instable ou transitoire ;
+- limiter les mappings au strict nécessaire ;
+- tester avant d’activer ;
+- surveiller le journal ;
+- utiliser un secret dédié et le révoquer en cas de doute ;
+- garder la destination idempotente : un rejeu ne doit pas créer deux actions métier.
 
 ## À retenir
 
-- le webhook est rattaché à une **fiche** ;
-- le déclencheur décrit une **transition métier**, pas un simple clic ;
-- `field_filled` surveille un champ, `fields_filled` attend un groupe de champs ;
-- le token GitHub est chiffré ;
-- le test et le journal permettent de vérifier l’intégration avant de l’activer en production.
+Un webhook est un **pont entre une fiche et une action extérieure**.
+
+La qualité de l’intégration dépend moins du service destinataire que de trois choix :
+
+1. le bon événement ;
+2. le bon périmètre ;
+3. le bon payload.
+
+GitHub est un excellent exemple, mais le mécanisme est générique : toute API peut être connectée de la même manière.
