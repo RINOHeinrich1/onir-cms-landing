@@ -210,7 +210,7 @@ permalink: "{{ locale.routes.home }}index.html"
     {% for article in homeArticles.slice(0, 3) %}
     <article class="article-card">
       <a class="article-card-link" href="{{ article.url }}">
-        <div class="article-cover article-cover--{{ article.data.accent }}{% if article.data.cover %} article-cover--image{% endif %}"{% if article.data.cover %} style="background-image:url('{{ article.data.cover }}')"{% endif %}>
+        <div class="article-cover article-cover--{{ article.data.accent }}{% if article.data.cover %} article-cover--image{% endif %}"{% if article.data.cover %} style="background-image:url('{{ article.data.cover }}');background-size:cover;background-position:center"{% endif %}>
           <span>{{ article.data.category }}</span>
         </div>
         <div class="article-card-body">
