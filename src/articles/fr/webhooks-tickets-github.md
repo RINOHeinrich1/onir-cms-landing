@@ -14,9 +14,11 @@ layout: layouts/article.njk
 pageKey: article
 permalink: /articles/webhooks-automatiser-fiches/index.html
 ---
-Un webhook permet à ONIR-CMS de prévenir un service extérieur lorsqu’une fiche atteint un état métier précis. Il ne s’agit pas seulement de créer un ticket GitHub : le même mécanisme peut alimenter un CRM, un helpdesk, une API interne, un outil de facturation ou une messagerie d’équipe.
+Un webhook transforme une fiche en **signal exploitable par n’importe quel système extérieur**. Une demande de devis peut réserver un créneau, une déclaration d’incident peut ouvrir une intervention, une candidature peut créer un dossier RH, une commande peut réserver du stock, une visite peut préparer un badge d’accès.
 
-Ce tutoriel explique le fonctionnement général des webhooks, puis montre GitHub comme **exemple d’intégration parmi d’autres**.
+Le principe est toujours le même : une fiche atteint un état métier, ONIR-CMS envoie une requête à une API, et cette API déclenche l’action correspondante.
+
+Ce tutoriel explique le mécanisme général. La démonstration finale utilise une destination réelle, mais le principe reste indépendant du service choisi.
 
 > Les webhooks sont actuellement en **Beta**. Le parcours est fonctionnel, mais l’interface et les options peuvent encore évoluer.
 
@@ -150,9 +152,54 @@ L’écran de configuration permet de tester l’endpoint. Le journal des webhoo
 
 Un webhook peut être actif mais échouer côté destination. Le journal reste la source de vérité pour diagnostiquer l’intégration.
 
-## Exemple : créer une issue GitHub
+## Quelques scénarios concrets
 
-GitHub n’est qu’une destination possible. Pour l’utiliser :
+Le même mécanisme peut piloter des actions très différentes.
+
+### Atelier et maintenance
+
+Une fiche d’intervention validée peut créer un ordre de travail dans une GMAO, réserver une pièce dans le stock et affecter un technicien selon ses compétences.
+
+Payload possible :
+
+```json
+{
+  "site": "Atelier Nord",
+  "intervention": "Remplacement presse hydraulique",
+  "priority": "haute"
+}
+```
+
+### Logistique
+
+Une demande d’expédition validée peut être envoyée à un TMS pour calculer un itinéraire, réserver un créneau de quai et générer une étiquette transporteur.
+
+### Finance et achats
+
+Une note de frais ou une demande d’achat peut créer une écriture dans l’ERP, déclencher un contrôle de conformité ou préparer un virement.
+
+### Éducation
+
+Une inscription validée peut ouvrir un compte dans un LMS, réserver une place dans un groupe et générer un badge étudiant.
+
+### Collectivité et terrain
+
+Un signalement validé peut créer une intervention géolocalisée dans un SIG, affecter une équipe et envoyer la position au système de suivi des véhicules.
+
+### Industrie
+
+Un contrôle qualité peut bloquer un lot dans un MES, imprimer une étiquette de quarantaine et notifier la chaîne de production.
+
+Dans chaque cas, seuls changent :
+
+- la destination ;
+- l’authentification ;
+- le format du payload ;
+- les champs réellement utiles.
+
+## Démonstration : GitHub comme destination
+
+Pour rendre le parcours concret, nous utilisons GitHub comme destination de démonstration. Rien dans le mécanisme n’est spécifique à GitHub.
 
 ```text
 POST https://api.github.com/repos/{owner}/{repo}/issues
@@ -179,27 +226,9 @@ Template JSON :
 
 Le sujet devient le titre de l’issue, la description son contenu, et le label permet de retrouver les demandes.
 
-Lors du test préprod, la validation d’une fiche de support a créé une issue réelle avec le label `support`.
+Lors du test préprod, la validation d’une fiche a créé une issue réelle avec le label `support`.
 
 ![Exemple d’issue GitHub créée depuis une fiche ONIR-CMS](/assets/articles/webhooks-github-issue.png)
-
-## Autres usages
-
-Le même webhook peut alimenter :
-
-- un CRM ou un outil de prospection ;
-- un helpdesk ;
-- une API métier interne ;
-- un outil de facturation ;
-- Slack, Teams ou un autre canal d’alerte ;
-- un entrepôt de données.
-
-Ce qui change à chaque fois :
-
-- la destination ;
-- l’authentification ;
-- le format du payload ;
-- les champs réellement nécessaires.
 
 ## Bonnes pratiques
 
@@ -221,4 +250,4 @@ La qualité de l’intégration dépend moins du service destinataire que de tro
 2. le bon périmètre ;
 3. le bon payload.
 
-GitHub est un excellent exemple, mais le mécanisme est générique : toute API peut être connectée de la même manière.
+GitHub était ici un exemple de destination. Le mécanisme reste générique : toute API peut être connectée de la même manière.
