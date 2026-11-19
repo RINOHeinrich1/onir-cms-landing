@@ -333,3 +333,20 @@ html.lightbox-open {
     border-inline: 0;
   }
 }
+
+.article-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.2rem;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.article-card-link:hover .article-card-cta,
+.article-card-link:focus-visible .article-card-cta {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
