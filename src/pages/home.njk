@@ -212,7 +212,6 @@ permalink: "{{ locale.routes.home }}index.html"
       <a class="article-card-link" href="{{ article.url }}">
         <div class="article-cover article-cover--{{ article.data.accent }}">
           <span>{{ article.data.category }}</span>
-          <strong>{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</strong>
         </div>
         <div class="article-card-body">
           <p class="article-kicker">{{ article.data.category }}</p>
