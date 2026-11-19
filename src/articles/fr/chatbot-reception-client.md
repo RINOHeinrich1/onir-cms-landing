@@ -8,7 +8,7 @@ category: "Tutoriel"
 reading: "5 min"
 publishedAt: "2026-11-13"
 draft: false
-cover: "/assets/articles/chatbot-reception-step-2.png"
+cover: "/assets/articles/article-cover-chatbot.png"
 accent: "green"
 layout: layouts/article.njk
 pageKey: article

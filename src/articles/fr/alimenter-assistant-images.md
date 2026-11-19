@@ -8,7 +8,7 @@ category: "Tutoriel"
 reading: "4 min"
 publishedAt: "2026-11-19"
 draft: false
-cover: "/assets/articles/media-assistant-step-1.png"
+cover: "/assets/articles/article-cover-media.png"
 accent: "mint"
 layout: layouts/article.njk
 pageKey: article
@@ -18,7 +18,6 @@ Une image ne sert pas seulement à illustrer une réponse : elle peut devenir un
 
 Dans ce tutoriel, nous ajoutons des images à la médiathèque d’ONIR-CMS, puis nous expliquons comment l’IA décide de les utiliser.
 
-Les captures ci-dessous utilisent l’environnement de préproduction : [preprod-cms.onirtech.com](https://preprod-cms.onirtech.com/).
 
 ## Étape 1 — Ouvrir la médiathèque
 
