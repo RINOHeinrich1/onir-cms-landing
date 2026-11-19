@@ -8,6 +8,7 @@ category: "Tutoriel"
 reading: "4 min"
 publishedAt: "2026-11-13"
 draft: false
+cover: "/assets/articles/knowledge-step-1.png"
 accent: "orange"
 layout: layouts/article.njk
 pageKey: article

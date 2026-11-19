@@ -8,6 +8,7 @@ category: "Tutoriel"
 reading: "4 min"
 publishedAt: "2026-11-19"
 draft: false
+cover: "/assets/articles/media-assistant-step-1.png"
 accent: "mint"
 layout: layouts/article.njk
 pageKey: article
