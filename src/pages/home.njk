@@ -61,10 +61,12 @@ permalink: "{{ locale.routes.home }}index.html"
           </div>
         </div>
       </div>
-      <button class="hero-play" type="button" data-hero-video-open aria-label="Play the A2DM Formation contact demo">
+      <button class="hero-play" type="button" data-hero-video-open aria-label="{{ p.hero.videoCta }}">
         <span class="hero-play-icon" aria-hidden="true">
+          <span class="hero-play-pulse"></span>
           <svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>
         </span>
+        <span class="hero-play-label">{{ p.hero.videoCta }}</span>
       </button>
     </div>
   </div>

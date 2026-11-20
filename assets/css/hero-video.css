@@ -234,3 +234,68 @@ body:has(.hero-video-modal[open]) {
     height: 0.9rem;
   }
 }
+
+.hero-play {
+  gap: 0.7rem;
+}
+
+.hero-play-icon {
+  position: relative;
+  overflow: visible;
+}
+
+.hero-play-pulse {
+  position: absolute;
+  inset: -0.45rem;
+  z-index: -1;
+  border: 2px solid color-mix(in srgb, var(--accent) 72%, transparent);
+  border-radius: 50%;
+  animation: hero-play-pulse 2s ease-out infinite;
+}
+
+.hero-play-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.52rem 0.9rem;
+  border-radius: 999px;
+  background: var(--green);
+  box-shadow: 0 0.7rem 1.6rem color-mix(in srgb, var(--green) 28%, transparent);
+  color: #fffdf6;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.hero-play:hover .hero-play-label,
+.hero-play:focus-visible .hero-play-label {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+@keyframes hero-play-pulse {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.9);
+  }
+  75%,
+  100% {
+    opacity: 0;
+    transform: scale(1.45);
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-play-label {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-play-pulse {
+    animation: none;
+  }
+}
