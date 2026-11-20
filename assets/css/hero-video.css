@@ -266,6 +266,7 @@ body:has(.hero-video-modal[open]) {
   height: 1.45rem;
   fill: currentColor;
   stroke: none;
+  transform: rotate(180deg);
 }
 
 @keyframes hero-play-hint-bounce {
