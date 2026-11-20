@@ -9,5 +9,6 @@
   "back": "Hiverina amin'ny articles",
   "empty": "Tsy mbola misy lahatsoratra navoaka amin'ity fiteny ity.",
   "reading": "vakiana",
-  "fallback": "Lahatsoratra amin'ny teny frantsay"
+  "fallback": "Lahatsoratra amin'ny teny frantsay",
+  "by": "Nosoratan'i"
 }

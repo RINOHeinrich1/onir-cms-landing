@@ -15,6 +15,7 @@ bodyScripts:
   <div class="article-meta">
     <time datetime="{{ publishedAt }}">{{ publishedAt }}</time>
     <span>{{ reading }} {{ t.articles.reading }}</span>
+    <span class="article-author">{{ t.articles.by }} {{ author }}</span>
   </div>
   <div class="article-body" lang="{{ articleLocale }}">{{ content | safe }}</div>
   <a class="article-back" href="{{ locale.routes.articles }}">{{ t.articles.back }} ←</a>

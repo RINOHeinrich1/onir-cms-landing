@@ -38,6 +38,7 @@ permalink: "{{ locale.routes.articles }}index.html"
             <div class="article-meta">
               <time datetime="{{ article.data.publishedAt }}">{{ article.data.publishedAt }}</time>
               <span>{{ article.data.reading }} {{ p.reading }}</span>
+              <span class="article-author">{{ t.articles.by }} {{ article.data.author }}</span>
             </div>
             <span class="article-card-cta">{{ t.articles.cta }} →</span>
           </div>

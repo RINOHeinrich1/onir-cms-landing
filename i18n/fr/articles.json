@@ -9,5 +9,6 @@
   "back": "Retour aux articles",
   "empty": "Aucun article publié dans cette langue pour le moment.",
   "reading": "de lecture",
-  "fallback": "Article en français"
+  "fallback": "Article en français",
+  "by": "Par"
 }

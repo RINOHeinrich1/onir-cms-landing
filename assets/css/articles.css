@@ -358,3 +358,9 @@ html.lightbox-open {
   color: #fffdf6;
   text-shadow: 0 1px 8px rgb(0 0 0 / 0.35);
 }
+
+.article-author {
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
