@@ -29,4 +29,9 @@ export default {
     downloadName: "atelier-2.5.0.onirtech-template",
     sha: "sha256:e9b0784cb54af96fdd6e47207a4d738e56f21b616fe40fb4434a6ac70f0f3b10",
   },
+  "nutri-editorial": {
+    download: "/assets/plugins/nutri-editorial-1.3.2.onirtech-template",
+    downloadName: "nutri-editorial-1.3.2.onirtech-template",
+    sha: "sha256:26129adde3625bffae6b3be259f0d871e14ccc6d19e0911013feabf175a361e5",
+  },
 };

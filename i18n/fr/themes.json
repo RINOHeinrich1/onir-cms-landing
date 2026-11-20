@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Thèmes libres · ONIR CMS",
-    "description": "Téléchargez les templates visuels ONIR CMS : Immersive, Starter, MandamPro, Nuit & Jade Atelier Paper et Pop Design. Libres, prêts à importer.",
+    "description": "Téléchargez les templates visuels ONIR CMS : Immersive, Starter, MandamPro, Nuit & Jade, Atelier Paper, Pop Design et Nutriva. Libres, prêts à importer.",
     "ogTitle": "Thèmes libres · ONIR CMS",
     "ogDescription": "Téléchargez les templates visuels ONIR CMS."
   },
@@ -106,6 +106,21 @@
         "2,7 Mo"
       ],
       "detailsText": "Template ONIR CMS créé par Anjary. Sections typées (card, text, image, grid, form), rôles métier libres, cartes membres, galerie photothèque et rendu des messages."
+    },
+    {
+      "id": "nutri-editorial",
+      "version": "v1.3.2",
+      "name": "Nutriva",
+      "author": "Rabalantome",
+      "description": "Template multipage éditorial responsive avec contrôle de confidentialité personnalisé, aligné sur la palette du thème et accessible au clavier.",
+      "meta": [
+        "Éditorial",
+        "Multipage",
+        "Galerie",
+        "Vidéos",
+        "1,3 Mo"
+      ],
+      "detailsText": "Template ONIR CMS créé par Rabalantome. Site éditorial multipage pour Nutriva : hero produit, pages Découvrir, Nutrition et Support, galerie, vidéos, contrôle de confidentialité et conversation intégrée."
     }
   ],
   "install": {
