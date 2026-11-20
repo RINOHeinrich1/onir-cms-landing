@@ -63,10 +63,14 @@ permalink: "{{ locale.routes.home }}index.html"
       </div>
       <button class="hero-play" type="button" data-hero-video-open aria-label="{{ p.hero.videoCta }}">
         <span class="hero-play-icon" aria-hidden="true">
-          <span class="hero-play-pulse"></span>
           <svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>
         </span>
-        <span class="hero-play-label">{{ p.hero.videoCta }}</span>
+        <span class="hero-play-hint" aria-hidden="true">
+          <span class="hero-play-hint-inner">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5m6 6-6-6 6-6"/></svg>
+            {{ p.hero.videoHint }}
+          </span>
+        </span>
       </button>
     </div>
   </div>

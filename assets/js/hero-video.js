@@ -102,6 +102,14 @@
     video.play().catch(() => {});
   }
 
+  const visual = document.querySelector(".hero-visual");
+  visual?.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    if (target.closest("button, a, dialog")) return;
+    open();
+  });
+
   openButton.addEventListener("click", open);
   closeButton?.addEventListener("click", close);
   previous?.addEventListener("click", () => goTo(index - 1));

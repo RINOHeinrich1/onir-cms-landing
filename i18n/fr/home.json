@@ -11,7 +11,8 @@
     "titleEmphasis": "maitrisée",
     "lead": "Avec ONIR-CMS, concevez des assistants IA adaptés à vos besoins, à votre image et à vos règles. Profitez de la puissance de l’intelligence artificielle tout en restant maître de vos décisions.",
     "cta": "Essayer",
-    "videoCta": "Voir la démo"
+    "videoCta": "Voir la démo",
+    "videoHint": "Cliquez ici"
   },
   "mock": {
     "url": "cms · mes-chatbots",
