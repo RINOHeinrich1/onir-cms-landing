@@ -262,11 +262,9 @@ body:has(.hero-video-modal[open]) {
 }
 
 .hero-play-hand {
-  width: 1.45rem;
-  height: 1.45rem;
-  fill: currentColor;
-  stroke: none;
-  transform: rotate(180deg);
+  color: currentColor;
+  font-size: 1.65rem;
+  line-height: 1;
 }
 
 @keyframes hero-play-hint-bounce {
