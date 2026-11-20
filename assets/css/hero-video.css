@@ -237,36 +237,36 @@ body:has(.hero-video-modal[open]) {
 
 .hero-play-hint {
   position: absolute;
-  top: 58%;
-  left: calc(100% + 0.55rem);
+  top: calc(100% + 0.35rem);
+  left: 50%;
   pointer-events: none;
+  transform: translateX(-50%);
 }
 
 .hero-play-hint-inner {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.3rem;
-  padding: 0.38rem 0.62rem;
-  border: 1px solid color-mix(in srgb, var(--green) 18%, transparent);
-  border-radius: 999px;
-  background: var(--card);
-  box-shadow: 0 0.55rem 1.4rem color-mix(in srgb, var(--green) 20%, transparent);
-  color: var(--green);
-  font-size: 0.7rem;
-  font-weight: 800;
+  gap: 0.12rem;
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 900;
   white-space: nowrap;
-  transform-origin: left center;
+  text-shadow:
+    0 1px 0 var(--bg),
+    0 0 7px var(--bg);
+  transform-origin: center;
   animation: hero-play-hint-bounce 1.15s ease-in-out infinite;
 }
 
-.hero-play-hint svg {
-  width: 0.9rem;
-  height: 0.9rem;
+.hero-play-hand {
+  width: 1.25rem;
+  height: 1.25rem;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 2;
+  stroke-width: 1.8;
 }
 
 @keyframes hero-play-hint-bounce {
@@ -280,15 +280,8 @@ body:has(.hero-video-modal[open]) {
 }
 
 @media (max-width: 700px) {
-  .hero-play-hint {
-    top: calc(100% + 0.55rem);
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
   .hero-play-hint-inner {
-    font-size: 0.66rem;
-    transform-origin: center;
+    font-size: 0.72rem;
   }
 }
 
