@@ -20,4 +20,39 @@ eleventyExcludeFromCollections: true
 {%- endif %}
 {%- endfor %}
 {%- endfor %}
+  <url>
+    <loc>{{ site.baseUrl }}/articles/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+{%- for article in collections.articles %}
+  <url>
+    <loc>{{ site.baseUrl }}{{ article.url }}</loc>
+    {%- if article.data.publishedAt %}
+    <lastmod>{{ article.data.publishedAt }}</lastmod>
+    {%- endif %}
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+{%- endfor %}
+{%- for useCasePage in useCasePages %}
+  <url>
+    <loc>{{ site.baseUrl }}{{ useCasePage.route }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    {%- for alt in useCasePage.alternates %}
+    <xhtml:link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ site.baseUrl }}{{ alt.href }}" />
+    {%- endfor %}
+  </url>
+{%- endfor %}
+{%- for themePage in themePages %}
+  <url>
+    <loc>{{ site.baseUrl }}{{ themePage.route }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    {%- for alt in themePage.alternates %}
+    <xhtml:link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ site.baseUrl }}{{ alt.href }}" />
+    {%- endfor %}
+  </url>
+{%- endfor %}
 </urlset>

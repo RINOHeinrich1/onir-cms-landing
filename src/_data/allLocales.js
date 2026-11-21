@@ -21,6 +21,11 @@ const routes = {
     en: "/en/articles/",
     mg: "/mg/articles/",
   },
+  useCases: {
+    fr: "/cas-usage/reception-client/",
+    en: "/en/use-cases/client-reception/",
+    mg: "/mg/tranga/reception-client/",
+  },
   legal: {
     fr: "/mentions-legales/",
     en: "/en/legal-notice/",

@@ -14,7 +14,8 @@
     "login": "Log in",
     "legal": "Legal notice",
     "privacy": "Privacy",
-    "articles": "Articles"
+    "articles": "Articles",
+    "useCases": "Use cases"
   },
   "theme": {
     "toggle": "Change theme",

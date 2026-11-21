@@ -133,7 +133,7 @@ permalink: "{{ locale.routes.home }}index.html"
       <div class="demo-slide">
         <a class="demo-card" href="{{ demoLinks[item.key] }}" target="_blank" rel="noreferrer">
           <span class="demo-card-preview">
-            <img src="{{ item.image }}" alt="" loading="lazy">
+            <img src="{{ item.image }}" alt="{{ item.title }} — {{ item.tag }}" loading="lazy">
           </span>
           <span class="demo-card-body">
             <span class="demo-tag">{{ item.tag }}</span>
@@ -201,6 +201,17 @@ permalink: "{{ locale.routes.home }}index.html"
   </div>
   <div class="hero-ctas">
     <a class="btn btn-ghost" href="{{ locale.routes.features }}">{{ p.features.cta }}</a>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <p class="kicker">{{ p.useCase.kicker }}</p>
+    <h2>{{ p.useCase.title }}</h2>
+    <p>{{ p.useCase.lead }}</p>
+  </div>
+  <div class="hero-ctas">
+    <a class="btn btn-ghost" href="{{ locale.routes.useCases }}">{{ p.useCase.cta }}</a>
   </div>
 </section>
 

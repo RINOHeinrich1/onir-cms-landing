@@ -14,7 +14,8 @@
     "login": "Se connecter",
     "legal": "Mentions légales",
     "privacy": "Confidentialité",
-    "articles": "Articles"
+    "articles": "Articles",
+    "useCases": "Cas d’usage"
   },
   "theme": {
     "toggle": "Changer de thème",

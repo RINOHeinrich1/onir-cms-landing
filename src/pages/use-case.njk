@@ -1,0 +1,35 @@
+---
+layout: layouts/base.njk
+pageKey: useCase
+headerVariant: v2
+showWidget: true
+css:
+  - /assets/css/landing-v2.css?v=21
+pagination:
+  data: useCasePages
+  size: 1
+  alias: useCasePage
+permalink: "{{ useCasePage.route }}index.html"
+---
+<section class="page-hero wrap">
+  <p class="kicker">{{ useCasePage.data.kicker }}</p>
+  <h1>{{ useCasePage.data.title }}</h1>
+  <p class="hero-lead">{{ useCasePage.data.lead }}</p>
+  <div class="hero-ctas">
+    <a class="btn btn-accent" href="{{ site.baseUrl }}/articles/chatbot-reception-client/">{{ useCasePage.data.primary }}</a>
+    <a class="btn btn-ghost" href="{{ locale.routes.features }}">{{ useCasePage.data.secondary }}</a>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <h2>{{ useCasePage.data.benefitsTitle }}</h2>
+  </div>
+  <div class="simple-grid">
+    {% for benefit in useCasePage.data.benefits %}
+    <article class="simple">
+      <h3>{{ benefit }}</h3>
+    </article>
+    {% endfor %}
+  </div>
+</section>

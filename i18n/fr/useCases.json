@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "title": "Chatbot de réception client — ONIR CMS",
+    "description": "Un assistant qui répond aux questions fréquentes, qualifie les demandes et prépare la reprise humaine.",
+    "ogTitle": "Chatbot de réception client — ONIR CMS",
+    "ogDescription": "Un assistant qui répond, qualifie et transmet les demandes utiles à votre équipe."
+  },
+  "kicker": "Cas d’usage",
+  "title": "Un chatbot de réception client qui qualifie avant la reprise humaine.",
+  "lead": "Vos visiteurs obtiennent une réponse immédiate, les demandes sont structurées et votre équipe reprend la conversation avec le contexte utile.",
+  "benefits": [
+    "Répond aux questions fréquentes sans attendre",
+    "Collecte le besoin et les coordonnées utiles",
+    "Prépare une fiche de qualification pour l’équipe",
+    "Reste personnalisable dans ONIR CMS"
+  ],
+  "primary": "Lire le tutoriel",
+  "secondary": "Voir les fonctionnalités",
+  "benefitsTitle": "Ce que ça change"
+}

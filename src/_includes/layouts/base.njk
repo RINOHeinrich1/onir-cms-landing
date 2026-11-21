@@ -6,23 +6,104 @@
   <title>{{ p.meta.title }}</title>
   <meta name="description" content="{{ p.meta.description }}" />
   {% if canonical %}<link rel="canonical" href="{{ canonical }}" />{% endif %}
-  {% if p.meta.robots %}<meta name="robots" content="{{ p.meta.robots }}" />{% endif %}
-  <meta property="og:type" content="website" />
+  {% if p.meta.robots or (pageKey == "articles" and locale.code != "fr") %}<meta name="robots" content="{{ p.meta.robots or 'noindex, follow' }}" />{% endif %}
+  <meta property="og:type" content="{{ 'article' if pageKey == 'article' else 'website' }}" />
   <meta property="og:locale" content="{{ locale.ogLocale }}" />
   {% for alt in alternates %}{% if alt.code != locale.code %}<meta property="og:locale:alternate" content="{{ alt.ogLocale }}" />{% endif %}{% endfor %}
   <meta property="og:site_name" content="{{ site.name }}" />
   <meta property="og:title" content="{{ p.meta.ogTitle or p.meta.title }}" />
   <meta property="og:description" content="{{ p.meta.ogDescription or p.meta.description }}" />
   {% if canonical %}<meta property="og:url" content="{{ canonical }}" />{% endif %}
-  <meta property="og:image" content="{{ site.baseUrl }}{{ p.meta.ogImage or site.logoLight }}" />
+  {% set socialImage = p.meta.ogImage or site.ogImage or site.logoLight %}
+  <meta property="og:image" content="{{ socialImage | absoluteUrl(site.baseUrl) }}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="{{ site.ogImageAlt }}" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="{{ socialImage | absoluteUrl(site.baseUrl) }}" />
   <meta name="theme-color" content="#f4f1e5" />
   {% for alt in alternates %}<link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ alt.href }}" />{% endfor %}
-  {% if pageKey != "notFound" and pageKey != "article" %}<link rel="alternate" hreflang="x-default" href="{{ site.baseUrl }}{{ allLocales[0].routes[pageKey] }}" />{% endif %}
+  {% if (pageKey == "theme" or pageKey == "useCase") and alternates.length %}<link rel="alternate" hreflang="x-default" href="{{ alternates[0].href }}" />{% elif pageKey != "notFound" and pageKey != "article" and pageKey != "articles" %}<link rel="alternate" hreflang="x-default" href="{{ site.baseUrl }}{{ allLocales[0].routes[pageKey] }}" />{% endif %}
   {% for href in css %}<link rel="stylesheet" href="{{ href }}" />{% endfor %}
   <link rel="stylesheet" href="/assets/css/i18n.css?v=2" />
   <link rel="icon" href="{{ site.logoLight }}" type="image/webp" />
   {% if headExtra %}{{ headExtra | safe }}{% endif %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "{{ site.baseUrl }}/#organization",
+        "name": "ONIR CMS",
+        "url": "{{ site.baseUrl }}/",
+        "logo": "{{ site.baseUrl }}{{ site.logoLight }}",
+        "sameAs": [{{ site.github | dump | safe }}, {{ site.linkedin | dump | safe }}, {{ site.facebook | dump | safe }}]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "{{ site.baseUrl }}/#website",
+        "url": "{{ site.baseUrl }}/",
+        "name": "ONIR CMS",
+        "publisher": { "@id": "{{ site.baseUrl }}/#organization" },
+        "inLanguage": ["fr", "en", "mg"]
+      }
+      {% if pageKey == "home" %},
+      {
+        "@type": "SoftwareApplication",
+        "@id": "{{ site.baseUrl }}/#software",
+        "name": "ONIR CMS",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "url": "{{ site.baseUrl }}/",
+        "description": {{ p.meta.description | dump | safe }},
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+        "publisher": { "@id": "{{ site.baseUrl }}/#organization" }
+      }
+      {% endif %}
+      {% if pageKey == "article" %},
+      {
+        "@type": "Article",
+        "headline": {{ title | dump | safe }},
+        "description": {{ excerpt | dump | safe }},
+        "datePublished": "{{ publishedAt }}",
+        "author": { "@type": "Person", "name": {{ author | dump | safe }} },
+        "image": "{{ cover | absoluteUrl(site.baseUrl) }}",
+        "mainEntityOfPage": "{{ canonical }}",
+        "publisher": { "@id": "{{ site.baseUrl }}/#organization" }
+      }
+      {% endif %}
+      {% if pageKey == "features" %},
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {% for item in p.faq.items %}
+          {
+            "@type": "Question",
+            "name": {{ item.q | dump | safe }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ item.a | dump | safe }} }
+          }{% if not loop.last %},{% endif %}
+          {% endfor %}
+        ]
+      }
+      {% endif %}
+      {% if pageKey == "theme" and themePage %},
+      {
+        "@type": "SoftwareApplication",
+        "name": {{ themePage.theme.name | dump | safe }},
+        "softwareVersion": "{{ themePage.theme.version }}",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "Web",
+        "description": {{ themePage.theme.description | dump | safe }},
+        "image": "{{ site.baseUrl }}/assets/themes/{{ themePage.theme.id }}.png",
+        "downloadUrl": "{{ themePage.download.download | absoluteUrl(site.baseUrl) }}",
+        "author": { "@type": "Person", "name": {{ themePage.theme.author | dump | safe }} },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+      }
+      {% endif %}
+    ]
+  }
+  </script>
   <script>
     (function () {
       try {

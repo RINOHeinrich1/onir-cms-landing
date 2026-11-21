@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "title": "Client reception chatbot — ONIR CMS",
+    "description": "An assistant that answers common questions, qualifies requests and prepares the handoff to your team.",
+    "ogTitle": "Client reception chatbot — ONIR CMS",
+    "ogDescription": "An assistant that answers, qualifies and hands useful requests to your team."
+  },
+  "kicker": "Use case",
+  "title": "A client reception chatbot that qualifies requests before handoff.",
+  "lead": "Visitors get an immediate answer, requests are structured, and your team takes over with the useful context.",
+  "benefits": [
+    "Answers common questions without waiting",
+    "Collects the need and useful contact details",
+    "Prepares a qualification record for the team",
+    "Stays customizable inside ONIR CMS"
+  ],
+  "primary": "Read the tutorial",
+  "secondary": "See features",
+  "benefitsTitle": "What it changes"
+}

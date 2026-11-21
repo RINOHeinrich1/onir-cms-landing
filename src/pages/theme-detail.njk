@@ -1,0 +1,64 @@
+---
+layout: layouts/base.njk
+pageKey: theme
+headerVariant: legacy
+wrapper: site
+mainClass: site-main
+showWidget: true
+css:
+  - /assets/css/base.css
+  - /assets/css/landing.css?v=20261122
+pagination:
+  data: themePages
+  size: 1
+  alias: themePage
+permalink: "{{ themePage.route }}index.html"
+---
+{% set theme = themePage.theme %}
+<section class="site-wrap site-page-head theme-detail-head">
+  <p class="site-kicker"><span class="site-kicker-dot"></span>{{ p.themeKicker }}</p>
+  <h1>{{ theme.name }}</h1>
+  <p class="site-lead">{{ theme.description }}</p>
+  <p class="site-free-note">{{ p.authorLabel }} <strong>{{ theme.author }}</strong> · {{ p.versionLabel }} {{ theme.version }}</p>
+</section>
+
+<section class="site-wrap theme-detail">
+  <div class="theme-detail-preview">
+    <img src="/assets/themes/{{ theme.id }}.png?v={{ theme.version }}" alt="{{ theme.name }} — {{ p.themeKicker }}" loading="lazy">
+  </div>
+  <div class="theme-detail-body">
+    <div class="plugin-top">
+      <span class="site-pill site-pill-free">{{ p.freeLabel }}</span>
+      <span class="plugin-version">{{ theme.version }}</span>
+    </div>
+    <ul class="plugin-meta" aria-label="{{ p.metaAria }}">
+      {% for value in theme.meta %}<li>{{ value }}</li>{% endfor %}
+    </ul>
+    <p>{{ theme.detailsText }}</p>
+    <p class="theme-dialog-sha"><code>{{ themePage.download.sha }}</code></p>
+    <div class="theme-detail-actions">
+      <a class="site-button" href="{{ themePage.download.download }}" download="{{ themePage.download.downloadName }}">{{ p.download }}</a>
+      <a class="site-button site-button-ghost" href="{{ locale.routes.themes }}">← {{ p.back }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="site-wrap site-install">
+  <div class="site-section-head">
+    <p class="site-kicker">{{ p.install.kicker }}</p>
+    <h2>{{ p.install.title }}</h2>
+  </div>
+  <ol class="site-steps">
+    {% for step in p.install.steps %}
+    <li>
+      <span class="site-number">{{ step.number }}</span>
+      <strong>{{ step.title }}</strong>
+      <p>{{ step.text }}</p>
+    </li>
+    {% endfor %}
+  </ol>
+  <p class="site-install-link">
+    {{ p.install.detail }}
+    <a href="{{ site.templatesGuide }}">{{ p.install.link }}</a>.
+  </p>
+</section>

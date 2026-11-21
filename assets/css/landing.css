@@ -490,6 +490,7 @@
 
 .site-free-note {
   display: inline-flex;
+  gap: 0.25rem;
   margin: 1.2rem 0 0;
   padding: 0.4rem 0.7rem;
   border-radius: var(--r-pill);
@@ -1602,5 +1603,45 @@
   :root[data-theme="dark"] .plugin-card:hover {
     transition: none;
     transform: none;
+  }
+}
+
+.theme-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+  gap: 2rem;
+  align-items: start;
+  padding-bottom: 2rem;
+}
+
+.theme-detail-preview {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.theme-detail-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.theme-detail-body {
+  display: grid;
+  gap: 1rem;
+}
+
+.theme-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 820px) {
+  .theme-detail {
+    grid-template-columns: 1fr;
   }
 }

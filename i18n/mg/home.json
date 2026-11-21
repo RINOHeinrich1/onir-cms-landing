@@ -151,5 +151,11 @@
   "footer": {
     "tagline": "CMS ho an'ny chatbot. Open source, araka ny endrikareo.",
     "metaBrand": "ONIR CMS — Mamorona chatbot araka ny endrikareo"
+  },
+  "useCase": {
+    "kicker": "Tranga fampiasana",
+    "title": "Chatbot mahasoa hatramin’ny fifanakalozana voalohany.",
+    "lead": "Mamaly, mandamina ary manomana ny fifindran’ny resaka: jereo ny lalana mivaingana amin’ny ONIR CMS.",
+    "cta": "Jereo ny tranga"
   }
 }

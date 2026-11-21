@@ -6,6 +6,8 @@ export default {
   baseUrl: "https://onir-cms.tech",
   logoLight: "/assets/logo/onir-cms-light.webp",
   logoDark: "/assets/logo/onir-cms-dark.webp",
+  ogImage: "/assets/og/onir-cms-1200x630.png",
+  ogImageAlt: "ONIR CMS — CMS de chatbot open source et auto-hébergé",
   github: "https://github.com/RINOHeinrich1/onir-cms",
   documentation: "https://cms-backoffice.onirtech.com/documentation",
   adr: "https://github.com/RINOHeinrich1/onir-cms/tree/main/docs/adr",

@@ -151,5 +151,11 @@
   "footer": {
     "tagline": "CMS pour chatbot. Open source, à votre image.",
     "metaBrand": "ONIR CMS — CMS pour chatbot"
+  },
+  "useCase": {
+    "kicker": "Cas d’usage",
+    "title": "Un chatbot utile dès le premier échange.",
+    "lead": "Répondre, qualifier et préparer la reprise humaine : découvrez un parcours concret avec ONIR CMS.",
+    "cta": "Voir le cas d’usage"
   }
 }

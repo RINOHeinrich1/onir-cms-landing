@@ -13,6 +13,9 @@
     "aria": "Available themes"
   },
   "freeLabel": "Open",
+  "back": "All themes",
+  "versionLabel": "Version",
+  "themeKicker": "Theme",
   "metaAria": "Features",
   "download": "Download",
   "guide": "Import guide",

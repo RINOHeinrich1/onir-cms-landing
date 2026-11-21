@@ -12,6 +12,9 @@
     "freeNote": "Tous les thèmes actuels sont libres.",
     "aria": "Thèmes disponibles"
   },
+  "back": "Tous les thèmes",
+  "versionLabel": "Version",
+  "themeKicker": "Thème",
   "freeLabel": "Libre",
   "metaAria": "Caractéristiques",
   "download": "Télécharger",

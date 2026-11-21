@@ -151,5 +151,11 @@
   "footer": {
     "tagline": "Chatbot CMS. Open source, in your image.",
     "metaBrand": "ONIR CMS — Chatbot CMS"
+  },
+  "useCase": {
+    "kicker": "Use case",
+    "title": "A useful chatbot from the first exchange.",
+    "lead": "Answer, qualify and prepare the handoff: explore a concrete ONIR CMS journey.",
+    "cta": "View the use case"
   }
 }
