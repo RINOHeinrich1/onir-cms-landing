@@ -914,3 +914,55 @@ body[data-market="INTL"] [data-international-only] {
 .subscribe-terms-status[hidden] {
   display: none;
 }
+
+.subscribe-code-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.subscribe-code-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.subscribe-code-row .btn {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.subscribe-affiliate-message {
+  display: block;
+  min-height: 1.1rem;
+  margin-top: 0.35rem;
+  color: var(--ink-soft);
+  font-size: 0.76rem;
+  line-height: 1.4;
+}
+
+.subscribe-price-breakdown {
+  display: grid;
+  gap: 0.3rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--bg-soft);
+  padding: 0.7rem 0.8rem;
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+}
+
+.subscribe-price-breakdown span {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.subscribe-price-breakdown strong {
+  color: var(--ink);
+}
+
+@media (max-width: 520px) {
+  .subscribe-code-row {
+    flex-direction: column;
+  }
+}

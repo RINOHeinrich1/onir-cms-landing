@@ -114,7 +114,7 @@
 </section>
 {% endif %}
 
-<dialog class="rdv-dialog subscribe-dialog" id="subscribe-dialog" data-api="{{ site.commercialApi }}" data-free-lead="{{ t.pricing.subscription.freeSuccessLead }}" data-free-instructions="{{ t.pricing.subscription.freeInstructions }}" aria-labelledby="subscribe-title">
+<dialog class="rdv-dialog subscribe-dialog" id="subscribe-dialog" data-api="{{ site.commercialApi }}" data-free-lead="{{ t.pricing.subscription.freeSuccessLead }}" data-free-instructions="{{ t.pricing.subscription.freeInstructions }}" data-affiliate-applied="{{ t.pricing.subscription.affiliateApplied }}" data-affiliate-invalid="{{ t.pricing.subscription.affiliateInvalid }}" data-affiliate-checking="{{ t.pricing.subscription.affiliateChecking }}" data-affiliate-network-error="{{ t.pricing.subscription.affiliateNetworkError }}" aria-labelledby="subscribe-title">
   <div class="rdv-head">
     <div>
       <span class="rdv-status"><i></i>ONIR CLOUD</span>
@@ -133,6 +133,19 @@
     <label class="rdv-field">
       <span class="rdv-bubble">{{ t.pricing.subscription.duration }}</span>
       <select name="durationMonths" required></select>
+    </label>
+    <div class="subscribe-price-breakdown" data-subscribe-price-breakdown>
+      <span>{{ t.pricing.subscription.listPriceLabel }} <strong data-subscribe-list-price></strong></span>
+      <span data-subscribe-discount-row hidden>{{ t.pricing.subscription.discountLabel }} <strong data-subscribe-discount></strong></span>
+      <span>{{ t.pricing.subscription.netPriceLabel }} <strong data-subscribe-net-price></strong></span>
+    </div>
+    <label class="rdv-field">
+      <span class="rdv-bubble">{{ t.pricing.subscription.affiliateCode }}</span>
+      <span class="subscribe-code-row">
+        <input name="affiliateCode" data-subscribe-affiliate-code placeholder="{{ t.pricing.subscription.affiliateCodePlaceholder }}" autocomplete="off">
+        <button class="btn btn-ghost" type="button" data-subscribe-apply-code>{{ t.pricing.subscription.affiliateApply }}</button>
+      </span>
+      <small class="subscribe-affiliate-message" data-subscribe-affiliate-message></small>
     </label>
     <label class="rdv-field">
       <span class="rdv-bubble">{{ t.pricing.subscription.organization }}</span>
