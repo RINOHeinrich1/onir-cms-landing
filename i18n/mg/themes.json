@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Endrika azonao ampiasaina · ONIR CMS",
-    "description": "Alaivo ny modely hita maso ONIR CMS : Immersive, Starter, MandamPro, Nuit & Jade, Atelier Paper, Pop Design ary Nutriva. Malalaka, vonona ampidirina.",
+    "description": "Alaivo ny modely hita maso ONIR CMS : Immersive, Starter, Natural World, MandamPro, Nuit & Jade, Atelier Paper, Pop Design ary Nutriva. Malalaka, vonona ampidirina.",
     "ogTitle": "Endrika azonao ampiasaina · ONIR CMS",
     "ogDescription": "Alaivo ny modely hita maso ONIR CMS."
   },
@@ -49,6 +49,21 @@
       ],
       "detailsText": "Ny fiandohana kely indrindra hahatakarana ny fifanarahana mpampiantrano sy hamoronana ny modely hita maso anao.",
       "author": "Rinoheinrich"
+    },
+    {
+      "id": "natural-world",
+      "version": "v1.1.0",
+      "name": "Natural World",
+      "author": "Rinoheinrich",
+      "description": "Sehatra voajanahary manintona: sary lehibe, iraka, vokatra, fijoroana vavolombelona ary resaka tafiditra.",
+      "meta": [
+        "Editorialy",
+        "Pejy + widget",
+        "Faritra 11 azo ovaina",
+        "Fizarana",
+        "1,1 Mo"
+      ],
+      "detailsText": "Modely ofisialy ONIR CMS. Pejy voajanahary misy fizarana iraka, vokatra sy fijoroana vavolombelona, pejy ara-dalàna ary resaka tafiditra. Mifanaraka amin’ny cursor fanaraha-maso hanasivana ny variables isaky ny faritra."
     },
     {
       "id": "mandampro",

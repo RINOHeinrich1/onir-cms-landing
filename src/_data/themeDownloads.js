@@ -9,6 +9,11 @@ export default {
     downloadName: "starter-1.6.16.onirtech-template",
     sha: "sha256:b3fc278069bb57b6495babe9b71cc75b5f89f2e184d912028fd20acabb226524",
   },
+  "natural-world": {
+    download: "/assets/plugins/natural-world-1.1.0.onirtech-template",
+    downloadName: "natural-world-1.1.0.onirtech-template",
+    sha: "sha256:714075973c788d54112bf31e0520c5f291ea947deadd1f95c3687f75d3e75893",
+  },
   mandampro: {
     download: "/assets/plugins/mandampro-1.0.1.onirtech-template",
     downloadName: "mandampro-1.0.1.onirtech-template",
