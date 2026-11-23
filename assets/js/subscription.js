@@ -33,7 +33,7 @@
   var discountRow = dialog.querySelector("[data-subscribe-discount-row]");
   var discountEl = dialog.querySelector("[data-subscribe-discount]");
   var netPriceEl = dialog.querySelector("[data-subscribe-net-price]");
-  var api = dialog.getAttribute("data-api") || "https://preprod-backoffice.onir-cms.tech";
+  var api = dialog.getAttribute("data-api") || "https://backoffice.onir-cms.tech";
   var terms = null;
   var offersPromise = null;
   var currentOffer = null;
