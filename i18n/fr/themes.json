@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Thèmes libres · ONIR CMS",
-    "description": "Téléchargez les templates visuels ONIR CMS : Immersive, Starter, MandamPro, Nuit & Jade, Atelier Paper, Pop Design et Nutriva. Libres, prêts à importer.",
+    "description": "Téléchargez les templates visuels ONIR CMS : Immersive, Starter, Natural World, MandamPro, Nuit & Jade, Atelier Paper, Pop Design et Nutriva. Libres, prêts à importer.",
     "ogTitle": "Thèmes libres · ONIR CMS",
     "ogDescription": "Téléchargez les templates visuels ONIR CMS."
   },
@@ -49,6 +49,21 @@
       ],
       "detailsText": "Le point de départ minimal pour comprendre le contrat hôte et créer votre propre template visuel.",
       "author": "Rinoheinrich"
+    },
+    {
+      "id": "natural-world",
+      "version": "v1.1.0",
+      "name": "Natural World",
+      "author": "Rinoheinrich",
+      "description": "Une expérience nature immersive : couverture éditoriale, mission, impact, témoignages et conversation intégrée.",
+      "meta": [
+        "Éditorial",
+        "Page + widget",
+        "11 zones éditables",
+        "Sections",
+        "1,1 Mo"
+      ],
+      "detailsText": "Template officiel ONIR CMS. Page éditoriale nature, sections mission, impact et témoignages, pages légales et conversation intégrée. Compatible avec le curseur d’inspection pour filtrer les variables par zone."
     },
     {
       "id": "mandampro",

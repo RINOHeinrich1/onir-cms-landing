@@ -1,0 +1,8 @@
+{
+  "id": "natural-world",
+  "version": "1.1.0",
+  "ui": {
+    "entry": "./dist/index.js",
+    "integrity": "sha256-CVAXSF9TvWP90tCkZLB7k+Qd6cAJ3EILri22Ld2PeMA="
+  }
+}

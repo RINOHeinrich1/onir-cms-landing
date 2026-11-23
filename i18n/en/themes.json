@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Open themes · ONIR CMS",
-    "description": "Download the ONIR CMS visual templates: Immersive, Starter, MandamPro, Nuit & Jade, Atelier Paper, Pop Design and Nutriva. Open, ready to import.",
+    "description": "Download the ONIR CMS visual templates: Immersive, Starter, Natural World, MandamPro, Nuit & Jade, Atelier Paper, Pop Design and Nutriva. Open, ready to import.",
     "ogTitle": "Open themes · ONIR CMS",
     "ogDescription": "Download the ONIR CMS visual templates."
   },
@@ -49,6 +49,21 @@
       ],
       "detailsText": "The minimal starting point to understand the host contract and build your own visual template.",
       "author": "Rinoheinrich"
+    },
+    {
+      "id": "natural-world",
+      "version": "v1.1.0",
+      "name": "Natural World",
+      "author": "Rinoheinrich",
+      "description": "An immersive nature experience: editorial hero, mission, impact, testimonials and an integrated conversation.",
+      "meta": [
+        "Editorial",
+        "Page + widget",
+        "11 editable zones",
+        "Sections",
+        "1.1 MB"
+      ],
+      "detailsText": "Official ONIR CMS template. Nature editorial page with mission, impact and testimonial sections, legal pages and an integrated conversation. Compatible with the inspection cursor to filter variables by zone."
     },
     {
       "id": "mandampro",
