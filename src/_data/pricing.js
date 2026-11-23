@@ -1,4 +1,4 @@
-const DEFAULT_BACKOFFICE_URL = "https://preprod-backoffice.onir-cms.tech";
+const DEFAULT_BACKOFFICE_URL = "https://backoffice.onir-cms.tech";
 
 function formatPrice(value) {
   return `${new Intl.NumberFormat("fr-FR").format(value)} Ar`;
