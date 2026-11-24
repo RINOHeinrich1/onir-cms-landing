@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Thèmes libres · ONIR CMS",
-    "description": "Téléchargez les templates visuels ONIR CMS : Immersive, Starter, Natural World, MandamPro, Nuit & Jade, Atelier Paper, Pop Design et Nutriva. Libres, prêts à importer.",
+    "description": "Téléchargez les templates visuels ONIR CMS : Immersive, Starter, Natural World, MandamPro, Nuit & Jade, Atelier Paper, Pop Design et Nutriva et Puzzle. Libres, prêts à importer.",
     "ogTitle": "Thèmes libres · ONIR CMS",
     "ogDescription": "Téléchargez les templates visuels ONIR CMS."
   },
@@ -140,6 +140,21 @@
         "1,3 Mo"
       ],
       "detailsText": "Template ONIR CMS créé par Rabalantome. Site éditorial multipage pour Nutriva : hero produit, pages Découvrir, Nutrition et Support, galerie, vidéos, contrôle de confidentialité et conversation intégrée."
+    },
+    {
+      "id": "puzzle",
+      "version": "v1.1.0-beta.1",
+      "name": "Puzzle",
+      "author": "ONIRTECH",
+      "description": "Un moteur de composition de pages et de conversation : pages, régions partagées, blocs, placements, actions et styles éditables.",
+      "meta": [
+        "Composition",
+        "Pages + régions",
+        "Blocs imbriqués",
+        "Editor V2",
+        "117 Ko"
+      ],
+      "detailsText": "Template officiel ONIR CMS. Structure complète pages, régions, blocs, placements, actions et profils de style, avec inspection par composant et contrat Editor V2."
     }
   ],
   "install": {

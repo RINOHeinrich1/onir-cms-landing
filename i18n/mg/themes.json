@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Endrika azonao ampiasaina · ONIR CMS",
-    "description": "Alaivo ny modely hita maso ONIR CMS : Immersive, Starter, Natural World, MandamPro, Nuit & Jade, Atelier Paper, Pop Design ary Nutriva. Malalaka, vonona ampidirina.",
+    "description": "Alaivo ny modely hita maso ONIR CMS : Immersive, Starter, Natural World, MandamPro, Nuit & Jade, Atelier Paper, Pop Design ary Nutriva sy Puzzle. Malalaka, vonona ampidirina.",
     "ogTitle": "Endrika azonao ampiasaina · ONIR CMS",
     "ogDescription": "Alaivo ny modely hita maso ONIR CMS."
   },
@@ -140,6 +140,21 @@
         "1,3 Mo"
       ],
       "detailsText": "Modely ONIR CMS noforonin'i Rabalantome. Sehatra editora misy pejy maromaro ho an'ny Nutriva : sary vokatra lehibe, pejy Discover, Nutrition sy Support, galerie, horonan-tsary, fifehezana fiainana manokana ary resaka tafiditra."
+    },
+    {
+      "id": "puzzle",
+      "version": "v1.1.0-beta.1",
+      "name": "Puzzle",
+      "author": "ONIRTECH",
+      "description": "Moteur fanamboarana pejy sy resaka : pejy, faritra zaraina, bolongana, placements, actions ary style azo ovaina.",
+      "meta": [
+        "Famoronana",
+        "Pejy + faritra",
+        "Bolongana mifanindry",
+        "Editor V2",
+        "117 Ko"
+      ],
+      "detailsText": "Template ofisialy ONIR CMS. Structure feno amin'ny pejy, faritra, bolongana, placements, actions ary profil style, miaraka amin'ny inspection isaky ny component sy ny contrat Editor V2."
     }
   ],
   "install": {

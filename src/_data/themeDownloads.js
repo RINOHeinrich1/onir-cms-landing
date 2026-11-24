@@ -39,4 +39,9 @@ export default {
     downloadName: "nutri-editorial-1.4.1.onirtech-template",
     sha: "sha256:ed521b9ec766335f519f3d4a42739af7768d0bd0b6e84729459a789a920dc33b",
   },
+  puzzle: {
+    download: "/assets/plugins/puzzle-1.1.0-beta.1.onirtech-template",
+    downloadName: "puzzle-1.1.0-beta.1.onirtech-template",
+    sha: "sha256:3d52972c5968f9b81932da51dcfd2f89bfdc976e44b644bb2747de1fd92fa54b",
+  },
 };
