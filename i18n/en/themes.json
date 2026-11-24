@@ -38,16 +38,17 @@
     },
     {
       "id": "starter",
-      "version": "v1.6.16",
+      "version": "v1.7.0",
       "name": "Starter",
       "description": "The reference template: identification form, conversation and media.",
       "meta": [
         "Form",
         "Chat",
         "Media",
-        "80 KB"
+        "5 editable zones",
+        "81 KB"
       ],
-      "detailsText": "The minimal starting point to understand the host contract and build your own visual template.",
+      "detailsText": "The reference template with inspection cursor: header, welcome, conversation, composer and launcher.",
       "author": "Rinoheinrich"
     },
     {

@@ -38,16 +38,17 @@
     },
     {
       "id": "starter",
-      "version": "v1.6.16",
+      "version": "v1.7.0",
       "name": "Starter",
       "description": "Le template de référence : formulaire d’identification, conversation et médias.",
       "meta": [
         "Formulaire",
         "Chat",
         "Médias",
-        "80 Ko"
+        "5 zones éditables",
+        "81 Ko"
       ],
-      "detailsText": "Le point de départ minimal pour comprendre le contrat hôte et créer votre propre template visuel.",
+      "detailsText": "Le template de référence avec curseur d’inspection : header, bienvenue, conversation, composeur et launcher.",
       "author": "Rinoheinrich"
     },
     {

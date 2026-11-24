@@ -38,16 +38,17 @@
     },
     {
       "id": "starter",
-      "version": "v1.6.16",
+      "version": "v1.7.0",
       "name": "Starter",
       "description": "Ny modely fototra: taratasy fanamarinana, resaka ary media.",
       "meta": [
         "Taratasy",
         "Chat",
         "Media",
-        "80 Ko"
+        "Faritra 5 azo ovaina",
+        "81 Ko"
       ],
-      "detailsText": "Ny fiandohana kely indrindra hahatakarana ny fifanarahana mpampiantrano sy hamoronana ny modely hita maso anao.",
+      "detailsText": "Ny modely fototra misy cursor fanaraha-maso: lohapejy, fandraisana, resaka, mpandefa ary launcher.",
       "author": "Rinoheinrich"
     },
     {
