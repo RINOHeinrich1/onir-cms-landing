@@ -40,8 +40,9 @@ export default {
     sha: "sha256:ed521b9ec766335f519f3d4a42739af7768d0bd0b6e84729459a789a920dc33b",
   },
   puzzle: {
-    download: "/assets/plugins/puzzle-1.1.0-beta.1.onirtech-template",
-    downloadName: "puzzle-1.1.0-beta.1.onirtech-template",
-    sha: "sha256:3d52972c5968f9b81932da51dcfd2f89bfdc976e44b644bb2747de1fd92fa54b",
+    download: "/assets/plugins/puzzle-1.1.0-beta.2.onirtech-template",
+    downloadName: "puzzle-1.1.0-beta.2.onirtech-template",
+    sha: "sha256:0ac59838a5573169307152bd1043661162e775eab2f889a7eb74ffc02422c44b",
   },
+
 };
