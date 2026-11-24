@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Open themes · ONIR CMS",
-    "description": "Download the ONIR CMS visual templates: Immersive, Starter, Natural World, MandamPro, Nuit & Jade, Atelier Paper, Pop Design and Nutriva. Open, ready to import.",
+    "description": "Download the ONIR CMS visual templates: Immersive, Starter, Natural World, MandamPro, Nuit & Jade, Atelier Paper, Pop Design and Nutriva and Puzzle. Open, ready to import.",
     "ogTitle": "Open themes · ONIR CMS",
     "ogDescription": "Download the ONIR CMS visual templates."
   },
@@ -140,6 +140,21 @@
         "1.3 MB"
       ],
       "detailsText": "ONIR CMS template created by Rabalantome. Multipage editorial site for Nutriva: product hero, Discover, Nutrition and Support pages, gallery, videos, privacy control and embedded conversation."
+    },
+    {
+      "id": "puzzle",
+      "version": "v1.1.0-beta.1",
+      "name": "Puzzle",
+      "author": "ONIRTECH",
+      "description": "A page and conversation composition engine: pages, shared regions, blocks, placements, actions and editable styles.",
+      "meta": [
+        "Composition",
+        "Pages + regions",
+        "Nested blocks",
+        "Editor V2",
+        "117 KB"
+      ],
+      "detailsText": "Official ONIR CMS template. Complete pages, regions, blocks, placements, actions and style profiles, with per-component inspection and the Editor V2 contract."
     }
   ],
   "install": {
