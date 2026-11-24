@@ -1,0 +1,8 @@
+{
+  "id": "puzzle",
+  "version": "1.1.0-beta.2",
+  "ui": {
+    "entry": "./index.js",
+    "integrity": "sha256-bt+EQIc7tEaMZ73ObhgZQhFDpatV52TH0yAyDrnlP/M="
+  }
+}
