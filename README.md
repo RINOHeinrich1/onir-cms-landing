@@ -137,3 +137,4 @@ Le déploiement production reste manuel via `deploy/apply-production.sh`.
 
 - [ADR](docs/adr/README.md)
 - [Plan marché Madagascar / international](docs/plans/plan-marche-mada-international.md)
+- [Plan d’amélioration SEO](docs/plans/plan-amelioration-seo.md)
