@@ -20,6 +20,9 @@ adaptés.
 **L2 — manifeste publié.** L’article `/articles/pourquoi-onir-cms-existe/` est épinglé en
 première position de l’index des articles et de la home.
 
+**L2 — cluster cas d’usage.** Hub `/cas-usage/` et pages webhooks, recherche dans les fiches
+et collecte/qualification. La réception client existante est reliée au hub.
+
 ## Livrables
 
 | Fichier | Contenu |

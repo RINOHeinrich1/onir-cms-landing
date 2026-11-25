@@ -40,3 +40,7 @@ url,type,intention,statut,indexable,action,notes
 "/expertise-ia-madagascar/","Page service","Expertise IA","Créé","Oui","Optimiser","Service réel — FR"
 "/developpeur-ia-madagascar/","Page communauté","Développeur IA","Non planifié","Non","Décaler","À cadrer avant création"
 "/articles/pourquoi-onir-cms-existe/","Article / manifeste","Initiative IA / open source","Créé","Oui","Conserver","Épinglé en premier dans l’index et la home"
+"/cas-usage/","Hub cas d’usage","Découverte","Créé","Oui","Optimiser","Hub FR"
+"/cas-usage/webhooks-evenements/","Cas d’usage","Automatisation / webhooks","Créé","Oui","Optimiser","FR"
+"/cas-usage/recherche-fiches/","Cas d’usage","Recherche structurée","Créé","Oui","Optimiser","FR"
+"/cas-usage/collecte-qualification/","Cas d’usage","Collecte / qualification","Créé","Oui","Optimiser","FR"

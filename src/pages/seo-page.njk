@@ -32,6 +32,20 @@ permalink: "{{ seoPage.route }}index.html"
     </div>
   </section>
 
+  {% if seoPage.data.cards %}
+  <section class="section wrap">
+    <div class="seo-cards">
+      {% for card in seoPage.data.cards %}
+      <a class="seo-card" href="{{ card.href }}">
+        <strong>{{ card.label }}</strong>
+        <span>{{ card.description }}</span>
+        <span class="seo-card-cta">Découvrir →</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
   <div class="section wrap seo-layout">
     <article class="seo-content">
       {% for section in seoPage.data.sections %}

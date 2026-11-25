@@ -1,5 +1,6 @@
 import allLocales from "./allLocales.js";
 import seoAuthorityPages from "./seoAuthorityPages.js";
+import seoUseCasePages from "./seoUseCasePages.js";
 
 const fr = allLocales.find((locale) => locale.code === "fr");
 
@@ -111,6 +112,11 @@ const chatbotMadagascar = {
     ],
     related: [
       {
+        label: "Cas d’usage",
+        href: "/cas-usage/",
+        description: "Réception, webhooks, recherche et qualification.",
+      },
+      {
         label: "Initiative IA",
         href: "/initiative-ia-madagascar/",
         description: "Le projet, son ancrage malagasy et ses preuves.",
@@ -194,4 +200,4 @@ const chatbotMadagascar = {
   },
 };
 
-export default [chatbotMadagascar, ...seoAuthorityPages];
+export default [chatbotMadagascar, ...seoAuthorityPages, ...seoUseCasePages];
