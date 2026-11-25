@@ -64,15 +64,29 @@ Ces signaux ne sont pas des volumes de recherche. Ils indiquent seulement que l�
 est peu riche sur plusieurs requêtes. La demande doit être confirmée avec Search Console et un
 outil de volumes avant de multiplier les pages.
 
+## Données Search Console
+
+Les exports du 2026-11-25 sont détaillés dans
+[`gsc-2026-11-25.md`](./gsc-2026-11-25.md).
+
+- 5 clics et 50 impressions sur la période visible.
+- Requêtes principales : `onir` et `ionir`, aucune requête cible encore visible.
+- Madagascar : 5 clics, 13 impressions.
+- 36 pages indexées, 29 non indexées.
+- Le doublon `www.onir-cms.tech` est confirmé.
+
+Le volume est trop faible pour valider une demande. Il ne justifie pas encore une production
+massive de pages.
+
 ## Ce qui manque encore pour clore G0
 
-- Accès Google Search Console : impressions, clics, requêtes, pages indexées.
 - Accès Bing Webmaster Tools.
-- Volumes de recherche réels.
+- Volumes de recherche réels via un outil de mots-clés.
 - Analyse des SERP concurrentielles.
 - Événements de conversion : clic démo, demande de devis, inscription.
 - Mesure du LCP mobile sur la préprod avec authentification et navigateur réel.
 - Validation des affirmations produit avec l’équipe.
+- Identification des URL exactes des 404, 401 et pages `noindex`.
 
 ## Conclusion
 

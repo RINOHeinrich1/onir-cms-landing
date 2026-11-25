@@ -1,4 +1,5 @@
 keyword,intent,priority,page_cible,preuve_initiale,volume,statut
+"onir","Marque","P0","/","GSC 2026-11-05 → 2026-11-23 : 16 impressions, 0 clic, position 17,31","Faible volume","À protéger"
 "chatbot madagascar","Commerciale / informationnelle","P0","/chatbot-madagascar/","Autocomplétion Google fr : quelques suggestions, dont « chat madagascar »","À valider GSC / Keyword Planner","À confirmer"
 "chatbot ia madagascar","Commerciale / informationnelle","P0","/chatbot-madagascar/","Autocomplétion Google fr : « chat a madagascar »","À valider GSC / Keyword Planner","À confirmer"
 "creation chatbot madagascar","Tutoriel","P0","/guides/creer-chatbot-madagascar/","Aucune suggestion retournée le 2026-11-25","À valider GSC / Keyword Planner","À confirmer"
