@@ -212,7 +212,7 @@ permalink: "{{ locale.routes.home }}index.html"
     <p>{{ p.useCase.lead }}</p>
   </div>
   <div class="hero-ctas">
-    <a class="btn btn-ghost" href="{{ locale.routes.useCases }}">{{ p.useCase.cta }}</a>
+    <a class="btn btn-ghost" href="{{ '/cas-usage/' if locale.code == 'fr' else locale.routes.useCases }}">{{ p.useCase.cta }}</a>
   </div>
 </section>
 
