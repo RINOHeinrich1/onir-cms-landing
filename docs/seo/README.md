@@ -33,7 +33,7 @@ préprod authentifiée.
 - Le LCP mobile de la home reste à reproduire (`NO_LCP`).
 - Search Console : 5 clics, 50 impressions, requêtes de marque uniquement.
 - 36 pages indexées, 29 non indexées, dont 6 404 et 1 401 à identifier.
-- Le doublon `www.onir-cms.tech` est confirmé.
+- Le doublon `www.onir-cms.tech` est corrigé par une redirection `301` vers l’apex.
 - Les volumes de recherche ne sont pas encore validés.
 
 ## Prochaine action

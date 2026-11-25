@@ -73,7 +73,7 @@ Les exports du 2026-11-25 sont détaillés dans
 - Requêtes principales : `onir` et `ionir`, aucune requête cible encore visible.
 - Madagascar : 5 clics, 13 impressions.
 - 36 pages indexées, 29 non indexées.
-- Le doublon `www.onir-cms.tech` est confirmé.
+- Le doublon `www.onir-cms.tech` a été corrigé par une redirection `301` vers l’apex le 2026-11-25.
 
 Le volume est trop faible pour valider une demande. Il ne justifie pas encore une production
 massive de pages.

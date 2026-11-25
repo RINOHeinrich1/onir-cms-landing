@@ -81,7 +81,7 @@ Le reste de L1 peut avancer, mais le LCP mobile reste un point ouvert.
 
 ## Corrections non incluses dans ce lot
 
-- Redirection `www` → apex : à faire au niveau Nginx, avant production.
+- Redirection `www` → apex : corrigée en production via HAProxy le 2026-11-25, avec conservation de la query string.
 - Politique de cache des assets : à vérifier dans Nginx.
 - Modèle de page SEO pour les futurs guides, solutions et outils : à traiter dans L1b.
 - Optimisation des titles secondaires Participer et mentions légales : non bloquant.

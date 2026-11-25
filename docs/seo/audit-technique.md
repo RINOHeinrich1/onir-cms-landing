@@ -142,7 +142,7 @@ Elles ne sont pas dans le sitemap. Comportement attendu, mais à vérifier avant
 ### P2 — Hôte `www`
 
 Contrôle production en lecture seule : `https://www.onir-cms.tech/` répond `200` avec canonical vers l’apex.  
-Recommandation : redirection `301` de `www` vers `onir-cms.tech` pour éviter un hôte dupliqué. À traiter hors préprod, avant mise en production des nouvelles pages.
+Correction appliquée le 2026-11-25 : redirection `301` de `www` vers `onir-cms.tech`, query string conservée.
 
 ## Performance Lighthouse
 
@@ -163,7 +163,7 @@ Les scores SEO Lighthouse sont à 100 sur les pages testées. Les points à trai
 5. Corriger les contrastes, tailles de cible et libellés ARIA.
 6. Reproduire le LCP mobile sur la préprod avec un navigateur réel.
 7. Vérifier le cache des assets et le poids de la vidéo hero.
-8. Prévoir la redirection `www` → apex avant la production.
+8. Redirection `www` → apex : corrigée en production via HAProxy.
 
 ## Limites de cet audit
 
