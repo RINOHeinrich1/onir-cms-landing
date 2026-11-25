@@ -51,14 +51,27 @@
       {% if pageKey == "home" %},
       {
         "@type": "SoftwareApplication",
-        "@id": "{{ site.baseUrl }}/#software",
-        "name": "ONIR CMS",
+        "@id": "{{ site.baseUrl }}/#software-open-source",
+        "name": "ONIR CMS (open source)",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
         "url": "{{ site.baseUrl }}/",
-        "description": {{ p.meta.description | dump | safe }},
+        "description": "CMS open source sous licence MIT pour créer des chatbots et des assistants IA auto-hébergés.",
+        "isAccessibleForFree": true,
+        "license": "https://opensource.org/license/mit/",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+        "sameAs": "{{ site.github }}",
         "publisher": { "@id": "{{ site.baseUrl }}/#organization" }
+      },
+      {
+        "@type": "Service",
+        "@id": "{{ site.baseUrl }}/#cloud",
+        "name": "ONIR CMS Cloud",
+        "serviceType": "SaaS de chatbot et d’assistant IA",
+        "provider": { "@id": "{{ site.baseUrl }}/#organization" },
+        "areaServed": { "@type": "Country", "name": "Madagascar" },
+        "url": "{{ site.baseUrl }}/tarifs/",
+        "description": "Service Cloud hébergé par ONIR CMS, disponible à Madagascar, avec des offres et des tarifs consultables sur la page Tarifs."
       }
       {% endif %}
       {% if pageKey == "article" %},

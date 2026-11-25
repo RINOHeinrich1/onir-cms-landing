@@ -1,6 +1,8 @@
 # Plan d’amélioration SEO — landing ONIR CMS
 
-Statut : proposition à valider.
+Statut : en cours — L0 (audit et cadrage).
+
+Livrables : [`docs/seo/`](../seo/README.md).
 
 Périmètre : `onir-cms.tech` (landing statique Eleventy). Le produit, l’API, la tarification
 et les règles commerciales restent hors périmètre de ce plan.

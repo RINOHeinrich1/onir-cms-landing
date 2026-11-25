@@ -66,7 +66,7 @@
 
 .article-kicker {
   margin: 0;
-  color: var(--accent);
+  color: var(--accent-text);
   font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.14em;

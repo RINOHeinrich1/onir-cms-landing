@@ -105,7 +105,8 @@
   margin-bottom: 1.8rem;
 }
 
-.dev-intro h1 {
+.dev-intro h1,
+.dev-intro h2 {
   max-width: 14ch;
   margin: 0;
   color: var(--site-ink);
@@ -1741,7 +1742,8 @@
 @media (max-width: 720px) {
   .participate-hero h1,
   .sponsor-intro h1,
-  .dev-intro h1 {
+  .dev-intro h1,
+  .dev-intro h2 {
     font-size: clamp(2.45rem, 13vw, 3.6rem);
   }
 

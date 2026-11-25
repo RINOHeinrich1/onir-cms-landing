@@ -1,5 +1,5 @@
 ---
-title: "Créer un chatbot de réception client en moins de 5 minutes avec l'assistant IA d'ONIR-CMS"
+title: "Créer un chatbot de réception client — ONIR CMS"
 slug: "chatbot-reception-client"
 translationKey: "chatbot-reception-client"
 articleLocale: "fr"
