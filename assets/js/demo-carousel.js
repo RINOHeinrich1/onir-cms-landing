@@ -96,6 +96,8 @@
     next?.addEventListener("click", () => goToPage(page + 1));
     track.addEventListener("scroll", syncFromScroll, { passive: true });
     window.addEventListener("resize", renderDots);
-    renderDots();
+    const start = () => renderDots();
+    if ("requestIdleCallback" in window) requestIdleCallback(start, { timeout: 1000 });
+    else setTimeout(start, 0);
   });
 })();

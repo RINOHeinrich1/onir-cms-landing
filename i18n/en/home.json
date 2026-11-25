@@ -61,7 +61,7 @@
     "items": [
       {
         "key": "onirtech",
-        "image": "/assets/themes/immersive.png",
+        "image": "/assets/themes/immersive-card.webp?v=1",
         "tag": "3D immersive",
         "title": "onirtech.com",
         "creator": "Onirtech",
@@ -69,7 +69,7 @@
       },
       {
         "key": "a2dm",
-        "image": "/assets/themes/a2dm.png",
+        "image": "/assets/themes/a2dm-card.webp?v=1",
         "tag": "Starter",
         "title": "A2DM Training",
         "creator": "A2DM-Formation",
@@ -77,7 +77,7 @@
       },
       {
         "key": "mandampro",
-        "image": "/assets/themes/mandampro.png",
+        "image": "/assets/themes/mandampro-card.webp?v=1",
         "tag": "MandamPro · records",
         "title": "MandamPro",
         "creator": "Onirtech",
@@ -85,7 +85,7 @@
       },
       {
         "key": "hdorbite",
-        "image": "/assets/themes/hd-orbite.png",
+        "image": "/assets/themes/hd-orbite-card.webp?v=1",
         "tag": "Assistant",
         "title": "HD-Orbite",
         "creator": "HD-Orbite",

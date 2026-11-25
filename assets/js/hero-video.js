@@ -129,7 +129,7 @@
     applySlide(true);
   });
 
+  // Ne pas charger la vidéo avant l'ouverture de la modale.
   buildSlides();
   renderDots();
-  applySlide(false);
 })();

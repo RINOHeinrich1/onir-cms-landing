@@ -4,8 +4,9 @@ pageKey: home
 headerVariant: v2
 css:
   - /assets/css/landing-v2.css?v=21
-  - /assets/css/pricing.css?v=10
   - /assets/css/hero-video.css?v=4
+deferCss:
+  - /assets/css/pricing.css?v=10
   - /assets/css/articles.css?v=3
 bodyScripts:
   - /assets/js/appointment-chat.js?v=1
@@ -105,7 +106,7 @@ permalink: "{{ locale.routes.home }}index.html"
           data-mobile-poster-mg="/assets/videos/onir-motion-mg-mobile-poster.jpg?v=8"
           controls
           playsinline
-          preload="metadata"
+          preload="none"
         ></video>
       </div>
       <button class="hero-video-arrow hero-video-next" type="button" data-hero-video-next aria-label="Next video">
@@ -134,7 +135,14 @@ permalink: "{{ locale.routes.home }}index.html"
       <div class="demo-slide">
         <a class="demo-card" href="{{ demoLinks[item.key] }}" target="_blank" rel="noreferrer">
           <span class="demo-card-preview">
-            <img src="{{ item.image }}" alt="{{ item.title }} — {{ item.tag }}" loading="lazy">
+            <img
+              src="{{ item.image }}"
+              alt="{{ item.title }} — {{ item.tag }}"
+              width="640"
+              height="400"
+              loading="lazy"
+              decoding="async"
+            >
           </span>
           <span class="demo-card-body">
             <span class="demo-tag">{{ item.tag }}</span>
