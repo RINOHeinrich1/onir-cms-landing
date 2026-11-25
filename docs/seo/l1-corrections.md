@@ -79,9 +79,13 @@ Le problème n’est donc pas causé par la modale ni par les animations. Il doi
 
 Le reste de L1 peut avancer, mais le LCP mobile reste un point ouvert.
 
-## Corrections non incluses dans ce lot
+## Corrections L1b
 
 - Redirection `www` → apex : corrigée en production via HAProxy le 2026-11-25, avec conservation de la query string.
-- Politique de cache des assets : à vérifier dans Nginx.
-- Modèle de page SEO pour les futurs guides, solutions et outils : à traiter dans L1b.
+- Cache des assets : `Cache-Control: public, max-age=2592000, immutable` ajouté au serveur Nginx public le 2026-11-25.
+
+## Corrections non incluses dans ce lot
+
+- Modèle de page SEO pour les futurs guides, solutions et outils.
 - Optimisation des titles secondaires Participer et mentions légales : non bloquant.
+- LCP mobile de la home : point ouvert.

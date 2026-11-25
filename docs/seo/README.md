@@ -46,4 +46,4 @@ Compléter L0 :
 4. rejouer le LCP mobile sur la préprod ;
 5. vérifier l’évolution Search Console après le déploiement préprod.
 
-L1b reste à ouvrir pour le modèle de pages SEO et les correctifs Nginx.
+L1b a corrigé la redirection `www` et le cache des assets. Reste le modèle de pages SEO.
