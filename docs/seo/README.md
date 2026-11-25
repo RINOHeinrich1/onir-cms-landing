@@ -15,7 +15,10 @@ préprod authentifiée.
 **L2 — cluster d’autorité FR créé.** Le modèle de page SEO est utilisé par
 `/chatbot-madagascar/`, `/initiative-ia-madagascar/`, `/open-source-madagascar/` et
 `/expertise-ia-madagascar/`. Les pages sont liées entre elles et disposent de JSON-LD
-adaptés. À valider en préprod avant production.
+adaptés.
+
+**L2 — manifeste publié.** L’article `/articles/pourquoi-onir-cms-existe/` est épinglé en
+première position de l’index des articles et de la home.
 
 ## Livrables
 

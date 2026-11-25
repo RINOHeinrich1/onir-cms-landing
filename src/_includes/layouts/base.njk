@@ -81,7 +81,7 @@
         "description": {{ excerpt | dump | safe }},
         "datePublished": "{{ publishedAt }}",
         "author": { "@type": "Person", "name": {{ author | dump | safe }} },
-        "image": "{{ cover | absoluteUrl(site.baseUrl) }}",
+        "image": "{{ (cover or site.ogImage) | absoluteUrl(site.baseUrl) }}",
         "mainEntityOfPage": "{{ canonical }}",
         "publisher": { "@id": "{{ site.baseUrl }}/#organization" }
       }

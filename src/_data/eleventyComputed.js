@@ -11,11 +11,12 @@ export default {
   p: (data) => {
     if (data.pageKey === "seoPage" && data.seoPage) return data.seoPage.data;
     if (data.pageKey === "article") {
+      const articleTitle = data.seoTitle ?? data.title;
       return {
         meta: {
-          title: data.title,
+          title: articleTitle,
           description: data.excerpt,
-          ogTitle: data.title,
+          ogTitle: articleTitle,
           ogDescription: data.excerpt,
         },
       };

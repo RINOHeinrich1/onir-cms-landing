@@ -13,11 +13,15 @@ export default function (eleventyConfig) {
         item.data.publishedAt === undefined ||
         new Date(item.data.publishedAt).getTime() <= Date.now(),
       )
-      .sort(
-        (left, right) =>
+      .sort((left, right) => {
+        const pin =
+          Number(right.data.pinned === true) - Number(left.data.pinned === true);
+        if (pin !== 0) return pin;
+        return (
           new Date(right.data.publishedAt ?? 0).getTime() -
-          new Date(left.data.publishedAt ?? 0).getTime(),
-      ),
+          new Date(left.data.publishedAt ?? 0).getTime()
+        );
+      }),
   );
 
   eleventyConfig.addFilter("articlesForLocale", (items, code) => {
@@ -35,11 +39,15 @@ export default function (eleventyConfig) {
         byKey.set(key, item);
       }
     }
-    return [...byKey.values()].sort(
-      (left, right) =>
+    return [...byKey.values()].sort((left, right) => {
+      const pin =
+        Number(right.data.pinned === true) - Number(left.data.pinned === true);
+      if (pin !== 0) return pin;
+      return (
         new Date(right.data.publishedAt ?? 0).getTime() -
-        new Date(left.data.publishedAt ?? 0).getTime(),
-    );
+        new Date(left.data.publishedAt ?? 0).getTime()
+      );
+    });
   });
 
   eleventyConfig.addFilter("absoluteUrl", (path, baseUrl) => {
