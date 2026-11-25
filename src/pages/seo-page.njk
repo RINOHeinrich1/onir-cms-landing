@@ -1,0 +1,93 @@
+---
+layout: layouts/base.njk
+pageKey: seoPage
+headerVariant: v2
+showWidget: true
+css:
+  - /assets/css/landing-v2.css?v=21
+  - /assets/css/seo-page.css?v=1
+pagination:
+  data: seoPages
+  size: 1
+  alias: seoPage
+permalink: "{{ seoPage.route }}index.html"
+---
+<div class="seo-page">
+  <section class="page-hero wrap">
+    <p class="kicker">{{ seoPage.data.hero.kicker }}</p>
+    <h1>{{ seoPage.data.hero.title }}</h1>
+    <p class="hero-lead">{{ seoPage.data.hero.lead }}</p>
+    <div class="hero-ctas">
+      <a class="btn btn-accent" href="{{ seoPage.data.hero.primaryHref }}">{{ seoPage.data.hero.primaryLabel }}</a>
+      <a class="btn btn-ghost" href="{{ seoPage.data.hero.secondaryHref }}">{{ seoPage.data.hero.secondaryLabel }}</a>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="seo-intro">
+      <p class="kicker">{{ seoPage.data.intro.title }}</p>
+      {% for paragraph in seoPage.data.intro.paragraphs %}
+      <p>{{ paragraph }}</p>
+      {% endfor %}
+    </div>
+  </section>
+
+  <div class="section wrap seo-layout">
+    <article class="seo-content">
+      {% for section in seoPage.data.sections %}
+      <section class="seo-section">
+        <p class="kicker">{{ section.kicker }}</p>
+        <h2>{{ section.title }}</h2>
+        {% for paragraph in section.paragraphs %}
+        <p>{{ paragraph }}</p>
+        {% endfor %}
+        {% if section.bullets %}
+        <ul class="check-list">
+          {% for bullet in section.bullets %}<li>{{ bullet }}</li>{% endfor %}
+        </ul>
+        {% endif %}
+        {% if section.note %}
+        <p class="seo-note">{{ section.note }}</p>
+        {% endif %}
+      </section>
+      {% endfor %}
+    </article>
+
+    <aside class="seo-aside" aria-label="Ressources liées">
+      <p class="kicker">Pour aller plus loin</p>
+      <div class="seo-related">
+        {% for item in seoPage.data.related %}
+        <a href="{{ item.href }}"{% if item.href.startsWith('http') %} target="_blank" rel="noreferrer"{% endif %}>
+          <strong>{{ item.label }}</strong>
+          <span>{{ item.description }}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </aside>
+  </div>
+
+  <section class="section wrap">
+    <div class="section-head">
+      <p class="kicker">FAQ</p>
+      <h2>{{ seoPage.data.faq.title }}</h2>
+    </div>
+    <div class="faq">
+      {% for item in seoPage.data.faq.items %}
+      <details>
+        <summary>{{ item.q }}</summary>
+        <p>{{ item.a }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="cta wrap">
+    <p class="kicker">{{ seoPage.data.cta.kicker }}</p>
+    <h2>{{ seoPage.data.cta.title }}</h2>
+    <p>{{ seoPage.data.cta.lead }}</p>
+    <div class="cta-row">
+      <a class="btn btn-accent" href="{{ seoPage.data.cta.primaryHref }}">{{ seoPage.data.cta.primaryLabel }}</a>
+      <a class="btn btn-ghost" href="{{ seoPage.data.cta.secondaryHref }}">{{ seoPage.data.cta.secondaryLabel }}</a>
+    </div>
+  </section>
+</div>

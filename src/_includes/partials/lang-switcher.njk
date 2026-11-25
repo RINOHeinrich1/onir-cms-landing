@@ -1,5 +1,5 @@
 {% set available = allLocales | selectattr("available") | list %}
-{% if available | length > 1 and pageKey != "notFound" %}
+{% if available | length > 1 and pageKey != "notFound" and locale.routes[pageKey] %}
 <div class="lang-switch">
   <details>
     <summary title="{{ t.common.lang.change }}">

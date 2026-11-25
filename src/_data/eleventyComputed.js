@@ -3,11 +3,13 @@ export default {
     if (data.locale) return data.locale;
     if (data.themePage?.locale) return data.themePage.locale;
     if (data.useCasePage?.locale) return data.useCasePage.locale;
+    if (data.seoPage?.locale) return data.seoPage.locale;
     if (!data.articleLocale) return undefined;
     return data.allLocales?.find((locale) => locale.code === data.articleLocale);
   },
   t: (data) => data.i18n?.[data.locale?.code] ?? {},
   p: (data) => {
+    if (data.pageKey === "seoPage" && data.seoPage) return data.seoPage.data;
     if (data.pageKey === "article") {
       return {
         meta: {
@@ -45,7 +47,10 @@ export default {
     }
     return data.i18n?.[data.locale?.code]?.[data.pageKey] ?? {};
   },
-  currentRoute: (data) => data.locale?.routes?.[data.pageKey] ?? "/",
+  currentRoute: (data) => {
+    if (data.pageKey === "seoPage" && data.seoPage) return data.seoPage.route;
+    return data.locale?.routes?.[data.pageKey] ?? "/";
+  },
   css: (data) => data.css ?? ["/assets/css/landing-v2.css?v=21"],
   headerVariant: (data) => data.headerVariant ?? "v2",
   footerVariant: (data) => data.footerVariant ?? data.headerVariant ?? "v2",
@@ -62,6 +67,7 @@ export default {
   showWidget: (data) => data.showWidget ?? true,
   canonical: (data) => {
     if (!data.pageKey || data.pageKey === "notFound") return null;
+    if (data.pageKey === "seoPage" && data.seoPage) return `${data.site.baseUrl}${data.seoPage.route}`;
     if (data.pageKey === "article") return `${data.site.baseUrl}${data.page.url}`;
     if (data.pageKey === "articles" && data.locale?.code !== "fr") {
       return `${data.site.baseUrl}/articles/`;
@@ -76,6 +82,7 @@ export default {
   },
   alternates: (data) => {
     if (!data.pageKey || data.pageKey === "notFound" || data.pageKey === "article") return [];
+    if (data.pageKey === "seoPage" && data.seoPage) return data.seoPage.alternates ?? [];
     if (data.pageKey === "articles") return [];
     if (data.pageKey === "theme" && data.themePage) {
       return data.themePage.alternates.map((alt) => ({

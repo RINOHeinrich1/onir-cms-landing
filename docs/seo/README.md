@@ -12,6 +12,10 @@ recherche, les URL détaillées des anomalies de couverture et les événements 
 tactiles sont corrigés dans le build préprod. Le LCP mobile reste à reproduire sur la
 préprod authentifiée.
 
+**L2 — page pilier FR créée.** `/chatbot-madagascar/` est générée avec un modèle de page
+SEO réutilisable, un JSON-LD `WebPage` + `FAQPage` et des liens internes. À déployer en
+préprod pour validation éditoriale.
+
 ## Livrables
 
 | Fichier | Contenu |

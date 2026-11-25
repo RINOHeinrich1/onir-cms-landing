@@ -20,7 +20,7 @@ url,type,intention,statut,indexable,action,notes
 "/participer/developpeur/","Redirection","Ancienne URL","Existant","Non","Conserver la redirection","Hors sitemap"
 "/participer/sponsoring/","Redirection","Ancienne URL","Existant","Non","Conserver la redirection","Hors sitemap"
 "/plugins/","Redirection","Ancienne URL","Existant","Non","Conserver la redirection","Hors sitemap"
-"/chatbot-madagascar/","Page pilier","Commerciale / informationnelle","À créer","Oui","Créer","L2"
+"/chatbot-madagascar/","Page pilier","Commerciale / informationnelle","Créé","Oui","Optimiser","L2 — page pilier FR"
 "/guides/creer-chatbot-madagascar/","Guide","Tutoriel","À créer","Oui","Créer","L3a"
 "/guides/prix-chatbot-madagascar/","Guide","Achat","À créer","Oui","Créer","L3b"
 "/solutions/chatbot-entreprise-madagascar/","Solution","B2B","À créer","Oui","Créer","L5a"
