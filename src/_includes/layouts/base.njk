@@ -123,7 +123,25 @@
         "description": {{ seoPage.data.meta.description | dump | safe }},
         "inLanguage": "fr",
         "isPartOf": { "@id": "{{ site.baseUrl }}/#website" }
-      }{% if seoPage.data.faq and seoPage.data.faq.items %},
+      }{% if seoPage.kind == "openSource" %},
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "ONIR CMS",
+        "codeRepository": "{{ site.github }}",
+        "license": "https://opensource.org/license/mit/",
+        "isAccessibleForFree": true,
+        "author": { "@id": "{{ site.baseUrl }}/#organization" },
+        "url": "{{ canonical }}"
+      }{% elif seoPage.kind == "expertise" %},
+      {
+        "@type": "Service",
+        "name": "Expertise IA ONIRTECH",
+        "serviceType": "Conception et déploiement d’assistants IA",
+        "provider": { "@id": "{{ site.baseUrl }}/#organization" },
+        "areaServed": { "@type": "Country", "name": "Madagascar" },
+        "url": "{{ canonical }}",
+        "description": {{ seoPage.data.meta.description | dump | safe }}
+      }{% endif %}{% if seoPage.data.faq and seoPage.data.faq.items %},
       {
         "@type": "FAQPage",
         "mainEntity": [

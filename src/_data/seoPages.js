@@ -1,4 +1,5 @@
 import allLocales from "./allLocales.js";
+import seoAuthorityPages from "./seoAuthorityPages.js";
 
 const fr = allLocales.find((locale) => locale.code === "fr");
 
@@ -110,6 +111,21 @@ const chatbotMadagascar = {
     ],
     related: [
       {
+        label: "Initiative IA",
+        href: "/initiative-ia-madagascar/",
+        description: "Le projet, son ancrage malagasy et ses preuves.",
+      },
+      {
+        label: "Open source",
+        href: "/open-source-madagascar/",
+        description: "Le dépôt, la licence MIT et la contribution.",
+      },
+      {
+        label: "Expertise IA",
+        href: "/expertise-ia-madagascar/",
+        description: "Cadrer et déployer un assistant avec ONIRTECH.",
+      },
+      {
         label: "Fonctionnalités",
         href: "/fonctionnalites/",
         description: "Création, conversations, reprise humaine, fiches et intégrations.",
@@ -178,4 +194,4 @@ const chatbotMadagascar = {
   },
 };
 
-export default [chatbotMadagascar];
+export default [chatbotMadagascar, ...seoAuthorityPages];
